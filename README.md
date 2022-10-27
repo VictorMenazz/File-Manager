@@ -7,6 +7,6 @@
 
 ## Reparto del trabajo:
 - Marc:
-- Julia:
-- Victor:
+- Julia: Expresion Booleana
+- Victor: Content
 - Jordi:
