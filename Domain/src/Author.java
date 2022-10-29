@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 public class Author {
     String name;
     ArrayList<Document> docs;
