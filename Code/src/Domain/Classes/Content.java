@@ -1,4 +1,4 @@
-package Domain.Classes;
+package Code.src.Domain.Classes;
 
 import java.io.IOException;
 import java.nio.file.Files;

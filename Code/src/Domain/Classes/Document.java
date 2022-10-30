@@ -1,4 +1,4 @@
-package Domain.Classes;
+package Code.src.Domain.Classes;
 
 public class Document {
         /**

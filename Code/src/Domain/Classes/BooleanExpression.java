@@ -1,4 +1,4 @@
-package Domain.Classes;
+package Code.src.Domain.Classes;
 
 import java.util.ArrayList;
 

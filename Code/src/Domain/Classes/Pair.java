@@ -1,4 +1,4 @@
-package Domain.Classes;
+package Code.src.Domain.Classes;
 
 public class Pair<U, V> {
     // Domain.Domain.Classes.Classes.Pair class
