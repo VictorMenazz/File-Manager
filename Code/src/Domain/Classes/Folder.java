@@ -1,3 +1,5 @@
+package Domain.Classes;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -82,3 +84,4 @@ public class Folder {
     }
 
 }
+

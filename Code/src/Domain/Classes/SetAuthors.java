@@ -1,3 +1,5 @@
+package Domain.Classes;
+
 import java.util.HashMap;
 
 public class SetAuthors {
@@ -18,3 +20,4 @@ public class SetAuthors {
         return authors.size();
     }
 }
+

@@ -1,3 +1,5 @@
+package Domain.Classes;
+
 public class Document {
         /**
          * @brief Title of the Document.
@@ -105,3 +107,4 @@ public class Document {
         //Consultants
 
 }
+

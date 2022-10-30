@@ -1,3 +1,5 @@
+package Domain.Classes;
+
 import java.util.ArrayList;
 
 import javax.naming.NameClassPair;
@@ -83,3 +85,4 @@ p1, p2, p3 -> string
 
 
  */
+
