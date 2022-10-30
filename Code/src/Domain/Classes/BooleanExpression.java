@@ -2,8 +2,6 @@ package Code.src.Domain.Classes;
 
 import java.util.ArrayList;
 
-import javax.naming.NameClassPair;
-
 public class BooleanExpression {
     private enum Operand {
         AND, OR, NOT
