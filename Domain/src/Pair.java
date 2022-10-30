@@ -4,11 +4,8 @@ public class Pair<U, V> {
     public final V second;      // el segundo campo de un par
 
     // Construye un nuevo par con valores especificados
-<<<<<<< HEAD
-    private Pair(U first, V second)
-=======
+
     public Pair(U first, V second)
->>>>>>> Documents
     {
         this.first = first;
         this.second = second;
@@ -28,11 +25,8 @@ public class Pair<U, V> {
 
         Pair<?, ?> pair = (Pair<?, ?>) o;
 
-<<<<<<< HEAD
-        // llamar al método `equals()` de los objetos subyacentes
-=======
         // llamar al método equals() de los objetos subyacentes
->>>>>>> Documents
+
         if (!first.equals(pair.first)) {
             return false;
         }
@@ -58,8 +52,4 @@ public class Pair<U, V> {
         // llama al constructor privado
         return new Pair<>(a, b);
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> Documents
