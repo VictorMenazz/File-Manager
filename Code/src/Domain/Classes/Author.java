@@ -12,7 +12,7 @@ public class Author {
     }
 
     // Return a ArrayList of Author's Documents
-    String getDocuments() {
+    ArrayList<Document> getDocuments() {
         return docs;
     }
 }
