@@ -6,5 +6,12 @@ public class FoldersController {
     /**
      * @brief Instancia de la carpeta origen
      */
-    private Folder firstFolder;
+    private Folder rootFolder;
+
+    /**
+     * @brief Instance of SearchController
+     */
+    private SearchController ctrlSearch;
+
+
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class QueryController {
     /**
-     * @brief Lista de BooleanExpresions
+     * @brief List of BooleanExpressions
      */
     private ArrayList<BooleanExpression> listBoolExps;
 }

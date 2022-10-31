@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 public class SearchController {
     /**
-     * @brief Instancia del controlador de query
+     * @brief Instance of QueryController
      */
     private QueryController query;
 
-    public Document searchDocument(String authorName, String tittle) {
+    public Document searchDocument(String authorName, String title) {
 
         return null;
     }
