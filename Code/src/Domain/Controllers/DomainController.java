@@ -9,10 +9,6 @@ public class DomainController {
      * @brief Instancia del controlador persistencia
      */
     private DataController data;
-    /**
-     * @brief Instancia del controlador de query
-     */
-    private QueryController query;
 
     /**
      * @brief Instancia del controlador de folders
