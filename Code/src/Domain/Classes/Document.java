@@ -53,8 +53,7 @@ public class Document {
             cont = c;
         }
 
-
-        //Setters
+    //Setters
         /**
          * @brief Set the Author of a Document.
          * @param auth, String that will be allocated to the Author of this Document.

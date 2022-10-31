@@ -34,7 +34,7 @@ public class Content {
     private ArrayList<Sentence> text;
 
     /**
-     * @brief Creadora de Content por defecto
+     * @brief Default create of Content
      * */
     public Content()
     {
@@ -53,10 +53,14 @@ public class Content {
         //Build text
         String auxText = textDoc;
         int posDot = auxText.indexOf('.');
+        if(posDot == -1 && !auxText.isEmpty()) { //If there's no dot
+            Sentence aux = new Sentence(auxText);
+            text.add(aux);
+        }
         while(posDot != -1) {
             int jump = auxText.indexOf("\n");
             if(jump != -1 && jump < 2) { //first char is a line break?
-                text.add(new Sentence("break")); //ASI GUARDAMOS SALTO DE LINEA
+                text.add(new Sentence("breakLine")); //ASI GUARDAMOS SALTO DE LINEA
                 auxText = auxText.substring(jump+2); //until the end
             }
             String untilDot = auxText.substring(0, posDot); //string that goes to Domain.Domain.Classes.Classes.Sentence
@@ -66,7 +70,6 @@ public class Content {
             auxText = auxText.substring(posDot+1); //until the end
             posDot = auxText.indexOf('.');
         }
-        //Caso en el que no haya punto
 
         //Build vector of frequency
         //DELETE STOP WORDS
@@ -94,20 +97,28 @@ public class Content {
             allWords.remove(0);
         }
     }
-    //getters
+
+    /**
+     * @brief Get vector of important words of the text
+     *
+     * @return map of frequency
+     */
     public Map<String,Integer> getVector()
     {
         return this.frequency;
     }
 
-    //consultants
+    /**
+     * @brief Consult if word or words are on the text
+     *
+     * @param wSearch, word to look for
+     * @return true if word appears in the text, false if not
+     */
     public boolean wordContain(String wSearch)
     {
         for(Sentence aux: text) {
-            //CASO DE SALTO DE LINEA
             if(aux.searchWord(wSearch)) return true;
         }
         return false;
     }
-
 }
