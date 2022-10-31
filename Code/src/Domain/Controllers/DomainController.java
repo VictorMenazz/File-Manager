@@ -15,12 +15,14 @@ public class DomainController {
     private QueryController query;
 
     /**
-     * @brief Instancia de la carpeta origen
+     * @brief Instancia del controlador de folders
      */
-    private Folder firstFolder;
+    private FoldersController folders;
+
 
     public DomainController() {
         data = DataController.getInstance();
-
     }
+
+
 }
