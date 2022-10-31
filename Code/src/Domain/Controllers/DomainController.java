@@ -18,6 +18,7 @@ public class DomainController {
 
     public DomainController() {
         data = DataController.getInstance();
+        //faltan cosas
     }
 
     /**
@@ -27,7 +28,7 @@ public class DomainController {
      */
     //Crear excepcion
     public void importDocument(String path) {
-
+        //Interface y data?
     }
 
     /**
@@ -38,7 +39,7 @@ public class DomainController {
      * @return Document to export
      */
     public Document exportDocument(String authorName, String title) {
-
+        //Data e Interface??
         return null;
     }
 
@@ -47,13 +48,8 @@ public class DomainController {
 
     }
 
-    //crear excepcion
-    public void deleteDocument(String authorName, String title) {
-
-    }
-
-    public void modifyDocument(String authorName, String title, String text) {
-
+    public void modifyDocument(String authorName, String title, String text, int flag) {
+        //usar switch
     }
 
     public ArrayList<Document> authorDocuments(String authorName) {
@@ -66,5 +62,48 @@ public class DomainController {
         return null;
     }
 
+    public Document getDocument(String authorName, String title) {
 
+        return null;
+    }
+
+    /*
+    public ArrayList<Document> o Path inicial? INITIALQUERY()
+     */
+
+    public ArrayList<Document> appearanceSearch(String authorName, String title, int k) {
+
+        return null;
+    }
+
+    public ArrayList<Document> booleanExpressionSearch(/*String boolExp????*/) {
+
+        return null;
+    }
+
+    public ArrayList<Document> documentsQuery(String pWords, int k) {
+
+        return null;
+    }
+
+    public void saveDocument(String authorName, String title) {
+        //comunicacion con capa data
+    }
+
+    //crear excepcion
+    public void deleteDocument(String authorName, String title) {
+        //comunicacion con capa data
+    }
+
+    public void protectDocument(String authorName, String title, String password) {
+
+    }
+
+    /**
+     * EXIT???
+     */
+
+    public void newFolder(String fName) {
+
+    }
 }

@@ -3,6 +3,8 @@ package Code.src.Domain.Controllers;
 import Code.src.Domain.Classes.Document;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SearchController {
     /**
@@ -25,7 +27,12 @@ public class SearchController {
         return null;
     }
 
-    public ArrayList<Document> searchBooleanExpression(String boolExp) {
+    public ArrayList<Document> booleanExpressionSearch(String boolExp) {
+
+        return null;
+    }
+
+    public ArrayList<Document> appearanceSearch(Map<String, Integer> freq, int k) {
 
         return null;
     }

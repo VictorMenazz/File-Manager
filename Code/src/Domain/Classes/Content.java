@@ -26,7 +26,7 @@ public class Content {
     /**
      * Vector that we will use for obtain cosine similarity between Documents
      */
-    private Map<String, Integer> frequency;
+    private HashMap<String, Integer> frequency;
 
     /**
      * ArrayList that contains text of the Document
