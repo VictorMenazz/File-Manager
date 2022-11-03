@@ -4,7 +4,6 @@ import java.util.ArrayList;
 
 /**
  * @brief Class Author that contains the information of a Author
- *
  * @author Jordi Soley Masats
  */
 public class Author {
@@ -13,7 +12,6 @@ public class Author {
 
     /**
      * @brief Return the name of the Author
-     *
      * @return
      */
     public String getName() {
@@ -22,7 +20,6 @@ public class Author {
 
     /**
      * @brief Return a ArrayList of Author's Documents
-     *
      * @return
      */
     ArrayList<Document> getDocuments() {
@@ -31,9 +28,7 @@ public class Author {
 
     /**
      * @brief Checks if the author's name starts with a given prefix
-     *
      * @param prefix
-     *
      * @return true if yes, false if not
      */
     boolean matchesPrefix(String prefix) {

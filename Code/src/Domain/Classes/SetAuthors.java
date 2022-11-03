@@ -7,7 +7,6 @@ import java.util.Map;
 
 /**
  * @brief Class SetAuthors that contains a set of Authors
- *
  * @author Jordi Soley Masats
  */
 public class SetAuthors {
@@ -15,7 +14,6 @@ public class SetAuthors {
 
     /**
      * @brief Add a new Author
-     *
      * @param name
      * @param a
      */
@@ -25,7 +23,6 @@ public class SetAuthors {
 
     /**
      * @brief Remove a Author
-     *
      * @param name
      */
     void delAuthor(String name) {
@@ -34,7 +31,6 @@ public class SetAuthors {
 
     /**
      * @brief Returns the total number of authors
-     *
      * @return
      */
     int size() {
@@ -42,10 +38,8 @@ public class SetAuthors {
     }
 
     /**
-     * @brief Returns a vector of the names of authors starting with a given prefix.
-     *
+     * @brief Returns a vector of the names of authors starting with a given prefix
      * @param prefix
-     *
      * @return ArrayList of names of authors starting with a given prefix
      */
     ArrayList<String> namesAuthorsMatch(String prefix) {
