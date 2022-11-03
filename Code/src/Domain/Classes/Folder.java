@@ -4,6 +4,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @file Folder.java
+ * @brief Class <em>Folder</em>
+ */
+
+/**
+ * @brief Class Folder that saves the Documents.
+ * @author Marc Navarro Acosta
+ */
 public class Folder {
     /**
      * @brief Unique identifier for the folder.
@@ -333,8 +342,6 @@ public class Folder {
         if(this.folderContained(foldId)) return folderId;
         else return iGetNextFolderParent(foldId);
     }
-
-
 
 }
 
