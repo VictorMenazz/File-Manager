@@ -1,5 +1,7 @@
 package Code.src.Domain.Classes;
 
+import java.io.IOException;
+
 public class Document {
         /**
          * @brief Title of the Document.
@@ -18,6 +20,12 @@ public class Document {
          * @param cont, Represents the Content of a Document.
          * */
         private Content cont;
+
+        /**
+         * @brief Contains the language of the Document
+         * @param cont, Represents the language of the Document, could be ESP, CAT or ENG.
+         * */
+        private String language;
 
         /**
          * @brief Represent the password for an encrypted Document.
@@ -46,11 +54,27 @@ public class Document {
          * @param ttl, Represents the title of the Document.
          * @param auth, Represents the author of the Document.
          * @param c, Represents the content of a Document.
+         * @param lang, Represents the text language of the Document.
          * */
-        public Document(String ttl, String auth, Content c){
+        public Document(String ttl, String auth, Content c, String lang){
             title = ttl;
             author = auth;
             cont = c;
+            language = lang;
+        }
+
+        /**
+         * @brief Constructor for the Object Document.
+         * @param ttl, Represents the title of the Document.
+         * @param auth, Represents the author of the Document.
+         * @param text, Represents text conforming the Content of a Document.
+         * @param lang, Represents the text language of the Document.
+         * */
+        public Document (String ttl, String auth, String text, String lang) throws IOException {
+            title = ttl;
+            author = auth;
+            language = lang;
+            cont = new Content(text, lang);
         }
 
     //Setters
@@ -76,6 +100,10 @@ public class Document {
          * */
         public void setContent(Content c){
             cont = c;
+        }
+
+        public void setLanguage(String lang){
+            language = lang;
         }
 
         //Getters

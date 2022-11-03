@@ -18,7 +18,12 @@ public class DomainController {
 
     public DomainController() {
         data = DataController.getInstance();
-        //faltan cosas
+        /*  Possibly initialize the FolderController?
+            We've to check if the Data Layer has elements, passing them by parameter at the
+            initialization or creating an empty Folder otherwise. (1st Run)
+            We supose now that it is empty as we don't have Persistance/Data Layer.
+        */
+        folders = new FoldersController();
     }
 
     /**
@@ -44,7 +49,7 @@ public class DomainController {
     }
 
     //crear excepcion
-    public void newDocument(String authorName, String title, String text) {
+    public void newDocument(String authorName, String title, String text, String lang) {
 
     }
 

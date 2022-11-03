@@ -1,8 +1,10 @@
 package Code.src.Domain.Controllers;
 
+import Code.src.Domain.Classes.Content;
 import Code.src.Domain.Classes.Document;
 import Code.src.Domain.Classes.Folder;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class FoldersController {
@@ -16,8 +18,19 @@ public class FoldersController {
      */
     private SearchController ctrlSearch;
 
-    public void newDocument(String authorName, String title, String text) {
+    public FoldersController(){
+        rootFolder = new Folder(0, "/");
+        ctrlSearch = new SearchController();
+    }
 
+    /* Initialitzation for the n time we run the program, passing the Data layer elements by parameter.
+    public FoldersController( sth DataInfo){
+
+    }*/
+
+    public void newDocument(String authorName, String title, String text, String lang) throws IOException {
+        Document doc = new Document(title, authorName, text, lang);
+        rootFolder.addDocument(doc);
     }
     public void modifyContent(String authorName, String title, String text) {
 

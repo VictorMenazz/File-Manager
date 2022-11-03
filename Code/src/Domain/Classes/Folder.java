@@ -37,10 +37,12 @@ public class Folder {
     //Creators
     /**
      * @brief Constructor for the Object Folder
+     * @param id, Identifier given by the FoldersController to the Folder.
      * @param fName, Represents the name of the folder.
      * */
-    public Folder(String fName){
-
+    public Folder(int id, String fName){
+        folderId = id;
+        folderName = fName;
     }
 
     //Setters
