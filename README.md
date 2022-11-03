@@ -23,3 +23,16 @@
   - Authors
 
 ## Controladores implementados por cada uno:
+
+- Marc: 
+  - FoldersController
+  - DomainController
+  
+- Julia:
+  - DomainController
+
+- Victor:
+  - DomainController
+  
+- Jordi:
+  - DomainController
