@@ -33,7 +33,7 @@ public class Document {
          * */
         private String password;
 
-        /**
+    /**
         * @brief ENUM that differ the possible type for a Document.
         * */
         enum DOC_TYPE{
@@ -106,6 +106,10 @@ public class Document {
             language = lang;
         }
 
+        public void protectDocument(String passw) {
+            password = passw;
+        }
+
         //Getters
         /**
          * @brief Gets the Title of the Document.
@@ -131,6 +135,9 @@ public class Document {
             return cont;
         }
 
+        public String getLanguage() {
+            return language;
+        }
         //Consultants
 
 }

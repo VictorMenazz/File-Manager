@@ -29,18 +29,17 @@ public class FoldersController {
     }*/
 
     public void newDocument(String authorName, String title, String text, String lang) throws IOException {
-        Document doc = new Document(title, authorName, text, lang);
-        rootFolder.addDocument(doc);
+        rootFolder.addNonConstructedDocument(authorName, title, text, lang);
     }
-    public void modifyContent(String authorName, String title, String text) {
-
+    public void modifyContent(String authorName, String title, String text) throws IOException {
+        rootFolder.modifyContent(authorName,title,text);
     }
 
-    public void modifyAuthor(String authorName, String title, String text) {
-
+    public void modifyAuthor(String authorName, String title, String newAuthor) {
+        rootFolder.modifyAuthor(authorName, title, newAuthor);
     }
-    public void modifyTitle(String authorName, String title, String text) {
-
+    public void modifyTitle(String authorName, String title, String newTitle) {
+        rootFolder.modifyTitle(authorName, title, newTitle);
     }
 
     public ArrayList<Document> authorDocuments(String authorName) {
@@ -54,8 +53,7 @@ public class FoldersController {
     }
 
     public Document getDocument(String authorName, String title) {
-
-        return null;
+        return rootFolder.getDocument(authorName, title);
     }
 
     public ArrayList<Document> appearanceSearch(String authorName, String title, int k) {
@@ -74,10 +72,10 @@ public class FoldersController {
     }
 
     public void protectDocument(String authorName, String title, String password) {
-
+        rootFolder.protectDocument(authorName, title, password);
     }
 
-    public void newFolder(String fName) {
-
+    public void newFolder(String fName, Integer foldId) {
+        rootFolder.createFolder(fName, foldId);
     }
 }
