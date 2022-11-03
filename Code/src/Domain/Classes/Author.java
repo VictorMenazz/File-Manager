@@ -22,7 +22,7 @@ public class Author {
      * @brief Return a ArrayList of Author's Documents
      * @return
      */
-    ArrayList<Document> getDocuments() {
+    public ArrayList<Document> getDocuments() {
         return docs;
     }
 
@@ -31,7 +31,7 @@ public class Author {
      * @param prefix
      * @return true if yes, false if not
      */
-    boolean matchesPrefix(String prefix) {
+    public boolean matchesPrefix(String prefix) {
         int size = prefix.length();
         if (size > name.length()) return false;
         for (int i = 0; i < size; ++i) {
