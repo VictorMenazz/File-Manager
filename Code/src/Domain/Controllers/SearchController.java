@@ -1,6 +1,7 @@
 package Code.src.Domain.Controllers;
 
 import Code.src.Domain.Classes.Document;
+import Code.src.Domain.Classes.Folder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,28 +13,28 @@ public class SearchController {
      */
     private QueryController query;
 
-    public Document searchDocument(String authorName, String title) {
-
-        return null;
+    public Document searchDocument(Folder rootFolder, String authorName, String title) {
+        return rootFolder.getDocument(authorName, title);
     }
 
-    public ArrayList<Document> searchAuthorDocuments(String authorName) {
+    public ArrayList<Document> searchAuthorDocuments(Folder rootFolder, String authorName) {
 
         return  null;
     }
 
-    public ArrayList<String> searchAuthorsPrefix(String prefix) {
+    public ArrayList<String> searchAuthorsPrefix(Folder rootFolder, String prefix) {
 
         return null;
     }
 
-    public ArrayList<Document> booleanExpressionSearch(String boolExp) {
+    public ArrayList<Document> booleanExpressionSearch(Folder rootFolder, String boolExp) {
 
         return null;
     }
 
-    public ArrayList<Document> appearanceSearch(Map<String, Integer> freq, int k) {
+    //public ArrayList<Document> appearanceSearch(Folder rootFolder, Map<String, Integer> freq, int k) {
 
+    public ArrayList<Document> appearanceSearch(Folder rootFolder, String authorName, String title, int k){
         return null;
     }
 }

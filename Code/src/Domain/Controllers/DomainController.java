@@ -1,6 +1,8 @@
 package Code.src.Domain.Controllers;
 import Code.src.Data.DataController;
 import Code.src.Domain.Classes.*;
+
+import java.io.IOException;
 import java.util.*;
 
 public class DomainController {
@@ -33,6 +35,7 @@ public class DomainController {
     //Crear excepcion
     public void importDocument(String path) {
         //Interface y data?
+        //Lectures a la capa de Data millor no?
     }
 
     /**
@@ -55,8 +58,8 @@ public class DomainController {
      * @param text document content
      * @param lang document language
      */
-    public void newDocument(String authorName, String title, String text, String lang) {
-
+    public void newDocument(String authorName, String title, String text, String lang) throws IOException {
+        folders.newDocument(authorName, title, text, lang);
     }
 
     /**
@@ -64,19 +67,20 @@ public class DomainController {
      * @param authorName if flag = 0, contains the new authorName
      * @param title if flag = 1, contains the new title
      * @param text if flag = 2, contains the new text
+     * @param newData, needed to replace the attribute.
      * @param flag if it's 0,
      */
-    public void modifyDocument(String authorName, String title, String text, int flag) {
-        //usar switch
+    public void modifyDocument(String authorName, String title, String text, String newData, int flag) throws IOException {
+        /** Switch that differs the many possibilities to modify a Document. **/
         switch (flag) {
             case 0:
-
+                folders.modifyAuthor(authorName, title, newData);
                 break;
             case 1:
-
+                folders.modifyTitle(authorName, title, newData);
                 break;
             case 2:
-
+                folders.modifyContent(authorName, title, newData);
                 break;
         }
     }
@@ -87,8 +91,10 @@ public class DomainController {
      * @return Arraylist of a Documents
      */
     public ArrayList<Document> authorDocuments(String authorName) {
-
-        return  null;
+        return folders.authorDocuments(authorName);
+        // or maybe:
+        // Folder rootFolder = folders.getRoot();
+        // ctrlSearch.searchAuthorDocuments(rootFolder, authorName);
     }
 
     /**
@@ -97,8 +103,9 @@ public class DomainController {
      * @return
      */
     public ArrayList<String> searchAuthors(String prefix) {
-
-        return null;
+        return folders.searchAuthors(prefix);
+        // Folder rootFolder = folders.getRoot();
+        // ctrlSearch.searchAuthorPrefix(rootFolder, prefix);
     }
 
     /**
@@ -108,12 +115,30 @@ public class DomainController {
      * @return
      */
     public Document getDocument(String authorName, String title) {
-
+        folders.getDocument(authorName, title);
         return null;
     }
+    /*
+        We don't have to return Domain objects to the upper layers, so
+        maybe implementation would be better if:
+
+        public ArrayList<String> getDocument(String authorName, String title){
+            folders.getContent(authorName, Title);
+        }
+    */
 
     /*
     public ArrayList<Document> o Path inicial? INITIALQUERY()
+    My recommendation  is:
+
+    public ArrayList<String> initialQueryAuthors(){
+    }
+
+    public ArrayList<String> initialQueryTitle(){
+    }
+
+    It would return an ArrayList of n elements with the i elements of the first vector related with the i
+    element of the other vector.
      */
 
     /**
@@ -123,18 +148,24 @@ public class DomainController {
      * @param k
      * @return
      */
+    //Maybe: The i element related in the three ArrayLists.
+    // public ArrayList<String> appearenceSearchTitles(String authorName, String title, int k);
+    // public ArrayList<String> appearenceSearchAuthors(String authorName, String title, int k);
+    // public ArrayList<String> appearenceSearchContent(String authorName, String title, int k);
     public ArrayList<Document> appearanceSearch(String authorName, String title, int k) {
-
-        return null;
+        return folders.appearanceSearch(authorName, title, k);
+        // Folder rootFolder = folders.getRoot();
+        //return ctrlSearch.appearanceSearch(rootFolder, authorName, title, k);
     }
 
     /**
      *
      * @return
      */
-    public ArrayList<Document> booleanExpressionSearch(/*String boolExp????*/) {
-
-        return null;
+    public ArrayList<Document> booleanExpressionSearch(String boolExp) {
+        // Folder rootFolder = folders.getRoot();
+        //return ctrl.booleanExpressionSearch(rootFolder, String boolExp)
+        return folders.booleanExpressionSearch(boolExp);
     }
 
     /**
@@ -144,17 +175,19 @@ public class DomainController {
      * @return
      */
     public ArrayList<Document> documentsQuery(String pWords, int k) {
-
-        return null;
+        return folders.documentsQuery(pWords, k);
+        // Folder rootFolder = folders.getRoot();
+        //return ctrlSearch.documentsQuery(rootFolder, pWords, k);
     }
 
-    /**
-     *
-     * @param authorName
-     * @param title
+    /** Saves a Document with changes in the Data Layer.
+     * @param authorName, Represents the Author of the Docuemnt.
+     * @param title, Represents the Title of the Document.
      */
     public void saveDocument(String authorName, String title) {
-        //comunicacion con capa data
+        //Communication with Data Layer.
+        //ArrayList<String> Cont = folders.getContent(authorName, title);
+        //data.saveDocument();
     }
 
     /**
@@ -168,13 +201,13 @@ public class DomainController {
     }
 
     /**
-     * @brief
-     * @param authorName
-     * @param title
-     * @param password
+     * @brief Protects a Document with the password.
+     * @param authorName, Represents the author of the Document.
+     * @param title, Represents the title of the Document.
+     * @param password, Represents the password of the Document.
      */
     public void protectDocument(String authorName, String title, String password) {
-
+        folders.protectDocument(authorName,  title, password);
     }
 
     /**
@@ -182,10 +215,11 @@ public class DomainController {
      */
 
     /**
-     * @brief Creates a new Folder
-     * @param fName
+     * @brief Creates a new Folder.
+     * @param fName, Representing the name of the new Folder.
+     * @param foldId, Representing the folderId Parent of the allocation.
      */
-    public void newFolder(String fName) {
-
+    public void newFolder(String fName, int foldId) {
+        folders.newFolder(fName, foldId);
     }
 }

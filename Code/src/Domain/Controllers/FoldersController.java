@@ -94,7 +94,7 @@ public class FoldersController {
      * @param authorName, References the Author of the Documents.
      * */
     public ArrayList<Document> authorDocuments(String authorName) {
-        return ctrlSearch.searchAuthorDocuments(authorName);
+        return ctrlSearch.searchAuthorDocuments(rootFolder,  authorName);
     }
 
     /**
@@ -103,7 +103,7 @@ public class FoldersController {
      * @return A Set of Authors that match with the prefix.
      */
     public ArrayList<String> searchAuthors(String prefix) {
-        return ctrlSearch.searchAuthorsPrefix(prefix);
+        return ctrlSearch.searchAuthorsPrefix(rootFolder, prefix);
     }
 
     /**
@@ -113,7 +113,7 @@ public class FoldersController {
      * @param k, Represent the number of Documents wanted related with the one identified <title, authorName>.
      * */
     public ArrayList<Document> appearanceSearch(String authorName, String title, int k) {
-        return ctrlSearch.appearanceSearch();
+        return ctrlSearch.appearanceSearch(rootFolder, authorName, title, k);
     }
 
     /**
@@ -121,7 +121,7 @@ public class FoldersController {
      * @param boolExp, References the Boolean Expression.
      * */
     public ArrayList<Document> booleanExpressionSearch(String boolExp) {
-        return ctrlSearch.booleanExpressionSearch(boolExp);
+        return ctrlSearch.booleanExpressionSearch(rootFolder, boolExp);
     }
 
     /**
