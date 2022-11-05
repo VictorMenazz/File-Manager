@@ -23,20 +23,19 @@ public class FoldersController {
      */
     private Folder rootFolder;
 
-    /**
-     * @brief Instance of SearchController
-     */
-    private SearchController ctrlSearch;
-
     public FoldersController(){
         rootFolder = new Folder(0, "/");
-        ctrlSearch = new SearchController();
     }
 
     /* Initialitzation for the n time we run the program, passing the Data layer elements by parameter.
     public FoldersController( sth DataInfo){
-
     }*/
+    /**
+     * @brief Get instance of the rootfolder
+     */
+    public Folder getRoot() {
+        return rootFolder;
+    }
 
     /**
      * @brief Adds new Document to the collection.
@@ -87,50 +86,6 @@ public class FoldersController {
      * */
     public Document getDocument(String authorName, String title) {
         return rootFolder.getDocument(authorName, title);
-    }
-
-    /**
-     * @brief Return a list of Documents written by a certain Author.
-     * @param authorName, References the Author of the Documents.
-     * */
-    public ArrayList<Document> authorDocuments(String authorName) {
-        return ctrlSearch.searchAuthorDocuments(rootFolder,  authorName);
-    }
-
-    /**
-     * @brief Check if some author match with a String input.
-     * @param prefix, Represents the input String.
-     * @return A Set of Authors that match with the prefix.
-     */
-    public ArrayList<String> searchAuthors(String prefix) {
-        return ctrlSearch.searchAuthorsPrefix(rootFolder, prefix);
-    }
-
-    /**
-     * @brief Search the k the Documents more similar to the one identified by <title, authorName>.
-     * @param authorName, References the Author of a Document.
-     * @param title, Represents the title of the Document.
-     * @param k, Represent the number of Documents wanted related with the one identified <title, authorName>.
-     * */
-    public ArrayList<Document> appearanceSearch(String authorName, String title, int k) {
-        return ctrlSearch.appearanceSearch(rootFolder, authorName, title, k);
-    }
-
-    /**
-     * @brief Search Documents according to a Boolean Expression.
-     * @param boolExp, References the Boolean Expression.
-     * */
-    public ArrayList<Document> booleanExpressionSearch(String boolExp) {
-        return ctrlSearch.booleanExpressionSearch(rootFolder, boolExp);
-    }
-
-    /**
-     * @brief Search the k Documents that satisfy the Query.
-     * @param pWords, References the words the Document have to match with.
-     * @param k, Represents the number of Documents we have to list.
-     */
-    public ArrayList<Document> documentsQuery(String pWords, int k) {
-        return null;
     }
 
     /**

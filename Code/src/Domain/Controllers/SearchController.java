@@ -13,10 +13,6 @@ public class SearchController {
      */
     private QueryController query;
 
-    public Document searchDocument(Folder rootFolder, String authorName, String title) {
-        return rootFolder.getDocument(authorName, title);
-    }
-
     public ArrayList<Document> searchAuthorDocuments(Folder rootFolder, String authorName) {
 
         return  null;
@@ -32,9 +28,11 @@ public class SearchController {
         return null;
     }
 
-    //public ArrayList<Document> appearanceSearch(Folder rootFolder, Map<String, Integer> freq, int k) {
-
     public ArrayList<Document> appearanceSearch(Folder rootFolder, String authorName, String title, int k){
+        return null;
+    }
+
+    public ArrayList<Document> searchDocuments(Folder rootFolder, String pWords, int k) {
         return null;
     }
 }

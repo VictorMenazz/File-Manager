@@ -17,6 +17,15 @@ public class DomainController {
      */
     private FoldersController folders;
 
+    /**
+     * @brief Instance of the search controller
+     */
+    private SearchController ctrlSearch;
+
+    /**
+     * @brief Instance of the query controller
+     */
+    private QueryController ctrlQuery;
 
     public DomainController() {
         data = DataController.getInstance();
@@ -91,10 +100,8 @@ public class DomainController {
      * @return Arraylist of a Documents
      */
     public ArrayList<Document> authorDocuments(String authorName) {
-        return folders.authorDocuments(authorName);
-        // or maybe:
-        // Folder rootFolder = folders.getRoot();
-        // ctrlSearch.searchAuthorDocuments(rootFolder, authorName);
+        Folder rootFolder = folders.getRoot();
+        return ctrlSearch.searchAuthorDocuments(rootFolder, authorName);
     }
 
     /**
@@ -103,9 +110,8 @@ public class DomainController {
      * @return
      */
     public ArrayList<String> searchAuthors(String prefix) {
-        return folders.searchAuthors(prefix);
-        // Folder rootFolder = folders.getRoot();
-        // ctrlSearch.searchAuthorPrefix(rootFolder, prefix);
+        Folder rootFolder = folders.getRoot();
+        return ctrlSearch.searchAuthorsPrefix(rootFolder, prefix);
     }
 
     /**
@@ -153,9 +159,8 @@ public class DomainController {
     // public ArrayList<String> appearenceSearchAuthors(String authorName, String title, int k);
     // public ArrayList<String> appearenceSearchContent(String authorName, String title, int k);
     public ArrayList<Document> appearanceSearch(String authorName, String title, int k) {
-        return folders.appearanceSearch(authorName, title, k);
-        // Folder rootFolder = folders.getRoot();
-        //return ctrlSearch.appearanceSearch(rootFolder, authorName, title, k);
+        Folder rootFolder = folders.getRoot();
+        return ctrlSearch.appearanceSearch(rootFolder, authorName, title, k);
     }
 
     /**
@@ -163,9 +168,8 @@ public class DomainController {
      * @return
      */
     public ArrayList<Document> booleanExpressionSearch(String boolExp) {
-        // Folder rootFolder = folders.getRoot();
-        //return ctrl.booleanExpressionSearch(rootFolder, String boolExp)
-        return folders.booleanExpressionSearch(boolExp);
+        Folder rootFolder = folders.getRoot();
+        return ctrlSearch.booleanExpressionSearch(rootFolder, boolExp);
     }
 
     /**
@@ -175,9 +179,8 @@ public class DomainController {
      * @return
      */
     public ArrayList<Document> documentsQuery(String pWords, int k) {
-        return folders.documentsQuery(pWords, k);
-        // Folder rootFolder = folders.getRoot();
-        //return ctrlSearch.documentsQuery(rootFolder, pWords, k);
+        Folder rootFolder = folders.getRoot();
+        return ctrlSearch.searchDocuments(rootFolder, pWords, k);
     }
 
     /** Saves a Document with changes in the Data Layer.
