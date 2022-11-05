@@ -19,6 +19,7 @@ public class DomainController {
 
         //BooleanExpression bw = new BooleanExpression("{ hola hola ola hola ola la adeu adeu } \" h \" { hola hola } \" h \" {} ( proba proba )");
         //BooleanExpression bw2 = new BooleanExpression("\"hola\"\"\"\"\"\" & \"hola\"");
-        //BooleanExpression bw3 = new BooleanExpression("{hola}");
+
+
     }
 }

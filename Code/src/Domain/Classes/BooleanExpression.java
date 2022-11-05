@@ -16,169 +16,53 @@ public class BooleanExpression {
         boolExpr = s;
         noQuotes = s;
         removeQuotes();
+        boolExpr = boolExpr.replaceAll("\\s{2,}", "");
+        noQuotes = noQuotes.replaceAll("\\s{2,}", "");
         checkBraces();
         checkParentheses();
-        //checkBrackets(s);
         System.out.println(boolExpr);
         System.out.println(noQuotes);
-
-
-
-
-        /*if (isExpressionValid(s)){
-            //We will insert character to the expression matrix
-
-
-        }
-
-        /*int i = 0;
-
-        while (i < s.length()){
-            char c = s.charAt(i);
-            if (c != ' ') {
-                if (isOperator(c)) {
-                    //es operador boolea
-
-                } else if (c == '{' || c == '}') {
-                    //vindran paraules
-                } else if (c == '"') {
-                    //ve paraula sencera
-                    c = s.charAt(++i);
-                    String sentence = "" + c;
-                    while (c != '"') {
-                        sentence = sentence + c;
-                        c = s.charAt(++i);
-                    }
-                    ++i;
-                }
-            }
-            ++i;
-        }*/
     }
-
-
-    /***
-     * @param s
-     * @return true if expression is valid, false otherwise.
-     */
-    private void isExpressionValid(String s){
-        ArrayList<String> expressionList = new ArrayList<>();
-
-        //If word is null or empty ("")
-        if (s == null || s.isEmpty()) {} //fer saltar excepció;
-
-        //return checkParentheses(s) && checkOperators(s);
-    }
-
-    /***
-     * Checks proper order parentheses + verifies they are not empty
-     * @param s
-     * @return
-     */
-    /*private Boolean checkParentheses(String s){
-        //Check proper order brackets
-        Pair<Character, Character> brackets = new Pair<>('(', ')');
-        Pair<Character, Character> braces = new Pair<>('{', '}');
-        Stack<Character> stack = new Stack<>();
-
-        String content = "";
-        boolean inside = false;
-        boolean evenQuotes = true;
-
-        //Iterate char by char
-        for (char c : s.toCharArray()) {
-            //found '"'
-            if (c == '"') {
-                evenQuotes = !evenQuotes;
-            }
-            else if (inside) content += c;
-
-            //found ')' or '}'
-            else if (brackets.second == c || braces.second == c){
-                //if we haven't found any '(' or '{' before.
-                if (stack.isEmpty() || stack.pop() != brackets.first){
-                    break;
-                }
-
-                //CHECK CONTENT INSIDE PARENTHESIS IS CORRECT.
-                inside = false;
-                //checkContent(content);
-                content = "";        //reinitialize
-            }
-            //found '(' or '{'
-            else if (brackets.first == c) {
-                inside = true;
-                stack.push(c);
-            }
-        }
-        if (!stack.isEmpty()) {
-            //MILLOR FER-HO COM EXCEPCIÓ
-            System.err.println("Invalid expression: Parentheses mismatch");
-            return false;
-        }
-        return true;
-    }*/
-
-
-
-
-    /***
-     * checks content inside brackets ( )
-     * @param s
-     */
-    private void checkBrackets(String s) {
-        Pattern pattern = Pattern.compile("(?<=\\()(.*?)(?=\\))");
-        Matcher matcher = pattern.matcher(s);
-
-        //for substring inside { }
-        while(matcher.find()) {
-            String content = matcher.group();
-            //checkOperators(content);
-        }
-    }
-
-
 
     //-------------------
 
     private void checkOperands() {
-        //let result = s.matches();
-
-        //Delete parentheses
-        //String s2 = s.replaceAll("[\\(\\)]", "");
-        //If there are consecutive same operators, then convert them to a single operator.
-        //String s = noQuotes.replaceAll("[&]{2,}", "&").replaceAll("[|]{2,}", "|").replaceAll("[!]{2,}", "!");
+        //Delete parentheses + spaces
+        noQuotes = noQuotes.replaceAll("[()]", "");
+        String noSpaces = noQuotes.replaceAll("\\s", "");
 
         String[] invalidOperators = {"&|", "|&", "!|", "!&", "!&|", "!|&",
                 "&!|", "&|!", "|!&", "|&!"};
 
         for (String op : invalidOperators) {
-            if (noQuotes.contains(op)) System.err.println("Invalid Logic Operator Configuration: " + op);
+            if (noSpaces.contains(op)) System.err.println("Invalid Logic Operator Configuration: " + op);
         }
 
-        //Split string by operators &, |
-        String regex = "((?<=\\Q & \\E)|(?=\\Q & \\E))|" + "((?<=\\Q | \\E)|(?=\\Q | \\E))";
-        String[] boolExprSplit = noQuotes.split(regex);
+        //Split expression by elements
+        String[] boolExprSplit = noQuotes.split(" ");
 
-        for (String s : boolExprSplit) {
-            //Remove spaces between words
-            String word = s.trim();
-            if (!word.matches("[|&!]")){
-                
+        int n = boolExprSplit.length-1;
+        if (n%2 == 1) {
+            String word = boolExprSplit[n];
+            if (word.equals("&") || word.equals("|") || word.equals("!")) System.err.println("Error: expression contains extra operand at the end");
+        }
+
+        for (int i = 1; i < boolExprSplit.length; i = i+2){
+            String word = boolExprSplit[i];
+            if (!(word.equals("&") || word.equals("|"))) {
+                System.err.println("Missing logic operators between \"" + boolExprSplit[i - 1] + "\" and \"" + word + "\"");
             }
         }
-
     }
 
     private void checkParentheses() {
         Pair<Character, Character> brackets = new Pair<>('(', ')');
         Stack<Character> stack = new Stack<>();
-
         //Iterate char by char
         for (char c : noQuotes.toCharArray()) {
             //found ')'
             if (brackets.second == c){
-                //if we haven't found any '(' or '{' before.
+                //if we haven't found any '(' before.
                 if (stack.isEmpty() || stack.pop() != brackets.first){
                     break;
                 }
@@ -196,7 +80,6 @@ public class BooleanExpression {
         }
     }
 
-
     /***
      * @param s, content inside braces -> { s }
      * @return s without duplicates.
@@ -212,6 +95,7 @@ public class BooleanExpression {
     private void checkBraces() {
         //Pattern pattern = Pattern.compile("(?<=\\{)(.*?)(?=\\})");
         Pattern pattern = Pattern.compile("\\{.*?\\}");
+        //Pattern pattern2 = Pattern.compile("^\s" + "\s$")
         Matcher matcher = pattern.matcher(noQuotes);
 
         //for substring {...}
@@ -235,17 +119,22 @@ public class BooleanExpression {
         //Content WITH the quotes
         while(matcher.find()){
             String content = matcher.group();
-            if (content.length() == 2) System.err.println("Sentence can not be empty");
+            if (content.length() == 2) System.err.println("Sentence cannot be empty");
             else {
                 noQuotes = noQuotes.replace(content, "a");
             }
         }
     }
 
-
-    private String getBoolExpr(){
+    public String getExpression(){
         return boolExpr;
     }
 
 }
+
+
+/*
+
+
+ */
 
