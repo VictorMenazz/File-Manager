@@ -4,9 +4,46 @@ import java.util.*;
 import java.util.regex.*;
 
 public class BooleanExpression {
-    private String [][] expression;
     private String boolExpr;
     private String noQuotes;
+
+    static class nptr {
+        char data;
+        nptr left, right;
+    };
+
+    static nptr newNode(char c) {
+        nptr n = new nptr();
+        n.data = c;
+        n.left = n.right = null;
+        return n;
+    }
+
+    /***
+     * Build Expression Tree from string s.
+     * @param s
+     * @return
+     */
+    static nptr build(String s){
+
+        //Stack to hold nodes
+        Stack<Character> stN = new Stack<>();
+
+        //Stack to hold chars
+        Stack<Character> stT = new Stack<>();
+        nptr t, t1, t2;
+
+        //Priority operators
+        //Map<Character, Integer> priority = Map.of('&')
+
+        for (int i = 0; i < s.length(); ++i){
+
+            if (s.charAt(i) == '('){
+                stC.add
+            }
+        }
+
+    }
 
 
 
