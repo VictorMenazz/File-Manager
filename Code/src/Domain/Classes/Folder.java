@@ -207,6 +207,23 @@ public class Folder {
     }
 
     //Getters
+
+    /**
+     * @brief Gets the name of this Folder.
+     * @return folderName, String representing the name of the Folder.
+     * */
+    public String getName() {
+        return folderName;
+    }
+
+    public ArrayList<String> getDocumentsName(){
+        ArrayList<String> docs = new ArrayList<String>();
+        for(Pair<String, String> key : documents.keySet()){
+            docs.add(key.first);
+        }
+        return docs;
+    }
+
     /**
      * @brief Gets the amount of documents contained in this folder.
      * @return docAmount, Integer that represents the amount of documents contained in the folder.
@@ -246,7 +263,7 @@ public class Folder {
      * @brief Consult if a certain folder is a Subfolder of this Instance.
      * @return A boolean that indicates true if the Folder identified by an Id is contained in subFolders.
      * */
-    private boolean folderContained(Integer foldId) {
+    public boolean folderContained(Integer foldId) {
         return subFolders.containsKey(foldId);
     }
 
