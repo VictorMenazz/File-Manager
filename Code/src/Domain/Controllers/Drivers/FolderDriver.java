@@ -16,7 +16,7 @@ public class FolderDriver {
         System.out.println("Introduce a name for the Folder: ");
         String name = readInputString();
         Folder folder = new Folder(1, name);
-        System.out.println("Folder created!");
+        System.out.println("Folder " + folder.getName() + " created!");
         System.out.println("Testing 'testFolder()' finished.");
     }
 
@@ -61,7 +61,7 @@ public class FolderDriver {
         Document d = new Document(title, author, ContentText, language);
         System.out.println("List of Docs before addition: ");
         showDocs(f);
-        //Adition
+        //Addition
         f.addDocument(d);
         System.out.println("List of Docs after addition: ");
         showDocs(f);
@@ -74,7 +74,7 @@ public class FolderDriver {
         Document d2 = new Document(title, author, c, language);
         System.out.println("List of Docs before addition: ");
         showDocs(f2);
-        //Adition
+        //Addition
         f2.addDocument(d2);
         System.out.println("List of Docs after addition: ");
         showDocs(f2);
@@ -97,7 +97,7 @@ public class FolderDriver {
         Folder f = new Folder(1, "Folder1");
         System.out.println("List of Docs before addition: ");
         showDocs(f);
-        //Adition
+        //Addition
         f.addNonConstructedDocument(author, title, ContentText, language);
         System.out.println("List of Docs after addition: ");
         showDocs(f);
@@ -179,70 +179,70 @@ public class FolderDriver {
                 "14. testDocumentContained\n" +
                 "15. testFolderContained\n";
 
-        System.out.println("Document Driver: ");
+        System.out.println("Folder Driver: ");
         System.out.println("Introduce the number allocated to the function you want to test.");
         System.out.println("Functions: ");
         System.out.println(functions);
         int code = readInputInteger();
         switch (code){
             case 1:
-                System.out.println("testFolder() choosed: ");
+                System.out.println("testFolder() choose: ");
                 testFolder();
                 break;
             case 2:
-                System.out.println("testSetFolderName() choosed: ");
+                System.out.println("testSetFolderName() choose: ");
                 testSetFolderName();
                 break;
             case 3:
-                System.out.println("testCreateFolder() choosed: ");
+                System.out.println("testCreateFolder() choose: ");
                 testCreateFolder();
                 break;
             case 4:
-                System.out.println("testAddDocument() choosed: ");
+                System.out.println("testAddDocument() choose: ");
                 testAddDocument();
                 break;
             case 5:
-                System.out.println("testAddNonConstructedDocument() choosed: ");
+                System.out.println("testAddNonConstructedDocument() choose: ");
                 testAddNonConstructedDocument();
                 break;
             case 6:
-                System.out.println("testModifyContent() choosed: ");
+                System.out.println("testModifyContent() choose: ");
                 testModifyContent();
                 break;
             case 7:
-                System.out.println("testModifyAuthor() choosed: ");
+                System.out.println("testModifyAuthor() choose: ");
                 testModifyAuthor();
                 break;
             case 8:
-                System.out.println("testModifyTitle() choosed: ");
+                System.out.println("testModifyTitle() choose: ");
                 testModifyTitle();
                 break;
             case 9:
-                System.out.println("testProtectDocument() choosed: ");
+                System.out.println("testProtectDocument() choose: ");
                 testProtectDocument();
                 break;
             case 10:
-                System.out.println("testGetName() choosed: ");
+                System.out.println("testGetName() choose: ");
                 testGetName();
                 break;
             case 11:
-                System.out.println("testGetDocumentsName() choosed: ");
+                System.out.println("testGetDocumentsName() choose: ");
                 testGetDocumentsName();
                 break;
             case 12:
-                System.out.println("testGetDocumentAmount() choosed: ");
+                System.out.println("testGetDocumentAmount() choose: ");
                 testGetDocumentAmount();
                 break;
             case 13:
-                System.out.println("testGetDocument() choosed: ");
+                System.out.println("testGetDocument() choose: ");
                 testGetDocument();
                 break;
             case 14:
-                System.out.println("testDocumentContained() choosed: ");
+                System.out.println("testDocumentContained() choose: ");
                 testDocumentContained();
                 break;
             case 15:
-                System.out.println("testFolderContained() choosed: ");
+                System.out.println("testFolderContained() choose: ");
                 testFolderContained();
                 break;
             default:
@@ -282,7 +282,7 @@ public class FolderDriver {
     //PRIVATE METHODS
 
     private static String readInputString() {
-        String inp = writer.nextLine();
+        String inp = writer.next();
         return inp;
     }
 
