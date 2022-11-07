@@ -1,5 +1,6 @@
 package Code.src.Domain.Controllers;
 
+import Code.src.Domain.Classes.BooleanExpression;
 import Code.src.Domain.Classes.Document;
 import Code.src.Domain.Classes.Folder;
 
@@ -23,7 +24,14 @@ public class SearchController {
         return null;
     }
 
-    public ArrayList<Document> booleanExpressionSearch(Folder rootFolder, String boolExp) {
+    public ArrayList<Document> booleanExpressionSearch(Folder rootFolder, String expression) {
+        BooleanExpression boolExpr = new BooleanExpression(expression);
+        ArrayList<Document> list;
+        boolean match = true;
+
+
+
+
 
         return null;
     }

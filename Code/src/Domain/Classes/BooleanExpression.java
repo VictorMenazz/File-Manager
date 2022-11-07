@@ -8,6 +8,8 @@ public class BooleanExpression {
     private String boolExpr;
     private String noQuotes;
 
+
+
     /***
      * Constructor
      * @param s, represents the boolean expression.
@@ -20,8 +22,10 @@ public class BooleanExpression {
         noQuotes = noQuotes.replaceAll("\\s{2,}", "");
         checkBraces();
         checkParentheses();
-        System.out.println(boolExpr);
-        System.out.println(noQuotes);
+        //System.out.println(boolExpr);
+        //System.out.println(noQuotes);
+
+
     }
 
     //-------------------
