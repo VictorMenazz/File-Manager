@@ -12,17 +12,17 @@ public class SetAuthorsDriver {
     }
 
     @Test
-    public static void TestDelAuthor {
+    public static void TestDelAuthor(){
 
     }
 
     @Test
-    public static int TestSize {
-
+    public static int TestSize() {
+        return -1;
     }
 
     @Test
     public static ArrayList<String> TestNamesAuthorsMatch() {
-
+        return null;
     }
 }

@@ -135,10 +135,20 @@ public class Document {
             return cont;
         }
 
+        /**
+         * @brief Gets the Language of the Document.
+         * @return title, String that represents the Language of the Document Content.
+         * */
         public String getLanguage() {
             return language;
         }
         //Consultants
-
+        /**
+         * @brief Check if Document is protected.
+         * @return title, String that represents the content of the document.
+         * */
+        public boolean isProtected(){
+            return (password!=null);
+        }
 }
 

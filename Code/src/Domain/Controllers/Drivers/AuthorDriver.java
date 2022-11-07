@@ -9,16 +9,16 @@ public class AuthorDriver {
 
     @Test
     public static String TestGetName() {
-
+        return null;
     }
 
     @Test
     public static ArrayList<Document> TestGetDocuments() {
-
+        return null;
     }
 
     @Test
     public static boolean TestMatchesPrefix() {
-
+        return false;
     }
 }

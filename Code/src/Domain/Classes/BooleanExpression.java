@@ -39,10 +39,10 @@ public class BooleanExpression {
         for (int i = 0; i < s.length(); ++i){
 
             if (s.charAt(i) == '('){
-                stC.add
+                //stC.add
             }
         }
-
+        return null;
     }
 
 
