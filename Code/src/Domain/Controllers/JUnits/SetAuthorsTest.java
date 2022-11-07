@@ -1,10 +1,10 @@
-package Code.src.Domain.Controllers.Drivers;
+package Code.src.Domain.Controllers.JUnits;
 
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class SetAuthorsDriver {
+public class SetAuthorsTest {
 
     @Test
     public static void TestAddAuthor() {

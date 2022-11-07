@@ -1,11 +1,11 @@
-package Code.src.Domain.Controllers.Drivers;
+package Code.src.Domain.Controllers.JUnits;
 
 import Code.src.Domain.Classes.Document;
 import org.junit.*;
 
 import java.util.ArrayList;
 
-public class AuthorDriver {
+public class AuthorTest {
 
     @Test
     public static String TestGetName() {
