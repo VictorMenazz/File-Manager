@@ -1,5 +1,7 @@
 package Code.src.Data;
 
+import Code.src.Domain.Classes.Folder;
+
 public class DataController {
     /**
      * dataController is the instance of DataController
@@ -19,5 +21,8 @@ public class DataController {
     }
     public DataController() {
 
+    }
+    public Folder getRootFolder() {
+        return null; //MIRAR COMO SOLUCIONAR EST0, para marc: HOW TO REPAIR THIS FUNCTIONALITY? IT'S NOT POSSIBLE TO SEND A SPECIFIC TYPE
     }
 }

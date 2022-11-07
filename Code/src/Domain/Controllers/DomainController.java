@@ -35,7 +35,17 @@ public class DomainController {
             initialization or creating an empty Folder otherwise. (1st Run)
             We supose now that it is empty as we don't have Persistance/Data Layer.
         */
-        folders = new FoldersController();
+        //FALTA COGER INSTANCIA DE ROOT SI EXISTE
+        if(data == null) {
+            folders = new FoldersController(null);
+            ctrlQuery = new QueryController();
+            ctrlSearch = new SearchController(ctrlQuery, null);
+        }
+        else { //AVERIGUAR FORMA DE COGER CARPETA ROOT
+            folders = new FoldersController(data.getRootFolder());
+            ctrlQuery = new QueryController();
+            ctrlSearch = new SearchController(ctrlQuery, data.getRootFolder());
+        }
     }
 
     /**
@@ -225,6 +235,6 @@ public class DomainController {
      */
     public void newFolder(String fName, int foldId) {
         folders.newFolder(fName, foldId);
->>>>>>> 1e0526b7884ab3ad9c4189eeba6b51e84abaad95
+
     }
 }

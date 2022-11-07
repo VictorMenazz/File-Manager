@@ -23,8 +23,9 @@ public class FoldersController {
      */
     private Folder rootFolder;
 
-    public FoldersController(){
-        rootFolder = new Folder(0, "/");
+    public FoldersController(Folder root){
+        if(root == null) rootFolder = new Folder(0, "/");
+        else rootFolder = root;
     }
 
     /* Initialitzation for the n time we run the program, passing the Data layer elements by parameter.

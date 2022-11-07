@@ -14,6 +14,16 @@ public class SearchController {
      */
     private QueryController query;
 
+    /**
+     * @brief Instance of rootFolder
+     */
+    private Folder rootFolder;
+
+    public SearchController(QueryController instance, Folder root) {
+        query = instance;
+        rootFolder = root;
+    }
+
     public ArrayList<Document> searchAuthorDocuments(Folder rootFolder, String authorName) {
 
         return  null;
