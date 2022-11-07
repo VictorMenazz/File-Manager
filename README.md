@@ -4,9 +4,35 @@
 
 ## Variables
 - Nomenclatura camelCase
+- Comentar cada
 
-## Reparto del trabajo:
+## Clases Implementadas por cada uno:
 - Marc:
-- Julia: Expresion Booleana
-- Victor: Domain.Domain.Classes.Classes.Content
+  - Folder
+  - Document
+  
+- Julia: 
+  - Expresion Booleana
+  
+- Victor: 
+  - Content 
+  - Sentence
+  
 - Jordi:
+  - SetAuthors
+  - Authors
+
+## Controladores implementados por cada uno:
+
+- Marc: 
+  - FoldersController
+  - DomainController
+  
+- Julia:
+  - DomainController
+
+- Victor:
+  - DomainController
+  
+- Jordi:
+  - DomainController

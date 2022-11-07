@@ -1,10 +1,21 @@
 package Code.src.Domain.Classes;
 
+/**
+ * @file Sentence.java
+ *
+ * @brief Class <em>Sentence</em>
+ */
+
+/**
+ * @brief Class Sentence that saves one line of the text
+ *
+ * @author Victor Mena Doz
+ */
 public class Sentence {
     private String[] words;
 
     /**
-     * @brief Creadora de Sentence por defecto
+     * @brief Default create of Sentence
      * */
     public Sentence()
     {
