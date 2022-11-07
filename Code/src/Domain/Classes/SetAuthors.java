@@ -17,7 +17,7 @@ public class SetAuthors {
      * @param name
      * @param a
      */
-    void addAuthor(String name, Author a) {
+    public void addAuthor(String name, Author a) {
         authors.put(name, a);
     }
 
@@ -25,7 +25,7 @@ public class SetAuthors {
      * @brief Remove a Author
      * @param name
      */
-    void delAuthor(String name) {
+    public void delAuthor(String name) {
         authors.remove(name);
     }
 
@@ -33,7 +33,7 @@ public class SetAuthors {
      * @brief Returns the total number of authors
      * @return
      */
-    int size() {
+    public int size() {
         return authors.size();
     }
 
@@ -42,7 +42,7 @@ public class SetAuthors {
      * @param prefix
      * @return ArrayList of names of authors starting with a given prefix
      */
-    ArrayList<String> namesAuthorsMatch(String prefix) {
+    public ArrayList<String> namesAuthorsMatch(String prefix) {
         ArrayList<String> res = new ArrayList<String>();
         for (Author a : authors.values()) {
             if (a.matchesPrefix(prefix)) {
