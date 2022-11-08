@@ -243,7 +243,7 @@ public class BooleanExpression {
     }
 
     public nptr getExpression(){
-        return boolExpr;
+        return root;
     }
 
 };
