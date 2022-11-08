@@ -142,7 +142,7 @@ public class DocumentDriver {
     }
 
     private static String readInputString() {
-        String inp = writer.nextLine();
+        String inp = writer.next();
         return inp;
     }
 
