@@ -11,6 +11,14 @@ public class Author {
     ArrayList<Document> docs;
 
     /**
+     * @brief Creator with name assignment
+     * @param n name that the created Author will have
+     */
+    public Author(String n) {
+        name = n;
+    }
+
+    /**
      * @brief Return the name of the Author
      * @return
      */
@@ -19,11 +27,27 @@ public class Author {
     }
 
     /**
+     * @brief Changes the name of an Author
+     * @param new_name string that contains the new name for the Author
+     */
+    public void setName(String new_name) {
+        name = new_name;
+    }
+
+    /**
      * @brief Return a ArrayList of Author's Documents
      * @return
      */
     public ArrayList<Document> getDocuments() {
         return docs;
+    }
+
+    /**
+     * @brief Add a document to the Author
+     * @param doc instance of the class Document we add
+     */
+    public void addDocument(Document doc) {
+        docs.add(doc);
     }
 
     /**
