@@ -4,15 +4,18 @@ import java.util.*;
 import java.util.regex.*;
 
 public class BooleanExpression {
+
     private String boolExpr;
     private String noQuotes;
+    private nptr root;
 
-    static class nptr {
-        char data;
+
+    static public class nptr {
+        String data;
         nptr left, right;
     };
 
-    static nptr newNode(char c) {
+    static nptr newNode(String c) {
         nptr n = new nptr();
         n.data = c;
         n.left = n.right = null;
@@ -20,29 +23,94 @@ public class BooleanExpression {
     }
 
     /***
-     * Build Expression Tree from string s.
-     * @param s
+     * Build Expression Tree from boolExpr.
      * @return
      */
-    static nptr build(String s){
+     nptr build(){
+         String e = "( " + boolExpr.trim() + " )";
+
+        String[] expr = e.split(" ");   //separamos expresión por elementos
+         System.out.println(e);
+
+         for (String s: expr){
+             System.out.println(s);
+         }
 
         //Stack to hold nodes
-        Stack<Character> stN = new Stack<>();
+        Stack<nptr> stN = new Stack<>();
 
         //Stack to hold chars
-        Stack<Character> stT = new Stack<>();
+        Stack<String> stC = new Stack<>();
         nptr t, t1, t2;
 
         //Priority operators
-        //Map<Character, Integer> priority = Map.of('&')
+        Map<String, Integer> priority = Map.of("&", 2, "|", 1);
 
-        for (int i = 0; i < s.length(); ++i){
+        for (int i = 0; i < expr.length; ++i){
 
-            if (s.charAt(i) == '('){
-                stC.add
+            if (expr[i].equals("(")){
+                stC.add(expr[i]);
+            }
+            else if (expr[i].equals(")")){
+                while (!stC.isEmpty() && !stC.peek().equals("(")) {
+                    t = newNode(stC.peek());
+                    stC.pop();
+                    t1 = stN.peek();
+                    stN.pop();
+                    t2 = stN.peek();
+                    stN.pop();
+                    t.left = t2;
+                    t.right = t1;
+                    stN.add(t);
+                }
+                stC.pop();
+            }
+            else if (expr[i].equals("&") || expr[i].equals("|")){
+
+                //If an operator with lower or same associativity appears
+                while (!stC.isEmpty() && !stC.peek().equals("(") &&
+                        ((!expr[i].equals("&") && priority.get(stC.peek()) >= priority.get(expr[i])) ||
+                        (expr[i].equals("&") && priority.get(stC.peek()) > priority.get(expr[i])))) {
+
+                    // Get and remove the top element from the character stack
+                    t = newNode(stC.peek());
+                    stC.pop();
+
+                    // Get and remove the top element from the node stack
+                    t1 = stN.peek();
+                    stN.pop();
+
+                    // Get and remove the currently top element from the node stack
+                    t2 = stN.peek();
+                    stN.pop();
+
+                    // Update the tree
+                    t.left = t2;
+                    t.right = t1;
+
+                    // Push the node to the node stack
+                    stN.add(t);
+                }
+                // Push s[i] to char stack
+                stC.push(expr[i]);
+            }
+            else {
+                t = newNode(expr[i]);
+                stN.add(t);
             }
         }
 
+        t = stN.peek();
+        return t;
+
+    }
+
+    private void inorder(nptr root) {
+        if (root != null){
+            inorder(root.left);
+            System.out.print(root.data);
+            inorder(root.right);
+        }
     }
 
 
@@ -61,6 +129,8 @@ public class BooleanExpression {
         checkParentheses();
         //System.out.println(boolExpr);
         //System.out.println(noQuotes);
+        root = build();
+
 
 
     }
@@ -68,9 +138,11 @@ public class BooleanExpression {
     //-------------------
 
     private void checkOperands() {
-        //Delete parentheses + spaces
+        //Delete parentheses + whitespaces
         noQuotes = noQuotes.replaceAll("[()]", "");
-        String noSpaces = noQuotes.replaceAll("\\s", "");
+        noQuotes = noQuotes.replaceAll("\\s{2,}", " "); //avoid multiple whitespaces between words
+        String noSpaces = noQuotes.replaceAll("\\s", "");   //String without any whitespace to compare operands
+        System.out.println(noQuotes);
 
         String[] invalidOperators = {"&|", "|&", "!|", "!&", "!&|", "!|&",
                 "&!|", "&|!", "|!&", "|&!"};
@@ -107,7 +179,7 @@ public class BooleanExpression {
                 if (stack.isEmpty() || stack.pop() != brackets.first){
                     break;
                 }
-                //CHECK CONTENT INSIDE PARENTHESIS IS CORRECT.
+
             }
             //found '('
             else if (brackets.first == c) {
@@ -134,17 +206,20 @@ public class BooleanExpression {
      * Checks if the content inside braces is correct + removes content inside
      */
     private void checkBraces() {
-        //Pattern pattern = Pattern.compile("(?<=\\{)(.*?)(?=\\})");
-        Pattern pattern = Pattern.compile("\\{.*?\\}");
-        //Pattern pattern2 = Pattern.compile("^\s" + "\s$")
+        Pattern pattern = Pattern.compile("(?<=\\{)(.*?)(?=\\})");
+        //Pattern pattern = Pattern.compile("\\{.*?\\}");
         Matcher matcher = pattern.matcher(noQuotes);
 
-        //for substring {...}
+        //for substring INSIDE {...}
         while(matcher.find()) {
             String content = matcher.group();
             if (content.isEmpty()) System.err.println("Braces { } must contain at least one word");
             else {
-                boolExpr = boolExpr.replace(content, deleteDuplicates(content));
+                String content2 = deleteDuplicates(content);
+                content2 = content2.trim().replaceAll(" ", " & ");
+                System.out.println(content2);
+                boolExpr = boolExpr.replace(content, content2);
+                boolExpr = boolExpr.replaceAll("[{}]", ""); //delete braces
                 noQuotes = noQuotes.replace(content, "a");
             }
         }
@@ -167,15 +242,14 @@ public class BooleanExpression {
         }
     }
 
-    public String getExpression(){
+    public nptr getExpression(){
         return boolExpr;
     }
 
-}
-
+};
 
 /*
-
+ELIMINAR ESPAIS EXTRES ENTRE { }, ( ), &, |, !
 
  */
 

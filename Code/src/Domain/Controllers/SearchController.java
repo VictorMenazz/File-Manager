@@ -37,7 +37,7 @@ public class SearchController {
     public ArrayList<Document> booleanExpressionSearch(Folder rootFolder, String expression) {
         BooleanExpression boolExpr = new BooleanExpression(expression);
         ArrayList<Document> list;
-        boolean match = true;
+        BooleanExpression.nptr root = boolExpr.getExpression();
 
 
 
