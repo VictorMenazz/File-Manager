@@ -3,6 +3,7 @@ package Code.src.Domain.Controllers.Drivers;
 import Code.src.Domain.Classes.Content;
 import Code.src.Domain.Classes.Document;
 import Code.src.Domain.Classes.Folder;
+import Code.src.Domain.Controllers.Stubs.DocumentStub;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -105,57 +106,215 @@ public class FolderDriver {
     }
 
     public static void testModifyContent() throws IOException {
-        /* STUB MISSING DOCUMENT MAYBE?
-        //We assume that oldContentLanguage = newContentLanguage;
-        System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content: ");
-        String language = readInputString();
-
+        //Testing a Document initialized without Content, plain text.
+        System.out.println("Checking initializing method 1: ");
+        Folder f = new Folder(1, "Folder1");
         System.out.println("Creating a Doc to test function, information: ");
-        Document d = new Document("Doc1", "Author1", "Content Example", language);
-        System.out.println("Title: " + d.getTitle());
-        System.out.println("Author: " + d.getAuthor());
+        System.out.println("Title: ");
+        String title = readInputString();
+        System.out.println("Author: ");
+        String author = readInputString();
         //Content on plain text return missing.
-        System.out.println("Content: " + d.getContent());
+        System.out.println("Content: ");
+        String cont = readInputString();
+        System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content: ");
+        String language =  readInputString();
+
+        Document d = new Document(title,author,cont,language);
+        f.addDocument(d);
 
         System.out.println("Introduce the new Content: ");
         String ContentText = readInputString();
 
-        */
+        f.modifyContent(author,title, ContentText);
+
+        Document doc = f.getDocument(author,  title);
+        Content c = doc.getContent();
+        c.getWords();
     }
 
-    public static void testModifyAuthor() {
+    public static void testModifyAuthor() throws IOException {
+        //Testing a Document initialized without Content, plain text.
+        System.out.println("Checking initializing method 1: ");
+        Folder f = new Folder(1, "Folder1");
+        System.out.println("Creating a Doc to test function, information: ");
+        System.out.println("Title: ");
+        String title = readInputString();
+        System.out.println("Author: ");
+        String author = readInputString();
+        //Content on plain text return missing.
+        System.out.println("Content: ");
+        String cont = readInputString();
+        System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content: ");
+        String language =  readInputString();
 
+        Document d = new Document(title,author,cont,language);
+        f.addDocument(d);
+
+        System.out.println("Introduce the new Author: ");
+        String AuthorN = readInputString();
+
+        f.modifyAuthor(author,title, AuthorN);
+
+        Document doc = f.getDocument(author,  title);
+        System.out.println("New Author: " + doc.getAuthor());
     }
 
-    public static void testModifyTitle() {
+    public static void testModifyTitle() throws IOException {
+//Testing a Document initialized without Content, plain text.
+        System.out.println("Checking initializing method 1: ");
+        Folder f = new Folder(1, "Folder1");
+        System.out.println("Creating a Doc to test function, information: ");
+        System.out.println("Title: ");
+        String title = readInputString();
+        System.out.println("Author: ");
+        String author = readInputString();
+        //Content on plain text return missing.
+        System.out.println("Content: ");
+        String cont = readInputString();
+        System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content: ");
+        String language =  readInputString();
 
+        Document d = new Document(title,author,cont,language);
+        f.addDocument(d);
+
+        System.out.println("Introduce the new Title: ");
+        String newTitle = readInputString();
+
+        f.modifyTitle(author,title, newTitle);
+
+        Document doc = f.getDocument(author,  newTitle);
+        System.out.println("New Title: " + doc.getTitle());
     }
 
-    public static void testProtectDocument() {
+    public static void testProtectDocument() throws IOException {
+//Testing a Document initialized without Content, plain text.
+        System.out.println("Checking initializing method 1: ");
+        Folder f = new Folder(1, "Folder1");
+        System.out.println("Creating a Doc to test function, information: ");
+        System.out.println("Title: ");
+        String title = readInputString();
+        System.out.println("Author: ");
+        String author = readInputString();
+        //Content on plain text return missing.
+        System.out.println("Content: ");
+        String cont = readInputString();
+        System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content: ");
+        String language =  readInputString();
 
+        Document d = new Document(title,author,cont,language);
+        f.addDocument(d);
+
+        System.out.println("Introduce the password to protect: ");
+        String password = readInputString();
+
+        f.protectDocument(author, title, password);
+
+        Document doc = f.getDocument(author,  title);
+        String is = "";
+        if(doc.isProtected()) is = "is";
+        else is = "isn't";
+        System.out.println("Document " + is + " protected.");
     }
 
     public static void testGetName(){
-
+        System.out.println("Checking initializing method 1: ");
+        String name = readInputString();
+        Folder f = new Folder(1, name);
+        System.out.println("Folder Name: " + f.getName());
     }
 
-    public static void testGetDocumentsName(){
+    public static void testGetDocumentsName() throws IOException {
+        System.out.println("Introduce number of Documents: ");
+        int number = readInputInteger();
+        Folder f = new Folder(1, "Folder");
+        for (int i = 0; i < number; ++i){
+            System.out.println("New Document");
+            System.out.println("Title: ");
+            String title = readInputString();
+            System.out.println("Author: ");
+            String author = readInputString();
+            //Content on plain text return missing.
+            System.out.println("Content: ");
+            String cont = readInputString();
+            System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content: ");
+            String language =  readInputString();
 
+            Document d = new Document(title,author,cont,language);
+            f.addDocument(d);
+        }
+        for(String t : f.getDocumentsName()){
+            System.out.println("Doc: " + t);
+        }
     }
 
-    public static void testGetDocumentAmount() {
+    public static void testGetDocumentAmount() throws IOException {
+        System.out.println("Introduce number of Documents: ");
+        int number = readInputInteger();
+        Folder f = new Folder(1, "Folder");
+        for (int i = 0; i < number; ++i){
+            System.out.println("New Document");
+            System.out.println("Title: ");
+            String title = readInputString();
+            System.out.println("Author: ");
+            String author = readInputString();
+            //Content on plain text return missing.
+            System.out.println("Content: ");
+            String cont = readInputString();
+            System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content: ");
+            String language =  readInputString();
 
+            Document d = new Document(title,author,cont,language);
+            f.addDocument(d);
+        }
+        System.out.println("Number of Docs: " + f.getDocumentAmount());
     }
 
-    public static void testGetDocument() {
+    public static void testGetDocument() throws IOException {
+        Folder f = new Folder(1,"Folder");
+        System.out.println("New Document");
+        System.out.println("Title: ");
+        String title = readInputString();
+        System.out.println("Author: ");
+        String author = readInputString();
+        //Content on plain text return missing.
+        System.out.println("Content: ");
+        String cont = readInputString();
+        System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content: ");
+        String language =  readInputString();
 
+        Document d = new Document(title,author,cont,language);
+        f.addDocument(d);
+        f.getDocument(title,author);
+        System.out.println("Checking Doc -> Title: " + title + " Author: " + author);
     }
 
-    public static void testDocumentContained() {
+    public static void testDocumentContained() throws IOException {
+        System.out.println("Introduce number of Documents: ");
+        int number = readInputInteger();
+        Folder f = new Folder(1, "Folder");
+        System.out.println("New Document");
+        System.out.println("Title: ");
+        String title = readInputString();
+        System.out.println("Author: ");
+        String author = readInputString();
+        //Content on plain text return missing.
+        System.out.println("Content: ");
+        String cont = readInputString();
+        System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content: ");
+        String language =  readInputString();
 
+        Document d = new Document(title,author,cont,language);
+        f.addDocument(d);
+        System.out.println("Document Contained: " + f.documentContained(title,author));
     }
 
     public static void testFolderContained() {
+        System.out.println("Introduce name of SubFolder: ");
+        String name = readInputString();
+        Folder f = new Folder(1, "Folder");
+        f.createFolder(name, 1);
+        System.out.println("Folder " + name + "contained: " + f.folderContained(2));
 
     }
 

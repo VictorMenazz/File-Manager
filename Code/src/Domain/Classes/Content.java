@@ -1,6 +1,7 @@
 package Code.src.Domain.Classes;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -96,6 +97,14 @@ public class Content {
             if(frequency.containsKey(auxWord)) frequency.compute(auxWord, (Key, Value) -> Value+1);
             else frequency.put(auxWord, 1);
             allWords.remove(0);
+        }
+    }
+
+    /** TEMPORARY; MARC, just testing  **/
+    public void getWords(){
+        for (Sentence s : text){
+            s.writeSentence();
+            System.out.println();
         }
     }
 
