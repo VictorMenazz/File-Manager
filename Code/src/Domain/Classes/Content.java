@@ -1,6 +1,7 @@
 package Code.src.Domain.Classes;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -75,14 +76,14 @@ public class Content {
         //DELETE STOP WORDS
         List<String> stopWords;
         switch (language) {
-            case "eng":
-                stopWords = Files.readAllLines(Paths.get("en-stopwords.txt"));
+            case "ENG":
+                stopWords = Files.readAllLines(Paths.get("Code/src/Domain/Classes/StopWords/en-stopwords.txt"), StandardCharsets.UTF_8);
                 break;
-            case "cat":
-                stopWords = Files.readAllLines(Paths.get("cat-stopwords.txt"));
+            case "CAT":
+                stopWords = Files.readAllLines(Paths.get("Code/src/Domain/Classes/StopWords/cat-stopwords.txt"), StandardCharsets.UTF_8);
                 break;
             default:
-                stopWords = Files.readAllLines(Paths.get("es-stopwords.txt"));
+                stopWords = Files.readAllLines(Paths.get("Code/src/Domain/Classes/StopWords/es-stopwords.txt"), StandardCharsets.UTF_8);
                 break;
         }
 

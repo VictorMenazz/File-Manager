@@ -16,11 +16,11 @@ public class DocumentTest {
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
         d.setAuthor("AuthorChanged");
         assertEquals("AuthorChanged", d.getAuthor());
-        /*
+
         //Test initializing way 2
         Document d2 = new Document("Title1", "Author1", "This is simply Text", "ENG");
         d2.setAuthor("AuthorChanged");
-        assertEquals("AuthorChanged", d2.getAuthor());*/
+        assertEquals("AuthorChanged", d2.getAuthor());
     }
 
     @org.junit.Test
@@ -31,11 +31,11 @@ public class DocumentTest {
         d.setTitle("TitleChanged");
         assertEquals("TitleChanged", d.getTitle());
 
-        /*
+
         //Test initializing way 2
         Document d2 = new Document("Title1", "Author1", "This is simply Text", "ENG");
         d2.setTitle("TitleChanged");
-        assertEquals("TitleChanged", d2.getTitle());*/
+        assertEquals("TitleChanged", d2.getTitle());
     }
 
     @org.junit.Test
@@ -47,11 +47,11 @@ public class DocumentTest {
         d.setContent(newCont);
         assertEquals(newCont, d.getContent());
 
-        /*
+
         //Test initializing way 2
         Document d2 = new Document("Title1", "Author1", "Initial Text", "ENG");
         d2.setContent(newCont);
-        assertEquals(newCont, d2.getContent());*/
+        assertEquals(newCont, d2.getContent());
     }
 
     @org.junit.Test
@@ -62,11 +62,11 @@ public class DocumentTest {
         d.setLanguage("CAT");
         assertEquals("CAT", d.getLanguage());
 
-        /*
+
         //Test initializing way 2
         Document d2 = new Document("Title1", "Author1", "Initial Text", "ENG");
         d2.setLanguage("CAT");
-        assertEquals("CAT", d2.getLanguage());*/
+        assertEquals("CAT", d2.getLanguage());
     }
 
     @org.junit.Test
@@ -78,12 +78,12 @@ public class DocumentTest {
         d.protectDocument("admin");
         assertTrue(d.isProtected());
 
-        /*
+
         //Test initializing way 2
         Document d2 = new Document("Title1", "Author1", "Initial Text", "ENG");
         assertFalse(d2.isProtected());
         d2.protectDocument("admin");
-        assertTrue(d2.isProtected());*/
+        assertTrue(d2.isProtected());
         }
 
     @org.junit.Test
@@ -93,10 +93,10 @@ public class DocumentTest {
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
         assertEquals("Title1", d.getTitle());
 
-        /*
+
         //Test initializing way 2
         Document d2 = new Document("Title1", "Author1", "Initial Text", "ENG");
-        assertEquals("Title1", d2.getTitle());*/
+        assertEquals("Title1", d2.getTitle());
     }
 
     @org.junit.Test
@@ -106,10 +106,10 @@ public class DocumentTest {
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
         assertEquals("Author1", d.getAuthor());
 
-        /*
+
         //Test initializing way 2
         Document d2 = new Document("Title1", "Author1", "Initial Text", "ENG");
-        assertEquals("Author1", d2.getAuthor());*/
+        assertEquals("Author1", d2.getAuthor());
     }
 
     @org.junit.Test
@@ -119,10 +119,9 @@ public class DocumentTest {
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
         assertEquals(initialContent, d.getContent());
 
-        /*
-        //Test initializing way 2
+/*        //Test initializing way 2
         Document d2 = new Document("Title1", "Author1", "Initial Text", "ENG");
-        assertEquals(new Content("Initial Text", "ENG"), d2.getLanguage());*/
+        assertSame(new Content("Initial Text", "ENG"), d2.getContent());*/
     }
 
     @org.junit.Test
@@ -132,10 +131,10 @@ public class DocumentTest {
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
         assertEquals("ENG", d.getLanguage());
 
-        /*
+
         //Test initializing way 2
         Document d2 = new Document("Title1", "Author1", "Initial Text", "ENG");
-        assertEquals("ENG", d2.getLanguage());*/
+        assertEquals("ENG", d2.getLanguage());
     }
 
     @org.junit.Test
@@ -146,9 +145,9 @@ public class DocumentTest {
         d.protectDocument("admin");
         assertTrue(d.isProtected());
 
-        /*
+
         //Test initializing way 2
         Document d2 = new Document("Title1", "Author1", "Initial Text", "ENG");
-        assertEquals("ENG", d2.getLanguage());*/
+        assertEquals("ENG", d2.getLanguage());
     }
 }
