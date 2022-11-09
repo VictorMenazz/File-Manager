@@ -26,19 +26,19 @@ public class Author {
     }
 
     /**
-     * @brief Return the name of the Author
-     * @return name of the Author
-     */
-    public String getName() {
-        return name;
-    }
-
-    /**
      * @brief Changes the name of an Author
      * @param new_name string that contains the new name for the Author
      */
     public void setName(String new_name) {
         name = new_name;
+    }
+
+    /**
+     * @brief Return the name of the Author
+     * @return name of the Author
+     */
+    public String getName() {
+        return name;
     }
 
     /**
@@ -55,6 +55,14 @@ public class Author {
      */
     public void addTitle(String docTitle) {
         docs.add(docTitle);
+    }
+
+    /**
+     * @brief Deletes a title document of the Author
+     * @param docTitle References to the title to be deleted
+     */
+    public void delTitle(String docTitle) {
+        docs.remove(docTitle);
     }
 
     /**
