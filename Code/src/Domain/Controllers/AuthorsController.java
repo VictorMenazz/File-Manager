@@ -67,5 +67,27 @@ public class AuthorsController {
         return null;
     }
 
+    /**
+     * @brief Add a document title given to a specific Author
+     * @param authorName, References to the Author's name
+     * @param title, References to the title of the document
+     */
+    public void addTitleAuthor(String authorName, String title) {
+        if (authors.containsKey(authorName)) {
+            authors.get(authorName).addTitle(title);
+        }
+    }
+
+    /**
+     * @brief Deletes a document title given of a specific Author
+     * @param authorName, References to the Author's name
+     * @param title, References to the title of the document
+     */
+    public void delTitleAuthor(String authorName, String title) {
+        if (authors.containsKey(authorName)) {
+            authors.get(authorName).delTitle(title);
+        }
+    }
+
 }
 
