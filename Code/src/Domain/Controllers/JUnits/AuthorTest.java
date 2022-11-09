@@ -8,7 +8,7 @@ import org.junit.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 /**
  * @author Jordi Soley Masats
@@ -87,10 +87,10 @@ public class AuthorTest {
     @Test
     public void testMatchesPrefix() {
         Author instance = new Author("Jordi");
-        assertEquals(true,"Jor");
-        assertEquals(true, "J");
-        assertEquals(false, "ordi");
-        assertEquals(false, "marc");
+        assertTrue(instance.matchesPrefix("Jor"));
+        assertTrue(instance.matchesPrefix("J"));
+        assertFalse(instance.matchesPrefix("ordi"));
+        assertFalse(instance.matchesPrefix("marc"));
     }
 
 }
