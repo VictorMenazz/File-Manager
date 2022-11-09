@@ -4,19 +4,18 @@ import java.util.*;
 import java.util.regex.*;
 
 public class BooleanExpression {
-
     private String boolExpr;
     private String noQuotes;
-    private nptr root;
+    private Node root;
 
 
-    static public class nptr {
+    static public class Node {
         String data;
-        nptr left, right;
+        Node left, right;
     };
 
-    static nptr newNode(String c) {
-        nptr n = new nptr();
+    static private Node newNode(String c) {
+        Node n = new Node();
         n.data = c;
         n.left = n.right = null;
         return n;
@@ -24,24 +23,19 @@ public class BooleanExpression {
 
     /***
      * Build Expression Tree from boolExpr.
-     * @return
+     * @return Node, which will be the root of the Expression Tree.
      */
-     nptr build(){
+     private Node build(){
          String e = "( " + boolExpr.trim() + " )";
 
         String[] expr = e.split(" ");   //separamos expresión por elementos
-         System.out.println(e);
-
-         for (String s: expr){
-             System.out.println(s);
-         }
 
         //Stack to hold nodes
-        Stack<nptr> stN = new Stack<>();
+        Stack<Node> stN = new Stack<>();
 
         //Stack to hold chars
         Stack<String> stC = new Stack<>();
-        nptr t, t1, t2;
+        Node t, t1, t2;
 
         //Priority operators
         Map<String, Integer> priority = Map.of("&", 2, "|", 1);
@@ -71,23 +65,18 @@ public class BooleanExpression {
                 while (!stC.isEmpty() && !stC.peek().equals("(") &&
                         ((!expr[i].equals("&") && priority.get(stC.peek()) >= priority.get(expr[i])) ||
                         (expr[i].equals("&") && priority.get(stC.peek()) > priority.get(expr[i])))) {
-
                     // Get and remove the top element from the character stack
                     t = newNode(stC.peek());
                     stC.pop();
-
                     // Get and remove the top element from the node stack
                     t1 = stN.peek();
                     stN.pop();
-
                     // Get and remove the currently top element from the node stack
                     t2 = stN.peek();
                     stN.pop();
-
                     // Update the tree
                     t.left = t2;
                     t.right = t1;
-
                     // Push the node to the node stack
                     stN.add(t);
                 }
@@ -99,13 +88,15 @@ public class BooleanExpression {
                 stN.add(t);
             }
         }
-
         t = stN.peek();
         return t;
-
     }
 
-    private void inorder(nptr root) {
+    /***
+     * Prints the Expression Tree inorder
+     * @param root
+     */
+    public static void inorder(Node root) {
         if (root != null){
             inorder(root.left);
             System.out.print(root.data);
@@ -114,9 +105,8 @@ public class BooleanExpression {
     }
 
 
-
     /***
-     * Constructor
+     * Constructs the representation for a boolean expression
      * @param s, represents the boolean expression.
      */
     public BooleanExpression(String s){
@@ -127,16 +117,15 @@ public class BooleanExpression {
         noQuotes = noQuotes.replaceAll("\\s{2,}", "");
         checkBraces();
         checkParentheses();
-        //System.out.println(boolExpr);
-        //System.out.println(noQuotes);
         root = build();
-
-
 
     }
 
     //-------------------
 
+    /***
+     * Checks correct format from boolean operands.
+     */
     private void checkOperands() {
         //Delete parentheses + whitespaces
         noQuotes = noQuotes.replaceAll("[()]", "");
@@ -168,6 +157,9 @@ public class BooleanExpression {
         }
     }
 
+    /***
+     * Checks correct order parentheses
+     */
     private void checkParentheses() {
         Pair<Character, Character> brackets = new Pair<>('(', ')');
         Stack<Character> stack = new Stack<>();
@@ -194,6 +186,7 @@ public class BooleanExpression {
     }
 
     /***
+     * Deletes duplicate elements from a set of words
      * @param s, content inside braces -> { s }
      * @return s without duplicates.
      */
@@ -242,7 +235,10 @@ public class BooleanExpression {
         }
     }
 
-    public nptr getExpression(){
+    /***
+     * @return root of the Expression Tree
+     */
+    public Node getExpression(){
         return root;
     }
 

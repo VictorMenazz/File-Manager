@@ -5,8 +5,6 @@ import Code.src.Domain.Classes.Document;
 import Code.src.Domain.Classes.Folder;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
 
 public class SearchController {
     /**
@@ -37,7 +35,7 @@ public class SearchController {
     public ArrayList<Document> booleanExpressionSearch(Folder rootFolder, String expression) {
         BooleanExpression boolExpr = new BooleanExpression(expression);
         ArrayList<Document> list;
-        BooleanExpression.nptr root = boolExpr.getExpression();
+        BooleanExpression.Node root = boolExpr.getExpression();
 
 
 
