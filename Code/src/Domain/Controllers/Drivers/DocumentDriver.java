@@ -1,53 +1,112 @@
 package Code.src.Domain.Controllers.Drivers;
 
+import Code.src.Domain.Classes.Content;
+import Code.src.Domain.Classes.Document;
+
 import java.io.IOException;
 import java.util.Scanner;
 
 public class DocumentDriver {
     private static Scanner writer = new Scanner(System.in);
 
-    public static void testDocumentConstruct1(){
-
+    public static Document initialCreation1() throws IOException {
+        System.out.println("Introduce a title for the Document: ");
+        String title = readInputString();
+        System.out.println("Introduce an author for the Document: ");
+        String author = readInputString();
+        System.out.println("Introduce a Content for the Document: ");
+        String Content = readInputString();
+        System.out.println("Introduce a Language for the Document: ");
+        String lang = readInputString();
+        Document doc = new Document(title,author,Content,lang);
+        return doc;
     }
 
-    public static void testDocumentConstruct2(){
-
+    public static void testDocumentConstruct1() throws IOException {
+        //Testing initializing way1
+        Document d = initialCreation1();
+        System.out.println("Document created -> Title:" + d.getTitle() + " Author:" + d.getAuthor());
+        System.out.println("Testing 'testFolder()' finished.");
     }
 
-    public static void testSetAuthor(){
+    public static void testDocumentConstruct2() throws IOException {
+        //Testing initializing way1
+        System.out.println("Introduce a title for the Document: ");
+        String title = readInputString();
+        System.out.println("Introduce an author for the Document: ");
+        String author = readInputString();
+        System.out.println("Introduce a Content for the Document: ");
+        String ContentText = readInputString();
+        System.out.println("Introduce a Language for the Document: ");
+        String lang = readInputString();
 
+        Content Content = new Content(ContentText, lang);
+        Document d = new Document(title, author, Content, lang);
+        System.out.println("Document created -> Title:" + d.getTitle() + " Author:" + d.getAuthor());
+
+        System.out.println("Testing 'testFolder()' finished.");
     }
 
-    public static void testSetTitle(){
-
+    public static void testSetAuthor() throws IOException {
+        Document d = initialCreation1();
+        System.out.println("Introduce the new Author for the Document: ");
+        String newAuth = readInputString();
+        d.setAuthor(newAuth);
+        System.out.println("Author changed to: " + d.getAuthor());
     }
 
-    public static void testSetContent(){
-
+    public static void testSetTitle() throws IOException {
+        Document d = initialCreation1();
+        System.out.println("Introduce the new Title for the Document: ");
+        String newTitle = readInputString();
+        d.setTitle(newTitle);
+        System.out.println("Title changed to: " + d.getTitle());
     }
 
-    public static void testSetLanguage(){
-
+    public static void testSetContent() throws IOException {
+        Document d = initialCreation1();
+        System.out.println("Introduce the new Content for the Document: ");
+        String newCont = readInputString();
+        Content c = new Content(newCont,d.getLanguage());
+        d.setContent(c);
+        //Falta getContentOnPlainText
+        //System.out.println("Content changed to: " + d.getC());
     }
 
-    public static void testProtectDocument() {
-
+    public static void testSetLanguage() throws IOException {
+        Document d = initialCreation1();
+        System.out.println("Introduce the new Language for the Document: ");
+        String newLang = readInputString();
+        d.setLanguage(newLang);
+        System.out.println("Language changed to: " + d.getLanguage());
     }
 
-    public static void testGetTitle(){
-
+    public static void testProtectDocument() throws IOException {
+        Document d = initialCreation1();
+        System.out.println("Introduce the password for the Document: ");
+        String passw = readInputString();
+        d.protectDocument(passw);
+        System.out.println("Document is protected: " + d.isProtected());
     }
 
-    public static void testGetAuthor(){
-
+    public static void testGetTitle() throws IOException {
+        Document d = initialCreation1();
+        System.out.println("Title: " + d.getTitle());
     }
 
-    public static void testGetContent(){
-
+    public static void testGetAuthor() throws IOException {
+        Document d = initialCreation1();
+        System.out.println("Author: " + d.getTitle());
     }
 
-    public static void testGetLanguage() {
+    public static void testGetContent() throws IOException {
+        Document d = initialCreation1();
+        System.out.println("Content: " + d.getContent());
+    }
 
+    public static void testGetLanguage() throws IOException {
+        Document d = initialCreation1();
+        System.out.println("Language: " + d.getLanguage());
     }
 
     //Private functions not need to be proved.
@@ -63,81 +122,85 @@ public class DocumentDriver {
                 "8. testGetTitle\n" +
                 "9. testGetAuthor\n" +
                 "10. testGetContent\n" +
-                "11. testGetLanguage\n";
+                "11. testGetLanguage\n" +
+                "12. Exit\n";
 
         System.out.println("Document Driver: ");
         System.out.println("Introduce the number allocated to the function you want to test.");
         System.out.println("Functions: ");
         System.out.println(functions);
         int code = readInputInteger();
-        switch (code){
-            case 1:
-                System.out.println("testDocumentConstruct1() choose: ");
-                testDocumentConstruct1();
-                break;
-            case 2:
-                System.out.println("testDocumentConstruct2() choose: ");
-                testDocumentConstruct2();
-                break;
-            case 3:
-                System.out.println("testSetAuthor() choose: ");
-                testSetAuthor();
-                break;
-            case 4:
-                System.out.println("testSetTitle() choose: ");
-                testSetTitle();
-                break;
-            case 5:
-                System.out.println("testSetContent() choose: ");
-                testSetContent();
-                break;
-            case 6:
-                System.out.println("testSetLanguage() choose: ");
-                testSetLanguage();
-                break;
-            case 7:
-                System.out.println("testProtectDocument() choose: ");
-                testProtectDocument();
-                break;
-            case 8:
-                System.out.println("testGetTitle() choose: ");
-                testGetTitle();
-                break;
-            case 9:
-                System.out.println("testGetAuthor() choose: ");
-                testGetAuthor();
-                break;
-            case 10:
-                System.out.println("testGetContent() choose: ");
-                testGetContent();
-                break;
-            case 11:
-                System.out.println("testGetLanguage() choose: ");
-                testGetLanguage();
-                break;
-            default:
-                System.out.println("testDocumentConstruct1() test: ");
-                testDocumentConstruct1();
-                System.out.println("testDocumentConstruct2() test: ");
-                testDocumentConstruct2();
-                System.out.println("testSetAuthor() test: ");
-                testSetAuthor();
-                System.out.println("testSetTitle() test: ");
-                testSetTitle();
-                System.out.println("testSetContent() test: ");
-                testSetContent();
-                System.out.println("testSetLanguage() test: ");
-                testSetLanguage();
-                System.out.println("testProtectDocument() test: ");
-                testProtectDocument();
-                System.out.println("testGetTitle() test: ");
-                testGetTitle();
-                System.out.println("testGetAuthor() test: ");
-                testGetAuthor();
-                System.out.println("testGetContent() test: ");
-                testGetContent();
-                System.out.println("testGetLanguage() test: ");
-                testGetLanguage();
+        while(code != 12) {
+            switch (code) {
+                case 1:
+                    System.out.println("testDocumentConstruct1() choose: ");
+                    testDocumentConstruct1();
+                    break;
+                case 2:
+                    System.out.println("testDocumentConstruct2() choose: ");
+                    testDocumentConstruct2();
+                    break;
+                case 3:
+                    System.out.println("testSetAuthor() choose: ");
+                    testSetAuthor();
+                    break;
+                case 4:
+                    System.out.println("testSetTitle() choose: ");
+                    testSetTitle();
+                    break;
+                case 5:
+                    System.out.println("testSetContent() choose: ");
+                    testSetContent();
+                    break;
+                case 6:
+                    System.out.println("testSetLanguage() choose: ");
+                    testSetLanguage();
+                    break;
+                case 7:
+                    System.out.println("testProtectDocument() choose: ");
+                    testProtectDocument();
+                    break;
+                case 8:
+                    System.out.println("testGetTitle() choose: ");
+                    testGetTitle();
+                    break;
+                case 9:
+                    System.out.println("testGetAuthor() choose: ");
+                    testGetAuthor();
+                    break;
+                case 10:
+                    System.out.println("testGetContent() choose: ");
+                    testGetContent();
+                    break;
+                case 11:
+                    System.out.println("testGetLanguage() choose: ");
+                    testGetLanguage();
+                    break;
+                default:
+                    System.out.println("testDocumentConstruct1() test: ");
+                    testDocumentConstruct1();
+                    System.out.println("testDocumentConstruct2() test: ");
+                    testDocumentConstruct2();
+                    System.out.println("testSetAuthor() test: ");
+                    testSetAuthor();
+                    System.out.println("testSetTitle() test: ");
+                    testSetTitle();
+                    System.out.println("testSetContent() test: ");
+                    testSetContent();
+                    System.out.println("testSetLanguage() test: ");
+                    testSetLanguage();
+                    System.out.println("testProtectDocument() test: ");
+                    testProtectDocument();
+                    System.out.println("testGetTitle() test: ");
+                    testGetTitle();
+                    System.out.println("testGetAuthor() test: ");
+                    testGetAuthor();
+                    System.out.println("testGetContent() test: ");
+                    testGetContent();
+                    System.out.println("testGetLanguage() test: ");
+                    testGetLanguage();
+            }
+            code = readInputInteger();
         }
     }
 

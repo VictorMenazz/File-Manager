@@ -315,7 +315,6 @@ public class FolderDriver {
         Folder f = new Folder(1, "Folder");
         f.createFolder(name, 1);
         System.out.println("Folder " + name + "contained: " + f.folderContained(2));
-
     }
 
 
