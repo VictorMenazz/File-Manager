@@ -181,7 +181,7 @@ public class Folder {
             Document d = documents.get(docKey);
 
             //Modification of the Instance.
-            d.setAuthor(newTitle);
+            d.setTitle(newTitle);
 
             //Modification of the Search elements.
             documents.remove(docKey);
