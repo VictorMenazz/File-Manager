@@ -88,6 +88,7 @@ public class DomainController {
      */
     public void newDocument(String authorName, String title, String text, String lang) throws IOException {
         folders.newDocument(authorName, title, text, lang);
+        ctrlAuthors.addTitleAuthor(authorName, title);
     }
 
     /**
@@ -103,9 +104,13 @@ public class DomainController {
         switch (flag) {
             case 0:
                 folders.modifyAuthor(authorName, title, newData);
+                ctrlAuthors.delTitleAuthor(authorName, title);
+                ctrlAuthors.addTitleAuthor(newData, title);
                 break;
             case 1:
                 folders.modifyTitle(authorName, title, newData);
+                ctrlAuthors.delTitleAuthor(authorName, title);
+                ctrlAuthors.addTitleAuthor(authorName, newData);
                 break;
             case 2:
                 folders.modifyContent(authorName, title, newData);
