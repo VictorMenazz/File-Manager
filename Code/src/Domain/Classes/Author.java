@@ -50,6 +50,14 @@ public class Author {
     }
 
     /**
+     * @brief Return the number of titles of the author's documents
+     * @return integer, number of titles
+     */
+    public int getNumTitles() {
+        return docs.size();
+    }
+
+    /**
      * @brief Add a title document to the Author
      * @param docTitle title of the Document we add
      */
