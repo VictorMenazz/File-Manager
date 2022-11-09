@@ -116,6 +116,16 @@ public class FolderTest {
     }
 
     @Test
+    public void getDocumentsOfAuthor() {
+        Folder f = new Folder(1, "Test");
+        Document doc = new DocumentStub();
+        f.addDocument(doc);
+        ArrayList<Document> list = new ArrayList<Document>();
+        list.add(doc);
+        assertEquals(list,f.getDocumentsOfAuthor("AuthorTest"));
+    }
+
+    @Test
     public void documentContained() {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();

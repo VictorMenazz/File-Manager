@@ -252,6 +252,21 @@ public class Folder {
         }
     }
 
+    /**
+     * @brief Gets the Documents identified by his Author.
+     * @param authorName, Represents the writer of the Document.
+     * @return List of Documents of a specific Author
+     */
+    public ArrayList<Document> getDocumentsOfAuthor(String authorName) {
+        ArrayList<Document> list = new ArrayList<Document>();
+        for (Pair p : documents.keySet()) {
+            if (p.second.equals(authorName)) {
+                list.add(documents.get(p));
+            }
+        }
+        return list;
+    }
+
     //Consultants
 
     /**
