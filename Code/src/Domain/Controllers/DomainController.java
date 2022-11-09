@@ -28,6 +28,11 @@ public class DomainController {
      */
     private QueryController ctrlQuery;
 
+
+    /**
+     * @brief Instance of the Authors controller
+     */
+    private AuthorsController ctrlAuthors;
     public DomainController() {
         data = DataController.getInstance();
         /*  Possibly initialize the FolderController?
@@ -40,11 +45,13 @@ public class DomainController {
             folders = new FoldersController(null);
             ctrlQuery = new QueryController();
             ctrlSearch = new SearchController(ctrlQuery, null);
+            ctrlAuthors = new AuthorsController();
         }
         else { //AVERIGUAR FORMA DE COGER CARPETA ROOT
             folders = new FoldersController(data.getRootFolder());
             ctrlQuery = new QueryController();
             ctrlSearch = new SearchController(ctrlQuery, data.getRootFolder());
+            ctrlAuthors = new AuthorsController();
         }
     }
 

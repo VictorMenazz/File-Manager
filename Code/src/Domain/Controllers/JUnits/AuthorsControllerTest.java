@@ -1,15 +1,14 @@
 package Code.src.Domain.Controllers.JUnits;
 
-import Code.src.Domain.Classes.SetAuthors;
+import Code.src.Domain.Controllers.AuthorsController;
 import org.junit.Test;
 
 import java.util.ArrayList;
 
-public class SetAuthorsTest {
+public class AuthorsControllerTest {
 
     @Test
     public static void TestAddAuthor() {
-        SetAuthors instance = new SetAuthors();
     }
 
     @Test

@@ -1,4 +1,6 @@
-package Code.src.Domain.Classes;
+package Code.src.Domain.Controllers;
+
+import Code.src.Domain.Classes.Author;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -9,7 +11,7 @@ import java.util.Map;
  * @brief Class SetAuthors that contains a set of Authors
  * @author Jordi Soley Masats
  */
-public class SetAuthors {
+public class AuthorsController {
     HashMap<String, Author> authors;
 
     /**
