@@ -100,7 +100,9 @@ public class Content {
         }
     }
 
-    /** TEMPORARY; MARC, just testing  **/
+    /**
+     * @brief
+     */
     public void getWords(){
         for (Sentence s : text){
             s.writeSentence();

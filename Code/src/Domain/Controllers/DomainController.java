@@ -24,11 +24,6 @@ public class DomainController {
     private SearchController ctrlSearch;
 
     /**
-     * @brief Instance of the query controller
-     */
-    private QueryController ctrlQuery;
-
-    /**
      * @brief Instance of the Authors controller
      */
     private AuthorsController ctrlAuthors;
@@ -44,14 +39,12 @@ public class DomainController {
         //FALTA COGER INSTANCIA DE ROOT SI EXISTE
         if(data == null) {
             folders = new FoldersController(null);
-            ctrlQuery = new QueryController();
-            ctrlSearch = new SearchController(ctrlQuery, null);
+            ctrlSearch = new SearchController(null);
             ctrlAuthors = new AuthorsController();
         }
         else { //AVERIGUAR FORMA DE COGER CARPETA ROOT
             folders = new FoldersController(data.getRootFolder());
-            ctrlQuery = new QueryController();
-            ctrlSearch = new SearchController(ctrlQuery, data.getRootFolder());
+            ctrlSearch = new SearchController(data.getRootFolder());
             ctrlAuthors = new AuthorsController();
         }
     }

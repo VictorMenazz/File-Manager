@@ -8,12 +8,14 @@ import org.junit.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
+/**
+ * @author Jordi Soley Masats
+ */
 public class AuthorTest {
-/*
     @Test
-    public static void TestGetName() {
+    public void testSetName() {
         String new_name = "Jordi";
         Author instance = new Author();
         instance.setName(new_name);
@@ -21,49 +23,74 @@ public class AuthorTest {
     }
 
     @Test
-    public static void TestSetName() {
-        String new_name = "Jordi";
-        Author instance = new Author();
-        instance.setName(new_name);
-        assertEquals(new_name, instance.getName());
+    public void testGetName() {
+        Author instance = new Author("Jordi");
+        assertEquals("Jordi",instance.getName());
     }
 
     @Test
-    public static void TestGetDocuments() {
+    public void testGetTitles() {
         Author instance = new Author("Jordi");
-        Document doc1 = new Document("DocEn","Jordi","This is the content of the document in english", "en");
-        Document doc2 = new Document("DocCat","Jordi","Aquest es el contingut del document en catala", "cat");
-        Document doc3 = new Document("DocEs","Jordi","Este es el contenido el documento en español", "es");
-        instance.addDocument(doc1);
-        instance.addDocument(doc2);
-        instance.addDocument(doc3);
-
-        ArrayList<Document> expResult = new ArrayList<>();
+        String doc1 = "DocEn";
+        String doc2 = "DocCat";
+        String doc3 = "DocEs";
+        instance.addTitle(doc1);
+        instance.addTitle(doc2);
+        instance.addTitle(doc3);
+        ArrayList<String> expResult = new ArrayList<String>();
         expResult.add(doc1);
         expResult.add(doc2);
         expResult.add(doc3);
-        assertEquals(expResult, instance.getDocuments());
+        assertEquals(expResult, instance.getTitles());
     }
 
     @Test
-    public static void TestAddDocument() {
+    public void testGetNumTitles() {
         Author instance = new Author("Jordi");
-        Document doc1 = new Document("DocEn","Jordi","This is the content of the document in english", "en");
-        Document doc2 = new Document("DocCat","Jordi","Aquest es el contingut del document en catala", "cat");
-        Document doc3 = new Document("DocEs","Jordi","Este es el contenido el documento en español", "es");
-        instance.addDocument(doc1);
-        instance.addDocument(doc2);
-        instance.addDocument(doc3);
+        instance.addTitle("Doc1");
+        instance.addTitle("Doc2");
+        assertEquals(2,instance.getNumTitles());
+    }
 
-        ArrayList<Document> expResult = new ArrayList<>();
+    @Test
+    public void testAddTitle() {
+        Author instance = new Author("Jordi");
+        String doc1 = "DocEn";
+        String doc2 = "DocCat";
+        String doc3 = "DocEs";
+        instance.addTitle(doc1);
+        instance.addTitle(doc2);
+        instance.addTitle(doc3);
+        ArrayList<String> expResult = new ArrayList<String>();
         expResult.add(doc1);
         expResult.add(doc2);
         expResult.add(doc3);
-        assertEquals(expResult, instance.getDocuments());
+        assertEquals(expResult, instance.getTitles());
     }
 
     @Test
-    public static boolean TestMatchesPrefix() {
-        return false;
-    }*/
+    public void testDelTitle() {
+        Author instance = new Author("Jordi");
+        String doc1 = "DocEn";
+        String doc2 = "DocCat";
+        String doc3 = "DocEs";
+        instance.addTitle(doc1);
+        instance.addTitle(doc2);
+        instance.addTitle(doc3);
+        instance.delTitle(doc3);
+        ArrayList<String> expResult = new ArrayList<String>();
+        expResult.add(doc1);
+        expResult.add(doc2);
+        assertEquals(expResult, instance.getTitles());
+    }
+
+    @Test
+    public void testMatchesPrefix() {
+        Author instance = new Author("Jordi");
+        assertTrue(instance.matchesPrefix("Jor"));
+        assertTrue(instance.matchesPrefix("J"));
+        assertFalse(instance.matchesPrefix("ordi"));
+        assertFalse(instance.matchesPrefix("marc"));
+    }
+
 }

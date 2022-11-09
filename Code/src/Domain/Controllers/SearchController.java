@@ -5,21 +5,37 @@ import Code.src.Domain.Classes.Document;
 import Code.src.Domain.Classes.Folder;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 
 public class SearchController {
-    /**
-     * @brief Instance of QueryController
-     */
-    private QueryController query;
-
     /**
      * @brief Instance of rootFolder
      */
     private Folder rootFolder;
 
-    public SearchController(QueryController instance, Folder root) {
-        query = instance;
+    /**
+     * @brief List of BooleanExpressions
+     */
+    private LinkedHashSet<BooleanExpression> listBoolExps;
+
+    public SearchController(Folder root) {
         rootFolder = root;
+        listBoolExps = new LinkedHashSet<>();
+    }
+    public void addQuery(String boolExp) {
+
+    }
+    public void modifyQuery(int pos) {
+
+    }
+
+    public void deleteQuery(int pos){
+
+    }
+
+    public BooleanExpression getInstance(int pos) {
+
+        return null;
     }
 
     public ArrayList<Document> booleanExpressionSearch(Folder rootFolder, String expression) {
