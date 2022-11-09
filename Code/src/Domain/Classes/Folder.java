@@ -61,6 +61,8 @@ public class Folder {
         folderId = id;
         folderName = fName;
         lastFolderId = folderId;
+        subFolders = new HashMap<Integer, Folder>();
+        documents = new HashMap<Pair<String, String>, Document>();
     }
 
     //Setters
@@ -79,6 +81,7 @@ public class Folder {
     public void createFolder(String fName, Integer foldId) {
         if(foldId == this.folderId) {
             Folder f = new Folder(lastFolderId+1, fName);
+            subFolders.put(lastFolderId,f);
         }
         else{
             int nextId = getNextFolderParent(foldId);
@@ -97,6 +100,7 @@ public class Folder {
         String titl = newD.getTitle();
         Pair<String, String> docKey = new Pair(titl, auth);
         documents.put(docKey, newD);
+        docAmount += 1;
     }
 
     /**

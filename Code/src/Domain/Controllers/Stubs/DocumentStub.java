@@ -1,67 +1,34 @@
 package Code.src.Domain.Controllers.Stubs;
 
 import Code.src.Domain.Classes.Content;
+import Code.src.Domain.Classes.Document;
 
 import java.io.IOException;
 
-public class DocumentStub {
+public class DocumentStub extends Document {
 
-    private String title;
-
-    private String author;
-
-    private Content cont;
-
-    private String language;
-
-    private String password;
-
-    enum DOC_TYPE{
-        XML,
-        PLAIN_TEXT
-    }
-
-    private DOC_TYPE format;
-/*
-    public Document(){
-        retun
-    }
-*/
-    public void setAuthor(String auth){
-        author = auth;
-    }
-
-    public void setTitle(String titl){
-        title = titl;
-    }
-
-
-    public void setContent(Content c){
-        cont = c;
-    }
-
-    public void setLanguage(String lang){
-        language = lang;
-    }
-
-    public void protectDocument(String passw) {
-        password = passw;
+    public DocumentStub() {
+        super("TitleTest","AuthorTest", new ContentStub(), "ENG");
     }
 
     public String getTitle(){
-        return title;
+        return "TitleTest";
     }
 
     public String getAuthor(){
-        return author;
+        return "AuthorTest";
     }
 
     public Content getContent(){
-        return cont;
+        return (new ContentStub());
     }
 
     public String getLanguage() {
-        return language;
+        return "ENG";
     }
 
+    public boolean isProtected(){
+        return false;
+    }
 }
+

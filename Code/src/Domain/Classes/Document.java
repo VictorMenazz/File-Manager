@@ -61,6 +61,7 @@ public class Document {
             author = auth;
             cont = c;
             language = lang;
+            password = null;
         }
 
         /**
@@ -75,6 +76,7 @@ public class Document {
             author = auth;
             language = lang;
             cont = new Content(text, lang);
+            password = null;
         }
 
     //Setters

@@ -28,6 +28,12 @@ public class DomainController {
      */
     private QueryController ctrlQuery;
 
+    /**
+     * @brief Instance of the Authors controller
+     */
+    private AuthorsController ctrlAuthors;
+
+
     public DomainController() {
         data = DataController.getInstance();
         /*  Possibly initialize the FolderController?
@@ -40,11 +46,13 @@ public class DomainController {
             folders = new FoldersController(null);
             ctrlQuery = new QueryController();
             ctrlSearch = new SearchController(ctrlQuery, null);
+            ctrlAuthors = new AuthorsController();
         }
         else { //AVERIGUAR FORMA DE COGER CARPETA ROOT
             folders = new FoldersController(data.getRootFolder());
             ctrlQuery = new QueryController();
             ctrlSearch = new SearchController(ctrlQuery, data.getRootFolder());
+            ctrlAuthors = new AuthorsController();
         }
     }
 
@@ -106,23 +114,21 @@ public class DomainController {
     }
 
     /**
-     * @brief Returns a list of documents that its author matches a given name
-     * @param authorName
-     * @return Arraylist of a Documents
+     * @brief Returns a list of documents titles that its author matches a given name
+     * @param authorName, References to the name of the Author
+     * @return Arraylist of a documents titles
      */
-    public ArrayList<Document> authorDocuments(String authorName) {
-        Folder rootFolder = folders.getRoot();
-        return ctrlSearch.searchAuthorDocuments(rootFolder, authorName);
+    public ArrayList<String> authorDocuments(String authorName) {
+        return ctrlAuthors.searchAuthorDocuments(authorName);
     }
 
     /**
      * @brief Returns a list of names of Authors that begins with a given prefix
-     * @param prefix
-     * @return
+     * @param prefix, References to the prefix
+     * @return List of Authors names that begins with "prefix"
      */
     public ArrayList<String> searchAuthors(String prefix) {
-        Folder rootFolder = folders.getRoot();
-        return ctrlSearch.searchAuthorsPrefix(rootFolder, prefix);
+        return ctrlAuthors.searchAuthorsPrefix(prefix);
     }
 
     /**

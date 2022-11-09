@@ -22,16 +22,6 @@ public class SearchController {
         rootFolder = root;
     }
 
-    public ArrayList<Document> searchAuthorDocuments(Folder rootFolder, String authorName) {
-
-        return  null;
-    }
-
-    public ArrayList<String> searchAuthorsPrefix(Folder rootFolder, String prefix) {
-
-        return null;
-    }
-
     public ArrayList<Document> booleanExpressionSearch(Folder rootFolder, String expression) {
         BooleanExpression boolExpr = new BooleanExpression(expression);
         ArrayList<Document> list;

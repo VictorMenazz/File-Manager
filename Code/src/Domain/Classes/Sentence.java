@@ -52,8 +52,10 @@ public class Sentence {
     /**
      * @brief Print out the sentence
      */
-    public void writeSentence()
-    {
-
+    public void writeSentence() {
+        /** MARC, delete this, just testing **/
+        for (String s : words){
+            System.out.println(s + ' ');
+        }
     }
 }
