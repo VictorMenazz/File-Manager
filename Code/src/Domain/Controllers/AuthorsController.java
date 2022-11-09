@@ -1,6 +1,8 @@
 package Code.src.Domain.Controllers;
 
 import Code.src.Domain.Classes.Author;
+import Code.src.Domain.Classes.Document;
+import Code.src.Domain.Classes.Folder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -52,6 +54,17 @@ public class AuthorsController {
             }
         }
         return res;
+    }
+
+
+    public ArrayList<Document> searchAuthorDocuments(String authorName) {
+
+        return  null;
+    }
+
+    public ArrayList<String> searchAuthorsPrefix(String prefix) {
+
+        return null;
     }
 
 }

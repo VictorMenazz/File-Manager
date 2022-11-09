@@ -118,8 +118,7 @@ public class DomainController {
      * @return Arraylist of a Documents
      */
     public ArrayList<Document> authorDocuments(String authorName) {
-        Folder rootFolder = folders.getRoot();
-        return ctrlSearch.searchAuthorDocuments(rootFolder, authorName);
+        return ctrlAuthors.searchAuthorDocuments(authorName);
     }
 
     /**
@@ -128,8 +127,7 @@ public class DomainController {
      * @return
      */
     public ArrayList<String> searchAuthors(String prefix) {
-        Folder rootFolder = folders.getRoot();
-        return ctrlSearch.searchAuthorsPrefix(rootFolder, prefix);
+        return ctrlAuthors.searchAuthorsPrefix(prefix);
     }
 
     /**
