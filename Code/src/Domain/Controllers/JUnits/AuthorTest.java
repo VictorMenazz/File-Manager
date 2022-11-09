@@ -15,7 +15,7 @@ import static org.junit.Assert.assertEquals;
  */
 public class AuthorTest {
     @Test
-    public static void TestSetName() {
+    public void testSetName() {
         String new_name = "Jordi";
         Author instance = new Author();
         instance.setName(new_name);
@@ -23,13 +23,13 @@ public class AuthorTest {
     }
 
     @Test
-    public static void TestGetName() {
+    public void testGetName() {
         Author instance = new Author("Jordi");
         assertEquals("Jordi",instance.getName());
     }
 
     @Test
-    public static void TestGetTitles() {
+    public void testGetTitles() {
         Author instance = new Author("Jordi");
         String doc1 = "DocEn";
         String doc2 = "DocCat";
@@ -45,7 +45,7 @@ public class AuthorTest {
     }
 
     @Test
-    public static void TestGetNumTitles() {
+    public void testGetNumTitles() {
         Author instance = new Author("Jordi");
         instance.addTitle("Doc1");
         instance.addTitle("Doc2");
@@ -53,7 +53,7 @@ public class AuthorTest {
     }
 
     @Test
-    public static void TestAddTitle() {
+    public void testAddTitle() {
         Author instance = new Author("Jordi");
         String doc1 = "DocEn";
         String doc2 = "DocCat";
@@ -69,7 +69,7 @@ public class AuthorTest {
     }
 
     @Test
-    public static void TestDelTitle() {
+    public void testDelTitle() {
         Author instance = new Author("Jordi");
         String doc1 = "DocEn";
         String doc2 = "DocCat";
@@ -85,7 +85,7 @@ public class AuthorTest {
     }
 
     @Test
-    public static boolean TestMatchesPrefix() {
+    public void testMatchesPrefix() {
         Author instance = new Author("Jordi");
         assertEquals(true,"Jor");
         assertEquals(true, "J");
