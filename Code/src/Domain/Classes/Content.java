@@ -1,7 +1,6 @@
 package Code.src.Domain.Classes;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -36,6 +35,11 @@ public class Content {
     private ArrayList<Sentence> text;
 
     /**
+     * Language
+     */
+    private String lang;
+
+    /**
      * @brief Default create of Content
      * */
     public Content()
@@ -65,7 +69,7 @@ public class Content {
                 text.add(new Sentence("breakLine")); //ASI GUARDAMOS SALTO DE LINEA
                 auxText = auxText.substring(jump+2); //until the end
             }
-            String untilDot = auxText.substring(0, posDot); //string that goes to Domain.Domain.Classes.Classes.Sentence
+            String untilDot = auxText.substring(0, posDot); //string that goes to Sentence
             Sentence aux = new Sentence(untilDot);
             text.add(aux);
 
@@ -98,15 +102,37 @@ public class Content {
             else frequency.put(auxWord, 1);
             allWords.remove(0);
         }
+
+        //Save language
+        lang = language;
     }
 
     /**
-     * @brief
+     * @brief Get text write in a String
+     * @return text in a string
      */
-    public void getWords(){
+    public String getText(){
+        String cText = "";
         for (Sentence s : text){
-            s.writeSentence();
-            System.out.println();
+            String aux = s.getSentence();
+            if (aux == null) cText += "\n";
+            else cText += aux;
+        }
+        return cText;
+    }
+
+    /**
+     * @brief Get language of the context
+     * @return language
+     */
+    public String getLanguage() {
+        switch (lang) {
+            case "ENG":
+                return "English";
+            case "CAT":
+                return "Catalan";
+            default:
+                return "Spanish";
         }
     }
 

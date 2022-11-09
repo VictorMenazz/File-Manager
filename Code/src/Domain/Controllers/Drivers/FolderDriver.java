@@ -130,7 +130,7 @@ public class FolderDriver {
 
         Document doc = f.getDocument(author,  title);
         Content c = doc.getContent();
-        c.getWords();
+        c.getText();
     }
 
     public static void testModifyAuthor() throws IOException {
