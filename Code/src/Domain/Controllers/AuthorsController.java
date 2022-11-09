@@ -68,24 +68,30 @@ public class AuthorsController {
     }
 
     /**
-     * @brief Add a document title given to a specific Author
+     * @brief Add a document title given to a specific Author, if the author does not exist it is created
      * @param authorName, References to the Author's name
      * @param title, References to the title of the document
      */
     public void addTitleAuthor(String authorName, String title) {
-        if (authors.containsKey(authorName)) {
-            authors.get(authorName).addTitle(title);
+        // if the Author did not exist, it is created
+        if (!authors.containsKey(authorName)) {
+            authors.put(authorName, new Author(authorName));
         }
+        authors.get(authorName).addTitle(title);
     }
 
     /**
-     * @brief Deletes a document title given of a specific Author
+     * @brief Deletes a document title given of a specific Author, if once deleted, it has 0 docs, Author is also removed
      * @param authorName, References to the Author's name
      * @param title, References to the title of the document
      */
     public void delTitleAuthor(String authorName, String title) {
         if (authors.containsKey(authorName)) {
             authors.get(authorName).delTitle(title);
+            // if the Author runs out of documents, it is deleted
+            if (authors.get(authorName).getNumTitles() == 0) {
+                authors.remove(authorName);
+            }
         }
     }
 
