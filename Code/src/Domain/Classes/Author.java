@@ -3,12 +3,19 @@ package Code.src.Domain.Classes;
 import java.util.ArrayList;
 
 /**
- * @brief Class Author that contains the information of a Author
+ * @brief Class Author that contains the information of an Author
  * @author Jordi Soley Masats
  */
 public class Author {
+    /**
+     * @brief Name of the Author
+     */
     String name;
-    ArrayList<Document> docs;
+
+    /**
+     * @brief Titles of the documents of the Author
+     */
+    ArrayList<String> docs;
 
     /**
      * @brief Creator with name assignment
@@ -20,7 +27,7 @@ public class Author {
 
     /**
      * @brief Return the name of the Author
-     * @return
+     * @return name of the Author
      */
     public String getName() {
         return name;
@@ -35,19 +42,19 @@ public class Author {
     }
 
     /**
-     * @brief Return a ArrayList of Author's Documents
-     * @return
+     * @brief Return a list of Author's titles of his documents
+     * @return List of documents titles of the Author
      */
-    public ArrayList<Document> getDocuments() {
+    public ArrayList<String> getTitles() {
         return docs;
     }
 
     /**
-     * @brief Add a document to the Author
-     * @param doc instance of the class Document we add
+     * @brief Add a title document to the Author
+     * @param docTitle title of the Document we add
      */
-    public void addDocument(Document doc) {
-        docs.add(doc);
+    public void addTitle(String docTitle) {
+        docs.add(docTitle);
     }
 
     /**

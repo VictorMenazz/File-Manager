@@ -10,7 +10,6 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
- * @brief Class SetAuthors that contains a set of Authors
  * @author Jordi Soley Masats
  */
 public class AuthorsController {
@@ -46,7 +45,7 @@ public class AuthorsController {
      * @param prefix
      * @return ArrayList of names of authors starting with a given prefix
      */
-    public ArrayList<String> namesAuthorsMatch(String prefix) {
+    public ArrayList<String> searchAuthorsPrefix(String prefix) {
         ArrayList<String> res = new ArrayList<String>();
         for (Author a : authors.values()) {
             if (a.matchesPrefix(prefix)) {
@@ -56,14 +55,15 @@ public class AuthorsController {
         return res;
     }
 
-
-    public ArrayList<Document> searchAuthorDocuments(String authorName) {
-
-        return  null;
-    }
-
-    public ArrayList<String> searchAuthorsPrefix(String prefix) {
-
+    /**
+     * @brief Returns the Documents titles of an Author
+     * @param authorName, References to the name of the Author
+     * @return A list of document titles of a specific Author
+     */
+    public ArrayList<String> searchAuthorDocuments(String authorName) {
+        if (authors.containsKey(authorName)) {
+            return authors.get(authorName).getTitles();
+        }
         return null;
     }
 
