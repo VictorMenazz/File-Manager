@@ -17,7 +17,7 @@ public class AuthorTest {
     @Test
     public void testSetName() {
         String new_name = "Jordi";
-        Author instance = new Author();
+        Author instance = new Author(null);
         instance.setName(new_name);
         assertEquals(new_name, instance.getName());
     }

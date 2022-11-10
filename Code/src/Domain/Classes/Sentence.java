@@ -50,12 +50,17 @@ public class Sentence {
     }
 
     /**
-     * @brief Print out the sentence
+     * @brief Reconstruct the sentence
+     * @return Sentence in ona string
      */
-    public void writeSentence() {
-        /** MARC, delete this, just testing **/
-        for (String s : words){
-            System.out.println(s + ' ');
+    public String getSentence() {
+        if (words.length == 1 & words[0]=="breakLine") {
+            return null;
         }
+        String aux = "";
+        for(String word: words) {
+            aux += word+" ";
+        }
+        return aux;
     }
 }
