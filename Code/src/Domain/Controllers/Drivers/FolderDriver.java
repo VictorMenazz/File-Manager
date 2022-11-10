@@ -3,10 +3,12 @@ package Code.src.Domain.Controllers.Drivers;
 import Code.src.Domain.Classes.Content;
 import Code.src.Domain.Classes.Document;
 import Code.src.Domain.Classes.Folder;
+import Code.src.Domain.Classes.Pair;
 import Code.src.Domain.Controllers.Stubs.DocumentStub;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class FolderDriver {
@@ -308,6 +310,10 @@ public class FolderDriver {
         Document d2 = f.getDocument(author, title);
         System.out.println("Checking Doc -> Title: " + d2.getTitle() + " Author: " + d2.getAuthor());
         System.out.println();
+    }
+
+    public static void getMapsDocs(){
+
     }
 
     public static void testDocumentContained() throws IOException {

@@ -269,14 +269,30 @@ public class Folder {
 
     public HashMap<Pair<String, String>, HashMap<String,Integer>> getMapsDocs(){
         HashMap<Pair<String, String>, HashMap<String,Integer>> result = new HashMap<Pair<String, String>, HashMap<String,Integer>>();
-        for (Document d : documents.values()){
-            Pair<String, String> key = new Pair<String, String>(d.getTitle(),d.getAuthor());
-            HashMap<String,Integer> value = d.contentSearch();
+        if(subFolders.isEmpty())  result  = igetMapsDocs();
+        else{
+            result = igetMapsDocs();
+            for (Folder f : subFolders.values()){
+                HashMap<Pair<String, String>, HashMap<String,Integer>> subFolderResult = f.getMapsDocs();
+                for(HashMap.Entry<Pair<String, String>, HashMap<String,Integer>> entry : subFolderResult.entrySet()){
+                    Pair<String, String> docId = entry.getKey();
+                    HashMap<String,Integer> docMap = entry.getValue();
+                    result.put(docId,docMap);
+                }
+            }
         }
-
         return result;
     }
 
+    public HashMap<Pair<String, String>, HashMap<String,Integer>> igetMapsDocs(){
+        HashMap<Pair<String, String>, HashMap<String,Integer>> result = new HashMap<Pair<String, String>, HashMap<String,Integer>>();
+        for (Document d : documents.values()){
+            Pair<String, String> key = new Pair<String, String>(d.getTitle(),d.getAuthor());
+            HashMap<String,Integer> value = d.contentSearch();
+            result.put(key,value);
+        }
+        return result;
+    }
     //Consultants
 
     /**
