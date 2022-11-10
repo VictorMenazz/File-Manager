@@ -116,6 +116,21 @@ public class Folder {
     }
 
     /**
+     * @brief Delete a Document from this folder
+     * @param authorName, References to the name of the Document's Author
+     * @param title, References to the Document's title
+     */
+    public void delDocument(String authorName, String title) {
+        Pair<String, String> docKey = new Pair(title, authorName);
+        if (documents.containsKey(docKey)) {
+            documents.remove(docKey);
+        }
+        else {
+            // exception the document you are trying to delete does not exist
+        }
+    }
+
+    /**
      * @brief Modifies the Content of a certain Document.
      * @param authorName, References the Author of a Document.
      * @param title, Represents the title of the Document.

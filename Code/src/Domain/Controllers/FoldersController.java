@@ -50,6 +50,15 @@ public class FoldersController {
     }
 
     /**
+     * @brief Deletes a Document of the collection.
+     * @param autorName, References to the name of the Document's Author
+     * @param title, References to the Document's title
+     */
+    public void deleteDocument(String autorName, String title) {
+        rootFolder.delDocument(autorName, title);
+    }
+
+    /**
      * @brief Modifies the Content of a Document identified by <title, authorName>.
      * @param authorName, References the Author of a Document.
      * @param title, Represents the title of the Document.
