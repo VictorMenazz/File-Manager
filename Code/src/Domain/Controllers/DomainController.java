@@ -216,6 +216,11 @@ public class DomainController {
     //crear excepcion
     public void deleteDocument(String authorName, String title) {
         //comunicacion con capa data
+        // FALTA ELIMINAR EL FITXER
+
+        folders.deleteDocument(authorName, title);
+        // if Author runs out of documents, it's deleted
+        ctrlAuthors.delTitleAuthor(authorName, title);
     }
 
     /**
