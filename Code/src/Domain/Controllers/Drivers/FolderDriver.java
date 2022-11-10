@@ -135,7 +135,7 @@ public class FolderDriver {
 
         Document doc = f.getDocument(author,  title);
         Content c = doc.getContent();
-        c.getWords();
+        System.out.println(c.getText());
         System.out.println();
     }
 
