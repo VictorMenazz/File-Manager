@@ -5,9 +5,8 @@ import Code.src.Domain.Classes.Document;
 import Code.src.Domain.Classes.Folder;
 import Code.src.Domain.Classes.Pair;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedHashSet;
+import java.io.IOException;
+import java.util.*;
 
 public class SearchController {
     /**
@@ -18,7 +17,7 @@ public class SearchController {
     /**
      * @brief Unordered list of BooleanExpressions
      */
-    private LinkedHashSet<BooleanExpression> listBoolExps;
+    private HashSet<BooleanExpression> listBoolExps;
 
     /**
      * @brief Default creator
@@ -95,15 +94,16 @@ public class SearchController {
      * @param k
      * @return
      */
-    public ArrayList<Document> appearanceSearch(Folder rootFolder, String authorName, String title, int k){
+    public HashMap<String, String> appearanceSearch(Folder rootFolder, String authorName, String title, int k){
         HashMap<Pair<String, String>, HashMap<String,Integer>> listDocs = rootFolder.getMapsDocs();
         Pair<String, String> docKey = new Pair(title, authorName);
-        HashMap<String, Integer> vectorDoc = listDocs.get(docKey);
-        //LISTA DONDE GUARDAMOS COSENOS y PAIRS CORRESPONDIENTES
+        HashMap<String, Integer> vectorDoc = listDocs.get(docKey); //vector of the document
+
+        Map<Double, Pair<String, String>> listSimilarity = new LinkedHashMap<>();
 
         for(HashMap.Entry<Pair<String, String>, HashMap<String,Integer>> Doc : listDocs.entrySet()) {
             HashMap<String, Integer> vectorConverted = new HashMap<>();
-            if(docKey != Doc.getKey()) {
+            if(docKey != Doc.getKey()) { //create a Map adapted to the length and content of the Map of the document
                 HashMap<String, Integer> vecAux = Doc.getValue();
                 for (HashMap.Entry<String, Integer> auxVector : vectorDoc.entrySet()) {
                     String word = auxVector.getKey();
@@ -113,16 +113,46 @@ public class SearchController {
                     else vectorConverted.put(word, 0);
                 }
             }
-            //SACAR COSENO
+            //calcul cosine similarity
+            double sim = calculateCosineSimilarity(vectorDoc, vectorConverted);
+            //add similarity to list of all similarities
+            listSimilarity.put(sim, Doc.getKey());
         }
-        //PREPARAR ARRAY QUE DEVOLVEREMOS
+        //Prepare map to return
+        HashMap<String, String> result = new HashMap<>();
+        Set<Double> dkeys = listSimilarity.keySet();
+        Iterator<Double> it = dkeys.iterator();
+        for(int i = 0; i < k; ++i) {
+            //if(!it.hasNext()) throw IOException; FOR THE FUTURE
+            Pair<String, String> pair = listSimilarity.get(it.next());
+            result.put(pair.first, pair.second);
+        }
         //DEVOLVER CLAVE DE DOCUMENTO MEJOR
-        return null;
+        return result;
     }
 
     public ArrayList<Document> searchDocuments(Folder rootFolder, String pWords, int k) {
         //ELIMINAR STOPWORDS
 
         return null;
+    }
+
+    private Double calculateCosineSimilarity(HashMap<String, Integer> first, HashMap<String, Integer> second) {
+        Double sum = 0.0;
+        for(HashMap.Entry<String, Integer> auxVector : first.entrySet()) {
+            sum += auxVector.getValue() * second.get(auxVector.getKey());
+        }
+        double fnorm = calculateNorm(first);
+        double snorm = calculateNorm(second);
+        double similarity = sum / (fnorm * snorm);
+        return similarity;
+    }
+
+    private Double calculateNorm(HashMap<String, Integer> map) {
+        Double norm = 0.0;
+        for(HashMap.Entry<String, Integer> auxVector : map.entrySet()) {
+            norm += Math.pow(auxVector.getValue(), 2);
+        }
+        return Math.sqrt(norm);
     }
 }

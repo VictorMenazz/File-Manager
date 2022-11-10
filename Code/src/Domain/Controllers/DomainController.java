@@ -173,7 +173,7 @@ public class DomainController {
     // public ArrayList<String> appearenceSearchTitles(String authorName, String title, int k);
     // public ArrayList<String> appearenceSearchAuthors(String authorName, String title, int k);
     // public ArrayList<String> appearenceSearchContent(String authorName, String title, int k);
-    public ArrayList<Document> appearanceSearch(String authorName, String title, int k) {
+    public HashMap<String, String> appearanceSearch(String authorName, String title, int k) {
         Folder rootFolder = folders.getRoot();
         return ctrlSearch.appearanceSearch(rootFolder, authorName, title, k);
     }
