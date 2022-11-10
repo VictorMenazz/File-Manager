@@ -20,10 +20,15 @@ public class SearchController {
      */
     private LinkedHashSet<BooleanExpression> listBoolExps;
 
+    /**
+     * @brief Default creator
+     * @param root the instance of rootFolder
+     */
     public SearchController(Folder root) {
         rootFolder = root;
         listBoolExps = new LinkedHashSet<>();
     }
+
     public void addExpression(String boolExp) {
         BooleanExpression bExpr = new BooleanExpression(boolExp);
         listBoolExps.add(bExpr);
@@ -41,6 +46,10 @@ public class SearchController {
         listBoolExps.remove(be);
     }
 
+    /**
+     * @brief
+     * @return
+     */
     public String getListExp(){
         String list = "";
         for (BooleanExpression be : listBoolExps){
@@ -50,7 +59,12 @@ public class SearchController {
         return list;
     }
 
-
+    /**
+     *
+     * @param rootFolder
+     * @param expression
+     * @return
+     */
     public ArrayList<Document> booleanExpressionSearch(Folder rootFolder, String expression) {
         BooleanExpression boolExpr = new BooleanExpression(expression);
         ArrayList<Document> list;
@@ -62,6 +76,7 @@ public class SearchController {
         return null;
     }
 
+
     public ArrayList<Document> appearanceSearch(Folder rootFolder, String authorName, String title, int k){
         HashMap<Pair<String, String>, HashMap<String,Integer>> listDocs = rootFolder.getMapsDocs();
         Pair<String, String> docKey = new Pair(title, authorName);
@@ -69,11 +84,15 @@ public class SearchController {
         //LISTA DONDE GUARDAMOS COSENOS y PAIRS CORRESPONDIENTES
 
         for(HashMap.Entry<Pair<String, String>, HashMap<String,Integer>> Doc : listDocs.entrySet()) {
-            HashMap.Entry<String, Integer> vectorConverted;
+            HashMap<String, Integer> vectorConverted = new HashMap<>();
             if(docKey != Doc.getKey()) {
+                HashMap<String, Integer> vecAux = Doc.getValue();
                 for (HashMap.Entry<String, Integer> auxVector : vectorDoc.entrySet()) {
-
-                    //RECORRER POSICIONES HASHMAP Y CREAR EL AUXILIAR
+                    String word = auxVector.getKey();
+                    if(vecAux.containsKey(word)) {
+                        vectorConverted.put(word, vecAux.get(word));
+                    }
+                    else vectorConverted.put(word, 0);
                 }
             }
             //SACAR COSENO
