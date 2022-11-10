@@ -3,8 +3,10 @@ package Code.src.Domain.Controllers;
 import Code.src.Domain.Classes.BooleanExpression;
 import Code.src.Domain.Classes.Document;
 import Code.src.Domain.Classes.Folder;
+import Code.src.Domain.Classes.Pair;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 
 public class SearchController {
@@ -61,8 +63,23 @@ public class SearchController {
     }
 
     public ArrayList<Document> appearanceSearch(Folder rootFolder, String authorName, String title, int k){
+        HashMap<Pair<String, String>, HashMap<String,Integer>> listDocs = rootFolder.getMapsDocs();
+        Pair<String, String> docKey = new Pair(title, authorName);
+        HashMap<String, Integer> vectorDoc = listDocs.get(docKey);
+        //LISTA DONDE GUARDAMOS COSENOS y PAIRS CORRESPONDIENTES
 
+        for(HashMap.Entry<Pair<String, String>, HashMap<String,Integer>> Doc : listDocs.entrySet()) {
+            HashMap.Entry<String, Integer> vectorConverted;
+            if(docKey != Doc.getKey()) {
+                for (HashMap.Entry<String, Integer> auxVector : vectorDoc.entrySet()) {
 
+                    //RECORRER POSICIONES HASHMAP Y CREAR EL AUXILIAR
+                }
+            }
+            //SACAR COSENO
+        }
+        //PREPARAR ARRAY QUE DEVOLVEREMOS
+        //DEVOLVER CLAVE DE DOCUMENTO MEJOR
         return null;
     }
 
