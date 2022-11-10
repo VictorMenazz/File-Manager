@@ -110,6 +110,14 @@ public class FolderDriver {
         System.out.println();
     }
 
+    // +++++++++++++++++++++
+    // FALTA ACABAR
+    // +++++++++++++++++++++
+    public static void testDelDocument() {
+        System.out.println("");
+        // FALTA ACABAR
+    }
+
     public static void testModifyContent() throws IOException {
         //Testing a Document initialized without Content, plain text.
         System.out.println("Checking initializing method 1:");

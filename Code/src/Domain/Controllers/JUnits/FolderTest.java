@@ -45,6 +45,15 @@ public class FolderTest {
     }
 
     @Test
+    public void delDocument() {
+        Folder f = new Folder(1, "Test");
+        Document doc = new DocumentStub();
+        f.addDocument(doc);
+        f.delDocument("authorTest", "titleTest");
+        assertFalse(f.documentContained("titleTest", "authorTest"));
+    }
+
+    @Test
     public void modifyContent() {
         /*Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
