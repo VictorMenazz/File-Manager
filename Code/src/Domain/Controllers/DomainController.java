@@ -182,7 +182,7 @@ public class DomainController {
      *
      * @return
      */
-    public ArrayList<Document> booleanExpressionSearch(String boolExp) {
+    public HashMap<String, String> booleanExpressionSearch(String boolExp) {
         Folder rootFolder = folders.getRoot();
         return ctrlSearch.booleanExpressionSearch(rootFolder, boolExp);
     }
@@ -193,9 +193,9 @@ public class DomainController {
      * @param k
      * @return
      */
-    public ArrayList<Document> documentsQuery(String pWords, int k) {
+    public HashMap<String, String> documentsQuery(String pWords, String language, int k) throws IOException {
         Folder rootFolder = folders.getRoot();
-        return ctrlSearch.searchDocuments(rootFolder, pWords, k);
+        return ctrlSearch.searchDocuments(rootFolder, pWords, language, k);
     }
 
     /** Saves a Document with changes in the Data Layer.
