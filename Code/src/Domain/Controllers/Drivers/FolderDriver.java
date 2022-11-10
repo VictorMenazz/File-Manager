@@ -312,8 +312,47 @@ public class FolderDriver {
         System.out.println();
     }
 
-    public static void getMapsDocs(){
+    public static void getMapsDocs() throws IOException {
+        Folder f = new Folder(1,"Test");
+        System.out.println("New Document");
+        System.out.println("Title:");
+        String title = readInputString();
+        System.out.println("Author:");
+        String author = readInputString();
+        //Content on plain text return missing.
+        System.out.println("Content:");
+        String cont = readInputString();
+        System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content:");
+        String language = readInputString();
 
+        Document d = new Document(title,author,cont,language);
+        f.addDocument(d);
+
+        f.createFolder("SubFolder",1);
+        System.out.println("New Document");
+        System.out.println("Title:");
+        String title2 = readInputString();
+        System.out.println("Author:");
+        String author2 = readInputString();
+        //Content on plain text return missing.
+        System.out.println("Content:");
+        String cont2 = readInputString();
+        System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content:");
+        String language2 = readInputString();
+
+        Document d2 = new Document(title2,author2,cont2,language2);
+        f.addDocumentToSubfolder(d2, 2);
+
+        HashMap<Pair<String, String>, HashMap<String,Integer>> result = f.getMapsDocs();
+        for(HashMap.Entry<Pair<String, String>, HashMap<String,Integer>> entry : result.entrySet()){
+            Pair<String, String> docId = entry.getKey();
+            HashMap<String,Integer> docMap = entry.getValue();
+            System.out.println("New Doc: " + docId.first + docId.second);
+            for(HashMap.Entry<String, Integer> doc : docMap.entrySet()){
+                System.out.print(doc.getKey() + ':' + doc.getValue() + " ");
+            }
+            System.out.println();
+        }
     }
 
     public static void testDocumentContained() throws IOException {
@@ -433,6 +472,9 @@ public class FolderDriver {
                     System.out.println("testFolderContained() choose:");
                     testFolderContained();
                     break;
+                case 17:
+                    getMapsDocs();
+                    break;
                 default:
                     System.out.println("testFolder() test:");
                     testFolder();
@@ -473,8 +515,7 @@ public class FolderDriver {
     //PRIVATE METHODS
 
     private static String readInputString() {
-        String inp = writer.nextLine();
-        System.out.printf(inp);
+        String inp = writer.next();
         return inp;
     }
 

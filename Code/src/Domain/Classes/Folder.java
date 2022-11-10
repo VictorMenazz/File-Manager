@@ -82,6 +82,7 @@ public class Folder {
         if(foldId == this.folderId) {
             Folder f = new Folder(lastFolderId+1, fName);
             subFolders.put(lastFolderId,f);
+            System.out.println("Id: " + lastFolderId);
         }
         else{
             int nextId = getNextFolderParent(foldId);
@@ -249,6 +250,19 @@ public class Folder {
      * */
     public int getDocumentAmount(){
         return docAmount;
+    }
+
+    public void addDocumentToSubfolder(Document newD, int foldId){
+        if(foldId == folderId) this.addDocument(newD);
+        else if(subFolders.containsKey(foldId)){
+            Folder f = subFolders.get(foldId);
+            f.addDocument(newD);
+        }
+        else{
+            int nextF = getNextFolderParent(foldId);
+            Folder f = subFolders.get(nextF);
+            f.addDocumentToSubfolder(newD, foldId);
+        }
     }
 
     /**
