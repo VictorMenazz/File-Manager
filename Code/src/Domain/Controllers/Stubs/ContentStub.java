@@ -15,8 +15,8 @@ public class ContentStub extends Content {
         language = "ENG";
     }
 
-    public Map<String,Integer> getVector() {
-        Map<String, Integer> test = null;
+    public HashMap<String,Integer> getVector() {
+        HashMap<String, Integer> test = null;
         test.put("Test",-1);
         return test;
     }

@@ -141,7 +141,7 @@ public class Content {
      *
      * @return map of frequency
      */
-    public Map<String,Integer> getVector()
+    public HashMap<String,Integer> getVector()
     {
         return this.frequency;
     }

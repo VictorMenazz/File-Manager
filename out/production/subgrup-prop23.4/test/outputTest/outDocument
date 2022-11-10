@@ -1,0 +1,100 @@
+Document Driver:
+Introduce the number allocated to the function you want to test.
+Functions:
+0. All
+1. testDocumentConstruct1
+2. testDocumentConstruct2
+3. testSetAuthor
+4. testSetTitle
+5. testSetContent
+6. testSetLanguage
+7. testProtectDocument
+8. testGetTitle
+9. testGetAuthor
+10. testGetContent
+11. testGetLanguage
+12. Exit
+
+testDocumentConstruct1() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Document created -> Title:Title1 Author:Auth1
+Testing 'testFolder()' finished.
+
+testDocumentConstruct2() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Document created -> Title:Title2 Author:Auth2
+Testing 'testFolder()' finished.
+
+testSetAuthor() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Introduce the new Author for the Document:
+Author changed to: AuthChanged
+
+testSetTitle() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Introduce the new Title for the Document:
+Title changed to: NewTitle
+
+testSetContent() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Introduce the new Content for the Document:
+
+testSetLanguage() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Introduce the new Language for the Document:
+Language changed to: CAT
+
+testProtectDocument() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Introduce the password for the Document:
+Document is protected: true
+
+testGetTitle() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Title: Title8
+
+testGetAuthor() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Author: Title9
+
+testGetContent() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Content: Code.src.Domain.Classes.Content@5e3a8624
+
+testGetLanguage() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Language: ENG
+

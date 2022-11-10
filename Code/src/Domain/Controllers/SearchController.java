@@ -67,6 +67,8 @@ public class SearchController {
     }
 
     public ArrayList<Document> searchDocuments(Folder rootFolder, String pWords, int k) {
+        //ELIMINAR STOPWORDS
+
         return null;
     }
 }
