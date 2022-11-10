@@ -59,7 +59,8 @@ public class Sentence {
         }
         String aux = "";
         for(String word: words) {
-            aux += word+" ";
+            if (words[words.length-1] == word) aux += word;
+            else aux += word+" ";
         }
         return aux;
     }

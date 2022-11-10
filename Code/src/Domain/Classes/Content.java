@@ -70,7 +70,7 @@ public class Content {
                 auxText = auxText.substring(jump+2); //until the end
             }
             String untilDot = auxText.substring(0, posDot); //string that goes to Sentence
-            Sentence aux = new Sentence(untilDot);
+            Sentence aux = new Sentence(untilDot + ".");
             text.add(aux);
 
             auxText = auxText.substring(posDot+1); //until the end
@@ -98,6 +98,14 @@ public class Content {
         //Build the vector
         while(!allWords.isEmpty()) {
             String auxWord = allWords.get(0);
+            //Clean word
+            auxWord = auxWord.replace(".", "");
+            auxWord = auxWord.replace(",", "");
+            auxWord = auxWord.replace("!", "");
+            auxWord = auxWord.replace("?", "");
+            auxWord = auxWord.replace(";", "");
+            auxWord = auxWord.replace(":", "");
+
             if(frequency.containsKey(auxWord)) frequency.compute(auxWord, (Key, Value) -> Value+1);
             else frequency.put(auxWord, 1);
             allWords.remove(0);

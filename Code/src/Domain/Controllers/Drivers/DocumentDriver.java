@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class DocumentDriver {
-    private static Scanner writer = new Scanner(System.in);
+    private static Scanner writer = new Scanner(System.in).useDelimiter("\n");
 
     public static Document initialCreation1() throws IOException {
         System.out.println("Introduce a title for the Document:");

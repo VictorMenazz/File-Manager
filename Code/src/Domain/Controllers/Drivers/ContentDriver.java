@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class ContentDriver {
-    private static Scanner writer = new Scanner(System.in);
+    private static Scanner writer = new Scanner(System.in).useDelimiter("\n");
 
     public static Content initialCreation1() throws IOException {
         System.out.println("Introduce text for the Content: ");
@@ -74,7 +74,7 @@ public class ContentDriver {
         System.out.println("Functions:");
         System.out.println(functions);
         int code = readInputInteger();
-        while(code != 5) {
+        while(code != 7) {
             switch (code) {
                 case 1:
                     System.out.println("testContentConstruct() choose:");

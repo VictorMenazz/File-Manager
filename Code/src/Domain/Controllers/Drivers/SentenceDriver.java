@@ -5,7 +5,7 @@ import Code.src.Domain.Classes.Sentence;
 import java.util.Scanner;
 
 public class SentenceDriver {
-    private static Scanner writer = new Scanner(System.in);
+    private static Scanner writer = new Scanner(System.in).useDelimiter("\n");
 
     public static Sentence initialCreation() {
         System.out.println("Introduce the content of the sentence");

@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class FolderDriver {
-    private static Scanner writer = new Scanner(System.in);
+    private static Scanner writer = new Scanner(System.in).useDelimiter("\n");
 
     /** @brief Creator test. */
     public static void testFolder() {
