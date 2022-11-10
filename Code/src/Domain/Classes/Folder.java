@@ -267,6 +267,16 @@ public class Folder {
         }
     }
 
+    public HashMap<Pair<String, String>, HashMap<String,Integer>> getMapsDocs(){
+        HashMap<Pair<String, String>, HashMap<String,Integer>> result = new HashMap<Pair<String, String>, HashMap<String,Integer>>();
+        for (Document d : documents.values()){
+            Pair<String, String> key = new Pair<String, String>(d.getTitle(),d.getAuthor());
+            HashMap<String,Integer> value = d.contentSearch();
+        }
+
+        return result;
+    }
+
     //Consultants
 
     /**

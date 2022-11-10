@@ -1,6 +1,7 @@
 package Code.src.Domain.Classes;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class Document {
         /**
@@ -144,7 +145,12 @@ public class Document {
         public String getLanguage() {
             return language;
         }
-        //Consultants
+
+        public HashMap<String, Integer> contentSearch() {
+            return cont.getVector();
+        }
+
+    //Consultants
         /**
          * @brief Check if Document is protected.
          * @return title, String that represents the content of the document.
