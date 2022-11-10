@@ -238,8 +238,16 @@ public class BooleanExpression {
     /***
      * @return root of the Expression Tree
      */
-    public Node getExpression(){
+    public Node getExpTree(){
         return root;
+    }
+
+    public String getExpression(){
+        return boolExpr;
+    }
+
+    public ArrayList<String[]> getMatches() {
+        return null;
     }
 
 };

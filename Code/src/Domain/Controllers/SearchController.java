@@ -22,26 +22,36 @@ public class SearchController {
         rootFolder = root;
         listBoolExps = new LinkedHashSet<>();
     }
-    public void addQuery(String boolExp) {
-
+    public void addExpression(String boolExp) {
+        BooleanExpression bExpr = new BooleanExpression(boolExp);
+        listBoolExps.add(bExpr);
     }
-    public void modifyQuery(int pos) {
+    public void modifyExpression(String oldExpr, String newExpr) {
+        BooleanExpression bold = new BooleanExpression(oldExpr);
+        listBoolExps.remove(bold);
 
+        BooleanExpression bnew = new BooleanExpression(newExpr);
+        listBoolExps.add(bnew);
     }
 
-    public void deleteQuery(int pos){
-
+    public void deleteQuery(String boolExp){
+        BooleanExpression be = new BooleanExpression(boolExp);
+        listBoolExps.remove(be);
     }
 
-    public BooleanExpression getInstance(int pos) {
-
-        return null;
+    public String getListExp(){
+        String list = "";
+        for (BooleanExpression be : listBoolExps){
+            String aux = be.getExpression();
+            list += aux + "\n";
+        }
+        return list;
     }
+
 
     public ArrayList<Document> booleanExpressionSearch(Folder rootFolder, String expression) {
         BooleanExpression boolExpr = new BooleanExpression(expression);
         ArrayList<Document> list;
-        BooleanExpression.Node root = boolExpr.getExpression();
 
 
 
@@ -51,6 +61,8 @@ public class SearchController {
     }
 
     public ArrayList<Document> appearanceSearch(Folder rootFolder, String authorName, String title, int k){
+
+
         return null;
     }
 
