@@ -16,23 +16,33 @@ public class SearchController {
     private Folder rootFolder;
 
     /**
-     * @brief List of BooleanExpressions
+     * @brief Unordered list of BooleanExpressions
      */
     private LinkedHashSet<BooleanExpression> listBoolExps;
 
     /**
      * @brief Default creator
-     * @param root the instance of rootFolder
+     * @param root: the instance of rootFolder
      */
     public SearchController(Folder root) {
         rootFolder = root;
         listBoolExps = new LinkedHashSet<>();
     }
 
+    /***
+     * @brief Saves a boolean expression to the historial.
+     * @param boolExp, string with the boolean expression.
+     */
     public void addExpression(String boolExp) {
         BooleanExpression bExpr = new BooleanExpression(boolExp);
         listBoolExps.add(bExpr);
     }
+
+    /***
+     * @brief Modifies an existing boolean expression
+     * @param oldExpr, old boolean expression
+     * @param newExpr, new boolean expression
+     */
     public void modifyExpression(String oldExpr, String newExpr) {
         BooleanExpression bold = new BooleanExpression(oldExpr);
         listBoolExps.remove(bold);
@@ -47,8 +57,8 @@ public class SearchController {
     }
 
     /**
-     * @brief
-     * @return
+     * @brief gets a string with all the boolean expressions saved.
+     * @return String with all the saved boolean expressions
      */
     public String getListExp(){
         String list = "";
@@ -60,7 +70,7 @@ public class SearchController {
     }
 
     /**
-     *
+     * @brief
      * @param rootFolder
      * @param expression
      * @return
@@ -77,6 +87,14 @@ public class SearchController {
     }
 
 
+    /***
+     * @brief
+     * @param rootFolder
+     * @param authorName
+     * @param title
+     * @param k
+     * @return
+     */
     public ArrayList<Document> appearanceSearch(Folder rootFolder, String authorName, String title, int k){
         HashMap<Pair<String, String>, HashMap<String,Integer>> listDocs = rootFolder.getMapsDocs();
         Pair<String, String> docKey = new Pair(title, authorName);
