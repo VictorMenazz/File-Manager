@@ -1,9 +1,6 @@
 package Code.src.Domain.Controllers;
 
-import Code.src.Domain.Classes.BooleanExpression;
-import Code.src.Domain.Classes.Document;
-import Code.src.Domain.Classes.Folder;
-import Code.src.Domain.Classes.Pair;
+import Code.src.Domain.Classes.*;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -33,7 +30,7 @@ public class SearchController {
     /**
      * @brief Unordered list of BooleanExpressions
      */
-    private HashSet<BooleanExpression> listBoolExps;
+    private LinkedHashSet<BooleanExpression> listBoolExps;
 
     /**
      * @brief Default creator
@@ -92,13 +89,12 @@ public class SearchController {
      */
     public HashMap<String, String> booleanExpressionSearch(Folder rootFolder, String expression) {
         BooleanExpression boolExpr = new BooleanExpression(expression);
-        ArrayList<Document> list;
+        listBoolExps.add(boolExpr);
+        HashMap<Pair<String, String>, ArrayList<Sentence>> listDocs = rootFolder.getAllContent();
 
+        for(HashMap.Entry<Pair<String, String>, ArrayList<Sentence>> docContent : listDocs.entrySet()) {
 
-
-
-
-        return null;
+        }
     }
 
 

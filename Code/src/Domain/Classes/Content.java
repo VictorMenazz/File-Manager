@@ -8,7 +8,6 @@ import java.util.ArrayList;
 import java.lang.String;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -106,7 +105,9 @@ public class Content {
             auxWord = auxWord.replace(";", "");
             auxWord = auxWord.replace(":", "");
             auxWord = auxWord.replace("\"", "");
-            auxWord = auxWord.replace("\'", "");
+            if(language == "ESP") {
+                auxWord = auxWord.replace("\'", "");
+            }
 
             if(frequency.containsKey(auxWord)) frequency.compute(auxWord, (Key, Value) -> Value+1);
             else frequency.put(auxWord, 1);
@@ -131,6 +132,13 @@ public class Content {
         return cText;
     }
 
+    /**
+     * @brief Get all the sentences of the content
+     * @return structure of sentences of the content
+     */
+    public ArrayList<Sentence> getSentences() {
+        return text;
+    }
     /**
      * @brief Get language of the context
      * @return language
