@@ -7,18 +7,24 @@ import org.junit.Test;
 public class BooleanExpressionTest {
 
     @org.junit.Test
-    public void testBooleanExpression() {
+    public void testBooleanExpression() throws Exception {
         //Test1
-        BooleanExpression boolExpr1 = new BooleanExpression("{p1 p2 p3} & (\"hola adeu\" | pep) & !joan");
-        BooleanExpression boolExpr2 = new BooleanExpression("& &");
+        try {
+            BooleanExpression boolExpr1 = new BooleanExpression("{p1 p2 p3} & (\"hola adeu\" | pep) & !joan");
+            BooleanExpression boolExpr2 = new BooleanExpression("& &");
+        } catch(Exception e) {
+            System.out.println("Invalid input");
+        }
     }
 
     @org.junit.Test
-    public void testGetExpression(){
-        BooleanExpression boolExpr1 = new BooleanExpression("{p1 p2 p3} & (\"hola adeu\" | pep) & !joan");
-        BooleanExpression boolExpr2 = new BooleanExpression("& &");
-
-
+    public void testGetExpression() throws Exception {
+        try {
+            BooleanExpression boolExpr1 = new BooleanExpression("{p1 p2 p3} & (\"hola adeu\" | pep) & !joan");
+            BooleanExpression boolExpr2 = new BooleanExpression("& &");
+        } catch(Exception e) {
+            System.out.println("Invalid input");
+        }
     }
 
     @org.junit.Test

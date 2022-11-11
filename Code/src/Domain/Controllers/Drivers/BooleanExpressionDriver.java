@@ -17,30 +17,30 @@ public class BooleanExpressionDriver {
      * Print the tree
      * @param s
      */
-    private static void testBooleanExpression(String s){
+    private static void testBooleanExpression(String s) throws Exception {
         BooleanExpression be = new BooleanExpression(s);
         System.out.println("Boolean expression has been created");
     }
 
-    private static void testInorder(String s){
+    private static void testInorder(String s) throws Exception {
         BooleanExpression be = new BooleanExpression(s);
         System.out.print("Boolean expression tree is: " );
         BooleanExpression.inorder(be.getExpTree());
     }
 
-    private static void testGetExpression(String s){
+    private static void testGetExpression(String s) throws Exception {
         BooleanExpression be = new BooleanExpression(s);
         System.out.println(be.getExpression());
     }
 
     //JUNIT O STUB
-    private static void testIsDocumentValid(String sentence, String boolExpr){
+    private static void testIsDocumentValid(String sentence, String boolExpr) throws Exception {
         BooleanExpression be = new BooleanExpression(boolExpr);
         System.out.println(be.isDocumentValid(sentence));
     }
 
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         scanner = new Scanner(System.in).useDelimiter("\\n");
         String functions = "0.Introduce new boolean expression\n" +
                 "1. testBooleanExpression\n" +

@@ -45,7 +45,7 @@ public class SearchController {
      * @brief Saves a boolean expression to the historial.
      * @param boolExp, string with the boolean expression.
      */
-    public void addExpression(String boolExp) {
+    public void addExpression(String boolExp) throws Exception {
         BooleanExpression bExpr = new BooleanExpression(boolExp);
         listBoolExps.add(bExpr);
     }
@@ -55,7 +55,7 @@ public class SearchController {
      * @param oldExpr, old boolean expression
      * @param newExpr, new boolean expression
      */
-    public void modifyExpression(String oldExpr, String newExpr) {
+    public void modifyExpression(String oldExpr, String newExpr) throws Exception {
         BooleanExpression bold = new BooleanExpression(oldExpr);
         listBoolExps.remove(bold);
 
@@ -63,7 +63,7 @@ public class SearchController {
         listBoolExps.add(bnew);
     }
 
-    public void deleteExpression(String boolExp){
+    public void deleteExpression(String boolExp) throws Exception {
         BooleanExpression be = new BooleanExpression(boolExp);
         listBoolExps.remove(be);
     }
@@ -87,7 +87,7 @@ public class SearchController {
      * @param expression, instance of the boolean expression to use
      * @return list of documents that satisfy boolean expression
      */
-    public HashMap<String, String> booleanExpressionSearch(Folder rootFolder, String expression) {
+    public HashMap<String, String> booleanExpressionSearch(Folder rootFolder, String expression) throws Exception {
         BooleanExpression boolExpr = new BooleanExpression(expression);
         listBoolExps.add(boolExpr);
         HashMap<Pair<String, String>, ArrayList<String>> listDocs = rootFolder.getAllContent();

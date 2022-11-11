@@ -131,7 +131,7 @@ public class BooleanExpression {
      * @brief Constructs the representation for a boolean expression
      * @param s, represents the boolean expression.
      */
-    public BooleanExpression(String s){
+    public BooleanExpression(String s) throws Exception {
         originalBoolExpr = s;
         boolExpr = s;
         noQuotes = s;
@@ -149,7 +149,7 @@ public class BooleanExpression {
     /***
      * @brief Checks correct format from boolean operands.
      */
-    private void checkOperands() {
+    private void checkOperands() throws Exception {
         //Delete parentheses + whitespaces
         noQuotes = noQuotes.replaceAll("[()]", "");
         noQuotes = noQuotes.replaceAll("\\s{2,}", " "); //avoid multiple whitespaces between words
@@ -160,7 +160,10 @@ public class BooleanExpression {
                 "&!|", "&|!", "|!&", "|&!"};
 
         for (String op : invalidOperators) {
-            if (noSpaces.contains(op)) System.err.println("Invalid Logic Operator Configuration: " + op);
+            if (noSpaces.contains(op)) {
+                throw new Exception("Invalid Logic Operator Configuration: "+ op);
+                //System.err.println("Invalid Logic Operator Configuration: " + op);
+            }
         }
 
         //Split expression by elements
@@ -183,7 +186,7 @@ public class BooleanExpression {
     /***
      * @brief Checks correct order parentheses
      */
-    private void checkParentheses() {
+    private void checkParentheses() throws Exception {
         Pair<Character, Character> brackets = new Pair<>('(', ')');
         Stack<Character> stack = new Stack<>();
         //Iterate char by char
