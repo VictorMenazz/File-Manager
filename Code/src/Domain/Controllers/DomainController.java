@@ -184,7 +184,8 @@ public class DomainController {
      */
     public HashMap<String, String> booleanExpressionSearch(String boolExp) {
         Folder rootFolder = folders.getRoot();
-        return ctrlSearch.booleanExpressionSearch(rootFolder, boolExp);
+        //return ctrlSearch.booleanExpressionSearch(rootFolder, boolExp);
+        return null;
     }
 
     /**
