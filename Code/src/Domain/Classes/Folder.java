@@ -282,7 +282,7 @@ public class Folder {
 
     public HashMap<Pair<String, String>, HashMap<String,Integer>> getMapsDocs(){
         HashMap<Pair<String, String>, HashMap<String,Integer>> result = new HashMap<Pair<String, String>, HashMap<String,Integer>>();
-        if(subFolders.isEmpty())  result  = igetMapsDocs();
+        if(subFolders.isEmpty()) result = igetMapsDocs();
         else{
             result = igetMapsDocs();
             for (Folder f : subFolders.values()){
@@ -297,7 +297,7 @@ public class Folder {
         return result;
     }
 
-    public HashMap<Pair<String, String>, HashMap<String,Integer>> igetMapsDocs(){
+    private HashMap<Pair<String, String>, HashMap<String,Integer>> igetMapsDocs(){
         HashMap<Pair<String, String>, HashMap<String,Integer>> result = new HashMap<Pair<String, String>, HashMap<String,Integer>>();
         for (Document d : documents.values()){
             Pair<String, String> key = new Pair<String, String>(d.getTitle(),d.getAuthor());
@@ -305,6 +305,30 @@ public class Folder {
             result.put(key,value);
         }
         return result;
+    }
+
+    public HashMap<Pair<String, String>, ArrayList<Sentence>> getAllContent(){
+        HashMap<Pair<String, String>, ArrayList<Sentence>> result = iGetAllContent();
+        if(!subFolders.isEmpty()) {
+            for(Folder f : subFolders.values()){
+                HashMap<Pair<String, String>, ArrayList<Sentence>> subDocs = f.getAllContent();
+                for (HashMap.Entry<Pair<String, String>, ArrayList<Sentence>> entries : subDocs.entrySet()){
+                    result.put(entries.getKey(),entries.getValue());
+                }
+            }
+        }
+        return result;
+    }
+
+    private HashMap<Pair<String, String>, ArrayList<Sentence>> iGetAllContent(){
+        HashMap<Pair<String, String>, ArrayList<Sentence>> folderContents = new HashMap<Pair<String, String>, ArrayList<Sentence>>();
+        for (Document d : documents.values()){
+            Pair<String, String> key = new Pair<String, String>(d.getTitle(),d.getAuthor());
+            Content cont = d.getContentInstance();
+            ArrayList<Sentence> value = cont.getSentences();
+            folderContents.put(key,value);
+        }
+        return folderContents;
     }
     //Consultants
 

@@ -45,13 +45,13 @@ public class DocumentTest {
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
         Content newCont = new ContentStub();
         d.setContent(newCont);
-        assertEquals(newCont, d.getContent());
+        assertEquals(newCont.getText(), d.getContent());
 
 
         //Test initializing way 2
         Document d2 = new Document("Title1", "Author1", "Initial Text", "ENG");
         d2.setContent(newCont);
-        assertEquals(newCont, d2.getContent());
+        assertEquals("Simple Content Test", d2.getContent());
     }
 
     @org.junit.Test
@@ -117,7 +117,7 @@ public class DocumentTest {
         //Test initializing way 1
         Content initialContent = new ContentStub();
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
-        assertEquals(initialContent, d.getContent());
+        assertEquals(initialContent.getText(), d.getContent());
 
 /*        //Test initializing way 2
         Document d2 = new Document("Title1", "Author1", "Initial Text", "ENG");

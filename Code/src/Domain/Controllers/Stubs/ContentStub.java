@@ -21,6 +21,10 @@ public class ContentStub extends Content {
         return test;
     }
 
+    public String getText(){
+        return "Simple Content Test";
+    }
+
     public boolean wordContain(String wSearch) {
         return false;
     }

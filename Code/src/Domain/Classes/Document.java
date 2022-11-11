@@ -138,6 +138,8 @@ public class Document {
             return cont.getText();
         }
 
+        public Content getContentInstance() {return cont;}
+
         /**
          * @brief Gets the Language of the Document.
          * @return title, String that represents the Language of the Document Content.
