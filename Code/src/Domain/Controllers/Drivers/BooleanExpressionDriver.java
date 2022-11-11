@@ -57,7 +57,6 @@ public class BooleanExpressionDriver {
 
         input = scanner.next();
         System.out.println(input);
-        int op = 0;
 
         while(op != 4){
             op = scanner.nextInt();

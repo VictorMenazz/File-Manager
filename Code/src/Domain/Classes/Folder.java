@@ -307,12 +307,12 @@ public class Folder {
         return result;
     }
 
-    public HashMap<Pair<String, String>, ArrayList<Sentence>> getAllContent(){
-        HashMap<Pair<String, String>, ArrayList<Sentence>> result = iGetAllContent();
+    public HashMap<Pair<String, String>, ArrayList<String>> getAllContent(){
+        HashMap<Pair<String, String>, ArrayList<String>> result = iGetAllContent();
         if(!subFolders.isEmpty()) {
             for(Folder f : subFolders.values()){
-                HashMap<Pair<String, String>, ArrayList<Sentence>> subDocs = f.getAllContent();
-                for (HashMap.Entry<Pair<String, String>, ArrayList<Sentence>> entries : subDocs.entrySet()){
+                HashMap<Pair<String, String>, ArrayList<String>> subDocs = f.getAllContent();
+                for (HashMap.Entry<Pair<String, String>, ArrayList<String>> entries : subDocs.entrySet()){
                     result.put(entries.getKey(),entries.getValue());
                 }
             }
@@ -320,12 +320,12 @@ public class Folder {
         return result;
     }
 
-    private HashMap<Pair<String, String>, ArrayList<Sentence>> iGetAllContent(){
-        HashMap<Pair<String, String>, ArrayList<Sentence>> folderContents = new HashMap<Pair<String, String>, ArrayList<Sentence>>();
+    private HashMap<Pair<String, String>, ArrayList<String>> iGetAllContent(){
+        HashMap<Pair<String, String>, ArrayList<String>> folderContents = new HashMap<Pair<String, String>, ArrayList<String>>();
         for (Document d : documents.values()){
             Pair<String, String> key = new Pair<String, String>(d.getTitle(),d.getAuthor());
             Content cont = d.getContentInstance();
-            ArrayList<Sentence> value = cont.getSentences();
+            ArrayList<String> value = cont.getSentences();
             folderContents.put(key,value);
         }
         return folderContents;
