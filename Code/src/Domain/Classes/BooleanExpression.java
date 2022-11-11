@@ -282,7 +282,13 @@ public class BooleanExpression {
     private Boolean recursiveFind(String sentence, Node n) {
         if (n == null) return false;
         //if node is a leaf
-        if (n.right == null & n.left == null) return sentence.contains(n.data);
+        if (n.right == null & n.left == null) {
+            if (n.data.charAt(0) == '!') {
+                String s = n.data.substring(1);
+                return !sentence.contains(s);
+            }
+            return sentence.contains(n.data);
+        }
         //node is an operand
         if (n.data.equals("&")) return recursiveFind(sentence, n.right) & recursiveFind(sentence, n.left);
         else if (n.data.equals("|")) return recursiveFind(sentence, n.right) | recursiveFind(sentence, n.left);
