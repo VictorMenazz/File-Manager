@@ -132,6 +132,7 @@ public class BooleanExpression {
      * @param s, represents the boolean expression.
      */
     public BooleanExpression(String s){
+        originalBoolExpr = s;
         boolExpr = s;
         noQuotes = s;
         removeQuotes();
