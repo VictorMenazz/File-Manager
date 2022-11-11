@@ -63,7 +63,7 @@ public class SearchController {
         listBoolExps.add(bnew);
     }
 
-    public void deleteQuery(String boolExp){
+    public void deleteExpression(String boolExp){
         BooleanExpression be = new BooleanExpression(boolExp);
         listBoolExps.remove(be);
     }
@@ -82,19 +82,29 @@ public class SearchController {
     }
 
     /**
-     * @brief
-     * @param rootFolder
-     * @param expression
-     * @return
+     * @brief Search of a list of Documents who satisfy the boolean expresion
+     * @param rootFolder, instance of the root folder
+     * @param expression, instance of the boolean expression to use
+     * @return list of documents that satisfy boolean expression
      */
     public HashMap<String, String> booleanExpressionSearch(Folder rootFolder, String expression) {
         BooleanExpression boolExpr = new BooleanExpression(expression);
         listBoolExps.add(boolExpr);
-        HashMap<Pair<String, String>, ArrayList<Sentence>> listDocs = rootFolder.getAllContent();
+        HashMap<Pair<String, String>, ArrayList<String>> listDocs = rootFolder.getAllContent();
 
-        for(HashMap.Entry<Pair<String, String>, ArrayList<Sentence>> docContent : listDocs.entrySet()) {
+        HashMap<String,String> result = new HashMap<>();
 
+        for(HashMap.Entry<Pair<String, String>, ArrayList<String>> docContent : listDocs.entrySet()) { //select one document
+            ArrayList<String> sentencesDoc = docContent.getValue();
+            for(String sent : sentencesDoc) { //search for each sentence
+                if(boolExpr.isDocumentValid(sent)) { //If sentence satisfy boolean expression
+                    Pair<String, String> pair = docContent.getKey();
+                    result.put(pair.first, pair.second); //add document to the result hashmap
+                    break;
+                }
+            }
         }
+        return result;
     }
 
 

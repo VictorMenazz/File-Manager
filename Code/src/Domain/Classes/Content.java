@@ -136,8 +136,14 @@ public class Content {
      * @brief Get all the sentences of the content
      * @return structure of sentences of the content
      */
-    public ArrayList<Sentence> getSentences() {
-        return text;
+    public ArrayList<String> getSentences() {
+        ArrayList<String> aux = new ArrayList<>();
+        for (Sentence s : text){
+            String auxSent = s.getSentence();
+            if (auxSent == null) aux.add("\n");
+            else aux.add(auxSent);
+        }
+        return aux;
     }
     /**
      * @brief Get language of the context
