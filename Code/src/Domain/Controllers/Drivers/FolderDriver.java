@@ -90,7 +90,7 @@ public class FolderDriver {
     }
 
     public static void testAddNonConstructedDocument() throws IOException {
-        System.out.println("Introduce the lang(ESP, CAT or ENG) for the Document: ");
+        System.out.println("Introduce the lang(ESP, CAT or ENG) for the Document:");
         String language = readInputString();
         System.out.println("Introduce the title:");
         String title = readInputString();
@@ -348,7 +348,7 @@ public class FolderDriver {
             HashMap<String,Integer> docMap = entry.getValue();
             System.out.println("New Doc: " + docId.first + docId.second);
             for(HashMap.Entry<String, Integer> doc : docMap.entrySet()){
-                System.out.print(doc.getKey() + ':' + doc.getValue() + " ");
+                System.out.println(doc.getKey() + ':' + doc.getValue());
             }
             System.out.println();
         }
@@ -380,7 +380,7 @@ public class FolderDriver {
         String name = readInputString();
         Folder f = new Folder(1, "Folder");
         f.createFolder(name, 1);
-        System.out.println("Folder " + name + "contained: " + f.folderContained(2));
+        System.out.println("Folder " + name + " contained: " + f.folderContained(2));
         System.out.println();
     }
 

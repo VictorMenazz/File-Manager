@@ -82,7 +82,6 @@ public class Folder {
         if(foldId == this.folderId) {
             Folder f = new Folder(lastFolderId+1, fName);
             subFolders.put(lastFolderId,f);
-            System.out.println("Id: " + lastFolderId);
         }
         else{
             int nextId = getNextFolderParent(foldId);

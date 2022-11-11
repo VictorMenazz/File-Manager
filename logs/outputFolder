@@ -1,0 +1,181 @@
+Folder Driver:
+Introduce the number allocated to the function you want to test.
+Functions:
+0. All
+1. testFolder
+2. testSetFolderName
+3. testCreateFolder
+4. testAddDocument
+5. testAddNonConstructedDocument
+6. testModifyContent
+7. testModifyAuthor
+8. testModifyTitle
+9. testProtectDocument
+10. testGetName
+11. testGetDocumentsName
+12. testGetDocumentAmount
+13. testGetDocument
+14. testGetMapsDoc
+15. testDocumentContained
+16. testFolderContained
+17. Exit
+
+testFolder() test:
+Introduce a name for the Folder:
+Folder Folder1 created!
+Testing 'testFolder()' finished.
+
+testSetFolderName() test:
+It will initialize a Folder with name 'Folder1'
+Introduce a name to test function:
+Will change the name to Folder1
+Checking initial name: Folder1
+New name:Folder1
+Testing 'testSetFolderName()' finished.
+
+testCreateFolder() test:
+Introduce a name for the new Folder:
+It will create a Folder with name:Folder1
+Checking correct creation:FolderParent, 0
+Testing 'testCreateFolder()' finished.
+
+testAddDocument() test:
+Introduce the lang(ESP, CAT or ENG) for the Document:
+Introduce the title:
+Introduce the author:
+Introduce the Content:
+Checking initializing method 1:
+List of Docs before addition:
+List of Docs after addition:
+New doc: Title1
+Initializing method 1 finished.
+Checking initializing method 2:
+List of Docs before addition:
+List of Docs after addition:
+New doc: Title1
+Initializing method 2 finished.
+Testing 'testAddDocument()' finished.
+
+testAddNonConstructedDocument() test:
+Introduce the lang(ESP, CAT or ENG) for the Document:
+Introduce the title:
+Introduce the author:
+Introduce the Content:
+Checking initializing method 1:
+List of Docs before addition:
+List of Docs after addition:
+New doc: Title2
+Testing 'testAddNonConstructedDocument()' finished.
+
+testModifyContent() test:
+Checking initializing method 1:
+Creating a Doc to test function, information:
+Title:
+Author:
+Content:
+Introduce the lang(ESP, CAT or ENG) for the new Content:
+Introduce the new Content:
+This is the new Content
+
+testModifyAuthor() test:
+Checking initializing method 1:
+Creating a Doc to test function, information:
+Title:
+Author:
+Content:
+Introduce the lang(ESP, CAT or ENG) for the new Content:
+Introduce the new Author:
+New Author: Auth5
+
+testModifyTitle() test:
+Checking initializing method 1:
+Creating a Doc to test function, information:
+Title:
+Author:
+Content:
+Introduce the lang(ESP, CAT or ENG) for the new Content:
+Introduce the new Title:
+New Title: New title
+
+testProtectDocument test:
+Checking initializing method 1:
+Creating a Doc to test function, information:
+Title:
+Author:
+Content:
+Introduce the lang(ESP, CAT or ENG) for the new Content:
+Introduce the password to protect:
+Document is protected.
+
+testGetName() test:
+Introduce a name for the Folder:
+Folder Name:Folder2
+
+testGetDocumentsName() test:
+Introduce number of Documents:
+New Document
+Title:
+Author:
+Content:
+Introduce the lang(ESP, CAT or ENG) for the new Content:
+New Document
+Title:
+Author:
+Content:
+Introduce the lang(ESP, CAT or ENG) for the new Content:
+Doc: Title8
+Doc: Title9
+
+testGetDocumentAmount() test:
+Introduce number of Documents:
+New Document
+Title:
+Author:
+Content:
+Introduce the lang(ESP, CAT or ENG) for the new Content:
+New Document
+Title:
+Author:
+Content:
+Introduce the lang(ESP, CAT or ENG) for the new Content:
+Number of Docs: 2
+
+testGetDocument() test:
+New Document
+Title:
+Author:
+Content:
+Introduce the lang(ESP, CAT or ENG) for the new Content:
+Checking Doc -> Title: Title12 Author: Auth12
+
+testGetMapsDoc() choose:
+New Document
+Title:
+Author:
+Content:
+Introduce the lang(ESP, CAT or ENG) for the new Content:
+New Document
+Title:
+Author:
+Content:
+Introduce the lang(ESP, CAT or ENG) for the new Content:
+New Doc: Title13Auth13
+originalcontent13:1
+
+New Doc: Title14Auth14
+originalcontent:1
+
+testDocumentContained() test:
+Introduce number of Documents:
+New Document
+Title:
+Author:
+Content:
+Introduce the lang(ESP, CAT or ENG) for the new Content:
+Document Contained: true
+
+testFolderContained() test:
+Introduce name of SubFolder:
+Folder subFolder17 contained: true
+
+
