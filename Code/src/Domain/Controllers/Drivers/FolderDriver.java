@@ -144,8 +144,7 @@ public class FolderDriver {
         f.modifyContent(author,title, ContentText);
 
         Document doc = f.getDocument(author,  title);
-        Content c = doc.getContent();
-        System.out.println(c.getText());
+        System.out.println(d.getContent());
         System.out.println();
     }
 
@@ -312,7 +311,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    public static void getMapsDocs() throws IOException {
+    public static void testGetMapsDocs() throws IOException {
         Folder f = new Folder(1,"Test");
         System.out.println("New Document");
         System.out.println("Title:");
@@ -402,15 +401,17 @@ public class FolderDriver {
                 "11. testGetDocumentsName\n" +
                 "12. testGetDocumentAmount\n" +
                 "13. testGetDocument\n" +
-                "14. testDocumentContained\n" +
-                "15. testFolderContained\n";
+                "14. testGetMapsDoc\n" +
+                "15. testDocumentContained\n" +
+                "16. testFolderContained\n" +
+                "17. Exit\n";
 
         System.out.println("Folder Driver:");
         System.out.println("Introduce the number allocated to the function you want to test.");
         System.out.println("Functions:");
         System.out.println(functions);
         int code = readInputInteger();
-        while (code != 16) {
+        while (code != 17) {
             switch (code) {
                 case 1:
                     System.out.println("testFolder() choose:");
@@ -465,15 +466,16 @@ public class FolderDriver {
                     testGetDocument();
                     break;
                 case 14:
+                    System.out.println("testGetMapsDoc() choose:");
+                    testGetMapsDocs();
+                    break;
+                case 15:
                     System.out.println("testDocumentContained() choose:");
                     testDocumentContained();
                     break;
-                case 15:
+                case 16:
                     System.out.println("testFolderContained() choose:");
                     testFolderContained();
-                    break;
-                case 17:
-                    getMapsDocs();
                     break;
                 default:
                     System.out.println("testFolder() test:");
@@ -502,6 +504,8 @@ public class FolderDriver {
                     testGetDocumentAmount();
                     System.out.println("testGetDocument() test:");
                     testGetDocument();
+                    System.out.println("testGetMapsDoc() choose:");
+                    testGetMapsDocs();
                     System.out.println("testDocumentContained() test:");
                     testDocumentContained();
                     System.out.println("testFolderContained() test:");

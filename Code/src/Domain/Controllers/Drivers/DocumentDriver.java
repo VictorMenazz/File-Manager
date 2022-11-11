@@ -2,8 +2,10 @@ package Code.src.Domain.Controllers.Drivers;
 
 import Code.src.Domain.Classes.Content;
 import Code.src.Domain.Classes.Document;
+import Code.src.Domain.Classes.Pair;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class DocumentDriver {
@@ -26,7 +28,6 @@ public class DocumentDriver {
         //Testing initializing way1
         Document d = initialCreation1();
         System.out.println("Document created -> Title:" + d.getTitle() + " Author:" + d.getAuthor());
-        System.out.println("Testing 'testFolder()' finished.");
         System.out.println();
     }
 
@@ -45,7 +46,6 @@ public class DocumentDriver {
         Document d = new Document(title, author, Content, lang);
         System.out.println("Document created -> Title:" + d.getTitle() + " Author:" + d.getAuthor());
 
-        System.out.println("Testing 'testFolder()' finished.");
         System.out.println();
     }
 
@@ -74,7 +74,7 @@ public class DocumentDriver {
         Content c = new Content(newCont,d.getLanguage());
         d.setContent(c);
         //Falta getContentOnPlainText
-        //System.out.println("Content changed to: " + d.getC());
+        System.out.println("Checking the new Content: " + d.getContent());
         System.out.println();
     }
 
@@ -120,6 +120,27 @@ public class DocumentDriver {
         System.out.println();
     }
 
+
+    public static void testContentSearch() throws IOException {
+        Document d = initialCreation1();
+        System.out.println("Checking frequency internal vector:");
+        HashMap<String,Integer> docMap = d.contentSearch();
+        for(HashMap.Entry<String, Integer> doc : docMap.entrySet()){
+                System.out.println(doc.getKey() + ':' + doc.getValue());
+        }
+        System.out.println();
+    }
+
+    public static void testIsProtected() throws IOException {
+        Document d = initialCreation1();
+        System.out.println("Document Status, Protected: " + d.isProtected());
+        System.out.println("Introduce new password:");
+        d.protectDocument(readInputString());
+        System.out.println("Document Status, Protected: " + d.isProtected());
+        System.out.println();
+    }
+
+
     //Private functions not need to be proved.
     public static void main(String[] args) throws IOException {
         String functions = "0. All\n" +
@@ -134,14 +155,16 @@ public class DocumentDriver {
                 "9. testGetAuthor\n" +
                 "10. testGetContent\n" +
                 "11. testGetLanguage\n" +
-                "12. Exit\n";
+                "12. testContentSearch\n" +
+                "13. testIsProtected\n" +
+                "14. Exit\n";
 
         System.out.println("Document Driver:");
         System.out.println("Introduce the number allocated to the function you want to test.");
         System.out.println("Functions:");
         System.out.println(functions);
         int code = readInputInteger();
-        while(code != 12) {
+        while(code != 14) {
             switch (code) {
                 case 1:
                     System.out.println("testDocumentConstruct1() choose:");
@@ -187,6 +210,14 @@ public class DocumentDriver {
                     System.out.println("testGetLanguage() choose:");
                     testGetLanguage();
                     break;
+                case 12:
+                    System.out.println("testContentSearch() choose:");
+                    testContentSearch();
+                    break;
+                case 13:
+                    System.out.println("testIsProtected() choose:");
+                    testIsProtected();
+                    break;
                 default:
                     System.out.println("testDocumentConstruct1() test:");
                     testDocumentConstruct1();
@@ -210,6 +241,10 @@ public class DocumentDriver {
                     testGetContent();
                     System.out.println("testGetLanguage() test:");
                     testGetLanguage();
+                    System.out.println("testContentSearch() test:");
+                    testContentSearch();
+                    System.out.println("testIsProtected() test:");
+                    testIsProtected();
             }
             code = readInputInteger();
         }

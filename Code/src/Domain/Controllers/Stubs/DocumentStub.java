@@ -19,8 +19,8 @@ public class DocumentStub extends Document {
         return "AuthorTest";
     }
 
-    public Content getContent(){
-        return (new ContentStub());
+    public String getContent(){
+        return "Simple Content Test";
     }
 
     public String getLanguage() {

@@ -134,8 +134,8 @@ public class Document {
          * @brief Gets the Content of the Document.
          * @return title, String that represents the content of the document.
          * */
-        public Content getContent(){
-            return cont;
+        public String getContent(){
+            return cont.getText();
         }
 
         /**

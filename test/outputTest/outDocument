@@ -13,7 +13,9 @@ Functions:
 9. testGetAuthor
 10. testGetContent
 11. testGetLanguage
-12. Exit
+12. testContentSearch
+13. testIsProtected
+14. Exit
 
 testDocumentConstruct1() test:
 Introduce a title for the Document:
@@ -21,7 +23,6 @@ Introduce an author for the Document:
 Introduce a Content for the Document:
 Introduce a Language for the Document:
 Document created -> Title:Title1 Author:Auth1
-Testing 'testFolder()' finished.
 
 testDocumentConstruct2() test:
 Introduce a title for the Document:
@@ -29,7 +30,6 @@ Introduce an author for the Document:
 Introduce a Content for the Document:
 Introduce a Language for the Document:
 Document created -> Title:Title2 Author:Auth2
-Testing 'testFolder()' finished.
 
 testSetAuthor() test:
 Introduce a title for the Document:
@@ -53,6 +53,7 @@ Introduce an author for the Document:
 Introduce a Content for the Document:
 Introduce a Language for the Document:
 Introduce the new Content for the Document:
+Checking the new Content: This is the ContentChanged!
 
 testSetLanguage() test:
 Introduce a title for the Document:
@@ -89,7 +90,7 @@ Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
 Introduce a Language for the Document:
-Content: Code.src.Domain.Classes.Content@5e3a8624
+Content: This is the example for a normal Content.
 
 testGetLanguage() test:
 Introduce a title for the Document:
@@ -97,4 +98,22 @@ Introduce an author for the Document:
 Introduce a Content for the Document:
 Introduce a Language for the Document:
 Language: ENG
+
+testContentSearch() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Checking frequency internal vector:
+checking:1
+content:1
+
+testIsProtected() test:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce a Language for the Document:
+Document Status, Protected: false
+Introduce new password:
+Document Status, Protected: true
 
