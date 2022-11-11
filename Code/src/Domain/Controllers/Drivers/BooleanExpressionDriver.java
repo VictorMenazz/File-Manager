@@ -3,6 +3,7 @@ package Code.src.Domain.Controllers.Drivers;
 import Code.src.Domain.Classes.BooleanExpression;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -29,12 +30,18 @@ public class BooleanExpressionDriver {
 
     private static void testGetExpression(String s){
         BooleanExpression be = new BooleanExpression(s);
-        System.out.println("We have got the root from the Expression Tree");
+        System.out.println(be.getExpression());
+    }
+
+    //JUNIT O STUB
+    private static void testIsDocumentValid(String sentence, String boolExpr){
+        BooleanExpression be = new BooleanExpression(boolExpr);
+        System.out.println(be.isDocumentValid(sentence));
     }
 
 
     public static void main(String[] args) throws IOException {
-        scanner = new Scanner(System.in);
+        scanner = new Scanner(System.in).useDelimiter("\\n");
         String functions = "0.Introduce new boolean expression\n" +
                 "1. testBooleanExpression\n" +
                 "2. testInorder\n" +
@@ -42,12 +49,14 @@ public class BooleanExpressionDriver {
                 "4. Exit\n";
         System.out.println(functions);
 
-        /*String s = scanner.nextLine();
-        System.out.println(s);
-        int op = scanner.nextInt();*/
+        //int op = scanner.nextInt();
+        String input = "";
 
+        /*String input = "{p1 p2 p3 p3}";*/
+        int op = 0;
 
-        String input = "{p1 p2 p3 p3}";
+        input = scanner.next();
+        System.out.println(input);
         int op = 0;
 
         while(op != 4){
@@ -55,7 +64,7 @@ public class BooleanExpressionDriver {
 
             switch (op) {
                 case 0:
-                    input = scanner.nextLine();
+                    System.out.println("Introduce your boolean expression:");
                     break;
                 case 1:
                     testBooleanExpression(input);
@@ -71,15 +80,4 @@ public class BooleanExpressionDriver {
             }
         }
     }
-
-    /*private static String readFunction() {
-        List<String> tokens = new ArrayList<>();
-        Scanner scanner = new Scanner(System.in);
-
-        while (scanner.hasNext()) {
-            tokens.add(scanner.next());
-        }
-        scanner.close();
-        return tokens;
-    }*/
 }

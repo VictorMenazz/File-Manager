@@ -4,16 +4,39 @@ import java.util.*;
 import java.util.regex.*;
 
 public class BooleanExpression {
+    /***
+     * @brief Original boolean expression
+     */
+    private String originalBoolExpr;
+
+    /***
+     * @brief adjusted boolean expression
+     */
     private String boolExpr;
+
+    /***
+     * @brief Boolean expression without quotes
+     */
     private String noQuotes;
+    /***
+     * @brief Root of the expression tree
+     */
     private Node root;
 
 
+    /***
+     * @brief Node for the expression tree.
+     */
     static public class Node {
         String data;
         Node left, right;
     };
 
+    /***
+     * Creates an empty node with data.
+     * @param c, string with the value for the data of the node.
+     * @return the created node.
+     */
     static private Node newNode(String c) {
         Node n = new Node();
         n.data = c;
@@ -22,7 +45,7 @@ public class BooleanExpression {
     }
 
     /***
-     * Build Expression Tree from boolExpr.
+     * @brief Build Expression Tree from boolExpr.
      * @return Node, which will be the root of the Expression Tree.
      */
      private Node build(){
@@ -65,25 +88,24 @@ public class BooleanExpression {
                 while (!stC.isEmpty() && !stC.peek().equals("(") &&
                         ((!expr[i].equals("&") && priority.get(stC.peek()) >= priority.get(expr[i])) ||
                         (expr[i].equals("&") && priority.get(stC.peek()) > priority.get(expr[i])))) {
-                    // Get and remove the top element from the character stack
                     t = newNode(stC.peek());
                     stC.pop();
-                    // Get and remove the top element from the node stack
+
                     t1 = stN.peek();
                     stN.pop();
-                    // Get and remove the currently top element from the node stack
+
                     t2 = stN.peek();
                     stN.pop();
-                    // Update the tree
+
                     t.left = t2;
                     t.right = t1;
-                    // Push the node to the node stack
+
                     stN.add(t);
                 }
-                // Push s[i] to char stack
                 stC.push(expr[i]);
             }
             else {
+
                 t = newNode(expr[i]);
                 stN.add(t);
             }
@@ -93,8 +115,8 @@ public class BooleanExpression {
     }
 
     /***
-     * Prints the Expression Tree inorder
-     * @param root
+     * @brief Prints the Expression Tree by inorder
+     * @param root, top node of the tree
      */
     public static void inorder(Node root) {
         if (root != null){
@@ -106,7 +128,7 @@ public class BooleanExpression {
 
 
     /***
-     * Constructs the representation for a boolean expression
+     * @brief Constructs the representation for a boolean expression
      * @param s, represents the boolean expression.
      */
     public BooleanExpression(String s){
@@ -124,7 +146,7 @@ public class BooleanExpression {
     //-------------------
 
     /***
-     * Checks correct format from boolean operands.
+     * @brief Checks correct format from boolean operands.
      */
     private void checkOperands() {
         //Delete parentheses + whitespaces
@@ -158,7 +180,7 @@ public class BooleanExpression {
     }
 
     /***
-     * Checks correct order parentheses
+     * @brief Checks correct order parentheses
      */
     private void checkParentheses() {
         Pair<Character, Character> brackets = new Pair<>('(', ')');
@@ -186,7 +208,7 @@ public class BooleanExpression {
     }
 
     /***
-     * Deletes duplicate elements from a set of words
+     * @brief Deletes duplicate elements from the sets of words
      * @param s, content inside braces -> { s }
      * @return s without duplicates.
      */
@@ -196,7 +218,7 @@ public class BooleanExpression {
     }
 
     /***
-     * Checks if the content inside braces is correct + removes content inside
+     * @brief Checks if the content inside braces is correct + removes content inside (to simplify analysis)
      */
     private void checkBraces() {
         Pattern pattern = Pattern.compile("(?<=\\{)(.*?)(?=\\})");
@@ -219,7 +241,7 @@ public class BooleanExpression {
     }
 
     /***
-     * Deletes content inside quotes
+     * @brief Deletes content inside quotes (to simplify analysis)
      */
     private void removeQuotes(){
         Pattern pattern = Pattern.compile("\".*?\"");
@@ -236,24 +258,51 @@ public class BooleanExpression {
     }
 
     /***
+     * @brief Returns the root of the tree
      * @return root of the Expression Tree
      */
     public Node getExpTree(){
         return root;
     }
 
+    /***
+     * @brief Returns the original boolean expression
+     * @return
+     */
     public String getExpression(){
-        return boolExpr;
+        return originalBoolExpr;
     }
 
-    public ArrayList<String[]> getMatches() {
-        return null;
+
+    /***
+     * @brief Recursive function to check a sentence by the boolean expression
+     * @param sentence, a sentence from a document.
+     * @param n, node of the expression tree
+     */
+    private Boolean recursiveFind(String sentence, Node n) {
+        if (n == null) return false;
+        //if node is a leaf
+        if (n.right == null & n.left == null) return sentence.contains(n.data);
+        //node is an operand
+        if (n.data.equals("&")) return recursiveFind(sentence, n.right) & recursiveFind(sentence, n.left);
+        else if (n.data.equals("|")) return recursiveFind(sentence, n.right) | recursiveFind(sentence, n.left);
+        return false;
     }
+
+    /***
+     * @brief Checks if a sentence is valid by the expression.
+     * @param sentence, string to validate expression.
+     * @return True if the sentence conforms the boolean expression, false otherwise.
+     */
+    public Boolean isDocumentValid(String sentence){
+        return recursiveFind(sentence, root);
+    }
+
 
 };
 
 /*
 ELIMINAR ESPAIS EXTRES ENTRE { }, ( ), &, |, !
-
+ENTRE COMILLES NO
  */
 
