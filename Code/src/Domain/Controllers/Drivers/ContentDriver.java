@@ -8,6 +8,17 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+/**
+ * @file ContentDriver.java
+ *
+ * @brief Driver <em>ContentDriver</em>
+ */
+
+/**
+ * @brief Driver of the class Content
+ *
+ * @author Victor Mena Doz
+ */
 public class ContentDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter("\n");
 
@@ -66,15 +77,14 @@ public class ContentDriver {
                 "2. testGetLanguage\n" +
                 "3. testGetText\n" +
                 "4. testGetVector\n" +
-                "5. testWordContain\n" +
-                "6. testAll\n";
+                "5. testWordContain\n";
 
         System.out.println("Content Driver:");
         System.out.println("Introduce the number allocated to the function you want to test.");
         System.out.println("Functions:");
         System.out.println(functions);
         int code = readInputInteger();
-        while(code != 7) {
+        while(code < 6 & code >= 0) {
             switch (code) {
                 case 1:
                     System.out.println("testContentConstruct() choose:");
@@ -109,6 +119,7 @@ public class ContentDriver {
                     System.out.println("testWordContain() test:");
                     testWordContain();
             }
+            System.out.println();
             code = readInputInteger();
         }
     }

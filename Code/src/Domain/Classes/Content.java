@@ -105,6 +105,8 @@ public class Content {
             auxWord = auxWord.replace("?", "");
             auxWord = auxWord.replace(";", "");
             auxWord = auxWord.replace(":", "");
+            auxWord = auxWord.replace("\"", "");
+            auxWord = auxWord.replace("\'", "");
 
             if(frequency.containsKey(auxWord)) frequency.compute(auxWord, (Key, Value) -> Value+1);
             else frequency.put(auxWord, 1);
