@@ -7,11 +7,12 @@ import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 
 public class BooleanExpressionDriver {
 
-    private static Scanner scanner;
+    private static Scanner scanner = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
     /***
      * Checks if the boolean expression is correctly created
      * Print the tree
@@ -41,7 +42,6 @@ public class BooleanExpressionDriver {
 
 
     public static void main(String[] args) throws Exception {
-        scanner = new Scanner(System.in).useDelimiter("\\n");
         String functions = "0.Introduce new boolean expression\n" +
                 "1. testBooleanExpression\n" +
                 "2. testInorder\n" +
@@ -64,6 +64,8 @@ public class BooleanExpressionDriver {
             switch (op) {
                 case 0:
                     System.out.println("Introduce your boolean expression:");
+                    input = scanner.next();
+                    System.out.println(input);
                     break;
                 case 1:
                     testBooleanExpression(input);
