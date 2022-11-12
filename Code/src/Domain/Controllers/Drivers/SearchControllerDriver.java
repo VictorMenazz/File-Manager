@@ -14,9 +14,10 @@ import java.util.regex.Pattern;
  */
 public class SearchControllerDriver {
 
-    private static Scanner scanner = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
+    private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
     private static void testConstructor() {
+        //instancia rootfolder
 
     }
 
@@ -64,5 +65,15 @@ public class SearchControllerDriver {
         System.out.println(functions);
 
 
+    }
+
+    private static String readInputString() {
+        String inp = writer.next();
+        return inp;
+    }
+
+    private static int readInputInteger() {
+        Integer inp = writer.nextInt();
+        return inp;
     }
 }
