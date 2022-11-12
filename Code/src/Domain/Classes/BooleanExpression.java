@@ -27,7 +27,7 @@ public class BooleanExpression {
     /***
      * @brief Node for the expression tree.
      */
-    static public class Node {
+    static private class Node {
         String data;
         Node left, right;
     };
@@ -52,9 +52,9 @@ public class BooleanExpression {
          String e = "( " + boolExpr.trim() + " )";
 
         String[] expr = e.split(" ");   //separamos expresión por elementos
-         for (String s : expr){
+         /*for (String s : expr){
              System.out.println(s);
-         }
+         }*/
 
         //Stack to hold nodes
         Stack<Node> stN = new Stack<>();
@@ -71,8 +71,14 @@ public class BooleanExpression {
 
         for (int i = 0; i < expr.length; ++i){
             if (expr[i].charAt(0) == '"') {
-                isSentence = true;
-                sentence += expr[i].substring(1);   //saltamos comilla
+                int n = expr[i].length();
+                if (expr[i].charAt(n-1) == '"') {
+                    t = newNode(expr[i].substring(1, n-1));
+                    stN.add(t);
+                } else {
+                    isSentence = true;
+                    sentence += expr[i].substring(1);   //saltamos comilla
+                }
             }
             else if (isSentence) {
                 int n = expr[i].length();
@@ -136,36 +142,25 @@ public class BooleanExpression {
     }
 
     /***
-     * @brief Prints the Expression Tree by inorder
-     * @param root, top node of the tree
+     * @brief Recursive function to check a sentence by the boolean expression
+     * @param sentence, a sentence from a document.
+     * @param n, node of the expression tree
      */
-    public static void inorder(Node root) {
-        if (root != null){
-            inorder(root.left);
-            System.out.print(root.data);
-            inorder(root.right);
+    private Boolean recursiveFind(String sentence, Node n) {
+        if (n == null) return false;
+        //if node is a leaf
+        if (n.right == null & n.left == null) {
+            if (n.data.charAt(0) == '!') {
+                String s = n.data.substring(1);
+                return !sentence.contains(s);
+            }
+            return sentence.contains(n.data);
         }
+        //node is an operand
+        if (n.data.equals("&")) return recursiveFind(sentence, n.right) & recursiveFind(sentence, n.left);
+        else if (n.data.equals("|")) return recursiveFind(sentence, n.right) | recursiveFind(sentence, n.left);
+        return false;
     }
-
-
-    /***
-     * @brief Constructs the representation for a boolean expression
-     * @param s, represents the boolean expression.
-     */
-    public BooleanExpression(String s) throws Exception {
-        originalBoolExpr = s;
-        boolExpr = s;
-        noQuotes = s;
-        removeQuotes();
-        boolExpr = boolExpr.replaceAll("\\s{2,}", "");
-        noQuotes = noQuotes.replaceAll("\\s{2,}", "");
-        checkBraces();
-        checkParentheses();
-        separateParentheses();
-        root = build();
-    }
-
-    //-------------------
 
     /***
      * @brief Checks correct format from boolean operands.
@@ -192,13 +187,15 @@ public class BooleanExpression {
         int n = boolExprSplit.length-1;
         if (n%2 == 1) {
             String word = boolExprSplit[n];
-            if (word.equals("&") || word.equals("|") || word.equals("!")) System.err.println("Error: expression contains extra operand at the end");
+            if (word.equals("&") || word.equals("|") || word.equals("!")) throw new Exception("expression contains extra operand at the end");
+            //System.err.println("Error: expression contains extra operand at the end");
         }
 
         for (int i = 1; i < boolExprSplit.length; i = i+2){
             String word = boolExprSplit[i];
             if (!(word.equals("&") || word.equals("|"))) {
-                System.err.println("Missing logic operators between \"" + boolExprSplit[i - 1] + "\" and \"" + word + "\"");
+                throw new Exception("Missing logic operators between \"" + boolExprSplit[i - 1] + "\" and \"" + word + "\"");
+                //System.err.println("Missing logic operators between \"" + boolExprSplit[i - 1] + "\" and \"" + word + "\"");
             }
         }
     }
@@ -215,6 +212,7 @@ public class BooleanExpression {
             if (brackets.second == c){
                 //if we haven't found any '(' before.
                 if (stack.isEmpty() || stack.pop() != brackets.first){
+                    stack.push(c);
                     break;
                 }
 
@@ -224,8 +222,10 @@ public class BooleanExpression {
                 stack.push(c);
             }
         }
+
         if (!stack.isEmpty()) {
-            System.err.println("Invalid expression: Parentheses mismatch");
+            throw new Exception("Invalid expression: Parentheses mismatch");
+            //System.err.println("Invalid expression: Parentheses mismatch");
         } else {
             checkOperands();
         }
@@ -244,7 +244,7 @@ public class BooleanExpression {
     /***
      * @brief Checks if the content inside braces is correct + removes content inside (to simplify analysis)
      */
-    private void checkBraces() {
+    private void checkBraces() throws Exception {
         Pattern pattern = Pattern.compile("(?<=\\{)(.*?)(?=\\})");
         //Pattern pattern = Pattern.compile("\\{.*?\\}");
         Matcher matcher = pattern.matcher(noQuotes);
@@ -252,7 +252,8 @@ public class BooleanExpression {
         //for substring INSIDE {...}
         while(matcher.find()) {
             String content = matcher.group();
-            if (content.isEmpty()) System.err.println("Braces { } must contain at least one word");
+            if (content.isEmpty()) throw new Exception("Braces { } must contain at least one word");
+                //System.err.println("Braces { } must contain at least one word");
             else {
                 String content2 = deleteDuplicates(content);
                 content2 = content2.trim().replaceAll(" ", " & ");
@@ -263,13 +264,14 @@ public class BooleanExpression {
         }
     }
 
-    private void separateParentheses() {
+    private void separateParentheses() throws Exception {
         Pattern pattern = Pattern.compile("\\(.*?\\)");
         Matcher matcher = pattern.matcher(boolExpr);
 
         while(matcher.find()) {
             String content = matcher.group();
-            if (content.isEmpty()) System.err.println("Parentheses ( ) are useless");
+            if (content.length() == 2) throw new Exception("Parentheses ( ) are useless");
+                //System.err.println("Parentheses ( ) are useless");
             else {
                 boolExpr = boolExpr.replaceAll("\\(", "( "); //separate parentheses and word
                 boolExpr = boolExpr.replaceAll("\\)", " )"); //separate parentheses and word
@@ -280,17 +282,42 @@ public class BooleanExpression {
     /***
      * @brief Deletes content inside quotes (to simplify analysis)
      */
-    private void removeQuotes(){
+    private void removeQuotes() throws Exception {
         Pattern pattern = Pattern.compile("\".*?\"");
         Matcher matcher = pattern.matcher(noQuotes);
 
         //Content WITH the quotes
         while(matcher.find()){
             String content = matcher.group();
-            if (content.length() == 2) System.err.println("Sentence cannot be empty");
+            if (content.length() == 2) throw new Exception("Sentence can not be empty");
+                //System.err.println("Sentence cannot be empty");
             else {
                 noQuotes = noQuotes.replace(content, "a");
             }
+        }
+    }
+
+    //------------------- PUBLIC METHODS -------------------//
+
+    /***
+     * @brief Constructs the representation for a boolean expression
+     * @param s, represents the boolean expression.
+     */
+    public BooleanExpression(String s) {
+        try {
+            originalBoolExpr = s;
+            boolExpr = s;
+            noQuotes = s;
+            removeQuotes();
+            boolExpr = boolExpr.replaceAll("\\s{2,}", " ");
+            noQuotes = noQuotes.replaceAll("\\s{2,}", " ");
+            checkBraces();
+            checkParentheses();
+            separateParentheses();
+            root = build();
+        } catch(Exception e) {
+            System.out.println(e.getMessage());
+
         }
     }
 
@@ -312,27 +339,6 @@ public class BooleanExpression {
 
 
     /***
-     * @brief Recursive function to check a sentence by the boolean expression
-     * @param sentence, a sentence from a document.
-     * @param n, node of the expression tree
-     */
-    private Boolean recursiveFind(String sentence, Node n) {
-        if (n == null) return false;
-        //if node is a leaf
-        if (n.right == null & n.left == null) {
-            if (n.data.charAt(0) == '!') {
-                String s = n.data.substring(1);
-                return !sentence.contains(s);
-            }
-            return sentence.contains(n.data);
-        }
-        //node is an operand
-        if (n.data.equals("&")) return recursiveFind(sentence, n.right) & recursiveFind(sentence, n.left);
-        else if (n.data.equals("|")) return recursiveFind(sentence, n.right) | recursiveFind(sentence, n.left);
-        return false;
-    }
-
-    /***
      * @brief Checks if a sentence is valid by the expression.
      * @param sentence, string to validate expression.
      * @return True if the sentence conforms the boolean expression, false otherwise.
@@ -341,7 +347,17 @@ public class BooleanExpression {
         return recursiveFind(sentence, root);
     }
 
-
+    /***
+     * @brief Prints the Expression Tree in inorder
+     * @param root, top node of the tree
+     */
+    public static void inorder(Node root) {
+        if (root != null){
+            inorder(root.left);
+            System.out.print(root.data);
+            inorder(root.right);
+        }
+    }
 };
 
 /*
