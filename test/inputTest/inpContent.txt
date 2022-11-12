@@ -31,3 +31,40 @@ _end_
 ENG
 people
 1
+Steve Jobs fue el fundador de Apple. Este ha sido un genio desde su nacimiento, creando productos que revolucionarian la industria tecnologica.
+Apple actualmente factura mas de 8 mil millones de dolares al anyo.
+_end_
+ESP
+2
+Avui fan 124 anys de l'inici de la construccio de la Sagrada Familia. Aquest monument barceloni va ser creat per Gaudi.
+Gaudi possiblement es la figura més important de la historia catalana.
+_end_
+CAT
+3
+Florentino Perez, presidente del Madrid, ha decidido revolucionar el mundo del futbol y crear la Superliga.
+Por el contrario gran parte de europa esta en contra de esta propuesta.
+_end_
+ESP
+4
+Steve Jobs fue el fundador de Apple. Este ha sido un genio desde su nacimiento, creando productos que revolucionarian la industria tecnologica.
+Apple actualmente factura mas de 8 mil millones de dolares al anyo.
+_end_
+ESP
+5
+Avui fan 124 anys de l'inici de la construccio de la Sagrada Familia. Aquest monument barceloni va ser creat per Gaudi.
+Gaudi possiblement es la figura més important de la historia catalana.
+_end_
+CAT
+6
+Florentino Perez, presidente del Madrid, ha decidido revolucionar el mundo del futbol y crear la Superliga.
+Por el contrario gran parte de europa esta en contra de esta propuesta.
+_end_
+ESP
+futbol
+6
+Steve Jobs fue el fundador de Apple. Este ha sido un genio desde su nacimiento, creando productos que revolucionarian la industria tecnologica.
+Apple actualmente factura mas de 8 mil millones de dolares al anyo.
+_end_
+ESP
+super
+7
