@@ -43,7 +43,7 @@ public class Sentence {
         String[] auxSearch = wSearch.split(" ");
         for(String wAux: auxSearch) { //cada iteración es una palabra que queremos buscar
             for(String word: this.words) { //cada palabra de la frase
-                if (word.contains(wAux)) return true;
+                if (word.toLowerCase().contains(wAux.toLowerCase())) return true;
             }
         }
         return false;

@@ -40,9 +40,9 @@ public class SentenceDriver {
 
     public static void main(String[] args) throws IOException {
         String functions = "0. All\n" +
-                "1. testContentConstruct\n" +
-                "2. testGetLanguage\n" +
-                "3. testGetText\n";
+                "1. testSentenceConstruct\n" +
+                "2. testSearchWord\n" +
+                "3. testGetSentence\n";
 
         System.out.println("Sentence Driver:");
         System.out.println("Introduce the number allocated to the function you want to test.");

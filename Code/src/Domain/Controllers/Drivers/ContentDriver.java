@@ -4,6 +4,7 @@ import Code.src.Domain.Classes.Content;
 import Code.src.Domain.Classes.Sentence;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -52,6 +53,18 @@ public class ContentDriver {
         System.out.println();
     }
 
+    public static void testGetSentences() throws IOException {
+        Content c = initialCreation1();
+        ArrayList<String> aux = c.getSentences();
+        System.out.println("Sentences: ");
+        int i = 1;
+        for(String s : aux) {
+            System.out.println(i + ". " + s);
+            System.out.println();
+            ++i;
+        }
+    }
+
     public static void testGetVector() throws IOException {
         Content c = initialCreation1();
         System.out.println("Vector for appearance: ");
@@ -77,15 +90,16 @@ public class ContentDriver {
                 "1. testContentConstruct\n" +
                 "2. testGetLanguage\n" +
                 "3. testGetText\n" +
-                "4. testGetVector\n" +
-                "5. testWordContain\n";
+                "4. testGetSentences\n" +
+                "5. testGetVector\n" +
+                "6. testWordContain\n";
 
         System.out.println("Content Driver:");
         System.out.println("Introduce the number allocated to the function you want to test.");
         System.out.println("Functions:");
         System.out.println(functions);
         int code = readInputInteger();
-        while(code < 6 & code >= 0) {
+        while(code < 7 & code >= 0) {
             switch (code) {
                 case 1:
                     System.out.println("testContentConstruct() choose:");
@@ -100,10 +114,14 @@ public class ContentDriver {
                     testGetText();
                     break;
                 case 4:
+                    System.out.println("testGetSentences() choose:");
+                    testGetSentences();
+                    break;
+                case 5:
                     System.out.println("testGetVector() choose:");
                     testGetVector();
                     break;
-                case 5:
+                case 6:
                     System.out.println("testWordContain() choose:");
                     testWordContain();
                     break;
@@ -115,6 +133,8 @@ public class ContentDriver {
                     testGetLanguage();
                     System.out.println("testGetText() test:");
                     testGetText();
+                    System.out.println("testGetSentences() choose:");
+                    testGetSentences();
                     System.out.println("testGetVector() test:");
                     testGetVector();
                     System.out.println("testWordContain() test:");

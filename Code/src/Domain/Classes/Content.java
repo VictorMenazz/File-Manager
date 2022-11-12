@@ -66,7 +66,8 @@ public class Content {
             int jump = auxText.indexOf("\n");
             if(jump != -1 && jump < 2) { //first char is a line break?
                 text.add(new Sentence("breakLine")); //ASI GUARDAMOS SALTO DE LINEA
-                auxText = auxText.substring(jump+2); //until the end
+                auxText = auxText.substring(jump+1); //until the end
+                posDot = auxText.indexOf('.');
             }
             String untilDot = auxText.substring(0, posDot); //string that goes to Sentence
             Sentence aux = new Sentence(untilDot + ".");
@@ -97,8 +98,14 @@ public class Content {
         //Build the vector
         while(!allWords.isEmpty()) {
             String auxWord = allWords.get(0);
+            if(auxWord.contains("\n")) {
+                String[] aux = auxWord.split("\n");
+                auxWord = aux[0];
+                for(int i = 1; i < aux.length; ++i) allWords.add(aux[i]);
+            }
             //Clean word
             auxWord = auxWord.replace(".", "");
+            auxWord = auxWord.replace("\n", "");
             auxWord = auxWord.replace(",", "");
             auxWord = auxWord.replace("!", "");
             auxWord = auxWord.replace("?", "");
