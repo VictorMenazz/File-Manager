@@ -38,7 +38,7 @@ public class SearchControllerDriver {
     }
 
     private static void testBooleanExpressionSearch() {
-
+        
     }
 
     private static void testAppearanceSearch() {
