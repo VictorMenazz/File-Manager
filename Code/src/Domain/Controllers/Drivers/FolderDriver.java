@@ -60,7 +60,7 @@ public class FolderDriver {
         System.out.println("Introduce the author:");
         String author = readInputString();
         System.out.println("Introduce the Content:");
-        String ContentText = readInputString();
+        String ContentText = readContent();
 
         //Testing a Document initialized without Content, plain text.
         System.out.println("Checking initializing method 1:");
@@ -98,7 +98,7 @@ public class FolderDriver {
         System.out.println("Introduce the author:");
         String author = readInputString();
         System.out.println("Introduce the Content:");
-        String ContentText = readInputString();
+        String ContentText = readContent();
 
         //Testing a Document initialized without Content, plain text.
         System.out.println("Checking initializing method 1:");
@@ -126,7 +126,7 @@ public class FolderDriver {
         System.out.println("Introduce the author:");
         String author = readInputString();
         System.out.println("Introduce the Content:");
-        String ContentText = readInputString();
+        String ContentText = readContent();
 
         Document d = new Document(title, author, ContentText, language);
         f.addDocument(d);
@@ -149,15 +149,15 @@ public class FolderDriver {
         String author = readInputString();
         //Content on plain text return missing.
         System.out.println("Content:");
-        String cont = readInputString();
+        String cont = readContent();
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content:");
-        String language =  readInputString();
+        String language = readInputString();
 
         Document d = new Document(title,author,cont,language);
         f.addDocument(d);
 
         System.out.println("Introduce the new Content:");
-        String ContentText = readInputString();
+        String ContentText = readContent();
 
         f.modifyContent(author,title, ContentText);
 
@@ -177,7 +177,7 @@ public class FolderDriver {
         String author = readInputString();
         //Content on plain text return missing.
         System.out.println("Content:");
-        String cont = readInputString();
+        String cont = readContent();
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content:");
         String language =  readInputString();
 
@@ -205,7 +205,7 @@ public class FolderDriver {
         String author = readInputString();
         //Content on plain text return missing.
         System.out.println("Content:");
-        String cont = readInputString();
+        String cont = readContent();
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content:");
         String language =  readInputString();
 
@@ -233,7 +233,7 @@ public class FolderDriver {
         String author = readInputString();
         //Content on plain text return missing.
         System.out.println("Content:");
-        String cont = readInputString();
+        String cont = readContent();
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content:");
         String language =  readInputString();
 
@@ -273,7 +273,7 @@ public class FolderDriver {
             String author = readInputString();
             //Content on plain text return missing.
             System.out.println("Content:");
-            String cont = readInputString();
+            String cont = readContent();
             System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content:");
             String language =  readInputString();
 
@@ -298,7 +298,7 @@ public class FolderDriver {
             String author = readInputString();
             //Content on plain text return missing.
             System.out.println("Content:");
-            String cont = readInputString();
+            String cont = readContent();
             System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content:");
             String language =  readInputString();
 
@@ -318,7 +318,7 @@ public class FolderDriver {
         String author = readInputString();
         //Content on plain text return missing.
         System.out.println("Content:");
-        String cont = readInputString();
+        String cont = readContent();
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content:");
         String language =  readInputString();
 
@@ -338,7 +338,7 @@ public class FolderDriver {
         String author = readInputString();
         //Content on plain text return missing.
         System.out.println("Content:");
-        String cont = readInputString();
+        String cont = readContent();
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content:");
         String language = readInputString();
 
@@ -353,7 +353,7 @@ public class FolderDriver {
         String author2 = readInputString();
         //Content on plain text return missing.
         System.out.println("Content:");
-        String cont2 = readInputString();
+        String cont2 = readContent();
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content:");
         String language2 = readInputString();
 
@@ -383,7 +383,7 @@ public class FolderDriver {
         String author = readInputString();
         //Content on plain text return missing.
         System.out.println("Content:");
-        String cont = readInputString();
+        String cont = readContent();
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the new Content:");
         String language =  readInputString();
 
@@ -558,5 +558,18 @@ public class FolderDriver {
         for (String name : docNames){
             System.out.println("New doc: " + name);
         }
+    }
+
+    private static String readContent() {
+        System.out.println("Introduce text for the Content, return carrier when you finish and write _end_");
+        String inp = "";
+        while(writer.hasNext()) {
+            String aux = writer.next();
+            if(aux.equals("_end_")) break;
+            else {
+                inp += (aux + "\n");
+            }
+        }
+        return inp;
     }
 }

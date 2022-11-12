@@ -21,6 +21,7 @@ testDocumentConstruct1() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Document created -> Title:Title1 Author:Auth1
 
@@ -28,6 +29,7 @@ testDocumentConstruct2() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Document created -> Title:Title2 Author:Auth2
 
@@ -35,6 +37,7 @@ testSetAuthor() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Introduce the new Author for the Document:
 Author changed to: AuthChanged
@@ -43,6 +46,7 @@ testSetTitle() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Introduce the new Title for the Document:
 Title changed to: NewTitle
@@ -51,14 +55,18 @@ testSetContent() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Introduce the new Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Checking the new Content: This is the ContentChanged!
+
 
 testSetLanguage() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Introduce the new Language for the Document:
 Language changed to: CAT
@@ -67,6 +75,7 @@ testProtectDocument() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Introduce the password for the Document:
 Document is protected: true
@@ -75,6 +84,7 @@ testGetTitle() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Title: Title8
 
@@ -82,6 +92,7 @@ testGetAuthor() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Author: Title9
 
@@ -89,6 +100,7 @@ testGetContent() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Content: This is the example for a normal Content.
 
@@ -96,6 +108,7 @@ testGetLanguage() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Language: ENG
 
@@ -103,6 +116,7 @@ testContentSearch() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Checking frequency internal vector:
 checking:1
@@ -112,6 +126,7 @@ testIsProtected() test:
 Introduce a title for the Document:
 Introduce an author for the Document:
 Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce a Language for the Document:
 Document Status, Protected: false
 Introduce new password:

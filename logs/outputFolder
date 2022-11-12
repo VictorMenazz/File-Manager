@@ -45,6 +45,7 @@ Introduce the lang(ESP, CAT or ENG) for the Document:
 Introduce the title:
 Introduce the author:
 Introduce the Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Checking initializing method 1:
 List of Docs before addition:
 List of Docs after addition:
@@ -62,6 +63,7 @@ Introduce the lang(ESP, CAT or ENG) for the Document:
 Introduce the title:
 Introduce the author:
 Introduce the Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Checking initializing method 1:
 List of Docs before addition:
 List of Docs after addition:
@@ -73,6 +75,7 @@ Introduce the lang(ESP, CAT or ENG) for the Document:
 Introduce the title:
 Introduce the author:
 Introduce the Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 List of Docs after addition:
 New doc: TitleTest
 List of Docs after deletion:
@@ -83,9 +86,12 @@ Creating a Doc to test function, information:
 Title:
 Author:
 Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce the lang(ESP, CAT or ENG) for the new Content:
 Introduce the new Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 This is the new Content
+
 
 testModifyAuthor() test:
 Checking initializing method 1:
@@ -93,6 +99,7 @@ Creating a Doc to test function, information:
 Title:
 Author:
 Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce the lang(ESP, CAT or ENG) for the new Content:
 Introduce the new Author:
 New Author: Auth5
@@ -103,6 +110,7 @@ Creating a Doc to test function, information:
 Title:
 Author:
 Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce the lang(ESP, CAT or ENG) for the new Content:
 Introduce the new Title:
 New Title: New title
@@ -113,6 +121,7 @@ Creating a Doc to test function, information:
 Title:
 Author:
 Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce the lang(ESP, CAT or ENG) for the new Content:
 Introduce the password to protect:
 Document is protected.
@@ -127,11 +136,13 @@ New Document
 Title:
 Author:
 Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce the lang(ESP, CAT or ENG) for the new Content:
 New Document
 Title:
 Author:
 Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce the lang(ESP, CAT or ENG) for the new Content:
 Doc: Title8
 Doc: Title9
@@ -142,11 +153,13 @@ New Document
 Title:
 Author:
 Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce the lang(ESP, CAT or ENG) for the new Content:
 New Document
 Title:
 Author:
 Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce the lang(ESP, CAT or ENG) for the new Content:
 Number of Docs: 2
 
@@ -155,6 +168,7 @@ New Document
 Title:
 Author:
 Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce the lang(ESP, CAT or ENG) for the new Content:
 Checking Doc -> Title: Title12 Author: Auth12
 
@@ -163,11 +177,13 @@ New Document
 Title:
 Author:
 Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce the lang(ESP, CAT or ENG) for the new Content:
 New Document
 Title:
 Author:
 Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce the lang(ESP, CAT or ENG) for the new Content:
 New Doc: Title13Auth13
 originalcontent13:1
@@ -181,6 +197,7 @@ New Document
 Title:
 Author:
 Content:
+Introduce text for the Content, return carrier when you finish and write _end_
 Introduce the lang(ESP, CAT or ENG) for the new Content:
 Document Contained: true
 

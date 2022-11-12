@@ -18,7 +18,7 @@ public class DocumentDriver {
         System.out.println("Introduce an author for the Document:");
         String author = readInputString();
         System.out.println("Introduce a Content for the Document:");
-        String Content = readInputString();
+        String Content = readContent();
         System.out.println("Introduce a Language for the Document:");
         String lang = readInputString();
         Document doc = new Document(title,author,Content,lang);
@@ -39,7 +39,7 @@ public class DocumentDriver {
         System.out.println("Introduce an author for the Document:");
         String author = readInputString();
         System.out.println("Introduce a Content for the Document:");
-        String ContentText = readInputString();
+        String ContentText = readContent();
         System.out.println("Introduce a Language for the Document:");
         String lang = readInputString();
 
@@ -71,7 +71,7 @@ public class DocumentDriver {
     public static void testSetContent() throws IOException {
         Document d = initialCreation1();
         System.out.println("Introduce the new Content for the Document:");
-        String newCont = readInputString();
+        String newCont = readContent();
         Content c = new Content(newCont,d.getLanguage());
         d.setContent(c);
         //Falta getContentOnPlainText
@@ -258,6 +258,19 @@ public class DocumentDriver {
 
     private static int readInputInteger() {
         Integer inp = writer.nextInt();
+        return inp;
+    }
+
+    private static String readContent() {
+        System.out.println("Introduce text for the Content, return carrier when you finish and write _end_");
+        String inp = "";
+        while(writer.hasNext()) {
+            String aux = writer.next();
+            if(aux.equals("_end_")) break;
+            else {
+                inp += (aux + "\n");
+            }
+        }
         return inp;
     }
 
