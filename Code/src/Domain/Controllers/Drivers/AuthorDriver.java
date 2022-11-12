@@ -4,9 +4,10 @@ import Code.src.Domain.Classes.Author;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class AuthorDriver {
-    private static Scanner writer = new Scanner(System.in).useDelimiter("\n");
+    private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
     private static void addNtitles(Author aut) {
         System.out.print("Enter the number of titles to be added: ");
