@@ -10,9 +10,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class FolderDriver {
-    private static Scanner writer = new Scanner(System.in).useDelimiter("\n");
+    private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
     /** @brief Creator test. */
     public static void testFolder() {

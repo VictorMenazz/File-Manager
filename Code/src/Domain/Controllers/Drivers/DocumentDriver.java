@@ -7,9 +7,10 @@ import Code.src.Domain.Classes.Pair;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class DocumentDriver {
-    private static Scanner writer = new Scanner(System.in).useDelimiter("\n");
+    private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
     public static Document initialCreation1() throws IOException {
         System.out.println("Introduce a title for the Document:");

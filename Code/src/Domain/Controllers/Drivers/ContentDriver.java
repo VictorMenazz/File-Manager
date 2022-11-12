@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
  * @file ContentDriver.java
@@ -20,7 +21,7 @@ import java.util.Scanner;
  * @author Victor Mena Doz
  */
 public class ContentDriver {
-    private static Scanner writer = new Scanner(System.in).useDelimiter("\n");
+    private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
     public static Content initialCreation1() throws IOException {
         System.out.println("Introduce text for the Content: ");
