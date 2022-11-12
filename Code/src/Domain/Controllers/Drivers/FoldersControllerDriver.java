@@ -5,6 +5,7 @@ import Code.src.Domain.Classes.Folder;
 import Code.src.Domain.Controllers.FoldersController;
 
 import java.io.IOException;
+import java.net.StandardSocketOptions;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -53,31 +54,32 @@ public class FoldersControllerDriver {
         FoldersController fCont = initializeFController();
         Document d = initializeDoc();
         fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
-        System.out.println("Document added -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Contained: " + fCont.getRoot().documentContained(d.getAuthor(), d.getTitle()));
+        System.out.println("Document added -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Contained: " + fCont.getRoot().documentContained(d.getTitle(), d.getAuthor()));
     }
     public static void testDeleteDocument() throws IOException {
         FoldersController fCont = initializeFController();
         Document d = initializeDoc();
         fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
-        System.out.println("Document added -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Contained: " + fCont.getRoot().documentContained(d.getAuthor(), d.getTitle()));
+        System.out.println("Document added -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Contained: " + fCont.getRoot().documentContained(d.getTitle(), d.getAuthor()));
         System.out.println("Deleting...");
-        fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
-        System.out.println("Document added -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Contained: " + fCont.getRoot().documentContained(d.getAuthor(), d.getTitle()));
+        fCont.deleteDocument(d.getAuthor(),d.getTitle());
+        System.out.println("Document added -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Contained: " + fCont.getRoot().documentContained(d.getTitle(), d.getAuthor()));
     }
     public static void testModifyContent() throws IOException {
         FoldersController fCont = initializeFController();
         Document d = initializeDoc();
         fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
-        System.out.println("Document added -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Contained: " + fCont.getRoot().documentContained(d.getAuthor(), d.getTitle()));
-        System.out.println("Deleting...");
-        fCont.deleteDocument(d.getAuthor(), d.getTitle());
-        System.out.println("Document added -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Contained: " + fCont.getRoot().documentContained(d.getAuthor(), d.getTitle()));
+        System.out.println("Introduce new Content:");
+        String newCont = readInputString();
+        System.out.println("InitialDoc -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Content: " + fCont.getRoot().getDocument(d.getAuthor(), d.getTitle()).getContent());
+        fCont.modifyContent(d.getAuthor(),d.getTitle(),newCont);
+        System.out.println("ModifiedDoc -> Name: " + d.getTitle() + " Author: " + fCont.getDocument(d.getAuthor(), d.getTitle()).getAuthor() + " Content: " + fCont.getDocument(d.getAuthor(), d.getTitle()).getContent());
     }
     public static void testModifyAuthor() throws IOException {
         FoldersController fCont = initializeFController();
         Document d = initializeDoc();
         fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
-        System.out.println("Introduce new Author: ");
+        System.out.println("Introduce new Author:");
         String newAuth = readInputString();
         System.out.println("InitialDoc -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Content: " + fCont.getRoot().getDocument(d.getAuthor(), d.getTitle()).getContent());
         fCont.modifyAuthor(d.getAuthor(),d.getTitle(),newAuth);
@@ -87,7 +89,7 @@ public class FoldersControllerDriver {
         FoldersController fCont = initializeFController();
         Document d = initializeDoc();
         fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
-        System.out.println("Introduce new Title: ");
+        System.out.println("Introduce new Title:");
         String newTitle = readInputString();
         System.out.println("InitialDoc -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Content: " + fCont.getRoot().getDocument(d.getAuthor(), d.getTitle()).getContent());
         fCont.modifyTitle(d.getAuthor(), d.getTitle(), newTitle);
@@ -111,9 +113,11 @@ public class FoldersControllerDriver {
     }
     public static void testNewFolder(){
         FoldersController fCont = initializeFController();
-        System.out.println("Folder Contained: " + fCont.getRoot().folderContained(2));
-        fCont.newFolder("Test", 1);
-        System.out.println("Folder Contained: " + fCont.getRoot().folderContained(2));
+        System.out.println("Introduce a name for the new Folder:");
+        String fName = readInputString();
+        System.out.println("Folder Contained before creation: " + fCont.getRoot().folderContained(2));
+        fCont.newFolder(fName, 1);
+        System.out.println("Folder Contained after creation: " + fCont.getRoot().folderContained(2));
     }
 
     public static void main(String[] args) throws IOException {
