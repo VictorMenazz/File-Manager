@@ -16,6 +16,13 @@ public class AuthorsController {
     HashMap<String, Author> authors;
 
     /**
+     * @brief Default creator
+     */
+    public AuthorsController() {
+        authors = new HashMap<String, Author>();
+    }
+
+    /**
      * @brief Add a new Author
      * @param name
      * @param a
