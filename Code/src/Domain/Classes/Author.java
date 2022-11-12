@@ -23,6 +23,7 @@ public class Author {
      */
     public Author(String n) {
         name = n;
+        docs = new ArrayList<String>();
     }
 
     /**
