@@ -10,6 +10,26 @@ import static org.junit.Assert.*;
 public class DocumentTest {
 
     @org.junit.Test
+    public void Document(){
+        try{
+            Document d = new Document("Title1", "Auth1","This is test Content","ENG");
+        }
+            catch (IOException e) {
+            fail(e.getMessage());
+        }
+    }
+
+    public void Document2(){
+        try{
+            Content c = new Content("Test Content", "ENG");
+            Document d = new Document("Title1", "Auth1",c,"ENG");
+        }
+        catch (IOException e) {
+            fail(e.getMessage());
+        }
+    }
+
+    @org.junit.Test
     public void setAuthor() throws IOException {
         //Test initializing way 1
         Content initialContent = new ContentStub();

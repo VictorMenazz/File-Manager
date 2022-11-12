@@ -14,6 +14,15 @@ import static org.junit.Assert.*;
 
 public class FolderTest {
 
+    public void Folder(){
+        try{
+            Folder f = new Folder(1, "Fold1");
+        }
+        catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+
     @Test
     public void setFolderName() {
         Folder f = new Folder(1, "Test");
