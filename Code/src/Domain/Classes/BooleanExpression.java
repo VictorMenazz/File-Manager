@@ -3,6 +3,15 @@ package Code.src.Domain.Classes;
 import java.util.*;
 import java.util.regex.*;
 
+ /**
+  * @file BooleanExpression.java
+  * @brief Class <em>Boolean Expression</em>
+  */
+
+/**
+ * @brief Class Boolean Expression to search documents
+ * @author Júlia Amenós Dien
+ */
 public class BooleanExpression {
     /***
      * @brief Original boolean expression

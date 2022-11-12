@@ -6,6 +6,16 @@ import org.junit.Test;
 
 import java.util.ArrayList;
 
+/**
+ * @file ContentTest.java
+ * @brief Test <em>Boolean Expression</em>
+ */
+
+/**
+ * @brief Test of the BooleanExpression class
+ * @author Júlia Amenós Dien
+ */
+
 public class BooleanExpressionTest {
 
     @org.junit.Test
