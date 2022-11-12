@@ -117,24 +117,8 @@ public class FolderDriver {
     // FALTA ACABAR
     // +++++++++++++++++++++
     public static void testDelDocument() {
-        Folder f = new Folder(1, "Testname");
-
-        System.out.println("Introduce the lang(ESP, CAT or ENG) for the Document:");
-        String language = readInputString();
-        System.out.println("Introduce the title:");
-        String title = readInputString();
-        System.out.println("Introduce the author:");
-        String author = readInputString();
-        System.out.println("Introduce the Content:");
-        String ContentText = readInputString();
-
-        Document d = new Document(title, author, ContentText, language);
-        f.addDocument(d);
-        System.out.println("List of Docs after addition:");
-        showDocs(f);
-        f.delDocument(author,title);
-        System.out.println("List of Docs after deletion:");
-        showDocs(f);
+        System.out.println("");
+        // FALTA ACABAR
     }
 
     public static void testModifyContent() throws IOException {
