@@ -7,18 +7,19 @@ Functions:
 3. testCreateFolder
 4. testAddDocument
 5. testAddNonConstructedDocument
-6. testModifyContent
-7. testModifyAuthor
-8. testModifyTitle
-9. testProtectDocument
-10. testGetName
-11. testGetDocumentsName
-12. testGetDocumentAmount
-13. testGetDocument
-14. testGetMapsDoc
-15. testDocumentContained
-16. testFolderContained
-17. Exit
+6. testDelDocument
+7. testModifyContent
+8. testModifyAuthor
+9. testModifyTitle
+10. testProtectDocument
+11. testGetName
+12. testGetDocumentsName
+13. testGetDocumentAmount
+14. testGetDocument
+15. testGetMapsDoc
+16. testDocumentContained
+17. testFolderContained
+18. Exit
 
 testFolder() test:
 Introduce a name for the Folder:
@@ -66,6 +67,15 @@ List of Docs before addition:
 List of Docs after addition:
 New doc: Title2
 Testing 'testAddNonConstructedDocument()' finished.
+
+testDelDocument() choose:
+Introduce the lang(ESP, CAT or ENG) for the Document:
+Introduce the title:
+Introduce the author:
+Introduce the Content:
+List of Docs after addition:
+New doc: TitleTest
+List of Docs after deletion:
 
 testModifyContent() test:
 Checking initializing method 1:

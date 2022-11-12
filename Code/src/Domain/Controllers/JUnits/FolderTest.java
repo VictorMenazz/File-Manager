@@ -26,6 +26,7 @@ public class FolderTest {
     @Test
     public void setFolderName() {
         Folder f = new Folder(1, "Test");
+        assertNotEquals("ChangedName", f.getName());
         f.setFolderName("ChangedName");
         assertEquals("ChangedName", f.getName());
     }
@@ -33,6 +34,7 @@ public class FolderTest {
     @Test
     public void createFolder() {
         Folder f = new Folder(1, "Test");
+        assertFalse(f.folderContained(2));
         f.createFolder("SonTest", 1);
         assertTrue(f.folderContained(2));
     }
@@ -41,16 +43,21 @@ public class FolderTest {
     public void addDocument() {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
+        assertFalse(f.documentContained("TitleTest","AuthorTest"));
         f.addDocument(doc);
         assertTrue(f.documentContained("TitleTest","AuthorTest"));
     }
 
     @Test
     public void addNonConstructedDocument() {
-        /*Folder f = new Folder(1, "Test");
-        //It will no longer work cause the creator of Content is no valid.
-        f.addNonConstructedDocument("AuthorTest", "TitleTest", new ContentStub(), "ENG");
-        assertTrue(f.documentContained("TitleTest","AuthorTest"));*/
+        Folder f = new Folder(1, "Test");
+        assertFalse(f.documentContained("TitleTest","AuthorTest"));
+        try {
+            f.addNonConstructedDocument("AuthorTest", "TitleTest", "new Content", "ENG");
+        } catch (IOException e) {
+            fail(e.getMessage());
+        }
+        assertTrue(f.documentContained("TitleTest","AuthorTest"));
     }
 
     @Test
@@ -64,20 +71,29 @@ public class FolderTest {
 
     @Test
     public void modifyContent() {
-        /*Folder f = new Folder(1, "Test");
+        Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
+        assertFalse(f.documentContained("TitleTest","AuthorTest"));
         f.addDocument(doc);
-        //It will no longer work cause the creator of Content is no valid.
-        f.modifyContent("AuthorTest", "TitleTest", "newCont");
-        assertTrue(f.documentContained("TitleTest","AuthorTest"));*/
+        try {
+            f.modifyContent("AuthorTest", "TitleTest", "newCont");
+        } catch (IOException e) {
+            fail(e.getMessage());
+        }
+        assertTrue(f.documentContained("TitleTest","AuthorTest"));
     }
 
     @Test
     public void modifyAuthor() {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
+        assertFalse(f.documentContained("TitleTest","AuthorTest"));
+        assertFalse(f.documentContained("TitleTest","newAuthor"));
         f.addDocument(doc);
+        assertTrue(f.documentContained("TitleTest","AuthorTest"));
+        assertFalse(f.documentContained("TitleTest","newAuthor"));
         f.modifyAuthor("AuthorTest", "TitleTest", "newAuthor");
+        assertFalse(f.documentContained("TitleTest","AuthorTest"));
         assertTrue(f.documentContained("TitleTest", "newAuthor"));
     }
 
@@ -85,8 +101,13 @@ public class FolderTest {
     public void modifyTitle() {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
+        assertFalse(f.documentContained("TitleTest", "AuthorTest"));
+        assertFalse(f.documentContained("newTitle", "AuthorTest"));
         f.addDocument(doc);
+        assertTrue(f.documentContained("TitleTest", "AuthorTest"));
+        assertFalse(f.documentContained("newTitle", "AuthorTest"));
         f.modifyTitle("AuthorTest", "TitleTest", "newTitle");
+        assertFalse(f.documentContained("TitleTest", "AuthorTest"));
         assertTrue(f.documentContained("newTitle", "AuthorTest"));
     }
 
@@ -95,9 +116,11 @@ public class FolderTest {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         f.addDocument(doc);
-        f.protectDocument("AuthorTest","TitleTest","admin");
         Document d = f.getDocument("AuthorTest","TitleTest");
         assertFalse(d.isProtected());
+        f.protectDocument("AuthorTest","TitleTest","admin");
+        Document d2 = f.getDocument("AuthorTest","TitleTest");
+        assertFalse(d2.isProtected()); //Cause the Stub is always returning false.
     }
 
     @Test
