@@ -135,6 +135,7 @@ public class FolderDriver {
         f.delDocument(author,title);
         System.out.println("List of Docs after deletion:");
         showDocs(f);
+        System.out.println();
     }
 
     public static void testModifyContent() throws IOException {
@@ -410,25 +411,26 @@ public class FolderDriver {
                 "3. testCreateFolder\n" +
                 "4. testAddDocument\n" +
                 "5. testAddNonConstructedDocument\n" +
-                "6. testModifyContent\n" +
-                "7. testModifyAuthor\n" +
-                "8. testModifyTitle\n" +
-                "9. testProtectDocument\n" +
-                "10. testGetName\n" +
-                "11. testGetDocumentsName\n" +
-                "12. testGetDocumentAmount\n" +
-                "13. testGetDocument\n" +
-                "14. testGetMapsDoc\n" +
-                "15. testDocumentContained\n" +
-                "16. testFolderContained\n" +
-                "17. Exit\n";
+                "6. testDelDocument\n" +
+                "7. testModifyContent\n" +
+                "8. testModifyAuthor\n" +
+                "9. testModifyTitle\n" +
+                "10. testProtectDocument\n" +
+                "11. testGetName\n" +
+                "12. testGetDocumentsName\n" +
+                "13. testGetDocumentAmount\n" +
+                "14. testGetDocument\n" +
+                "15. testGetMapsDoc\n" +
+                "16. testDocumentContained\n" +
+                "17. testFolderContained\n" +
+                "18. Exit\n";
 
         System.out.println("Folder Driver:");
         System.out.println("Introduce the number allocated to the function you want to test.");
         System.out.println("Functions:");
         System.out.println(functions);
         int code = readInputInteger();
-        while (code != 17) {
+        while (code != 18) {
             switch (code) {
                 case 1:
                     System.out.println("testFolder() choose:");
@@ -451,46 +453,50 @@ public class FolderDriver {
                     testAddNonConstructedDocument();
                     break;
                 case 6:
+                    System.out.println("testDelDocument() choose:");
+                    testDelDocument();
+                    break;
+                case 7:
                     System.out.println("testModifyContent() choose:");
                     testModifyContent();
                     break;
-                case 7:
+                case 8:
                     System.out.println("testModifyAuthor() choose:");
                     testModifyAuthor();
                     break;
-                case 8:
+                case 9:
                     System.out.println("testModifyTitle() choose:");
                     testModifyTitle();
                     break;
-                case 9:
+                case 10:
                     System.out.println("testProtectDocument() choose:");
                     testProtectDocument();
                     break;
-                case 10:
+                case 11:
                     System.out.println("testGetName() choose:");
                     testGetName();
                     break;
-                case 11:
+                case 12:
                     System.out.println("testGetDocumentsName() choose:");
                     testGetDocumentsName();
                     break;
-                case 12:
+                case 13:
                     System.out.println("testGetDocumentAmount() choose:");
                     testGetDocumentAmount();
                     break;
-                case 13:
+                case 14:
                     System.out.println("testGetDocument() choose:");
                     testGetDocument();
                     break;
-                case 14:
+                case 15:
                     System.out.println("testGetMapsDoc() choose:");
                     testGetMapsDocs();
                     break;
-                case 15:
+                case 16:
                     System.out.println("testDocumentContained() choose:");
                     testDocumentContained();
                     break;
-                case 16:
+                case 17:
                     System.out.println("testFolderContained() choose:");
                     testFolderContained();
                     break;
@@ -505,6 +511,8 @@ public class FolderDriver {
                     testAddDocument();
                     System.out.println("testAddNonConstructedDocument() test:");
                     testAddNonConstructedDocument();
+                    System.out.println("testDelDocument() choose:");
+                    testDelDocument();
                     System.out.println("testModifyContent() test:");
                     testModifyContent();
                     System.out.println("testModifyAuthor() test:");
