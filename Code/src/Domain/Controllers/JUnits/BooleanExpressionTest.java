@@ -7,7 +7,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 /**
- * @file ContentTest.java
+ * @file BooleanExpressionTest.java
  * @brief Test <em>Boolean Expression</em>
  */
 

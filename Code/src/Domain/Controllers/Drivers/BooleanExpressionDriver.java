@@ -9,7 +9,15 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * @file BooleanExpressionDriver.java
+ * @brief Test <em>Boolean Expression</em>
+ */
 
+/**
+ * @brief Driver of the BooleanExpression class
+ * @author Júlia Amenós Dien
+ */
 public class BooleanExpressionDriver {
 
     private static Scanner scanner = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
