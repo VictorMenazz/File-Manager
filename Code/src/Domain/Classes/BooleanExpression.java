@@ -156,11 +156,12 @@ public class BooleanExpression {
      * @param n, node of the expression tree
      */
     private Boolean recursiveFind(String sentence, Node n) {
-        sentence.toLowerCase();
+        sentence = sentence.toLowerCase();
         if (n == null) return false;
         //if node is a leaf
         if (n.right == null & n.left == null) {
             if (n.data.charAt(0) == '!') {
+                //int idx = n.data.indexOf(n.data.substring(1));
                 String s = n.data.substring(1);
                 return !sentence.contains(s);
             }
@@ -336,7 +337,7 @@ public class BooleanExpression {
 
     /***
      * @brief Returns the original boolean expression
-     * @return
+     * @return original boolean expression
      */
     public String getExpression(){
         return originalBoolExpr;
