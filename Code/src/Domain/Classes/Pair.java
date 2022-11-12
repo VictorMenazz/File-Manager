@@ -1,5 +1,13 @@
 package Code.src.Domain.Classes;
+/**
+ * @file Pair.java
+ *
+ * @brief Class <em>Pair</em>
+ */
 
+/**
+ * @brief Structure used as key of other Domain Classes.
+ */
 public class Pair<U, V> {
     // Domain.Domain.Classes.Classes.Pair class
         public final U first;       // el primer campo de un par

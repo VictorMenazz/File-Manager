@@ -1,6 +1,10 @@
 package Code.src.Domain.Classes;
 
 import java.util.ArrayList;
+/**
+ * @file Author.java
+ * @brief Class <em>Author</em>
+ */
 
 /**
  * @brief Class Author that contains the information of an Author

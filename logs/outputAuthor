@@ -28,7 +28,7 @@ Author's name: Victor
 
 testGetTitles() test:
 Introduce a name for the Author: 
-Enter the number of titles to be added: 
+Enter the number of titles to be added:
 Write the next title (num 1): 
 Write the next title (num 2): 
 Write the next title (num 3): 
@@ -41,7 +41,7 @@ Java
 -------
 
 testGetNumTitles() test:
-Enter the number of titles to be added: 
+Enter the number of titles to be added:
 Write the next title (num 1): 
 Write the next title (num 2): 
 Write the next title (num 3): 

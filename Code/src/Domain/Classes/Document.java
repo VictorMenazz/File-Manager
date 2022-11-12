@@ -2,7 +2,18 @@ package Code.src.Domain.Classes;
 
 import java.io.IOException;
 import java.util.HashMap;
+/**
+ * @file Document.java
+ *
+ * @brief Class <em>Document</em>
+ */
 
+/**
+ * @brief Class Document representing a structure able to save certain
+ * @brief content and identified by a Title and an Author.
+ *
+ * @author Marc Navarro Acosta
+ */
 public class Document {
         /**
          * @brief Title of the Document.
