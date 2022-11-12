@@ -116,6 +116,7 @@ public class FolderDriver {
     // +++++++++++++++++++++
     // FALTA ACABAR
     // +++++++++++++++++++++
+<<<<<<< HEAD
     public static void testDelDocument() throws IOException {
         Folder f = new Folder(1, "Testname");
 
@@ -135,6 +136,11 @@ public class FolderDriver {
         f.delDocument(author,title);
         System.out.println("List of Docs after deletion:");
         showDocs(f);
+=======
+    public static void testDelDocument() {
+        System.out.println("");
+        // FALTA ACABAR
+>>>>>>> a8a3d6c19eec49f0d331acb7e780b7a768947aec
     }
 
     public static void testModifyContent() throws IOException {

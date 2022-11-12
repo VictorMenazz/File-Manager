@@ -9,76 +9,73 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * @file BooleanExpressionDriver.java
+ * @brief Test <em>Boolean Expression</em>
+ */
 
+/**
+ * @brief Driver of the BooleanExpression class
+ * @author Júlia Amenós Dien
+ */
 public class BooleanExpressionDriver {
 
     private static Scanner scanner = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
-    /***
-     * Checks if the boolean expression is correctly created
-     * Print the tree
-     * @param s
-     */
-    private static void testBooleanExpression(String s) throws Exception {
-        BooleanExpression be = new BooleanExpression(s);
-        System.out.println("Boolean expression has been created");
+    private static String input = "";
+    private static BooleanExpression boolExpr;
+
+
+    private static void testBooleanExpression() throws Exception {
+        try {
+            System.out.println("Introduce new boolean expression:");
+            input = scanner.next();
+            boolExpr = new BooleanExpression(input);
+            System.out.println(input);
+            System.out.println("Boolean expression has been created");
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
     }
 
-    private static void testInorder(String s) throws Exception {
-        BooleanExpression be = new BooleanExpression(s);
-        System.out.print("Boolean expression tree is: " );
-        //BooleanExpression.inorder(be.getExpTree());
+    private static void testGetExpression() {
+        System.out.println(boolExpr.getExpression());
     }
 
-    private static void testGetExpression(String s) throws Exception {
-        BooleanExpression be = new BooleanExpression(s);
-        System.out.println(be.getExpression());
-    }
 
-    //JUNIT O STUB
-    private static void testIsDocumentValid(String sentence, String boolExpr) throws Exception {
-        BooleanExpression be = new BooleanExpression(boolExpr);
-        System.out.println(be.isDocumentValid(sentence));
+    private static void testIsDocumentValid() {
+        System.out.print("Insert sentence to check boolean expression:");
+        String sentence = scanner.next();
+        System.out.println(boolExpr.isDocumentValid(sentence));
     }
 
 
     public static void main(String[] args) throws Exception {
-        String functions = "0.Introduce new boolean expression\n" +
+        String functions =
+                "BOOLEAN EXPRESSION DRIVER:\n" +
                 "1. testBooleanExpression\n" +
-                "2. testInorder\n" +
-                "3. testGetExpression\n" +
+                "2. testGetExpression\n" +
+                "3. testIsDocumentValid\n" +
                 "4. Exit\n";
         System.out.println(functions);
 
-        //int op = scanner.nextInt();
-        String input = "";
-
-        /*String input = "{p1 p2 p3 p3}";*/
-        int op = 0;
-
-        input = scanner.next();
-        System.out.println(input);
+        int op = 1;
 
         while(op != 4){
-            op = scanner.nextInt();
-
             switch (op) {
-                case 0:
-                    System.out.println("Introduce your boolean expression:");
-                    input = scanner.next();
-                    System.out.println(input);
-                    break;
                 case 1:
-                    testBooleanExpression(input);
+                    testBooleanExpression();
                     break;
                 case 2:
-                    testInorder(input);
+                    testGetExpression();
                     break;
                 case 3:
-                    testGetExpression(input);
+                    testIsDocumentValid();
                     break;
                 default:
                     break;
             }
+            System.out.println("Insert new command:");
+            op = scanner.nextInt();
         }
     }
 }
