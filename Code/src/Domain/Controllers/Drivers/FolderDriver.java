@@ -116,7 +116,7 @@ public class FolderDriver {
     // +++++++++++++++++++++
     // FALTA ACABAR
     // +++++++++++++++++++++
-    public static void testDelDocument() {
+    public static void testDelDocument() throws IOException {
         Folder f = new Folder(1, "Testname");
 
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the Document:");

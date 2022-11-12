@@ -5,12 +5,13 @@ import Code.src.Domain.Classes.Sentence;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class SentenceDriver {
-    private static Scanner writer = new Scanner(System.in).useDelimiter("\n");
+    private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
     public static Sentence initialCreation() {
-        System.out.println("Introduce text of the Sentence: ");
+        System.out.println("Introduce text of the Sentence:");
         String nWords = readInputString();
         Sentence sen = new Sentence(nWords);
         return sen;
@@ -24,7 +25,7 @@ public class SentenceDriver {
 
     public static void testSearchWord() {
         Sentence s = initialCreation();
-        System.out.println("Introduce a string to search in the sentence: ");
+        System.out.println("Introduce a string to search in the sentence:");
         String word = readInputString();
         if(word.isEmpty() | word.isBlank()) System.err.println("No es correcto introducir una expresion vacia");
         if(s.searchWord(word)) System.out.println("FOUND IT");

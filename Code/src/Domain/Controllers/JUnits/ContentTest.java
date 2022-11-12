@@ -76,5 +76,6 @@ public class ContentTest {
     public void wordContain() throws IOException {
         Content c = new Content(text, "ENG");
         assertTrue(c.wordContain("messi"));
+        assertFalse(c.wordContain("harry"));
     }
 }

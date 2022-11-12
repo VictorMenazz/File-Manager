@@ -25,10 +25,10 @@ public class ContentDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
     public static Content initialCreation1() throws IOException {
-        System.out.println("Introduce text for the Content: ");
+        System.out.println("Introduce text for the Content:");
         String text = readInputString();
         if(text.isEmpty() | text.isBlank()) System.err.println("No es correcto introducir una expresion vacia");
-        System.out.println("Introduce language for the Content (ENG, CAT or ESP): ");
+        System.out.println("Introduce language for the Content (ENG, CAT or ESP):");
         String language = readInputString();
         if(language.isEmpty() | language.isBlank()) System.err.println("No es correcto introducir una expresion vacia");
         Content cont = new Content(text, language);
@@ -77,7 +77,7 @@ public class ContentDriver {
 
     public static void testWordContain() throws IOException {
         Content c = initialCreation1();
-        System.out.println("Introduce a string to search in the text: ");
+        System.out.println("Introduce a string to search in the text:");
         String word = readInputString();
         if(word.isEmpty() | word.isBlank()) System.err.println("No es correcto introducir una expresion vacia");
         if(c.wordContain(word)) System.out.println("FOUND IT");

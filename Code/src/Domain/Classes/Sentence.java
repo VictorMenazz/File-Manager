@@ -43,15 +43,16 @@ public class Sentence {
         String[] auxSearch = wSearch.split(" ");
         for(String wAux: auxSearch) { //cada iteración es una palabra que queremos buscar
             for(String word: this.words) { //cada palabra de la frase
-                if (word.toLowerCase().contains(wAux.toLowerCase())) return true;
+                if (word.toLowerCase().contains(wAux.toLowerCase())) break;
+                else if (word == words[words.length-1]) return false;
             }
         }
-        return false;
+        return true;
     }
 
     /**
      * @brief Reconstruct the sentence
-     * @return Sentence in ona string
+     * @return Sentence in one string
      */
     public String getSentence() {
         if (words.length == 1 & words[0]=="breakLine") {
