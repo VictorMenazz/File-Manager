@@ -52,6 +52,9 @@ public class BooleanExpression {
          String e = "( " + boolExpr.trim() + " )";
 
         String[] expr = e.split(" ");   //separamos expresión por elementos
+         for (String s : expr){
+             System.out.println(s);
+         }
 
         //Stack to hold nodes
         Stack<Node> stN = new Stack<>();
@@ -63,9 +66,28 @@ public class BooleanExpression {
         //Priority operators
         Map<String, Integer> priority = Map.of("&", 2, "|", 1);
 
-        for (int i = 0; i < expr.length; ++i){
+        Boolean isSentence = false;
+        String sentence = "";
 
-            if (expr[i].equals("(")){
+        for (int i = 0; i < expr.length; ++i){
+            if (expr[i].charAt(0) == '"') {
+                isSentence = true;
+                sentence += expr[i].substring(1);   //saltamos comilla
+            }
+            else if (isSentence) {
+                int n = expr[i].length();
+                if (expr[i].charAt(n-1) == '"') {
+                    sentence = sentence + " " + expr[i].substring(0, n-1);  //saltamos comilla
+                    t = newNode(sentence);
+                    stN.add(t);
+                    sentence = "";  //reiniciar string auxiliar
+                    isSentence = false;
+                } else {
+                    sentence = sentence + " " + expr[i];
+                }
+            }
+
+            else if (expr[i].equals("(")){
                 stC.add(expr[i]);
             }
             else if (expr[i].equals(")")){
@@ -105,7 +127,6 @@ public class BooleanExpression {
                 stC.push(expr[i]);
             }
             else {
-
                 t = newNode(expr[i]);
                 stN.add(t);
             }
@@ -140,8 +161,8 @@ public class BooleanExpression {
         noQuotes = noQuotes.replaceAll("\\s{2,}", "");
         checkBraces();
         checkParentheses();
+        separateParentheses();
         root = build();
-
     }
 
     //-------------------
@@ -154,7 +175,6 @@ public class BooleanExpression {
         noQuotes = noQuotes.replaceAll("[()]", "");
         noQuotes = noQuotes.replaceAll("\\s{2,}", " "); //avoid multiple whitespaces between words
         String noSpaces = noQuotes.replaceAll("\\s", "");   //String without any whitespace to compare operands
-        System.out.println(noQuotes);
 
         String[] invalidOperators = {"&|", "|&", "!|", "!&", "!&|", "!|&",
                 "&!|", "&|!", "|!&", "|&!"};
@@ -236,10 +256,23 @@ public class BooleanExpression {
             else {
                 String content2 = deleteDuplicates(content);
                 content2 = content2.trim().replaceAll(" ", " & ");
-                System.out.println(content2);
                 boolExpr = boolExpr.replace(content, content2);
                 boolExpr = boolExpr.replaceAll("[{}]", ""); //delete braces
                 noQuotes = noQuotes.replace(content, "a");
+            }
+        }
+    }
+
+    private void separateParentheses() {
+        Pattern pattern = Pattern.compile("\\(.*?\\)");
+        Matcher matcher = pattern.matcher(boolExpr);
+
+        while(matcher.find()) {
+            String content = matcher.group();
+            if (content.isEmpty()) System.err.println("Parentheses ( ) are useless");
+            else {
+                boolExpr = boolExpr.replaceAll("\\(", "( "); //separate parentheses and word
+                boolExpr = boolExpr.replaceAll("\\)", " )"); //separate parentheses and word
             }
         }
     }
