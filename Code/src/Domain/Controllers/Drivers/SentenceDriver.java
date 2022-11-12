@@ -20,7 +20,6 @@ public class SentenceDriver {
     public static void testSentenceConstruct() throws IOException {
         Sentence s = initialCreation();
         System.out.println("Sentence created -> Text: " + s.getSentence() + "\n");
-        System.out.println();
     }
 
     public static void testSearchWord() {
@@ -36,7 +35,6 @@ public class SentenceDriver {
     public static void testGetSentence() {
         Sentence s = initialCreation();
         System.out.println("Text: " + s.getSentence() + "\n");
-        System.out.println();
     }
 
     public static void main(String[] args) throws IOException {

@@ -4,17 +4,17 @@ Messi is Goat.
 messi
 Messi is Goat.
 0
-El marc i la Júlia van carrilejar el projecte.
-El marc i la Júlia van carrilejar el projecte.
+El marc i la Julia van carrilejar el projecte.
+El marc i la Julia van carrilejar el projecte.
 car
-El marc i la Júlia van carrilejar el projecte.
+El marc i la Julia van carrilejar el projecte.
 2
 El jordi viu Caldes de Monbuic.
 marc
 1
-Marc, victor y fueron a Amsterdam y se fumaron tres canutos bien grandes.
+Marc, Victor y Jesus fueron a Amsterdam y se fumaron tres canutos bien grandes.
 3
-Marc, victor y fueron a Amsterdam y se fumaron tres canutos bien grandes.
+Marc, Victor y Jesus fueron a Amsterdam y se fumaron tres canutos bien grandes.
 0
 Now I'm working as a Junior Developer: programming servers.
 Now I'm working as a Junior Developer: programming servers.
@@ -24,4 +24,6 @@ Now I'm working as a Junior Developer: programming servers.
 A mi no em va bé aquesta basura de programa.
 im
 2
+A mi no em va bé aquesta basura de programa.
 basura aquesta
+4

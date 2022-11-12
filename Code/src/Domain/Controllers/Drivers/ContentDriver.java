@@ -25,8 +25,7 @@ public class ContentDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
     public static Content initialCreation1() throws IOException {
-        System.out.println("Introduce text for the Content:");
-        String text = readInputString();
+        String text = readContent();
         if(text.isEmpty() | text.isBlank()) System.err.println("No es correcto introducir una expresion vacia");
         System.out.println("Introduce language for the Content (ENG, CAT or ESP):");
         String language = readInputString();
@@ -37,7 +36,7 @@ public class ContentDriver {
 
     public static void testContentConstruct() throws IOException {
         Content c = initialCreation1();
-        System.out.println("Content created -> Text: " + c.getText() + "\n" + "Language: " + c.getLanguage());
+        System.out.println("Content created -> Text:\n" + c.getText() + "\n" + "Language: " + c.getLanguage());
         System.out.println();
     }
 
@@ -49,7 +48,7 @@ public class ContentDriver {
 
     public static void testGetText() throws IOException {
         Content c = initialCreation1();
-        System.out.println("Text: " + c.getText());
+        System.out.println("Text:\n" + c.getText());
         System.out.println();
     }
 
@@ -59,7 +58,10 @@ public class ContentDriver {
         System.out.println("Sentences: ");
         int i = 1;
         for(String s : aux) {
-            System.out.println(i + ". " + s);
+            if(s != "\n") {
+                System.out.println(i + ". " + s);
+            }
+            else System.out.println(i + ". RETURNED CARRIER");
             System.out.println();
             ++i;
         }
@@ -70,7 +72,7 @@ public class ContentDriver {
         System.out.println("Vector for appearance: ");
         Map<String, Integer> aux = c.getVector();
         for(Map.Entry mp: aux.entrySet()) {
-            System.out.println(mp.getKey()+ " -> " + mp.getValue() + "\n");
+            System.out.println(mp.getKey()+ " -> " + mp.getValue());
         }
         System.out.println();
     }
@@ -147,6 +149,18 @@ public class ContentDriver {
 
     private static String readInputString() {
         String inp = writer.next();
+        return inp;
+    }
+    private static String readContent() {
+        System.out.println("Introduce text for the Content, return carrier when you finish and write _end_:");
+        String inp = "";
+        while(writer.hasNext()) {
+            String aux = writer.next();
+            if(aux.equals("_end_")) break;
+            else {
+                inp += (aux + "\n");
+            }
+        }
         return inp;
     }
     private static int readInputInteger() {
