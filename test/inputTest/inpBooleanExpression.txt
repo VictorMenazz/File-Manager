@@ -24,3 +24,38 @@ sentence with p1 p2 p3
 sentence with p1, p2, p3, and p5
 3
 sentence with p1 and p5
+1
+{!vermell verd} | "groc"
+3
+vermell i verd
+3
+vermell, verd i groc
+1
+hi goodbye & home
+1
+"hi goodbye" & home
+1
+"&" & |
+0
+"welcome home" & Pep
+welcome home PEP
+0
+{welcome home pep}
+come home pep
+0
+"come home pep"
+welcome home pep
+1
+{p1 p2 p3} & | p4
+0
+"hola adeu &" | p3 & "|"
+Aquesta es una frase que conte hola adeu & i ademés |
+0
+("hola adeu &" | p3) & "|"
+Aquesta es una frase que conte hola adeu & i ademés |
+3
+Aquesta es una frase que conte hola adeu & i ademés p3
+1
+vermell & !groc | ()
+1
+( hola & (adeu)

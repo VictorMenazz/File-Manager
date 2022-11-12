@@ -80,6 +80,7 @@ public class BooleanExpressionDriver {
                     break;
             }
             //System.out.println("Insert new command:");
+            System.out.println("");
             op = scanner.nextInt();
         }
     }

@@ -1,0 +1,96 @@
+BOOLEAN EXPRESSION DRIVER:
+0. All
+1. testBooleanExpression
+2. testGetExpression
+3. testIsDocumentValid
+4. Exit
+
+Introduce new boolean expression: 
+Boolean expression has been created: {p1 p2 p2 p3} & (pep | !joan)
+
+Boolean expression is: {p1 p2 p2 p3} & (pep | !joan)
+
+Insert sentence to check boolean expression: false
+
+Introduce new boolean expression: 
+Boolean expression has been created: ("see you tomorrow" | home) & tree
+Boolean expression is: ("see you tomorrow" | home) & tree
+Insert sentence to check boolean expression: false
+
+Insert sentence to check boolean expression: true
+
+Introduce new boolean expression: 
+Boolean expression has been created: (vermell & blanc) | (groc | blau)
+Boolean expression is: (vermell & blanc) | (groc | blau)
+Insert sentence to check boolean expression: true
+
+Insert sentence to check boolean expression: true
+
+Insert sentence to check boolean expression: false
+
+Introduce new boolean expression: 
+Boolean expression has been created: {p1 p2 p2 p2} & p4 | p5
+Boolean expression is: {p1 p2 p2 p2} & p4 | p5
+Insert sentence to check boolean expression: true
+
+Insert sentence to check boolean expression: false
+
+Introduce new boolean expression: 
+Boolean expression has been created: {p1 p2} & (p4 | p5)
+Boolean expression is: {p1 p2} & (p4 | p5)
+Insert sentence to check boolean expression: true
+
+Insert sentence to check boolean expression: false
+
+Introduce new boolean expression: 
+Boolean expression has been created: {!vermell verd} | "groc"
+
+Insert sentence to check boolean expression: false
+
+Insert sentence to check boolean expression: true
+
+Introduce new boolean expression: 
+Missing logic operators between "hi" and "goodbye"
+
+Introduce new boolean expression: 
+Boolean expression has been created: "hi goodbye" & home
+
+Introduce new boolean expression: 
+Invalid Logic Operator Configuration: &|
+
+Introduce new boolean expression: 
+Boolean expression has been created: "welcome home" & Pep
+Boolean expression is: "welcome home" & Pep
+Insert sentence to check boolean expression: true
+
+Introduce new boolean expression: 
+Boolean expression has been created: {welcome home pep}
+Boolean expression is: {welcome home pep}
+Insert sentence to check boolean expression: false
+
+Introduce new boolean expression: 
+Boolean expression has been created: "come home pep"
+Boolean expression is: "come home pep"
+Insert sentence to check boolean expression: true
+
+Introduce new boolean expression: 
+Invalid Logic Operator Configuration: &|
+
+Introduce new boolean expression: 
+Boolean expression has been created: "hola adeu &" | p3 & "|"
+Boolean expression is: "hola adeu &" | p3 & "|"
+Insert sentence to check boolean expression: true
+
+Introduce new boolean expression: 
+Boolean expression has been created: ("hola adeu &" | p3) & "|"
+Boolean expression is: ("hola adeu &" | p3) & "|"
+Insert sentence to check boolean expression: true
+
+Insert sentence to check boolean expression: false
+
+Introduce new boolean expression: 
+expression contains extra operand at the end
+
+Introduce new boolean expression: 
+Invalid expression: Parentheses mismatch
+
