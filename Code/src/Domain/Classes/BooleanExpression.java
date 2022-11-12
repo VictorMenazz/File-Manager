@@ -266,7 +266,7 @@ public class BooleanExpression {
 
     private void separateParentheses() throws Exception {
         Pattern pattern = Pattern.compile("\\(.*?\\)");
-        Matcher matcher = pattern.matcher(boolExpr);
+        Matcher matcher = pattern.matcher(noQuotes);
 
         while(matcher.find()) {
             String content = matcher.group();
@@ -303,22 +303,17 @@ public class BooleanExpression {
      * @brief Constructs the representation for a boolean expression
      * @param s, represents the boolean expression.
      */
-    public BooleanExpression(String s) {
-        try {
-            originalBoolExpr = s;
-            boolExpr = s;
-            noQuotes = s;
-            removeQuotes();
-            boolExpr = boolExpr.replaceAll("\\s{2,}", " ");
-            noQuotes = noQuotes.replaceAll("\\s{2,}", " ");
-            checkBraces();
-            checkParentheses();
-            separateParentheses();
-            root = build();
-        } catch(Exception e) {
-            System.out.println(e.getMessage());
-
-        }
+    public BooleanExpression(String s) throws Exception {
+        originalBoolExpr = s;
+        boolExpr = s;
+        noQuotes = s;
+        removeQuotes();
+        boolExpr = boolExpr.replaceAll("\\s{2,}", " ");
+        noQuotes = noQuotes.replaceAll("\\s{2,}", " ");
+        checkBraces();
+        checkParentheses();
+        separateParentheses();
+        root = build();
     }
 
     /***

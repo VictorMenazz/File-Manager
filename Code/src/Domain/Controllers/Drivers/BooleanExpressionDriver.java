@@ -26,7 +26,7 @@ public class BooleanExpressionDriver {
     private static void testInorder(String s) throws Exception {
         BooleanExpression be = new BooleanExpression(s);
         System.out.print("Boolean expression tree is: " );
-        BooleanExpression.inorder(be.getExpTree());
+        //BooleanExpression.inorder(be.getExpTree());
     }
 
     private static void testGetExpression(String s) throws Exception {
