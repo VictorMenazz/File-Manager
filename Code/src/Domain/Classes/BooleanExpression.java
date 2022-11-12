@@ -156,6 +156,7 @@ public class BooleanExpression {
      * @param n, node of the expression tree
      */
     private Boolean recursiveFind(String sentence, Node n) {
+        sentence.toLowerCase();
         if (n == null) return false;
         //if node is a leaf
         if (n.right == null & n.left == null) {
@@ -274,7 +275,7 @@ public class BooleanExpression {
     }
 
     private void separateParentheses() throws Exception {
-        Pattern pattern = Pattern.compile("\\(.*?\\)");
+        Pattern pattern = Pattern.compile("^[^(]+(?!\\S)");
         Matcher matcher = pattern.matcher(noQuotes);
 
         while(matcher.find()) {
@@ -314,8 +315,8 @@ public class BooleanExpression {
      */
     public BooleanExpression(String s) throws Exception {
         originalBoolExpr = s;
-        boolExpr = s;
-        noQuotes = s;
+        boolExpr = s.toLowerCase();
+        noQuotes = s.toLowerCase();
         removeQuotes();
         boolExpr = boolExpr.replaceAll("\\s{2,}", " ");
         noQuotes = noQuotes.replaceAll("\\s{2,}", " ");
@@ -351,17 +352,6 @@ public class BooleanExpression {
         return recursiveFind(sentence, root);
     }
 
-    /***
-     * @brief Prints the Expression Tree in inorder
-     * @param root, top node of the tree
-     */
-    public static void inorder(Node root) {
-        if (root != null){
-            inorder(root.left);
-            System.out.print(root.data);
-            inorder(root.right);
-        }
-    }
 };
 
 /*

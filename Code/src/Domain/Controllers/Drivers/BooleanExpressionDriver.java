@@ -27,23 +27,22 @@ public class BooleanExpressionDriver {
 
     private static void testBooleanExpression() throws Exception {
         try {
-            System.out.println("Introduce new boolean expression:");
+            System.out.println("Introduce new boolean expression: ");
             input = scanner.next();
             boolExpr = new BooleanExpression(input);
-            System.out.println(input);
-            System.out.println("Boolean expression has been created");
+            System.out.println("Boolean expression has been created: "+ input);
         } catch(Exception e){
             System.out.println(e.getMessage());
         }
     }
 
     private static void testGetExpression() {
-        System.out.println(boolExpr.getExpression());
+        System.out.println("Boolean expression is: "+ boolExpr.getExpression());
     }
 
 
     private static void testIsDocumentValid() {
-        System.out.print("Insert sentence to check boolean expression:");
+        System.out.print("Insert sentence to check boolean expression: ");
         String sentence = scanner.next();
         System.out.println(boolExpr.isDocumentValid(sentence));
     }
@@ -52,6 +51,7 @@ public class BooleanExpressionDriver {
     public static void main(String[] args) throws Exception {
         String functions =
                 "BOOLEAN EXPRESSION DRIVER:\n" +
+                "0. All\n" +
                 "1. testBooleanExpression\n" +
                 "2. testGetExpression\n" +
                 "3. testIsDocumentValid\n" +
@@ -62,6 +62,11 @@ public class BooleanExpressionDriver {
 
         while(op != 4){
             switch (op) {
+                case 0:
+                    testBooleanExpression();
+                    testGetExpression();
+                    testIsDocumentValid();
+                    break;
                 case 1:
                     testBooleanExpression();
                     break;
@@ -74,7 +79,7 @@ public class BooleanExpressionDriver {
                 default:
                     break;
             }
-            System.out.println("Insert new command:");
+            //System.out.println("Insert new command:");
             op = scanner.nextInt();
         }
     }

@@ -13,7 +13,7 @@ import java.util.stream.Stream;
 /**
  * @file SearchController.java
  *
- * @brief Controller <em>SearchController</em>
+ * @brief Controller <em>Search Controller</em>
  */
 
 /**
@@ -34,7 +34,7 @@ public class SearchController {
 
     /**
      * @brief Default creator
-     * @param root: the instance of rootFolder
+     * @param root, the instance of rootFolder
      */
     public SearchController(Folder root) {
         rootFolder = root;
