@@ -20,12 +20,12 @@ public class AuthorDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
     private static void addNtitles(Author aut) {
-        System.out.print("Enter the number of titles to be added: ");
+        System.out.print("Enter the number of titles to be added:");
         int n = readInputInteger();
         System.out.println("");
         String title;
         for (int i = 1; i <= n; ++i) {
-            System.out.print("Write the next title (num "+ i +"): ");
+            System.out.print("Write the next title (num "+ i +"):");
             title = readInputString();
             System.out.println("");
             aut.addTitle(title);
@@ -33,7 +33,7 @@ public class AuthorDriver {
     }
 
     public static Author initialCreation1() {
-        System.out.print("Introduce a name for the Author: ");
+        System.out.print("Introduce a name for the Author:");
         String authorName = readInputString();
         System.out.println("");
         Author aut = new Author(authorName);
@@ -48,7 +48,7 @@ public class AuthorDriver {
     public static void testSetName() {
         Author aut = initialCreation1();
         System.out.println("Author created -> Name: " + aut.getName());
-        System.out.print("Introduce a new name for the Author: ");
+        System.out.print("Introduce a new name for the Author:");
         String new_name = readInputString();
         System.out.println("");
         aut.setName(new_name);
@@ -64,7 +64,7 @@ public class AuthorDriver {
         Author aut = initialCreation1();
         addNtitles(aut);
         ArrayList<String> titles = aut.getTitles();
-        System.out.println("Author have the following titles: ");
+        System.out.println("Author have the following titles:");
         for (String t : titles) {
             System.out.println(t);
         }
@@ -79,7 +79,7 @@ public class AuthorDriver {
 
     public static void testAddTitle() {
         Author aut = new Author("Jordi");
-        System.out.print("Enter the title to be added: ");
+        System.out.print("Enter the title to be added:");
         String title = readInputString();
         System.out.println("");
         aut.addTitle(title);
@@ -90,7 +90,7 @@ public class AuthorDriver {
 
     public static void testDelTitle() {
         Author aut = new Author("Jordi");
-        System.out.print("Enter the title to be added: ");
+        System.out.print("Enter the title to be added:");
         String title = readInputString();
         System.out.println("");
         aut.addTitle(title);
@@ -105,11 +105,11 @@ public class AuthorDriver {
 
     public static void testMatchesPrefix() {
         Author aut = initialCreation1();
-        System.out.print("Enter the prefix you want to check with the author : ");
+        System.out.print("Enter the prefix you want to check with the author:");
         String prefix = readInputString();
         System.out.println("");
         if (aut.matchesPrefix(prefix)) {
-            System.out.println("Author \""+ aut.getName() +"\" BEGINS with: " + prefix);
+            System.out.println("Author \""+ aut.getName() +"\" BEGINS with:" + prefix);
         }
         else {
             System.out.println("Author \""+ aut.getName() +"\" DOESN'T begins with \"" + prefix +"\"");
