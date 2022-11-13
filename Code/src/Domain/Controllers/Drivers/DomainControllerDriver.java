@@ -5,7 +5,7 @@ import Code.src.Domain.Classes.Document;
 import Code.src.Domain.Classes.Folder;
 import Code.src.Domain.Controllers.DomainController;
 import Code.src.Domain.Controllers.SearchController;
-import org.mockito.Mockito;
+
 
 import java.io.IOException;
 import java.util.ArrayList;

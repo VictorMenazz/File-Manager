@@ -115,14 +115,11 @@ public class SearchController {
         Pair<String, String> docKey = new Pair(title, authorName);
         HashMap<String, Integer> vectorDoc = listDocs.get(docKey); //vector of the document
 
-        Map<Double, Pair<String, String>> listSimilarity = new LinkedHashMap<>();
+        Map<Pair<String, String>, Double> listSimilarity = new LinkedHashMap<>();
 
         for(HashMap.Entry<Pair<String, String>, HashMap<String,Integer>> Doc : listDocs.entrySet()) {
             HashMap<String, Integer> vectorConverted = new HashMap<>();
-            System.out.println(docKey);
-            System.out.println(Doc.getKey());
             if(!docKey.equals(Doc.getKey())) { //create a Map adapted to the length and content of the Map of the document
-                System.out.println("entro");
                 HashMap<String, Integer> vecAux = Doc.getValue();
                 for (HashMap.Entry<String, Integer> auxVector : vectorDoc.entrySet()) {
                     String word = auxVector.getKey();
@@ -133,21 +130,22 @@ public class SearchController {
                 }
                 //calc cosine similarity
                 double sim = calculateCosineSimilarity(vectorDoc, vectorConverted);
-                System.out.println(Doc.getKey());
-                System.out.println(sim);
                 //add similarity to list of all similarities
-                listSimilarity.put(sim, Doc.getKey());
+                listSimilarity.put(Doc.getKey(), sim);
             }
         }
         //Prepare map to return
-
+        LinkedHashMap<Pair<String, String>, Double> listSimilarityOrdered = new LinkedHashMap<>();
+        listSimilarity.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue())
+                .forEachOrdered(x -> listSimilarityOrdered.put(x.getKey(), x.getValue()));
         LinkedHashMap<String, String> result = new LinkedHashMap<>();
-        Set<Double> dkeys = listSimilarity.keySet();
-        Iterator<Double> it = dkeys.iterator();
-        System.out.println(listSimilarity.size());
+        Set<Pair<String, String>> dkeys = listSimilarityOrdered.keySet();
+        Iterator<Pair<String, String>> it = dkeys.iterator();
         for(int i = 0; i < k; ++i) {
             //if(!it.hasNext()) throw IOException; FOR THE FUTURE
-            Pair<String, String> pair = listSimilarity.get(it.next());
+            Pair<String, String> pair = it.next();
             result.put(pair.first, pair.second);
         }
         return result;
