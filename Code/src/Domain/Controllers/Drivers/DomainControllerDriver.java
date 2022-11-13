@@ -437,6 +437,7 @@ public class DomainControllerDriver {
                     testNewFolder();
             }
             System.out.println();
+            System.out.println("Introduce the number allocated to the function you want to test.");
             code = readInputInteger();
         }
     }

@@ -1,4 +1,65 @@
-9
+0
+Atac DDos
+Josep
+Es una incursio contra la seguretat informatica.
+Consisteix en assaltar el servei d'un servidor a través de moltes maquines.
+_end_
+CAT
+Internet protocol
+Jose Maria
+Is the network layer communications protocol in the Internet protocol suite for relaying datagrams across network boundaries.
+Its routing function enables internetworking, and essentially establishes the Internet.
+_end_
+ENG
+Internet protocol
+Jose Maria
+1
+Internet Protocol
+Network Layer
+Jose Maria
+The network layer works for the transmission of data from one host to the other located in different networks.
+It also takes care of packet routing i.e. selection of the shortest path to transmit the packet, from the number of routes available.
+_end_
+ENG
+Data Link Layer
+German Santos
+The data link layer is responsible for the node-to-node delivery of the message.
+The main function of this layer is to make sure data transfer is error-free from one node to another, over the physical layer.
+_end_
+ENG
+Transport Layer
+Don Victor Mena
+The transport layer provides services to the application layer and takes services from the network layer.
+The data in the transport layer is referred to as Segments.
+It is responsible for the End to End Delivery of the complete message.
+_end_
+ENG
+Don Victor Mena
+Ataque DDos
+Victor Cantepuelco
+Un ataque de denegacion de servicio (Dos) es un intento malintencionado de afectar la disponibilidad del sistema atacado, como por ejemplo, un sitio web una aplicacion, para legitimar a usuarios finales.
+_end_
+ESP
+Que es ransomware
+Jordi Soley
+Els ransomwares son uns programes informatics, elaborats de manera malintencionada, que limiten o
+bloquegen l'acces dels usuaris a diversos sistemes o arxius, llevat que s'efectui un pagament pel rescat
+d'aquests.
+_end_
+CAT
+SQL injection
+Marc
+SQL injection is a code injection technique used to attack data-driven applications,
+in which malicious SQL statements are inserted into an entry field for execution.
+_end_
+ENG
+Ma
+What is Spyware?
+Julia
+Spyware is software with malicious behaviour that aims to gather information about a person
+or organization and send it to another entity in a way that harms the user.
+_end_
+ENG
 Marc Subcampeon de espanya
 Jesus Andujar
 Mi mejor amigo fuma porros, antes de ser el que conocemos hoy dia, era un crack del esgrima.
@@ -22,8 +83,82 @@ _end_
 ESP
 Jordi el dormilon
 Julia Alice Amenos Dien
-Jordi se ha metido a las 14 a la manyana, flipo.
+Jordi se ha metido a las 13 de la manyana, flipo.
 _end_
 ESP
 Marc Subcampeon de espanya
 Jesus Andujar
+3
+Marc Subcampeon de espanya
+Jesus Andujar
+Mi mejor amigo fuma porros, antes de ser el que conocemos hoy dia, era un crack del esgrima.
+_end_
+ESP
+Jesus acoplado
+Jordi Soley
+Mi amigo jesus fuma porros
+_end_
+ESP
+Julia la genia
+Victor Mena
+Julia es una chica tranquila y amigable.
+Es muy comodo trabajar con ella.
+_end_
+ESP
+Ferran el papi
+Marc Navarro Acosta
+Mi amigo ferran, mi companyero del inlab, es un personaje de cuidado que fuma porros.
+_end_
+ESP
+Jordi el dormilon
+Julia Alice Amenos Dien
+Jordi se ha metido a las 13 de la manyana, flipo.
+_end_
+ESP
+{porros} & !esgrima
+Marc Subcampeon de espanya
+Jesus Andujar
+Mi mejor amigo fuma porros, antes de ser el que conocemos hoy dia, era un crack del esgrima.
+_end_
+ESP
+Jesus acoplado
+Jordi Soley
+Mi amigo jesus fuma porros
+_end_
+ESP
+Julia la genia
+Victor Mena
+Julia es una chica tranquila y amigable.
+Es muy comodo trabajar con ella.
+_end_
+ESP
+Ferran el papi
+Marc Navarro Acosta
+Mi amigo ferran, mi companyero del inlab, es un personaje de cuidado que fuma porros.
+_end_
+ESP
+Jordi el dormilon
+Julia Alice Amenos Dien
+Jordi se ha metido a las 13 de la manyana, flipo.
+_end_
+ESP
+chica amigable porros esgrima
+3
+Top jugadores de padel
+Juan
+Don Victor Mena Doz es un alto capo i gran profesional de padel.
+_end_
+ESP
+Top jugadores de padel
+Juan
+Top jugadors d'esgrima
+Joan
+En Marc va ser un jugador professional d'esgrima,
+de fet, va ser subcampio del pais.
+_end_
+CAT
+Top jugadors d'esgrima
+Joan
+JoanXifrat321
+propFolder
+16
