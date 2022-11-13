@@ -59,3 +59,4 @@ Aquesta es una frase que conte hola adeu & i ademés p3
 vermell & !groc | ()
 1
 ( hola & (adeu)
+4
