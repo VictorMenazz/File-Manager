@@ -103,6 +103,20 @@ public class Folder {
         docAmount += 1;
     }
 
+
+    public void addDocumentToSubfolder(Document newD, int foldId){
+        if(foldId == folderId) this.addDocument(newD);
+        else if(subFolders.containsKey(foldId)){
+            Folder f = subFolders.get(foldId);
+            f.addDocument(newD);
+        }
+        else{
+            int nextF = getNextFolderParent(foldId);
+            Folder f = subFolders.get(nextF);
+            f.addDocumentToSubfolder(newD, foldId);
+        }
+    }
+
     /**
      * @brief Constructs the Document and adds it to the Folder.
      * @param authorName, References the Author of a Document.
@@ -251,19 +265,6 @@ public class Folder {
         return docAmount;
     }
 
-    public void addDocumentToSubfolder(Document newD, int foldId){
-        if(foldId == folderId) this.addDocument(newD);
-        else if(subFolders.containsKey(foldId)){
-            Folder f = subFolders.get(foldId);
-            f.addDocument(newD);
-        }
-        else{
-            int nextF = getNextFolderParent(foldId);
-            Folder f = subFolders.get(nextF);
-            f.addDocumentToSubfolder(newD, foldId);
-        }
-    }
-
     /**
      * @brief Gets the Document identified by his Author&Title.
      * @param authorName, Represents the writer of the Document.
@@ -303,16 +304,6 @@ public class Folder {
         return result;
     }
 
-    private HashMap<Pair<String, String>, HashMap<String,Integer>> igetMapsDocs(){
-        HashMap<Pair<String, String>, HashMap<String,Integer>> result = new HashMap<Pair<String, String>, HashMap<String,Integer>>();
-        for (Document d : documents.values()){
-            Pair<String, String> key = new Pair<String, String>(d.getTitle(),d.getAuthor());
-            HashMap<String,Integer> value = d.contentSearch();
-            result.put(key,value);
-        }
-        return result;
-    }
-
     public HashMap<Pair<String, String>, ArrayList<String>> getAllContent(){
         HashMap<Pair<String, String>, ArrayList<String>> result = iGetAllContent();
         if(!subFolders.isEmpty()) {
@@ -326,16 +317,7 @@ public class Folder {
         return result;
     }
 
-    private HashMap<Pair<String, String>, ArrayList<String>> iGetAllContent(){
-        HashMap<Pair<String, String>, ArrayList<String>> folderContents = new HashMap<Pair<String, String>, ArrayList<String>>();
-        for (Document d : documents.values()){
-            Pair<String, String> key = new Pair<String, String>(d.getTitle(),d.getAuthor());
-            Content cont = d.getContentInstance();
-            ArrayList<String> value = cont.getSentences();
-            folderContents.put(key,value);
-        }
-        return folderContents;
-    }
+
     //Consultants
 
     /**
@@ -355,7 +337,36 @@ public class Folder {
         return subFolders.containsKey(foldId);
     }
 
+
+    public boolean isProtected(String author, String title) {
+        Pair<String, String> key = new Pair<String, String>(title,author);
+        return documents.get(key).isProtected();
+    }
+
+
     /** Recursive functions involved on the efficient Search of Documents and Folders **/
+
+
+    private HashMap<Pair<String, String>, HashMap<String,Integer>> igetMapsDocs(){
+        HashMap<Pair<String, String>, HashMap<String,Integer>> result = new HashMap<Pair<String, String>, HashMap<String,Integer>>();
+        for (Document d : documents.values()){
+            Pair<String, String> key = new Pair<String, String>(d.getTitle(),d.getAuthor());
+            HashMap<String,Integer> value = d.contentSearch();
+            result.put(key,value);
+        }
+        return result;
+    }
+
+    private HashMap<Pair<String, String>, ArrayList<String>> iGetAllContent(){
+        HashMap<Pair<String, String>, ArrayList<String>> folderContents = new HashMap<Pair<String, String>, ArrayList<String>>();
+        for (Document d : documents.values()){
+            Pair<String, String> key = new Pair<String, String>(d.getTitle(),d.getAuthor());
+            Content cont = d.getContentInstance();
+            ArrayList<String> value = cont.getSentences();
+            folderContents.put(key,value);
+        }
+        return folderContents;
+    }
 
     /**
      * @brief Recursive Search to verify the Document is included in this or one of the subFolders.
@@ -449,9 +460,5 @@ public class Folder {
         else return iGetNextFolderParent(foldId);
     }
 
-    public boolean isProtected(String author, String title) {
-        Pair<String, String> key = new Pair<String, String>(title,author);
-        return documents.get(key).isProtected();
-    }
 }
 
