@@ -172,7 +172,7 @@ public class AuthorsControllerDriver {
 
     public static void main(String[] args) {
         String functions = "0. All\n" +
-                "1. testAuthorControllerConstruct\n" +
+                "1. testAuthorsControllerConstruct\n" +
                 "2. testAddAuthor\n" +
                 "3. testDelAuthor\n" +
                 "4. testSize\n" +
@@ -190,7 +190,7 @@ public class AuthorsControllerDriver {
         while (code != 9) {
             switch (code) {
                 case 1:
-                    System.out.println("testAuthorConstruct() choose:");
+                    System.out.println("testAuthorsControllerConstruct() choose:");
                     testAuthorsControllerConstruct();
                     break;
                 case 2:
