@@ -2,6 +2,7 @@ package Code.src.Domain.Controllers.JUnits;
 
 import Code.src.Domain.Classes.*;
 import Code.src.Domain.Controllers.Stubs.ContentStub;
+import org.junit.Test;
 
 import java.io.IOException;
 
@@ -19,12 +20,13 @@ public class DocumentTest {
         }
     }
 
+    @Test
     public void Document2(){
         try{
-            Content c = new Content("Test Content", "ENG");
+            Content c = new ContentStub();
             Document d = new Document("Title1", "Auth1",c,"ENG");
         }
-        catch (IOException e) {
+        catch (Exception e) {
             fail(e.getMessage());
         }
     }

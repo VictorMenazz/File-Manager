@@ -1,6 +1,7 @@
 package Code.src.Domain.Controllers.JUnits;
 
 import Code.src.Domain.Classes.Content;
+import Code.src.Domain.Classes.Sentence;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -8,6 +9,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 /**
  * @file ContentTest.java
@@ -24,6 +27,7 @@ public class ContentTest {
 
     public static final String text = "Messi is Goat. My favourite football player.\n" +
             "I like to play football with my friends.";
+
     @Test
     public void Content()  {
         try {
