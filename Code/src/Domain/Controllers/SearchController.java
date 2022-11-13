@@ -121,7 +121,7 @@ public class SearchController {
             HashMap<String, Integer> vectorConverted = new HashMap<>();
             System.out.println(docKey);
             System.out.println(Doc.getKey());
-            if(docKey != Doc.getKey()) { //create a Map adapted to the length and content of the Map of the document
+            if(!docKey.equals(Doc.getKey())) { //create a Map adapted to the length and content of the Map of the document
                 HashMap<String, Integer> vecAux = Doc.getValue();
                 for (HashMap.Entry<String, Integer> auxVector : vectorDoc.entrySet()) {
                     String word = auxVector.getKey();
@@ -132,12 +132,15 @@ public class SearchController {
                 }
                 //calc cosine similarity
                 double sim = calculateCosineSimilarity(vectorDoc, vectorConverted);
+                System.out.println(Doc.getKey());
+                System.out.println(sim);
                 //add similarity to list of all similarities
                 listSimilarity.put(sim, Doc.getKey());
             }
         }
         //Prepare map to return
-        HashMap<String, String> result = new HashMap<>();
+
+        LinkedHashMap<String, String> result = new LinkedHashMap<>();
         Set<Double> dkeys = listSimilarity.keySet();
         Iterator<Double> it = dkeys.iterator();
         for(int i = 0; i < k; ++i) {
