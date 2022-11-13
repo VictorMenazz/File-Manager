@@ -48,6 +48,18 @@ public class AuthorsController {
     }
 
     /**
+     * @brief Returns a list of the authors' names
+     * @return list of strings of authors' names
+     */
+    public ArrayList<String> getAuthorsName() {
+        ArrayList<String> list = new ArrayList<String>();
+        for (String aut : authors.keySet()) {
+            list.add(aut);
+        }
+        return list;
+    }
+
+    /**
      * @brief Returns a vector of the names of authors starting with a given prefix
      * @param prefix
      * @return ArrayList of names of authors starting with a given prefix

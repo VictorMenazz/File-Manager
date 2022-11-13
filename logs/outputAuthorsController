@@ -1,0 +1,106 @@
+Author Driver:
+Introduce the number allocated to the function you want to test.
+Functions:
+0. All
+1. testAuthorControllerConstruct
+2. testAddAuthor
+3. testDelAuthor
+4. testSize
+5. testSearchAuthorsPrefix
+6. testSearchAuthorDocuments
+7. testAddTitleAuthor
+8. testDelTitleAuthor
+9. Exit
+
+testAuthorConstruct() test:
+AuthorsController has been created
+
+testAddAuthor() test:
+List of the names of the authors before adding the Author:
+No authors
+Enter the Author name to be added:
+List of the names of the authors after adding the Author:
+George
+
+testDelAuthor() test:
+Enter the author name to be added:
+List of the names of the authors after adding the Author:
+Victor
+List of the names of the authors after deleting the author "Victor":
+No authors
+
+testSize() test:
+Enter the number of Authors to be added:
+Enter the Author name to be added:
+Enter the Author name to be added:
+Enter the Author name to be added:
+Enter the Author name to be added:
+List of the names of the authors after adding 4 Authors:
+Julia
+Marc
+Jordi
+Miquel
+-> There are 4 Authors
+
+testSearchAuthorsPrefix() test:
+Created a AuthorsController with 0 Authors:
+Enter the number of Authors to be added:
+Enter the Author name to be added:
+Enter the Author name to be added:
+Enter the Author name to be added:
+Enter the Author name to be added:
+Enter the Author name to be added:
+Enter the Author name to be added:
+Enter the Author name to be added:
+Enter the prefix on which you want to get the authors starting with this prefix:
+The following Authors begin with prefix "j":
+jorge
+julia
+jordi
+The following Authors DON'T begin with this prefix:
+Julia
+Jordi
+Jesus
+ordi
+
+testSearchAuthorDocuments test:
+Jordi doesn't have documents
+Enter the number titles to be added to Author "Jordi":
+Enter a title to be added (num 1):
+Enter a title to be added (num 2):
+Enter a title to be added (num 3):
+Enter a title to be added (num 4):
+Enter a title to be added (num 5):
+Jordi's documents are the following:
+Programming project
+Computer science
+Operating system
+Network protocols
+Java developers
+
+testAddTitleAuthor test:
+Author Jordi has been added
+Enter the title to be added to Jordi:
+Titles of Jordi's documents after adding the title "This is the new title":
+This is the new title
+
+testDelTitleAuthor test:
+Author Jordi has been added
+Enter the title to be added to Jordi:
+Titles of Jordi's documents after adding the title "This is the new title":
+testTitle
+This is the new title
+Enter the title you want to delete to Jordi:
+Titles of Jordi's documents after deleting the title "This is the new title":
+testTitle
+
+testDelTitleAuthor test 2:
+Author Jordi has been added
+Enter the title to be added to Jordi:
+Titles of Jordi's documents after adding the title "Carbon fiber":
+testTitle
+Carbon fiber
+Enter the title you want to delete to Jordi:
+The title doesn't belong to the author...
+
+Enter the number of the function to be tested
