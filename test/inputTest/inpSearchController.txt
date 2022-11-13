@@ -128,3 +128,33 @@ ESP
 Fundacion Apple
 Steve Jobs
 3
+JuliaIssues
+Victor Mena
+Julia a partir de las 23 horas no funciona su cerebro como es debido.
+Esto se debe a que trabaja mejor de manyanas. Anotar nunca poner a trabajar a esta chica a estas horas tan indecentes.
+_end_
+ESP
+Marc es un Geni
+Jesus Andujar De Prado
+Marc es subcampio d'espanya d'esgrima i a la seua edat de 20 anys es tot un exemple a seguir.
+El meu idol.
+_end_
+CAT
+Perros potencialmente peligrosos
+Sherman Del Norte
+No existio perro mas noble que nuestro querido y amado Jacob, tambien nombrado: Sherman Del Norte. Procediente del criadero mas importante de Alemania.
+_end_
+ESP
+Fundacion Apple
+Steve Jobs
+Los inicios de Apple fueron bastante humildes ya que ninguno de los fundadores contaba con dinero necesario para poder comenzar su viaje. Es por ello que tuvieron que comenzar a vender todos los objetos de valor que tenian para conseguir el dinero suficiente. Este fue utilizado para poder comenzar a crear las de circuito impreso  que propuso Steve Jobs en un principio.
+_end_
+ESP
+Bibliografia Steve Jobs
+Walter Isaacson
+El denominador comun de estos inventos digitales es Steve Jobs, impulsor y uno de los fundadores de Apple.
+Pero, ¿era Steve Jobs un genio, un visionario? Conocer mejor al hombre servira para desentranyar el secreto de su magia.
+_end_
+ESP
+genio digitales
+1

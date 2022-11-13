@@ -220,6 +220,7 @@ public class SearchControllerDriver {
                     System.out.println("testSearchDocuments() choose:");
                     testSearchDocument();
             }
+            code = readInputInteger();
         }
     }
 
