@@ -6,6 +6,17 @@ import Code.src.Domain.Classes.*;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * @file DomainController.java
+ *
+ * @brief Controller <em>Domain</em>
+ */
+
+/**
+ * @brief Controller of the layer Domain
+ *
+ * @author Jordi Soley, Marc Navarro and Victor Mena
+ */
 public class DomainController {
 
     /**
