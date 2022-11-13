@@ -29,7 +29,7 @@ public class SearchControllerDriver {
         String author = readInputString();
         System.out.println("Introduce a Content for the Document:");
         String Content = readContent();
-        System.out.println("Introduce a Language for the Document:");
+        System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
         String lang = readInputString();
         Document doc = new Document(title,author,Content,lang);
         return doc;
@@ -44,7 +44,6 @@ public class SearchControllerDriver {
         f.addDocument(d2);
         Document d3 = initializeDocument();
         f.addDocumentToSubfolder(d3, 1);
-        System.out.println("Checking docs in Root Folder: " + f.getDocumentAmount());
         return f;
     }
 
@@ -67,9 +66,16 @@ public class SearchControllerDriver {
         System.out.println();
     }
 
-    public static void testModifyExpression() {
+    public static void testModifyExpression() throws Exception {
         SearchController sC = initialCreation();
+        System.out.println("Introduce new boolean expression:");
+        String oldBoolExp = readInputString();
+        sC.addExpression(oldBoolExp);
         System.out.println("Introduce boolean expression to modify: ");
+        String newBoolExp = readInputString();
+        sC.modifyExpression(oldBoolExp, newBoolExp);
+        System.out.println("Modified: " + newBoolExp);
+        System.out.println();
     }
 
     public static void testDeleteExpression() throws Exception {

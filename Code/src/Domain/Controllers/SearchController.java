@@ -119,6 +119,8 @@ public class SearchController {
 
         for(HashMap.Entry<Pair<String, String>, HashMap<String,Integer>> Doc : listDocs.entrySet()) {
             HashMap<String, Integer> vectorConverted = new HashMap<>();
+            System.out.println(docKey);
+            System.out.println(Doc.getKey());
             if(docKey != Doc.getKey()) { //create a Map adapted to the length and content of the Map of the document
                 HashMap<String, Integer> vecAux = Doc.getValue();
                 for (HashMap.Entry<String, Integer> auxVector : vectorDoc.entrySet()) {
@@ -128,11 +130,11 @@ public class SearchController {
                     }
                     else vectorConverted.put(word, 0);
                 }
+                //calc cosine similarity
+                double sim = calculateCosineSimilarity(vectorDoc, vectorConverted);
+                //add similarity to list of all similarities
+                listSimilarity.put(sim, Doc.getKey());
             }
-            //calc cosine similarity
-            double sim = calculateCosineSimilarity(vectorDoc, vectorConverted);
-            //add similarity to list of all similarities
-            listSimilarity.put(sim, Doc.getKey());
         }
         //Prepare map to return
         HashMap<String, String> result = new HashMap<>();
@@ -196,14 +198,14 @@ public class SearchController {
                 .stream()
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEachOrdered(x -> listRankingOrdered.put(x.getKey(), x.getValue()));
-
         //Select k first documents as result
         HashMap<String, String> result = new HashMap<>();
         Set<Pair<String, String>> dkeys = listRankingOrdered.keySet();
         Iterator<Pair<String, String>> it = dkeys.iterator();
         for(int i = 0; i < k; ++i) {
             //if(!it.hasNext()) throw IOException; FOR THE FUTURE
-            result.put(it.next().first, it.next().second);
+            Pair <String, String> aux = it.next();
+            result.put(aux.first, aux.second);
         }
 
         return result;
