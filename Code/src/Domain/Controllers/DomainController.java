@@ -92,7 +92,7 @@ public class DomainController {
      * @param newData, needed to replace the attribute.
      * @param flag if it's 0,
      */
-    public void modifyDocument(String authorName, String title, String text, String newData, int flag) throws IOException {
+    public void modifyDocument(String authorName, String title, String newData, int flag) throws IOException {
         /** Switch that differs the many possibilities to modify a Document. **/
         switch (flag) {
             case 0:
@@ -135,9 +135,11 @@ public class DomainController {
      * @param title
      * @return
      */
-    public Document getDocument(String authorName, String title) {
-        folders.getDocument(authorName, title);
-        return null;
+    public ArrayList<String> getDocument(String authorName, String title) {
+        //First element of the array = title;
+        //Second element of the array = author;
+        //Third element of the array = text;
+        return folders.getDocument(authorName, title);
     }
     /*
         We don't have to return Domain objects to the upper layers, so

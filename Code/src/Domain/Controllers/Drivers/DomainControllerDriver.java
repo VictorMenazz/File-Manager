@@ -1,6 +1,8 @@
 package Code.src.Domain.Controllers.Drivers;
 
 import Code.src.Domain.Classes.Folder;
+import Code.src.Domain.Controllers.DomainController;
+import Code.src.Domain.Controllers.SearchController;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,16 +13,125 @@ public class DomainControllerDriver {
 
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
-    public static void testDomainController(){}
-    public static void testImportDocument(){}
-    public static void testExportDocument(){}
-    public static void testNewDocument(){}
-    public static void testModifyDocument(){}
-    public static void testAuthorDocuments(){}
+    private static DomainController initialCreation() {
+        DomainController dC = new DomainController();
+        return dC;
+    }
+
+    public static void testDomainController(){
+        System.out.println("Creating DomainController...");
+        DomainController dC = initialCreation();
+    }
+    public static void testImportDocument(){
+        DomainController dC = initialCreation();
+        //Data controller implicate
+    }
+    public static void testExportDocument(){
+        DomainController dC = initialCreation();
+        //Data controller implicate
+    }
+    public static void testNewDocument() throws IOException {
+        DomainController dC = initialCreation();
+        System.out.println("Adding new document. First of all...");
+        System.out.println("Introduce a title for the Document:");
+        String title = readInputString();
+        System.out.println("Introduce an author for the Document:");
+        String author = readInputString();
+        String content = readContent();
+        System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
+        String lang = readInputString();
+        dC.newDocument(author, title, content, lang);
+        System.out.println("Added new document with title: " + title + " and author's name " + author);
+        System.out.println();
+    }
+    public static void testModifyDocument() throws IOException {
+        DomainController dC = initialCreation();
+        System.out.println("Add document to modified later:");
+        System.out.println("Introduce a title for the Document:");
+        String title = readInputString();
+        System.out.println("Introduce an author for the Document:");
+        String author = readInputString();
+        String content = readContent();
+        System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
+        String lang = readInputString();
+        dC.newDocument(author, title, content, lang);
+        System.out.println("Select document to modify:");
+        System.out.println("Introduce title of the Document:");
+        title = readInputString();
+        System.out.println("Introduce author of the Document:");
+        author = readInputString();
+        System.out.println("What do you want to modify: Author=0, Title=1 or Text=2 ?");
+        int flag = readInputInteger();
+        String newData;
+        switch (flag){
+            case 0:
+                System.out.println("Introduce new Author:");
+                newData = readInputString();
+                break;
+            case 1:
+                System.out.println("Introduce new Title:");
+                newData = readInputString();
+                break;
+            default:
+                System.out.println("Introduce new Content:");
+                newData = readContent();
+
+        }
+        dC.modifyDocument(author, title, newData, flag);
+        System.out.println("Modified document.");
+        System.out.println();
+    }
+    public static void testAuthorDocuments() throws IOException {
+        DomainController dC = initialCreation();
+        System.out.println("First add 3 documents:");
+        System.out.println("Introduce a title for the first Document:");
+        String title = readInputString();
+        System.out.println("Introduce an author for the first Document:");
+        String author = readInputString();
+        String content = readContent();
+        System.out.println("Introduce a Language for the first Document(ENG, CAT or ESP):");
+        String lang = readInputString();
+        dC.newDocument(author, title, content, lang);
+        System.out.println("Introduce a title for the second Document:");
+        title = readInputString();
+        System.out.println("Introduce an author for the second Document:");
+        author = readInputString();
+        content = readContent();
+        System.out.println("Introduce a Language for the second Document(ENG, CAT or ESP):");
+        lang = readInputString();
+        dC.newDocument(author, title, content, lang);
+        System.out.println("Introduce a title for the third Document:");
+        title = readInputString();
+        System.out.println("Introduce an author for the third Document:");
+        author = readInputString();
+        content = readContent();
+        System.out.println("Introduce a Language for the third Document(ENG, CAT or ESP):");
+        lang = readInputString();
+        dC.newDocument(author, title, content, lang);
+        System.out.println("Introduce author's name");
+    }
     public static void testSearchAuthors(){}
-    public static void testGetDocument(){}
+    public static void testGetDocument() throws IOException {
+        DomainController dC = initialCreation();
+        System.out.println("Adding new document. First of all...");
+        System.out.println("Introduce a title for the Document:");
+        String title = readInputString();
+        System.out.println("Introduce an author for the Document:");
+        String author = readInputString();
+        String content = readContent();
+        System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
+        String lang = readInputString();
+        dC.newDocument(author, title, content, lang);
+        //Document d = dC.getDocument(author,title);
+
+        System.out.println();
+    }
     public static void testAppearanceSearch(){}
-    public static void testBooleanExpressionSearch(){}
+    public static void testBooleanExpressionSearch(){
+        System.out.println("Introduce boolean expression: ");
+        SearchController sC = new SearchController();
+        //sC.booleanExpressionSearch();
+    }
     public static void testDocumentsQuery(){}
     public static void testSaveDocument(){}
     public static void testDeleteDocument(){}
@@ -170,6 +281,11 @@ public class DomainControllerDriver {
                 inp += (aux + "\n");
             }
         }
+        return inp;
+    }
+
+    private static String readInputString() {
+        String inp = writer.next();
         return inp;
     }
 }
