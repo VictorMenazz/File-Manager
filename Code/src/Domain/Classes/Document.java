@@ -45,7 +45,7 @@ public class Document {
          * */
         private String password;
 
-    /**
+        /**
         * @brief ENUM that differ the possible type for a Document.
         * */
         enum DOC_TYPE{
@@ -110,16 +110,24 @@ public class Document {
 
         /**
          * @brief Set the Content of a Document.
-         * @param c, String that will be allocated to the Author of this Document.
+         * @param c, String that will be allocated to the Content of this Document.
          * */
         public void setContent(Content c){
             cont = c;
         }
 
+        /**
+         * @brief Set the Language of a Document.
+         * @param lang, String that will be allocated to the Language of this Document.
+         * */
         public void setLanguage(String lang){
             language = lang;
         }
 
+        /**
+         * @brief Protect the Document with a password
+         * @param passw, String that will protect this Document
+         * */
         public void protectDocument(String passw) {
             password = passw;
         }
@@ -135,7 +143,7 @@ public class Document {
 
         /**
          * @brief Gets the Author of the Document.
-         * @return title, String that represents the author of the document.
+         * @return author's name, String that represents the author of the document.
          * */
         public String getAuthor(){
             return author;
@@ -143,22 +151,30 @@ public class Document {
 
         /**
          * @brief Gets the Content of the Document.
-         * @return title, String that represents the content of the document.
+         * @return text, String that represents the content of the document.
          * */
         public String getContent(){
             return cont.getText();
         }
 
+        /**
+         * @brief Gets the Content of the Document.
+         * @return Content Instance of the Document.
+         * */
         public Content getContentInstance() {return cont;}
 
         /**
          * @brief Gets the Language of the Document.
-         * @return title, String that represents the Language of the Document Content.
+         * @return language, String that represents the Language of the Document Content.
          * */
         public String getLanguage() {
             return language;
         }
 
+        /**
+         * @brief Gets the frequency's vector of the Document's content.
+         * @return HashMap that represents this vector.
+         * */
         public HashMap<String, Integer> contentSearch() {
             return cont.getVector();
         }
@@ -166,7 +182,7 @@ public class Document {
     //Consultants
         /**
          * @brief Check if Document is protected.
-         * @return title, String that represents the content of the document.
+         * @return boolean that represents true if document is protected, otherwise false.
          * */
         public boolean isProtected(){
             return (password!=null);

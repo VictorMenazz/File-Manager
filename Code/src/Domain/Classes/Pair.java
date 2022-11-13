@@ -7,13 +7,19 @@ package Code.src.Domain.Classes;
 
 /**
  * @brief Structure used as key of other Domain Classes.
+ *
+ * @author Victor Mena Doz
+ * @author Marc Navarro Acosta
  */
 public class Pair<U, V> {
-    // Domain.Domain.Classes.Classes.Pair class
         public final U first;       // el primer campo de un par
         public final V second;      // el segundo campo de un par
 
-        // Construye un nuevo par con valores especificados
+        /**
+         * @brief Default creator of Pair
+         * @param first element of the pair
+         * @param second element of the pair
+         */
         public Pair(U first, V second)
         {
             this.first = first;

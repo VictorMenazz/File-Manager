@@ -10,30 +10,37 @@ import java.util.Iterator;
 import java.util.Map;
 
 /**
+ * @file AuthorsController.java
+ * @brief Class <em>Authors Controller</em>
+ */
+
+/**
+ * @brief Class AuthorsController that delegates functions to the Domain Object Author.
+ *
  * @author Jordi Soley Masats
  */
 public class AuthorsController {
     HashMap<String, Author> authors;
 
     /**
-     * @brief Default creator
+     * @brief Default creator of AuthorsController
      */
     public AuthorsController() {
         authors = new HashMap<String, Author>();
     }
 
     /**
-     * @brief Add a new Author
-     * @param name
-     * @param a
+     * @brief Add new Author to authors
+     * @param name, name of the author to add
+     * @param a, Instance of the author
      */
     public void addAuthor(String name, Author a) {
         authors.put(name, a);
     }
 
     /**
-     * @brief Remove a Author
-     * @param name
+     * @brief Remove Author of authors list
+     * @param name, name of the author to delete
      */
     public void delAuthor(String name) {
         authors.remove(name);
@@ -41,7 +48,7 @@ public class AuthorsController {
 
     /**
      * @brief Returns the total number of authors
-     * @return
+     * @return Integer of the total authors in the system
      */
     public int size() {
         return authors.size();
@@ -61,7 +68,7 @@ public class AuthorsController {
 
     /**
      * @brief Returns a vector of the names of authors starting with a given prefix
-     * @param prefix
+     * @param prefix, string contained in authors' names
      * @return ArrayList of names of authors starting with a given prefix
      */
     public ArrayList<String> searchAuthorsPrefix(String prefix) {
@@ -113,6 +120,5 @@ public class AuthorsController {
             }
         }
     }
-
 }
 

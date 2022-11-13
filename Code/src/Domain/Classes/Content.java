@@ -13,7 +13,6 @@ import java.util.stream.Stream;
 
 /**
  * @file Content.java
- *
  * @brief Class <em>Content</em>
  */
 
@@ -24,7 +23,7 @@ import java.util.stream.Stream;
  */
 public class Content {
     /**
-     * Vector that we will use for obtain cosine similarity between Documents
+     * Map that we will use for obtain cosine similarity between Documents
      */
     private HashMap<String, Integer> frequency;
 
@@ -34,7 +33,7 @@ public class Content {
     private ArrayList<Sentence> text;
 
     /**
-     * Language
+     * String language of the content
      */
     private String lang;
 
@@ -47,9 +46,9 @@ public class Content {
 
     /**
      * @brief Creation of content with text
-     *
      * @param textDoc, content of the document
      * @param language, language of the text (esp, eng, cat)
+     * @throws IOException
      * */
     public Content(String textDoc, String language) throws IOException {
         this.frequency = new HashMap<>();
@@ -141,7 +140,7 @@ public class Content {
 
     /**
      * @brief Get all the sentences of the content
-     * @return structure of sentences of the content
+     * @return List of sentences of the content
      */
     public ArrayList<String> getSentences() {
         ArrayList<String> aux = new ArrayList<>();
@@ -154,7 +153,7 @@ public class Content {
     }
     /**
      * @brief Get language of the context
-     * @return language
+     * @return String language of the content
      */
     public String getLanguage() {
         switch (lang) {
@@ -169,7 +168,6 @@ public class Content {
 
     /**
      * @brief Get vector of important words of the text
-     *
      * @return map of frequency
      */
     public HashMap<String,Integer> getVector()
@@ -179,9 +177,8 @@ public class Content {
 
     /**
      * @brief Consult if word or words are on the text
-     *
      * @param wSearch, word to look for
-     * @return true if word appears in the text, false if not
+     * @return true if word appears in the text, otherwise false
      */
     public boolean wordContain(String wSearch)
     {

@@ -12,14 +12,14 @@ import java.util.stream.Stream;
 
 /**
  * @file SearchController.java
- *
- * @brief Controller <em>Search Controller</em>
+ * @brief Class <em>Search Controller</em>
  */
 
 /**
  * @brief Controller of searches to get documents that meet conditions
  *
- * @author Victor Mena Doz and Julia Alice Amenos Dien
+ * @author Victor Mena Doz
+ * @author Julia Alice Amenos Dien
  */
 public class SearchController {
 
@@ -35,19 +35,21 @@ public class SearchController {
         listBoolExps = new LinkedHashSet<>();
     }
 
-    /***
-     * @brief Saves a boolean expression to the historial.
+    /**
+     * @brief Saves a boolean expression to the history.
      * @param boolExp, string with the boolean expression.
+     * @throws  Exception
      */
     public void addExpression(String boolExp) throws Exception {
         BooleanExpression bExpr = new BooleanExpression(boolExp);
         listBoolExps.add(bExpr);
     }
 
-    /***
+    /**
      * @brief Modifies an existing boolean expression
      * @param oldExpr, old boolean expression
      * @param newExpr, new boolean expression
+     * @throws  Exception
      */
     public void modifyExpression(String oldExpr, String newExpr) throws Exception {
         BooleanExpression bold = new BooleanExpression(oldExpr);
@@ -57,6 +59,11 @@ public class SearchController {
         listBoolExps.add(bnew);
     }
 
+    /**
+     * @brief Deletes a boolean expression of the history(list)
+     * @param boolExp, string with the boolean expression.
+     * @throws Exception
+     */
     public void deleteExpression(String boolExp) throws Exception {
         BooleanExpression be = new BooleanExpression(boolExp);
         listBoolExps.remove(be);
@@ -76,10 +83,11 @@ public class SearchController {
     }
 
     /**
-     * @brief Search of a list of Documents who satisfy the boolean expresion
+     * @brief Search of a list of Documents who satisfy the boolean expression
      * @param rootFolder, instance of the root folder
      * @param expression, instance of the boolean expression to use
      * @return list of documents that satisfy boolean expression
+     * @throws Exception
      */
     public HashMap<String, String> booleanExpressionSearch(Folder rootFolder, String expression) throws Exception {
         BooleanExpression boolExpr = new BooleanExpression(expression);
@@ -102,13 +110,13 @@ public class SearchController {
     }
 
 
-    /***
+    /**
      * @brief Search of k documents that appears to specific document
      * @param rootFolder, instance of the root folder
      * @param authorName, name of the author of the specific document
      * @param title, title of the specific document
      * @param k, integer of how many appearance documents to return
-     * @return, list of k documents listed with key
+     * @return list of k documents listed with key
      */
     public HashMap<String, String> appearanceSearch(Folder rootFolder, String authorName, String title, int k){
         HashMap<Pair<String, String>, HashMap<String,Integer>> listDocs = rootFolder.getMapsDocs();
@@ -233,7 +241,7 @@ public class SearchController {
 
     /**
      * @brief Function to calculate normalize of a map
-     * @param map
+     * @param map, frequency's vector of a document
      * @return Normalize value of the map
      */
     private Double calculateNorm(HashMap<String, Integer> map) {

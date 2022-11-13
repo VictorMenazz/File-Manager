@@ -53,7 +53,7 @@ public class Folder {
 
     //Creators
     /**
-     * @brief Constructor for the Object Folder
+     * @brief Default Constructor for the Object Folder
      * @param id, Identifier given by the FoldersController to the Folder.
      * @param fName, Represents the name of the folder.
      * */
@@ -103,7 +103,11 @@ public class Folder {
         docAmount += 1;
     }
 
-
+    /**
+     * @brief Add document to specific subfolder
+     * @param newD, Instance of the new document to add
+     * @param foldId, Id of the parent folder
+     */
     public void addDocumentToSubfolder(Document newD, int foldId){
         if(foldId == folderId) this.addDocument(newD);
         else if(subFolders.containsKey(foldId)){
@@ -123,6 +127,7 @@ public class Folder {
      * @param title, Represents the title of the Document.
      * @param text, Represents the Content of the Document on plain text.
      * @param lang, Represents the Language of the Document.
+     * @throws  IOException
      * */
     public void addNonConstructedDocument(String authorName, String title, String text, String lang) throws IOException {
         Document doc = new Document(title, authorName, text, lang);
@@ -139,9 +144,7 @@ public class Folder {
         if (documents.containsKey(docKey)) {
             documents.remove(docKey);
         }
-        else {
-            // exception the document you are trying to delete does not exist
-        }
+        // exception the document you are trying to delete does not exist
     }
 
     /**
@@ -149,6 +152,7 @@ public class Folder {
      * @param authorName, References the Author of a Document.
      * @param title, Represents the title of the Document.
      * @param text, Represents the Content of the Document on plain text.
+     * @throws  IOException
      * */
     public void modifyContent(String authorName, String title, String text) throws IOException {
         if(this.documentContained(title, authorName)){
@@ -225,6 +229,12 @@ public class Folder {
         }
     }
 
+    /**
+     * @brief Protects the Document identified by <title, authorName> with password.
+     * @param authorName, References the Author of a Document.
+     * @param title, Represents the title of the Document.
+     * @param password, Represents the Content of the Document on plain text.
+     */
     public void protectDocument(String authorName, String title, String password) {
         if(this.documentContained(title, authorName)){
             Pair<String, String> docKey = new Pair(title, authorName);
@@ -249,6 +259,10 @@ public class Folder {
         return folderName;
     }
 
+    /**
+     * @brief Gets list of documents' names from this folder
+     * @return list of documents' names contained on this folder
+     */
     public ArrayList<String> getDocumentsName(){
         ArrayList<String> docs = new ArrayList<String>();
         for(Pair<String, String> key : documents.keySet()){
@@ -287,6 +301,10 @@ public class Folder {
         }
     }
 
+    /**
+     * @brief Gets map of frequency's vectors of all the documents and their keys
+     * @return map of keys that identifies documents and their frequency's vectors
+     */
     public HashMap<Pair<String, String>, HashMap<String,Integer>> getMapsDocs(){
         HashMap<Pair<String, String>, HashMap<String,Integer>> result = new HashMap<Pair<String, String>, HashMap<String,Integer>>();
         if(subFolders.isEmpty()) result = igetMapsDocs();
@@ -304,6 +322,10 @@ public class Folder {
         return result;
     }
 
+    /**
+     * @brief Gets map of texts of all the documents and their keys
+     * @return map of keys that identifies documents and their texts
+     */
     public HashMap<Pair<String, String>, ArrayList<String>> getAllContent(){
         HashMap<Pair<String, String>, ArrayList<String>> result = iGetAllContent();
         if(!subFolders.isEmpty()) {
@@ -337,7 +359,12 @@ public class Folder {
         return subFolders.containsKey(foldId);
     }
 
-
+    /**
+     * @brief Obtain if the Document identified by <title, authorName> is protected
+     * @param author, References the Author of a Document
+     * @param title, Represents the title of the Document
+     * @return true if Document is protected, otherwise false
+     */
     public boolean isProtected(String author, String title) {
         Pair<String, String> key = new Pair<String, String>(title,author);
         return documents.get(key).isProtected();
@@ -346,7 +373,10 @@ public class Folder {
 
     /** Recursive functions involved on the efficient Search of Documents and Folders **/
 
-
+    /**
+     * @brief Recursive function of getsMapsDocs
+     * @return submap of keys that identifies documents and their frequency's vectors
+     */
     private HashMap<Pair<String, String>, HashMap<String,Integer>> igetMapsDocs(){
         HashMap<Pair<String, String>, HashMap<String,Integer>> result = new HashMap<Pair<String, String>, HashMap<String,Integer>>();
         for (Document d : documents.values()){
@@ -357,6 +387,10 @@ public class Folder {
         return result;
     }
 
+    /**
+     * @brief Recursive function of getAllContent
+     * @return submap of keys that identifies documents and their texts
+     */
     private HashMap<Pair<String, String>, ArrayList<String>> iGetAllContent(){
         HashMap<Pair<String, String>, ArrayList<String>> folderContents = new HashMap<Pair<String, String>, ArrayList<String>>();
         for (Document d : documents.values()){
@@ -459,6 +493,5 @@ public class Folder {
         if(this.folderContained(foldId)) return folderId;
         else return iGetNextFolderParent(foldId);
     }
-
 }
 

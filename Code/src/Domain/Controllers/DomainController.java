@@ -8,14 +8,16 @@ import java.util.*;
 
 /**
  * @file DomainController.java
- *
- * @brief Controller <em>Domain</em>
+ * @brief Class <em>Domain Controller</em>
  */
 
 /**
  * @brief Controller of the layer Domain
  *
- * @author Jordi Soley, Marc Navarro and Victor Mena
+ * @author Marc Navarro Acosta
+ * @author Victor Mena Doz
+ * @author Jordi Soley Masats
+ * @author Julia Alice Amenos Dien
  */
 public class DomainController {
 
@@ -39,7 +41,9 @@ public class DomainController {
      */
     private AuthorsController ctrlAuthors;
 
-
+    /**
+     * @brief Default creation of DomainController
+     */
     public DomainController() {
         data = DataController.getInstance();
         /*  Possibly initialize the FolderController?
@@ -60,6 +64,10 @@ public class DomainController {
         }
     }
 
+    /**
+     * @brief Auxiliary creation of DomainController
+     * @param rootFolder, References instance of root folder
+     */
     public DomainController(Folder rootFolder) {
         folders = new FoldersController(rootFolder);
         ctrlSearch = new SearchController();
@@ -70,7 +78,7 @@ public class DomainController {
      * @brief Import a document from outside our platform
      * @param path directory of the file to import
      */
-    //Crear excepcion
+    //Create excepyion
     public void importDocument(String path) {
         //Interface y data?
         //Lectures a la capa de Data millor no?
@@ -83,11 +91,11 @@ public class DomainController {
      * @return Document to export
      */
     public Document exportDocument(String authorName, String title) {
-        //Data e Interface??
+        //Data and Interface??
         return null;
     }
 
-    //crear excepcion
+    //create exception
 
     /**
      * @brief Creates a new document in the system
@@ -102,7 +110,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Modify
+     * @brief Modify specific document
      * @param authorName if flag = 0, contains the new authorName
      * @param title if flag = 1, contains the new title
      * @param newData, needed to replace the attribute.
@@ -146,15 +154,15 @@ public class DomainController {
     }
 
     /**
-     *
-     * @param authorName
-     * @param title
-     * @return
+     * @brief Get information of the selected document
+     * @param authorName, References author's name of the document
+     * @param title, References title of the document
+     * @return list that contains required information:
+     *          - First element of the array = title;
+     *          - Second element of the array = author;
+     *          - Third element of the array = text;
      */
     public ArrayList<String> getDocument(String authorName, String title) {
-        //First element of the array = title;
-        //Second element of the array = author;
-        //Third element of the array = text;
         return folders.getDocument(authorName, title);
     }
     /*
@@ -181,24 +189,22 @@ public class DomainController {
      */
 
     /**
-     *
-     * @param authorName
-     * @param title
-     * @param k
-     * @return
+     * @brief Search of k documents that appears to specific document
+     * @param authorName, References author's name of the specific document
+     * @param title, title of the specific document
+     * @param k, integer of how many appearance documents to return
+     * @return list of k documents listed with key
      */
-    //Maybe: The i element related in the three ArrayLists.
-    // public ArrayList<String> appearenceSearchTitles(String authorName, String title, int k);
-    // public ArrayList<String> appearenceSearchAuthors(String authorName, String title, int k);
-    // public ArrayList<String> appearenceSearchContent(String authorName, String title, int k);
     public HashMap<String, String> appearanceSearch(String authorName, String title, int k) {
         Folder rootFolder = folders.getRoot();
         return ctrlSearch.appearanceSearch(rootFolder, authorName, title, k);
     }
 
     /**
-     *
-     * @return
+     * @brief Search of a list of Documents who satisfy the boolean expression
+     * @param boolExp, instance of the boolean expression to use
+     * @return list of documents that satisfy boolean expression
+     * @throws Exception
      */
     public HashMap<String, String> booleanExpressionSearch(String boolExp) throws Exception {
         Folder rootFolder = folders.getRoot();
@@ -206,10 +212,12 @@ public class DomainController {
     }
 
     /**
-     *
-     * @param pWords
-     * @param k
-     * @return
+     * @brief Search of k documents more relevant for a list of specific words
+     * @param pWords, list of specific words
+     * @param language, language of the search
+     * @param k, integer of how many relevant documents to return
+     * @return  list of k documents listed with key
+     * @throws IOException
      */
     public HashMap<String, String> documentsQuery(String pWords, String language, int k) throws IOException {
         Folder rootFolder = folders.getRoot();
@@ -217,7 +225,7 @@ public class DomainController {
     }
 
     /** Saves a Document with changes in the Data Layer.
-     * @param authorName, Represents the Author of the Docuemnt.
+     * @param authorName, Represents the Author of the Document.
      * @param title, Represents the Title of the Document.
      */
     public void saveDocument(String authorName, String title) {
@@ -227,9 +235,9 @@ public class DomainController {
     }
 
     /**
-     *
-     * @param authorName
-     * @param title
+     * @brief Delete specific document of the system
+     * @param authorName, Represents the Author of the Document.
+     * @param title, Represents the Title of the Document.
      */
     //crear excepcion
     public void deleteDocument(String authorName, String title) {
@@ -262,6 +270,5 @@ public class DomainController {
      */
     public void newFolder(String fName, int foldId) {
         folders.newFolder(fName, foldId);
-
     }
 }

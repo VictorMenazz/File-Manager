@@ -9,11 +9,12 @@ import java.util.ArrayList;
 
 /**
  * @file FolderController.java
- * @brief Class <em>FolderController</em>
+ * @brief Class <em>Folder Controller</em>
  */
 
 /**
  * @brief Class FolderController that delegates functions to the Domain Object Folder.
+ *
  * @author Victor Mena Doz
  * @author Marc Navarro Acosta
  */
@@ -23,6 +24,10 @@ public class FoldersController {
      */
     private Folder rootFolder;
 
+    /**
+     * @brief Default creation of FoldersController
+     * @param root, Instance of the root folder
+     */
     public FoldersController(Folder root){
         if(root == null) rootFolder = new Folder(0, "/");
         else rootFolder = root;
@@ -32,13 +37,13 @@ public class FoldersController {
     public FoldersController( sth DataInfo){
     }*/
 
-
     /**
      * @brief Adds new Document to the collection.
      * @param authorName, References the Author of a Document.
      * @param title, Represents the title of the Document.
      * @param text, Represents the Content of the Document on plain text.
      * @param lang, Represents the Language of the Document.
+     * @throws IOException
      * */
     public void newDocument(String authorName, String title, String text, String lang) throws IOException {
         rootFolder.addNonConstructedDocument(authorName, title, text, lang);
@@ -58,6 +63,7 @@ public class FoldersController {
      * @param authorName, References the Author of a Document.
      * @param title, Represents the title of the Document.
      * @param text, Represents the Content of the Document on plain text.
+     * @throws IOException
      * */
     public void modifyContent(String authorName, String title, String text) throws IOException {
         rootFolder.modifyContent(authorName,title,text);
@@ -84,18 +90,22 @@ public class FoldersController {
     }
 
     /**
-     * @brief Get instance of the rootfolder
+     * @brief Get instance of the root Folder
+     * @return Folder, Instance of the root Folder
      */
     public Folder getRoot() {
         return rootFolder;
     }
 
     /**
-     * @brief Constructs the Document and adds it to the Folder.
-     * @param authorName, References the Author of a Document.
-     * @param title, Represents the title of the Document.
-     * @return A concrete Document identified by a <title, authorName>.
-     * */
+     * @brief Get information of the selected document
+     * @param authorName, References author's name of the document
+     * @param title, References title of the document
+     * @return list that contains required information:
+     *          - First element of the array = title;
+     *          - Second element of the array = author;
+     *          - Third element of the array = text;
+     */
     public ArrayList<String> getDocument(String authorName, String title) {
         return rootFolder.getDocument(authorName, title);
     }

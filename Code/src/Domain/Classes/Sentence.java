@@ -2,7 +2,6 @@ package Code.src.Domain.Classes;
 
 /**
  * @file Sentence.java
- *
  * @brief Class <em>Sentence</em>
  */
 
@@ -15,7 +14,7 @@ public class Sentence {
     private String[] words;
 
     /**
-     * @brief Default create of Sentence
+     * @brief Default creator of Sentence
      * */
     public Sentence()
     {
@@ -23,7 +22,6 @@ public class Sentence {
 
     /**
      * @brief Creation of Sentence with words
-     *
      * @param nWords, words of the sentence
      */
     public Sentence(String nWords)
@@ -33,10 +31,8 @@ public class Sentence {
 
     /**
      * @brief Search word or words in Sentence
-     *
      * @param wSearch, word or words to look for them
-     *
-     * @return true if found, false if not
+     * @return true if words found in the sentence, otherwise false
      */
     public boolean searchWord(String wSearch)
     {

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 /**
  * @brief Class Author that contains the information of an Author
+ *
  * @author Jordi Soley Masats
  */
 public class Author {
@@ -48,8 +49,8 @@ public class Author {
 
     /**
      * @brief Checks if the author's name starts with a given prefix
-     * @param prefix
-     * @return true if yes, false if not
+     * @param prefix, string contained in authors' names
+     * @return true author's name starts with prefix, otherwise false
      */
     public boolean matchesPrefix(String prefix) {
         int size = prefix.length();

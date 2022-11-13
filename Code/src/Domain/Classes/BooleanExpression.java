@@ -10,30 +10,31 @@ import java.util.regex.*;
 
 /**
  * @brief Class Boolean Expression to search documents
+ *
  * @author Júlia Amenós Dien
  */
 public class BooleanExpression {
-    /***
+    /**
      * @brief Original boolean expression
      */
     private String originalBoolExpr;
 
-    /***
-     * @brief adjusted boolean expression
+    /**
+     * @brief Adjusted boolean expression
      */
     private String boolExpr;
 
-    /***
+    /**
      * @brief Boolean expression without quotes
      */
     private String noQuotes;
-    /***
+
+    /**
      * @brief Root of the expression tree
      */
     private Node root;
 
-
-    /***
+    /**
      * @brief Node for the expression tree.
      */
     static private class Node {
@@ -41,8 +42,8 @@ public class BooleanExpression {
         Node left, right;
     };
 
-    /***
-     * Creates an empty node with data.
+    /**
+     * @brief Creates an empty node with data.
      * @param c, string with the value for the data of the node.
      * @return the created node.
      */
@@ -53,7 +54,7 @@ public class BooleanExpression {
         return n;
     }
 
-    /***
+    /**
      * @brief Build Expression Tree from boolExpr.
      * @return Node, which will be the root of the Expression Tree.
      */
@@ -150,7 +151,7 @@ public class BooleanExpression {
         return t;
     }
 
-    /***
+    /**
      * @brief Recursive function to check a sentence by the boolean expression
      * @param sentence, a sentence from a document.
      * @param n, node of the expression tree
@@ -173,8 +174,9 @@ public class BooleanExpression {
         return false;
     }
 
-    /***
+    /**
      * @brief Checks correct format from boolean operands.
+     * @throws Exception
      */
     private void checkOperands() throws Exception {
         //Delete parentheses + whitespaces
@@ -211,8 +213,9 @@ public class BooleanExpression {
         }
     }
 
-    /***
+    /**
      * @brief Checks correct order parentheses
+     * @throws Exception
      */
     private void checkParentheses() throws Exception {
         Pair<Character, Character> brackets = new Pair<>('(', ')');
@@ -242,7 +245,7 @@ public class BooleanExpression {
         }
     }
 
-    /***
+    /**
      * @brief Deletes duplicate elements from the sets of words
      * @param s, content inside braces -> { s }
      * @return s without duplicates.
@@ -252,8 +255,9 @@ public class BooleanExpression {
         return s.replaceAll(regex, "");
     }
 
-    /***
+    /**
      * @brief Checks if the content inside braces is correct + removes content inside (to simplify analysis)
+     * @throws Exception
      */
     private void checkBraces() throws Exception {
         Pattern pattern = Pattern.compile("(?<=\\{)(.*?)(?=\\})");
@@ -275,6 +279,10 @@ public class BooleanExpression {
         }
     }
 
+    /**
+     * @brief Put space between parentheses and word to simplify tree building
+     * @throws Exception
+     */
     private void separateParentheses() throws Exception {
         Pattern pattern = Pattern.compile("^[^(]+(?!\\S)");
         Matcher matcher = pattern.matcher(noQuotes);
@@ -290,8 +298,9 @@ public class BooleanExpression {
         }
     }
 
-    /***
+    /**
      * @brief Deletes content inside quotes (to simplify analysis)
+     * @throws Exception
      */
     private void removeQuotes() throws Exception {
         Pattern pattern = Pattern.compile("\".*?\"");
@@ -310,9 +319,10 @@ public class BooleanExpression {
 
     //------------------- PUBLIC METHODS -------------------//
 
-    /***
-     * @brief Constructs the representation for a boolean expression
+    /**
+     * @brief Default creator of boolean expression
      * @param s, represents the boolean expression.
+     * @throws Exception
      */
     public BooleanExpression(String s) throws Exception {
         originalBoolExpr = s;
@@ -327,15 +337,7 @@ public class BooleanExpression {
         root = build();
     }
 
-    /***
-     * @brief Returns the root of the tree
-     * @return root of the Expression Tree
-     */
-    public Node getExpTree(){
-        return root;
-    }
-
-    /***
+    /**
      * @brief Returns the original boolean expression
      * @return original boolean expression
      */
@@ -344,7 +346,7 @@ public class BooleanExpression {
     }
 
 
-    /***
+    /**
      * @brief Checks if a sentence is valid by the expression.
      * @param sentence, string to validate expression.
      * @return True if the sentence conforms the boolean expression, false otherwise.
@@ -353,10 +355,6 @@ public class BooleanExpression {
         return recursiveFind(sentence, root);
     }
 
-};
+}
 
-/*
-ELIMINAR ESPAIS EXTRES ENTRE { }, ( ), &, |, !
-ENTRE COMILLES NO
- */
 
