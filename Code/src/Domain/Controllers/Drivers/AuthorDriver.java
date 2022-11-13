@@ -109,7 +109,7 @@ public class AuthorDriver {
         String prefix = readInputString();
         System.out.println("");
         if (aut.matchesPrefix(prefix)) {
-            System.out.println("Author \""+ aut.getName() +"\" BEGINS with:" + prefix);
+            System.out.println("Author \""+ aut.getName() +"\" BEGINS with: " + prefix);
         }
         else {
             System.out.println("Author \""+ aut.getName() +"\" DOESN'T begins with \"" + prefix +"\"");
