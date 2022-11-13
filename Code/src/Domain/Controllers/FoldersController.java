@@ -94,7 +94,7 @@ public class FoldersController {
      * @param title, Represents the title of the Document.
      * @return A concrete Document identified by a <title, authorName>.
      * */
-    public ArrayList<String> getDocument(String authorName, String title) {
+    public Document getDocument(String authorName, String title) {
         return rootFolder.getDocument(authorName, title);
     }
 

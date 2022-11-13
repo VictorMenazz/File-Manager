@@ -270,11 +270,9 @@ public class Folder {
      * @param title, Represents the title of a Document.
      * @return A Document identified by an Author and a Title.
      * */
-    public ArrayList<String> getDocument(String authorName, String title) {
+    public Document getDocument(String authorName, String title) {
         Pair<String, String> keyDoc = new Pair(title, authorName);
-        if(documents.containsKey(keyDoc)) {
-            
-        }
+        if(documents.containsKey(keyDoc)) return documents.get(keyDoc);
         else {
             int foldId = getNextFolder(title, authorName);
             Folder f = subFolders.get(foldId);
