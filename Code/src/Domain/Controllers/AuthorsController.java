@@ -1,13 +1,9 @@
 package Code.src.Domain.Controllers;
 
 import Code.src.Domain.Classes.Author;
-import Code.src.Domain.Classes.Document;
-import Code.src.Domain.Classes.Folder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
 
 /**
  * @file AuthorsController.java
