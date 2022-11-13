@@ -1,7 +1,7 @@
 package Code.src.Domain.Controllers.Drivers;
 
+import Code.src.Domain.Classes.Author;
 import Code.src.Domain.Controllers.AuthorsController;
-import Code.src.Domain.Controllers.Stubs.AuthorStub;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -38,7 +38,7 @@ public class AuthorsControllerDriver {
             System.out.print("Enter the Author name to be added:");
             newName = readInputString();
             System.out.println();
-            ctrlAuthors.addAuthor(newName, new AuthorStub(newName));
+            ctrlAuthors.addAuthor(newName, new Author(newName));
         }
         return n;
     }
@@ -54,7 +54,7 @@ public class AuthorsControllerDriver {
         showAuthors(ctrlAuthors);
         System.out.print("Enter the Author name to be added:");
         String newAuthor = readInputString();
-        ctrlAuthors.addAuthor(newAuthor, new AuthorStub(newAuthor));
+        ctrlAuthors.addAuthor(newAuthor, new Author(newAuthor));
         System.out.println();
         System.out.println("List of the names of the authors after adding the Author:");
         showAuthors(ctrlAuthors);
@@ -65,7 +65,7 @@ public class AuthorsControllerDriver {
         System.out.print("Enter the author name to be added:");
         String newAuthor = readInputString();
         System.out.println();
-        ctrlAuthors.addAuthor(newAuthor, new AuthorStub(newAuthor));
+        ctrlAuthors.addAuthor(newAuthor, new Author(newAuthor));
         System.out.println("List of the names of the authors after adding the Author:");
         showAuthors(ctrlAuthors);
         ctrlAuthors.delAuthor(newAuthor);
@@ -103,7 +103,7 @@ public class AuthorsControllerDriver {
 
     public static void testSearchAuthorDocuments() {
         AuthorsController ctrlAuthors = new AuthorsController();
-        AuthorStub aut = new AuthorStub("Jordi");
+        Author aut = new Author("Jordi");
         System.out.println("Jordi doesn't have documents");
         System.out.print("Enter the number titles to be added to Author \"Jordi\":");
         int n = readInputInteger();
@@ -124,7 +124,7 @@ public class AuthorsControllerDriver {
 
     public static void testAddTitleAuthor() {
         AuthorsController ctrlAuthors = new AuthorsController();
-        AuthorStub aut = new AuthorStub("Jordi");
+        Author aut = new Author("Jordi");
         ctrlAuthors.addAuthor("Jordi", aut);
         System.out.println("Author Jordi has been added");
         System.out.print("Enter the title to be added to Jordi:");
@@ -140,7 +140,7 @@ public class AuthorsControllerDriver {
 
     public static void testDelTitleAuthor() {
         AuthorsController ctrlAuthors = new AuthorsController();
-        AuthorStub aut = new AuthorStub("Jordi");
+        Author aut = new Author("Jordi");
         aut.addTitle("testTitle");
         ctrlAuthors.addAuthor("Jordi", aut);
         System.out.println("Author Jordi has been added");
