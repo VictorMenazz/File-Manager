@@ -31,12 +31,7 @@ public class FoldersController {
     /* Initialitzation for the n time we run the program, passing the Data layer elements by parameter.
     public FoldersController( sth DataInfo){
     }*/
-    /**
-     * @brief Get instance of the rootfolder
-     */
-    public Folder getRoot() {
-        return rootFolder;
-    }
+
 
     /**
      * @brief Adds new Document to the collection.
@@ -50,12 +45,12 @@ public class FoldersController {
     }
 
     /**
-     * @brief Deletes a Document of the collection.
-     * @param autorName, References to the name of the Document's Author
-     * @param title, References to the Document's title
-     */
-    public void deleteDocument(String autorName, String title) {
-        rootFolder.delDocument(autorName, title);
+     * @brief Creates a new subFolder.
+     * @param fName, References the name of a Folder.
+     * @param foldId, Represents the identifier of the Folder Parent.
+     * */
+    public void newFolder(String fName, Integer foldId) {
+        rootFolder.createFolder(fName, foldId);
     }
 
     /**
@@ -89,6 +84,13 @@ public class FoldersController {
     }
 
     /**
+     * @brief Get instance of the rootfolder
+     */
+    public Folder getRoot() {
+        return rootFolder;
+    }
+
+    /**
      * @brief Constructs the Document and adds it to the Folder.
      * @param authorName, References the Author of a Document.
      * @param title, Represents the title of the Document.
@@ -96,6 +98,15 @@ public class FoldersController {
      * */
     public ArrayList<String> getDocument(String authorName, String title) {
         return rootFolder.getDocument(authorName, title);
+    }
+
+    /**
+     * @brief Deletes a Document of the collection.
+     * @param autorName, References to the name of the Document's Author
+     * @param title, References to the Document's title
+     */
+    public void deleteDocument(String autorName, String title) {
+        rootFolder.delDocument(autorName, title);
     }
 
     /**
@@ -109,14 +120,11 @@ public class FoldersController {
     }
 
     /**
-     * @brief Creates a new subFolder.
-     * @param fName, References the name of a Folder.
-     * @param foldId, Represents the identifier of the Folder Parent.
-     * */
-    public void newFolder(String fName, Integer foldId) {
-        rootFolder.createFolder(fName, foldId);
-    }
-
+     * @brief Obtain if the Document identified by <title, authorName> is protected
+     * @param author, References the Author of a Document
+     * @param title, Represents the title of the Document
+     * @return true if Document is protected, otherwise false
+     */
     public boolean isProtected(String author, String title) {
         return rootFolder.isProtected(author, title);
     }
