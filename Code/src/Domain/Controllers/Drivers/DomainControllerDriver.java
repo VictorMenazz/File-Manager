@@ -226,17 +226,87 @@ public class DomainControllerDriver {
         }
         System.out.println();
     }
-    public static void testBooleanExpressionSearch() throws IOException {
-        DomainController dC = initialCreation();
+    public static void testBooleanExpressionSearch() throws Exception {
         initializeFolder();
-        System.out.println("Introduce boolean expression: ");
+        DomainController dC = new DomainController(rootFolder);
+        System.out.println("Introduce your boolean expression: ");
+        String boolExp = readInputString();
+        HashMap<String, String> docs = dC.booleanExpressionSearch(boolExp);
+        System.out.println("Documents validated by the expression:");
+        for(HashMap.Entry<String, String> doc : docs.entrySet()) {
+            System.out.println("Title: " + doc.getKey() + "; Author: " + doc.getValue());
+        }
+        System.out.println();
     }
-    public static void testDocumentsQuery(){}
-    public static void testSaveDocument(){}
-    public static void testDeleteDocument(){}
-    public static void testProtectDocument(){}
-    public static void testNewFolder(){}
-    public static void main(String[] args) throws IOException {
+    public static void testDocumentsQuery() throws IOException {
+        initializeFolder();
+        DomainController dC = new DomainController(rootFolder);
+        System.out.println("Introduce words to look for:");
+        String pWords = readInputString();
+        System.out.println("Introduce number of documents do you want obtain:");
+        int k = readInputInteger();
+        HashMap<String, String> result = dC.documentsQuery(pWords,"ENG", k);
+        System.out.println("More relevant documents:");
+        int i = 1;
+        for(HashMap.Entry<String, String> doc : result.entrySet()) {
+            System.out.println(i + ". " + "Title: " + doc.getKey() + "; Author: " + doc.getValue());
+            ++i;
+        }
+        System.out.println();
+    }
+    public static void testSaveDocument(){
+        DomainController dC = initialCreation();
+        //Data controller implicate
+    }
+    public static void testDeleteDocument() throws IOException {
+        DomainController dC = initialCreation();
+        System.out.println("Adding new document. First of all...");
+        System.out.println("Introduce a title for the Document:");
+        String title = readInputString();
+        System.out.println("Introduce an author for the Document:");
+        String author = readInputString();
+        String content = readContent();
+        System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
+        String lang = readInputString();
+        dC.newDocument(author, title, content, lang);
+        System.out.println("Introduce title of the document to delete:");
+        title = readInputString();
+        System.out.println("Introduce author's name of the document to delete:");
+        author = readInputString();
+        dC.deleteDocument(author, title);
+        System.out.println("Document deleted.");
+        System.out.println();
+    }
+    public static void testProtectDocument() throws IOException {
+        DomainController dC = initialCreation();
+        System.out.println("Adding new document. First of all...");
+        System.out.println("Introduce a title for the Document:");
+        String title = readInputString();
+        System.out.println("Introduce an author for the Document:");
+        String author = readInputString();
+        String content = readContent();
+        System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
+        String lang = readInputString();
+        dC.newDocument(author, title, content, lang);
+        System.out.println("Introduce a title of the Document to protect:");
+        title = readInputString();
+        System.out.println("Introduce author's name of the Document to protect:");
+        author = readInputString();
+        System.out.println("Introduce password to protect the document:");
+        String password = readInputString();
+        dC.protectDocument(author, title, password);
+        System.out.println("Document protected");
+        System.out.println();
+    }
+    public static void testNewFolder(){
+        DomainController dC = initialCreation();
+        System.out.println("Introduce name for the new folder:");
+        String fName = readInputString();
+        dC.newFolder(fName, 1);
+        System.out.println("Created new folder with name: " + fName);
+        System.out.println();
+    }
+    public static void main(String[] args) throws Exception {
         String functions = "0. All\n" +
                 "1. testDomainController\n" +
                 "2. testImportDocument\n" +
