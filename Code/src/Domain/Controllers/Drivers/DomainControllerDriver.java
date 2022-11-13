@@ -108,7 +108,9 @@ public class DomainControllerDriver {
         System.out.println("Introduce a Language for the third Document(ENG, CAT or ESP):");
         lang = readInputString();
         dC.newDocument(author, title, content, lang);
-        System.out.println("Introduce author's name");
+        System.out.println("Introduce author's name to obtain his documents:");
+        author = readInputString();
+
     }
     public static void testSearchAuthors(){}
     public static void testGetDocument() throws IOException {
