@@ -2,7 +2,7 @@ Author Driver:
 Introduce the number allocated to the function you want to test.
 Functions:
 0. All
-1. testAuthorControllerConstruct
+1. testAuthorsControllerConstruct
 2. testAddAuthor
 3. testDelAuthor
 4. testSize
@@ -12,7 +12,7 @@ Functions:
 8. testDelTitleAuthor
 9. Exit
 
-testAuthorConstruct() test:
+testAuthorsControllerConstruct() test:
 AuthorsController has been created
 
 testAddAuthor() test:
