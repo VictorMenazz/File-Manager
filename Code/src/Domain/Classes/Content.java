@@ -86,8 +86,12 @@ public class Content {
             case "CAT":
                 stopWords = Files.readAllLines(Paths.get("Code/src/Domain/Classes/StopWords/cat-stopwords.txt"), StandardCharsets.UTF_8);
                 break;
-            default:
+            case "ESP":
                 stopWords = Files.readAllLines(Paths.get("Code/src/Domain/Classes/StopWords/es-stopwords.txt"), StandardCharsets.UTF_8);
+                break;
+            default: //GENERATE EXCEPTION BETTER
+                stopWords = null;
+                System.out.println("Invalid language");
                 break;
         }
 

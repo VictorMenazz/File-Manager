@@ -178,8 +178,12 @@ public class SearchController {
             case "CAT":
                 stopWords = Files.readAllLines(Paths.get("Code/src/Domain/Classes/StopWords/cat-stopwords.txt"), StandardCharsets.UTF_8);
                 break;
-            default:
+            case "ESP":
                 stopWords = Files.readAllLines(Paths.get("Code/src/Domain/Classes/StopWords/es-stopwords.txt"), StandardCharsets.UTF_8);
+                break;
+            default:
+                stopWords = null;
+                System.out.println("Invalid language");
                 break;
         }
 
@@ -213,12 +217,18 @@ public class SearchController {
         HashMap<String, String> result = new HashMap<>();
         Set<Pair<String, String>> dkeys = listRankingOrdered.keySet();
         Iterator<Pair<String, String>> it = dkeys.iterator();
-        for(int i = 0; i < k; ++i) {
-            //if(!it.hasNext()) throw IOException; FOR THE FUTURE
-            Pair <String, String> aux = it.next();
-            result.put(aux.first, aux.second);
+        try {
+            for(int i = 0; i < k; ++i) {
+                //if(!it.hasNext()) throw IOException; FOR THE FUTURE
+                Pair <String, String> aux = it.next();
+                result.put(aux.first, aux.second);
+            }
         }
-
+        catch(Exception e){
+            System.out.println("There are less documents relevant than k");
+            System.out.println("k -> " + k);
+            System.out.println("Found relevant documents -> " + listRankingOrdered.size());
+        }
         return result;
     }
 
