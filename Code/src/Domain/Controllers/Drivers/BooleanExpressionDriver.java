@@ -2,10 +2,6 @@ package Code.src.Domain.Controllers.Drivers;
 
 import Code.src.Domain.Classes.BooleanExpression;
 
-import java.io.IOException;
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 

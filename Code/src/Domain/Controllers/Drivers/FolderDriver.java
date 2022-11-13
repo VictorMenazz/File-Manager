@@ -4,7 +4,6 @@ import Code.src.Domain.Classes.Content;
 import Code.src.Domain.Classes.Document;
 import Code.src.Domain.Classes.Folder;
 import Code.src.Domain.Classes.Pair;
-import Code.src.Domain.Controllers.Stubs.DocumentStub;
 
 import java.io.IOException;
 import java.util.ArrayList;

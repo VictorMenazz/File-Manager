@@ -1,11 +1,9 @@
 package Code.src.Domain.Controllers.Drivers;
 
 import Code.src.Domain.Classes.Content;
-import Code.src.Domain.Classes.Sentence;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 import java.util.regex.Pattern;

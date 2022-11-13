@@ -1,7 +1,5 @@
 package Code.src.Domain.Controllers;
 
-import Code.src.Domain.Classes.Content;
-import Code.src.Domain.Classes.Document;
 import Code.src.Domain.Classes.Folder;
 
 import java.io.IOException;
