@@ -69,7 +69,7 @@ public class SearchControllerDriver {
         System.out.println("Introduce new boolean expression:");
         String boolExp = readInputString();
         sC.addExpression(boolExp);
-        System.out.println("Added new boolean expression: " + boolExp + " to list");
+        System.out.println("Added boolean expression to list: " + sC.getListExp());
         System.out.println();
     }
 
@@ -79,7 +79,7 @@ public class SearchControllerDriver {
         String oldBoolExp = readInputString();
         sC.addExpression(oldBoolExp);
         System.out.printf(sC.getListExp());
-        System.out.println("Introduce boolean expression to modify: ");
+        System.out.println("Introduce boolean expression to modify:");
         String newBoolExp = readInputString();
         sC.modifyExpression(oldBoolExp, newBoolExp);
         System.out.printf(sC.getListExp());
@@ -89,11 +89,11 @@ public class SearchControllerDriver {
 
     public static void testDeleteExpression() throws Exception {
         SearchController sC = initialCreation();
-        System.out.println("Add a boolean expression first: ");
+        System.out.println("Add a boolean expression first:");
         String boolExp = readInputString();
         sC.addExpression(boolExp);
         System.out.println(sC.getListExp());
-        System.out.println("Introduce boolean expression to delete: ");
+        System.out.println("Introduce boolean expression to delete:");
         String boolExp2 = readInputString();
         sC.deleteExpression(boolExp2);
         System.out.println(sC.getListExp());
@@ -101,11 +101,11 @@ public class SearchControllerDriver {
 
     public static void testGetListExp() throws Exception {
         SearchController sC = initialCreation();
-        System.out.println("Add a boolean expression first: ");
+        System.out.println("Add a boolean expression first:");
         String boolExp1 = readInputString();
-        System.out.println("Add a boolean expression first: ");
+        System.out.println("Add a boolean expression first:");
         String boolExp2 = readInputString();
-        System.out.println("Add a boolean expression first: ");
+        System.out.println("Add a boolean expression first:");
         String boolExp3 = readInputString();
         sC.addExpression(boolExp1);
         sC.addExpression(boolExp2);
@@ -117,7 +117,7 @@ public class SearchControllerDriver {
     public static void testBooleanExpressionSearch() throws Exception {
         SearchController sC = initialCreation();
         Folder f = initializeFolder();
-        System.out.println("Introduce your boolean expression: ");
+        System.out.println("Introduce your boolean expression:");
         String boolExp = readInputString();
         HashMap<String, String> docs = sC.booleanExpressionSearch(f, boolExp);
         System.out.println("Documents validated by the expression:");
@@ -131,9 +131,9 @@ public class SearchControllerDriver {
     public static void testAppearanceSearch() throws IOException {
         SearchController sC = initialCreation();
         Folder f = initializeFolder();
-        System.out.println("Enter the title of the document: ");
+        System.out.println("Enter the title of the document:");
         String title = readInputString();
-        System.out.println("Enter the author's name of the document: ");
+        System.out.println("Enter the author's name of the document:");
         String authorName = readInputString();
         System.out.println("Introduce number of documents do you want obtain:");
         int k = readInputInteger();

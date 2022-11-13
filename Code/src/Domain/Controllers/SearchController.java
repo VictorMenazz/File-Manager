@@ -53,7 +53,7 @@ public class SearchController {
      */
     public void modifyExpression(String oldExpr, String newExpr) throws Exception {
         BooleanExpression bold = new BooleanExpression(oldExpr);
-        if (listBoolExps.remove(bold.getExpression())) System.out.println("SI");
+        listBoolExps.remove(bold.getExpression());
 
         BooleanExpression bnew = new BooleanExpression(newExpr);
         listBoolExps.add(bnew.getExpression());

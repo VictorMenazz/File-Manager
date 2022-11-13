@@ -1,0 +1,263 @@
+Search Controller Driver:
+Introduce the number allocated to the function you want to test.
+Functions:
+0. All
+1. testConstructor
+2. testAddExpression
+3. testModifyExpression
+4. testDeleteExpression
+5. testGetListExp
+6. testBooleanExpressionSearch
+7. testAppearanceSearch
+8. testSearchDocuments
+9. Exit
+
+testConstructor() choose:
+Creating SearchController...
+testAddExpression() choose:
+Introduce new boolean expression:
+Added boolean expression to list: ("Hola adeu")
+
+
+testModifyExpression() choose:
+Introduce existing boolean expression:
+("Hola adeu")
+Introduce boolean expression to modify:
+({Marc, Julia} & !Victor)
+Modified: ({Marc, Julia} & !Victor)
+
+testDeleteExpression() choose:
+Add a boolean expression first:
+({Marc, Julia} & !Victor)
+
+Introduce boolean expression to delete:
+
+testGetListExp() choose:
+Add a boolean expression first:
+Add a boolean expression first:
+Add a boolean expression first:
+{casa gran} & !petit & (llit | cadira)
+{casa} & !vermell | gran
+"blanc vermell i verd seguit" & !groc
+
+testBooleanExpression() choose:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce your boolean expression:
+Documents validated by the expression:
+Title: Perros potencialmente peligrosos; Author: Sherman Del Norte
+
+testAppearanceSearch() choose:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Enter the title of the document:
+Enter the author's name of the document:
+Introduce number of documents do you want obtain:
+More relevant documents:
+1. Title: Bibliografia Steve Jobs; Author: Walter Isaacson
+2. Title: JuliaIssues; Author: Victor Mena
+3. Title: Marc es un Geni; Author: Jesus Andujar De Prado
+
+testSearchDocuments() choose:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce words to look for:
+Introduce number of documents do you want obtain:
+More relevant documents:
+1. Title: Bibliografia Steve Jobs; Author: Walter Isaacson
+
+testSearchDocuments() choose:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce words to look for:
+Introduce number of documents do you want obtain:
+There are less documents relevant than k
+k -> 7
+Found relevant documents -> 2
+More relevant documents:
+1. Title: Bibliografia Steve Jobs; Author: Walter Isaacson
+2. Title: Fundacion Apple; Author: Steve Jobs
+
+testAppearanceSearch() choose:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Enter the title of the document:
+Enter the author's name of the document:
+Introduce number of documents do you want obtain:
+More relevant documents:
+1. Title: Fundacion Apple; Author: Steve Jobs
+2. Title: Marc es un Geni; Author: Jesus Andujar De Prado
+
+testBooleanExpression() choose:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce your boolean expression:
+Documents validated by the expression:
+Title: Fundacion Apple; Author: Steve Jobs
+
+testGetListExp() choose:
+Add a boolean expression first:
+Add a boolean expression first:
+Add a boolean expression first:
+{blanc vermell} & !verd
+{blanc} & !vermell | verd
+"blanc vermell i verd seguit" & !groc
+
+testDeleteExpression() choose:
+Add a boolean expression first:
+{blanc vermell} & !verd
+
+Introduce boolean expression to delete:
+
+testModifyExpression() choose:
+Introduce existing boolean expression:
+{blanc vermell} & !verd
+Introduce boolean expression to modify:
+{blanc vermell}
+Modified: {blanc vermell}
+
+testAddExpression() choose:
+Introduce new boolean expression:
+Added boolean expression to list: {blanc vermell} & !verd
+
+
+testConstructor() choose:
+Creating SearchController...
