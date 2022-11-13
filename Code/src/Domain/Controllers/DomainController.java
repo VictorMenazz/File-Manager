@@ -49,6 +49,12 @@ public class DomainController {
         }
     }
 
+    public DomainController(Folder rootFolder) {
+        folders = new FoldersController(rootFolder);
+        ctrlSearch = new SearchController();
+        ctrlAuthors = new AuthorsController();
+    }
+
     /**
      * @brief Import a document from outside our platform
      * @param path directory of the file to import

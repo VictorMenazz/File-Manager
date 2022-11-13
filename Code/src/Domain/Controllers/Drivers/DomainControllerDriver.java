@@ -1,17 +1,51 @@
 package Code.src.Domain.Controllers.Drivers;
 
+import Code.src.Data.DataController;
+import Code.src.Domain.Classes.Document;
 import Code.src.Domain.Classes.Folder;
 import Code.src.Domain.Controllers.DomainController;
 import Code.src.Domain.Controllers.SearchController;
+import org.mockito.Mockito;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class DomainControllerDriver {
 
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
+
+    private static Folder rootFolder;
+    private static Document initializeDocument() throws IOException {
+        System.out.println("Introduce a title for the Document:");
+        String title = readInputString();
+        System.out.println("Introduce an author for the Document:");
+        String author = readInputString();
+        System.out.println("Introduce a Content for the Document:");
+        String Content = readContent();
+        System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
+        String lang = readInputString();
+        Document doc = new Document(title,author,Content,lang);
+        return doc;
+    }
+
+    private static void initializeFolder() throws IOException {
+        Folder f = new Folder(0,"rootFolder");
+        Document d = initializeDocument();
+        f.createFolder("subFolder1",0);
+        f.addDocumentToSubfolder(d, 1);
+        Document d2 = initializeDocument();
+        f.addDocument(d2);
+        Document d3 = initializeDocument();
+        f.addDocumentToSubfolder(d3, 1);
+        Document d4 = initializeDocument();
+        f.addDocumentToSubfolder(d4, 1);
+        Document d5 = initializeDocument();
+        f.addDocument(d5);
+        rootFolder = f;
+    }
 
     private static DomainController initialCreation() {
         DomainController dC = new DomainController();
@@ -110,9 +144,53 @@ public class DomainControllerDriver {
         dC.newDocument(author, title, content, lang);
         System.out.println("Introduce author's name to obtain his documents:");
         author = readInputString();
-
+        ArrayList<String> result = dC.authorDocuments(author);
+        System.out.println("List of documents of this author:");
+        int i = 0;
+        for(String tit : result) {
+            System.out.println(i + ". " + tit);
+            ++i;
+        }
+        System.out.println();
     }
-    public static void testSearchAuthors(){}
+    public static void testSearchAuthors() throws IOException {
+        DomainController dC = initialCreation();
+        System.out.println("First add 3 documents:");
+        System.out.println("Introduce a title for the first Document:");
+        String title = readInputString();
+        System.out.println("Introduce an author for the first Document:");
+        String author = readInputString();
+        String content = readContent();
+        System.out.println("Introduce a Language for the first Document(ENG, CAT or ESP):");
+        String lang = readInputString();
+        dC.newDocument(author, title, content, lang);
+        System.out.println("Introduce a title for the second Document:");
+        title = readInputString();
+        System.out.println("Introduce an author for the second Document:");
+        author = readInputString();
+        content = readContent();
+        System.out.println("Introduce a Language for the second Document(ENG, CAT or ESP):");
+        lang = readInputString();
+        dC.newDocument(author, title, content, lang);
+        System.out.println("Introduce a title for the third Document:");
+        title = readInputString();
+        System.out.println("Introduce an author for the third Document:");
+        author = readInputString();
+        content = readContent();
+        System.out.println("Introduce a Language for the third Document(ENG, CAT or ESP):");
+        lang = readInputString();
+        dC.newDocument(author, title, content, lang);
+        System.out.println("Introduce prefix to search authors:");
+        String prefix = readInputString();
+        ArrayList<String> result = dC.searchAuthors(prefix);
+        System.out.println("List of authors with this prefix");
+        int i = 0;
+        for(String aut : result) {
+            System.out.println(i + ". " + aut);
+            ++i;
+        }
+        System.out.println();
+    }
     public static void testGetDocument() throws IOException {
         DomainController dC = initialCreation();
         System.out.println("Adding new document. First of all...");
@@ -124,15 +202,34 @@ public class DomainControllerDriver {
         System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
         String lang = readInputString();
         dC.newDocument(author, title, content, lang);
-        //Document d = dC.getDocument(author,title);
-
+        ArrayList<String> d = dC.getDocument(author,title);
+        System.out.println("Document's title: " + d.get(0));
+        System.out.println("Document's author: " + d.get(1));
+        System.out.println("Document's text: " + d.get(2));
         System.out.println();
     }
-    public static void testAppearanceSearch(){}
-    public static void testBooleanExpressionSearch(){
+    public static void testAppearanceSearch() throws IOException {
+        initializeFolder();
+        DomainController dC = new DomainController(rootFolder);
+        System.out.println("Title of the document to get appearance documents:");
+        String title = readInputString();
+        System.out.println("Author's name of the document to get appearance documents:");
+        String author = readInputString();
+        System.out.println("Introduce number of documents do you want obtain:");
+        int k = readInputInteger();
+        HashMap<String, String> result = dC.appearanceSearch(author, title, k);
+        System.out.println("More relevant documents:");
+        int i = 1;
+        for(HashMap.Entry<String, String> doc : result.entrySet()) {
+            System.out.println(i + ". " + "Title: " + doc.getKey() + "; Author: " + doc.getValue());
+            ++i;
+        }
+        System.out.println();
+    }
+    public static void testBooleanExpressionSearch() throws IOException {
+        DomainController dC = initialCreation();
+        initializeFolder();
         System.out.println("Introduce boolean expression: ");
-        SearchController sC = new SearchController();
-        //sC.booleanExpressionSearch();
     }
     public static void testDocumentsQuery(){}
     public static void testSaveDocument(){}
