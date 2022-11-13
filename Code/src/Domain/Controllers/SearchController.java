@@ -26,7 +26,7 @@ public class SearchController {
     /**
      * @brief Unordered list of BooleanExpressions
      */
-    private LinkedHashSet<BooleanExpression> listBoolExps;
+    private LinkedHashSet<String> listBoolExps;
 
     /**
      * @brief Default creator
@@ -38,27 +38,27 @@ public class SearchController {
     /**
      * @brief Saves a boolean expression to the history.
      * @param boolExp, string with the boolean expression.
-     * @throws  Exception
+     * @throws Exception
      */
     public void addExpression(String boolExp) throws Exception {
         BooleanExpression bExpr = new BooleanExpression(boolExp);
-        listBoolExps.add(bExpr);
+        listBoolExps.add(bExpr.getExpression());
     }
 
     /**
      * @brief Modifies an existing boolean expression
      * @param oldExpr, old boolean expression
      * @param newExpr, new boolean expression
-     * @throws  Exception
+     * @throws Exception
      */
     public void modifyExpression(String oldExpr, String newExpr) throws Exception {
         BooleanExpression bold = new BooleanExpression(oldExpr);
         System.out.println(bold.getExpression());
-        if (!listBoolExps.remove(bold)) System.out.println("SI");
+        if (listBoolExps.remove(bold.getExpression())) System.out.println("SI");
 
         BooleanExpression bnew = new BooleanExpression(newExpr);
         System.out.println(bnew.getExpression());
-        listBoolExps.add(bnew);
+        listBoolExps.add(bnew.getExpression());
     }
 
     /**
@@ -68,7 +68,7 @@ public class SearchController {
      */
     public void deleteExpression(String boolExp) throws Exception {
         BooleanExpression be = new BooleanExpression(boolExp);
-        listBoolExps.remove(be);
+        listBoolExps.remove(be.getExpression());
     }
 
     /**
@@ -77,9 +77,8 @@ public class SearchController {
      */
     public String getListExp(){
         String list = "";
-        for (BooleanExpression be : listBoolExps){
-            String aux = be.getExpression();
-            list += aux + "\n";
+        for (String be : listBoolExps){
+            list += be + "\n";
         }
         return list;
     }
@@ -93,7 +92,7 @@ public class SearchController {
      */
     public HashMap<String, String> booleanExpressionSearch(Folder rootFolder, String expression) throws Exception {
         BooleanExpression boolExpr = new BooleanExpression(expression);
-        listBoolExps.add(boolExpr);
+        listBoolExps.add(boolExpr.getExpression());
         HashMap<Pair<String, String>, ArrayList<String>> listDocs = rootFolder.getAllContent();
 
         HashMap<String,String> result = new HashMap<>();
