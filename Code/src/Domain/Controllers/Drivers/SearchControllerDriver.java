@@ -44,6 +44,10 @@ public class SearchControllerDriver {
         f.addDocument(d2);
         Document d3 = initializeDocument();
         f.addDocumentToSubfolder(d3, 1);
+        Document d4 = initializeDocument();
+        f.addDocumentToSubfolder(d4, 1);
+        Document d5 = initializeDocument();
+        f.addDocument(d5);
         return f;
     }
 
