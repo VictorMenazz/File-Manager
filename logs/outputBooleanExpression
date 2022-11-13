@@ -94,3 +94,9 @@ expression contains extra operand at the end
 Introduce new boolean expression: 
 Invalid expression: Parentheses mismatch
 
+Exception in thread "main" java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:937)
+	at java.base/java.util.Scanner.next(Scanner.java:1594)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2258)
+	at java.base/java.util.Scanner.nextInt(Scanner.java:2212)
+	at Code.src.Domain.Controllers.Drivers.BooleanExpressionDriver.main(BooleanExpressionDriver.java:81)

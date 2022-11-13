@@ -12,11 +12,59 @@ Functions:
 8. testMatchesPrefix
 9. Exit
 
-testAuthorConstruct() choose:
+testAuthorConstruct() test:
 Introduce a name for the Author: 
-Author created -> Name: Julia with 0 docs
-Enter the number of the function to be tested
-testSetName() choose:
+Author created -> Name: Jordi with 0 docs
+
+testSetName() test:
 Introduce a name for the Author: 
-Author created -> Name: Auth
+Author created -> Name: Jordi
 Introduce a new name for the Author: 
+The name of the Author has been changed to Jesus
+
+testGetName() test:
+Introduce a name for the Author: 
+Author's name: Victor
+
+testGetTitles() test:
+Introduce a name for the Author: 
+Enter the number of titles to be added: 
+Write the next title (num 1): 
+Write the next title (num 2): 
+Write the next title (num 3): 
+Write the next title (num 4): 
+Author have the following titles: 
+Engineering
+Programming
+Project
+Java
+-------
+
+testGetNumTitles() test:
+Enter the number of titles to be added: 
+Write the next title (num 1): 
+Write the next title (num 2): 
+Write the next title (num 3): 
+Write the next title (num 4): 
+Write the next title (num 5): 
+5 titles have been added
+
+testAddTitle() test:
+Enter the title to be added: 
+The title -> Monitors <- has been added
+
+testDelTitle() test:
+Enter the title to be added: 
+The title -> Compilate <- has been added
+The title -> Compilate <- has been deleted correctly
+
+testMatchesPrefix() test:
+Introduce a name for the Author: 
+Enter the prefix you want to check with the author : 
+Author "Jordi Soley" DOESN'T begins with "ordi"
+
+testMatchesPrefix() test 2:
+Introduce a name for the Author: 
+Enter the prefix you want to check with the author : 
+Author "Marc Navarro" BEGINS with: Ma
+Enter the number of the function to be tested

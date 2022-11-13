@@ -310,7 +310,8 @@ public class DomainControllerDriver {
         System.out.println();
     }
     public static void testNewFolder(){
-        DomainController dC = initialCreation();
+        Folder root = new Folder(1, "root");
+        DomainController dC = new DomainController(root);
         System.out.println("Introduce name for the new folder:");
         String fName = readInputString();
         dC.newFolder(fName, 1);
