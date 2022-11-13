@@ -53,11 +53,9 @@ public class SearchController {
      */
     public void modifyExpression(String oldExpr, String newExpr) throws Exception {
         BooleanExpression bold = new BooleanExpression(oldExpr);
-        System.out.println(bold.getExpression());
         if (listBoolExps.remove(bold.getExpression())) System.out.println("SI");
 
         BooleanExpression bnew = new BooleanExpression(newExpr);
-        System.out.println(bnew.getExpression());
         listBoolExps.add(bnew.getExpression());
     }
 
