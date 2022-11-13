@@ -122,6 +122,7 @@ public class SearchController {
             System.out.println(docKey);
             System.out.println(Doc.getKey());
             if(!docKey.equals(Doc.getKey())) { //create a Map adapted to the length and content of the Map of the document
+                System.out.println("entro");
                 HashMap<String, Integer> vecAux = Doc.getValue();
                 for (HashMap.Entry<String, Integer> auxVector : vectorDoc.entrySet()) {
                     String word = auxVector.getKey();
@@ -143,6 +144,7 @@ public class SearchController {
         LinkedHashMap<String, String> result = new LinkedHashMap<>();
         Set<Double> dkeys = listSimilarity.keySet();
         Iterator<Double> it = dkeys.iterator();
+        System.out.println(listSimilarity.size());
         for(int i = 0; i < k; ++i) {
             //if(!it.hasNext()) throw IOException; FOR THE FUTURE
             Pair<String, String> pair = listSimilarity.get(it.next());
