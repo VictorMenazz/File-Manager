@@ -39,12 +39,12 @@ public class DomainController {
         //FALTA COGER INSTANCIA DE ROOT SI EXISTE
         if(data == null) {
             folders = new FoldersController(null);
-            ctrlSearch = new SearchController(null);
+            ctrlSearch = new SearchController();
             ctrlAuthors = new AuthorsController();
         }
         else { //AVERIGUAR FORMA DE COGER CARPETA ROOT
             folders = new FoldersController(data.getRootFolder());
-            ctrlSearch = new SearchController(data.getRootFolder());
+            ctrlSearch = new SearchController();
             ctrlAuthors = new AuthorsController();
         }
     }

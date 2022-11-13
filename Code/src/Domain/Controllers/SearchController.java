@@ -22,10 +22,6 @@ import java.util.stream.Stream;
  * @author Victor Mena Doz and Julia Alice Amenos Dien
  */
 public class SearchController {
-    /**
-     * @brief Instance of rootFolder
-     */
-    private Folder rootFolder;
 
     /**
      * @brief Unordered list of BooleanExpressions
@@ -34,10 +30,8 @@ public class SearchController {
 
     /**
      * @brief Default creator
-     * @param root, the instance of rootFolder
      */
-    public SearchController(Folder root) {
-        rootFolder = root;
+    public SearchController() {
         listBoolExps = new LinkedHashSet<>();
     }
 

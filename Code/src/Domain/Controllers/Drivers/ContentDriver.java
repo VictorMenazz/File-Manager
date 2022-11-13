@@ -24,7 +24,7 @@ import java.util.regex.Pattern;
 public class ContentDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
-    public static Content initialCreation1() throws IOException {
+    private static Content initialCreation1() throws IOException {
         String text = readContent();
         if(text.isEmpty() | text.isBlank()) System.err.println("No es correcto introducir una expresion vacia");
         System.out.println("Introduce language for the Content (ENG, CAT or ESP):");
