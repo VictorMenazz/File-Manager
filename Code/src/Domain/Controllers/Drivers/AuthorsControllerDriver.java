@@ -8,6 +8,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * @file AuthorsControllerDriver.java
+ * @brief Test <em>AuthorsController</em>
+ */
+
+/**
+ * @brief Driver of class AuthorsController
+ *
+ * @author Jordi Soley Masats
+ */
+
 public class AuthorsControllerDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 

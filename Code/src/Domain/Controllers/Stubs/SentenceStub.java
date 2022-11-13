@@ -4,12 +4,11 @@ import Code.src.Domain.Classes.Sentence;
 
 /**
  * @file SentenceStub.java
- *
  * @brief Stub <em>Sentence</em>
  */
 
 /**
- * @brief Stub of the Sentence class
+ * @brief Stub of Sentence class
  *
  * @author Victor Mena Doz
  */

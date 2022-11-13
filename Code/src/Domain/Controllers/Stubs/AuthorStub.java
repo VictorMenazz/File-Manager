@@ -4,6 +4,16 @@ import Code.src.Domain.Classes.Author;
 
 import java.util.ArrayList;
 
+/**
+ * @file AuthorStub.java
+ * @brief Stub <em>Author</em>
+ */
+
+/**
+ * @brief Stub of Author class
+ *
+ * @author Jordi Soley Masats
+ */
 public class AuthorStub extends Author {
 
     public AuthorStub(String n) {

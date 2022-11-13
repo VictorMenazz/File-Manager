@@ -6,6 +6,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * @file AuthorDriver.java
+ * @brief Test <em>Author</em>
+ */
+
+/**
+ * @brief Driver of class Author
+ *
+ * @author Jordi Soley Masats
+ */
 public class AuthorDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 

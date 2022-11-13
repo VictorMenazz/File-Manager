@@ -13,6 +13,19 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * @file DomainControllerDriver.java
+ * @brief Driver <em>DomainController</em>
+ */
+
+/**
+ * @brief Driver of class DomainController
+ *
+ * @author Victor Mena Doz
+ * @author Marc Navarro Acosta
+ * @author Julia Alice Amenos Dien
+ */
+
 public class DomainControllerDriver {
 
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));

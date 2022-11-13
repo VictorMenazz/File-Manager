@@ -7,6 +7,17 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * @file SentenceDriver.java
+ * @brief Test <em>Sentence</em>
+ */
+
+/**
+ * @brief Driver of class Sentence
+ *
+ * @author Victor Mena Doz
+ */
+
 public class SentenceDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 

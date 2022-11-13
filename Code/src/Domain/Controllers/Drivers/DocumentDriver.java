@@ -9,6 +9,17 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * @file DocumentDriver.java
+ * @brief Test <em>Document</em>
+ */
+
+/**
+ * @brief Driver of class Document
+ *
+ * @author Marc Navarro Acosta
+ */
+
 public class DocumentDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 

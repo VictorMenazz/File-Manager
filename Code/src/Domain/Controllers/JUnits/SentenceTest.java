@@ -9,13 +9,12 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 /**
- * @file ContentTest.java
- *
- * @brief Test <em>ContentTest</em>
+ * @file SentenceTest.java
+ * @brief Test Junit <em>Sentence</em>
  */
 
 /**
- * @brief Test of the Content class
+ * @brief Test of Sentence class
  *
  * @author Victor Mena Doz
  */

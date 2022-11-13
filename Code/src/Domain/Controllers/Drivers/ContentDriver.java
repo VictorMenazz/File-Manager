@@ -12,8 +12,7 @@ import java.util.regex.Pattern;
 
 /**
  * @file ContentDriver.java
- *
- * @brief Driver <em>ContentDriver</em>
+ * @brief Test <em>Content</em>
  */
 
 /**

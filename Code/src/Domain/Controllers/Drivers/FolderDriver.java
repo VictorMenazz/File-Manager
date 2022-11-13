@@ -12,6 +12,17 @@ import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * @file FolderDriver.java
+ * @brief Driver <em>Folder</em>
+ */
+
+/**
+ * @brief Driver of class Folder
+ *
+ * @author Marc Navarro Acosta
+ */
+
 public class FolderDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 

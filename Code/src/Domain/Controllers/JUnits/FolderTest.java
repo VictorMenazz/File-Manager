@@ -12,6 +12,17 @@ import java.util.ArrayList;
 
 import static org.junit.Assert.*;
 
+/**
+ * @file FolderTest.java
+ * @brief Test Junit <em>Folder</em>
+ */
+
+/**
+ * @brief Test of Folder class
+ *
+ * @author Marc Navarro Acosta
+ */
+
 public class FolderTest {
 
     public void Folder(){

@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 /**
  * @file BooleanExpressionTest.java
- * @brief Test <em>Boolean Expression</em>
+ * @brief Test Junit <em>Boolean Expression</em>
  */
 
 /**

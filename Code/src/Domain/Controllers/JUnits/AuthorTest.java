@@ -11,8 +11,16 @@ import java.util.Arrays;
 import static org.junit.Assert.*;
 
 /**
+ * @file AuthorTest.java
+ * @brief Test Junit <em>Author</em>
+ */
+
+/**
+ * @brief Test of class Author
+ *
  * @author Jordi Soley Masats
  */
+
 public class AuthorTest {
     @Test
     public void testSetName() {

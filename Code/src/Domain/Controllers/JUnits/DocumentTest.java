@@ -8,6 +8,17 @@ import java.io.IOException;
 
 import static org.junit.Assert.*;
 
+/**
+ * @file DocumentTest.java
+ * @brief Test Junit <em>Document</em>
+ */
+
+/**
+ * @brief Test of Document class
+ *
+ * @author Marc Navarro Acosta
+ */
+
 public class DocumentTest {
 
     @org.junit.Test

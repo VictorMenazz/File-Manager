@@ -4,6 +4,16 @@ import Code.src.Domain.Classes.Content;
 
 import java.util.*;
 
+/**
+ * @file ContentStub.java
+ * @brief Stub <em>Content</em>
+ */
+
+/**
+ * @brief Stub of Content class
+ *
+ * @author Marc Navarro Acosta
+ */
 public class ContentStub extends Content {
 
     public ContentStub()

@@ -5,6 +5,17 @@ import Code.src.Domain.Classes.Document;
 
 import java.io.IOException;
 
+/**
+ * @file DocumentStub.java
+ * @brief Stub <em>Document</em>
+ */
+
+/**
+ * @brief Stub of Document class
+ *
+ * @author Marc Navarro Acosta
+ */
+
 public class DocumentStub extends Document {
 
     public DocumentStub() {

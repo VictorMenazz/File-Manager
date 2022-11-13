@@ -10,6 +10,17 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+/**
+ * @file FoldersControllerDriver.java
+ * @brief Driver <em>FoldersController</em>
+ */
+
+/**
+ * @brief Driver of class FoldersController
+ *
+ * @author Marc Navarro Acosta
+ */
+
 public class FoldersControllerDriver {
 
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));

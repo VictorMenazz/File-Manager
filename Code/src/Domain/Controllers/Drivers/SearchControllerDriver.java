@@ -16,7 +16,10 @@ import java.util.regex.Pattern;
 
 /**
  * @brief Driver of the SearchController class
- * @author Júlia Amenós Dien, Victor Mena Doz, Marc Navarro Acosta
+ *
+ * @author Júlia Amenós Dien
+ * @author Victor Mena Doz
+ * @author Marc Navarro Acosta
  */
 public class SearchControllerDriver {
 

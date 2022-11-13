@@ -12,8 +12,7 @@ import static org.junit.Assert.*;
 
 /**
  * @file ContentTest.java
- *
- * @brief Test <em>ContentTest</em>
+ * @brief Test Junit <em>Content</em>
  */
 
 /**
