@@ -30,9 +30,11 @@
   
 - Julia:
   - DomainController
+  - SearchController
 
 - Victor:
   - DomainController
+  - SearchController
   
 - Jordi:
-  - DomainController
+  - AuthorsController
