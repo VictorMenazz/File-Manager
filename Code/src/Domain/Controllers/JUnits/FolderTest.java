@@ -116,11 +116,9 @@ public class FolderTest {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         f.addDocument(doc);
-        Document d = f.getDocument("AuthorTest","TitleTest");
-        assertFalse(d.isProtected());
+        assertFalse(doc.isProtected());
         f.protectDocument("AuthorTest","TitleTest","admin");
-        Document d2 = f.getDocument("AuthorTest","TitleTest");
-        assertFalse(d2.isProtected()); //Cause the Stub is always returning false.
+        assertFalse(doc.isProtected()); //Cause the Stub is always returning false.
     }
 
     @Test
@@ -153,7 +151,11 @@ public class FolderTest {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         f.addDocument(doc);
-        assertEquals(doc,f.getDocument("AuthorTest", "TitleTest"));
+        ArrayList<String> res = new ArrayList<String>();
+        res.add("TitleTest");
+        res.add("AuthorTest");
+        res.add("Simple Content Test");
+        assertEquals(res,f.getDocument("AuthorTest", "TitleTest"));
     }
 
     @Test

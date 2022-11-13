@@ -161,8 +161,8 @@ public class FolderDriver {
 
         f.modifyContent(author,title, ContentText);
 
-        Document doc = f.getDocument(author,  title);
-        System.out.println(d.getContent());
+        ArrayList<String> doc = f.getDocument(author, title);
+        System.out.println(doc.get(2));
         System.out.println();
     }
 
@@ -189,8 +189,8 @@ public class FolderDriver {
 
         f.modifyAuthor(author,title, AuthorN);
 
-        Document doc = f.getDocument(AuthorN, title);
-        System.out.println("New Author: " + doc.getAuthor());
+        ArrayList<String> doc = f.getDocument(AuthorN, title);
+        System.out.println("New Author: " + doc.get(1));
         System.out.println();
     }
 
@@ -217,8 +217,8 @@ public class FolderDriver {
 
         f.modifyTitle(author,title, newTitle);
 
-        Document doc = f.getDocument(author, newTitle);
-        System.out.println("New Title: " + doc.getTitle());
+        ArrayList doc = f.getDocument(author, newTitle);
+        System.out.println("New Title: " + doc.get(0));
         System.out.println();
     }
 
@@ -245,9 +245,9 @@ public class FolderDriver {
 
         f.protectDocument(author, title, password);
 
-        Document doc = f.getDocument(author,  title);
+        boolean b = f.isProtected(author,  title);
         String is = "";
-        if(doc.isProtected()) is = "is";
+        if(b) is = "is";
         else is = "isn't";
         System.out.println("Document " + is + " protected.");
         System.out.println();
@@ -324,8 +324,8 @@ public class FolderDriver {
 
         Document d = new Document(title,author,cont,language);
         f.addDocument(d);
-        Document d2 = f.getDocument(author, title);
-        System.out.println("Checking Doc -> Title: " + d2.getTitle() + " Author: " + d2.getAuthor());
+        ArrayList<String> d2 = f.getDocument(author, title);
+        System.out.println("Checking Doc -> Title: " + d2.get(0) + " Author: " + d2.get(1));
         System.out.println();
     }
 

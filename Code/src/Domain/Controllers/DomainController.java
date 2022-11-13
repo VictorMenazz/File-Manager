@@ -88,7 +88,6 @@ public class DomainController {
      * @brief Modify
      * @param authorName if flag = 0, contains the new authorName
      * @param title if flag = 1, contains the new title
-     * @param text if flag = 2, contains the new text
      * @param newData, needed to replace the attribute.
      * @param flag if it's 0,
      */

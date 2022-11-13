@@ -94,7 +94,7 @@ public class FoldersController {
      * @param title, Represents the title of the Document.
      * @return A concrete Document identified by a <title, authorName>.
      * */
-    public Document getDocument(String authorName, String title) {
+    public ArrayList<String> getDocument(String authorName, String title) {
         return rootFolder.getDocument(authorName, title);
     }
 
@@ -115,5 +115,9 @@ public class FoldersController {
      * */
     public void newFolder(String fName, Integer foldId) {
         rootFolder.createFolder(fName, foldId);
+    }
+
+    public boolean isProtected(String author, String title) {
+        return rootFolder.isProtected(author, title);
     }
 }

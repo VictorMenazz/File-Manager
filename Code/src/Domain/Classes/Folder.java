@@ -270,9 +270,15 @@ public class Folder {
      * @param title, Represents the title of a Document.
      * @return A Document identified by an Author and a Title.
      * */
-    public Document getDocument(String authorName, String title) {
+    public ArrayList<String> getDocument(String authorName, String title) {
         Pair<String, String> keyDoc = new Pair(title, authorName);
-        if(documents.containsKey(keyDoc)) return documents.get(keyDoc);
+        if(documents.containsKey(keyDoc)) {
+            ArrayList<String> result = new ArrayList<String>();
+            result.add(title);
+            result.add(authorName);
+            result.add(documents.get(keyDoc).getContent());
+            return result;
+        }
         else {
             int foldId = getNextFolder(title, authorName);
             Folder f = subFolders.get(foldId);
@@ -443,5 +449,9 @@ public class Folder {
         else return iGetNextFolderParent(foldId);
     }
 
+    public boolean isProtected(String author, String title) {
+        Pair<String, String> key = new Pair<String, String>(title,author);
+        return documents.get(key).isProtected();
+    }
 }
 
