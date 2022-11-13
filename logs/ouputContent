@@ -1,0 +1,150 @@
+Content Driver:
+Introduce the number allocated to the function you want to test.
+Functions:
+0. All
+1. testContentConstruct
+2. testGetLanguage
+3. testGetText
+4. testGetSentences
+5. testGetVector
+6. testWordContain
+
+testContentConstruct() test:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Content created -> Text:
+Messi is the best player of the world. It's amazing how he dribble all the players from others teams. FC Barcelona is his club.
+Nowadays, in Barcelona there's so much people having funny.
+Julia doesn't like Victor.
+Language: English
+
+testGetLanguage() test:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Language: English
+
+testGetText() test:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Text:
+Messi is the best player of the world. It's amazing how he dribble all the players from others teams. FC Barcelona is his club.
+Nowadays, in Barcelona there's so much people having funny.
+Julia doesn't like Victor.
+
+testGetSentences() choose:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Sentences: 
+1. Messi is the best player of the world.
+
+2.  It's amazing how he dribble all the players from others teams.
+
+3.  FC Barcelona is his club.
+
+4. RETURNED CARRIER
+
+5. Nowadays, in Barcelona there's so much people having funny.
+
+6. RETURNED CARRIER
+
+7. Julia doesn't like Victor.
+
+testGetVector() test:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Vector for appearance: 
+teams -> 1
+players -> 1
+nowadays -> 1
+people -> 1
+amazing -> 1
+world -> 1
+victor -> 1
+julia -> 1
+barcelona -> 2
+club -> 1
+dribble -> 1
+fc -> 1
+messi -> 1
+funny -> 1
+player -> 1
+
+testWordContain() test:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Introduce a string to search in the text:
+FOUND IT
+
+testContentConstruct() choose:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Content created -> Text:
+Steve Jobs fue el fundador de Apple. Este ha sido un genio desde su nacimiento, creando productos que revolucionarian la industria tecnologica.
+Apple actualmente factura mas de 8 mil millones de dolares al anyo.
+Language: Spanish
+
+
+testGetLanguage() choose:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Language: Catalan
+
+
+testGetText() choose:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Text:
+Florentino Perez, presidente del Madrid, ha decidido revolucionar el mundo del futbol y crear la Superliga.
+Por el contrario gran parte de europa esta en contra de esta propuesta.
+
+
+testGetSentences() choose:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Sentences: 
+1. Steve Jobs fue el fundador de Apple.
+
+2.  Este ha sido un genio desde su nacimiento, creando productos que revolucionarian la industria tecnologica.
+
+3. RETURNED CARRIER
+
+4. Apple actualmente factura mas de 8 mil millones de dolares al anyo.
+
+
+testGetVector() choose:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Vector for appearance: 
+ser -> 1
+creat -> 1
+historia -> 1
+avui -> 1
+l'inici -> 1
+possiblement -> 1
+figura -> 1
+anys -> 1
+monument -> 1
+va -> 1
+es -> 1
+barceloni -> 1
+important -> 1
+fan -> 1
+124 -> 1
+sagrada -> 1
+gaudi -> 2
+construccio -> 1
+familia -> 1
+catalana -> 1
+
+
+testWordContain() choose:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Introduce a string to search in the text:
+FOUND IT
+
+testWordContain() choose:
+Introduce text for the Content, return carrier when you finish and write _end_:
+Introduce language for the Content (ENG, CAT or ESP):
+Introduce a string to search in the text:
+NOT FOUND IT

@@ -1,0 +1,219 @@
+FoldersController Driver:
+Introduce the number allocated to the function you want to test.
+Functions:
+0. All
+1. testDomainController
+2. testImportDocument
+3. testExportDocument
+4. testNewDocument
+5. testModifyDocument
+6. testAuthorDocuments
+7. testSearchAuthors
+8. testGetDocument
+9. testAppearanceSearch
+10. testBooleanExpressionSearch
+11. testDocumentsQuery
+12. testSaveDocument
+13. testDeleteDocument
+14. testProtectDocument
+15. testNewFolder
+16. Exit
+
+testDomainController() choose:
+Creating DomainController...
+testImportDocument() choose:
+testExportDocument() choose:
+testNewDocument() choose:
+Adding new document. First of all...
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Added new document with title: Atac DDos and author's name Josep
+
+testModifyDocument() choose:
+Add document to modified later:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Select document to modify:
+Introduce title of the Document:
+Introduce author of the Document:
+What do you want to modify: Author=0, Title=1 or Text=2 ?
+Introduce new Title:
+Modified document.
+
+testAuthorDocuments() choose:
+First add 3 documents:
+Introduce a title for the first Document:
+Introduce an author for the first Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the first Document(ENG, CAT or ESP):
+Introduce a title for the second Document:
+Introduce an author for the second Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the second Document(ENG, CAT or ESP):
+Introduce a title for the third Document:
+Introduce an author for the third Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the third Document(ENG, CAT or ESP):
+Introduce author's name to obtain his documents:
+List of documents of this author:
+0. Transport Layer
+
+testSearchAuthor() choose:
+First add 3 documents:
+Introduce a title for the first Document:
+Introduce an author for the first Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the first Document(ENG, CAT or ESP):
+Introduce a title for the second Document:
+Introduce an author for the second Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the second Document(ENG, CAT or ESP):
+Introduce a title for the third Document:
+Introduce an author for the third Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the third Document(ENG, CAT or ESP):
+Introduce prefix to search authors:
+List of authors with this prefix
+0. Marc
+
+testGetDocument() choose:
+Adding new document. First of all...
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Document's title: What is Spyware?
+Document's author: Julia
+Document's text: Spyware is software with malicious behaviour that aims to gather information about a person
+or organization and send it to another entity in a way that harms the user.
+
+testAppearanceSearch() choose:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Title of the document to get appearance documents:
+Author's name of the document to get appearance documents:
+Introduce number of documents do you want obtain:
+More relevant documents:
+1. Title: Jesus acoplado; Author: Jordi Soley
+2. Title: Ferran el papi; Author: Marc Navarro Acosta
+3. Title: Jordi el dormilon; Author: Julia Alice Amenos Dien
+
+testBooleanExpressionSearch() choose:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce your boolean expression: 
+Documents validated by the expression:
+Title: Jesus acoplado; Author: Jordi Soley
+Title: Ferran el papi; Author: Marc Navarro Acosta
+
+testDocumentsQuery() choose:
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce a Content for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce words to look for:
+Introduce number of documents do you want obtain:
+More relevant documents:
+1. Title: Marc Subcampeon de espanya; Author: Jesus Andujar
+2. Title: Jesus acoplado; Author: Jordi Soley
+3. Title: Julia la genia; Author: Victor Mena
+
+testSaveDocument() choose:
+testDeleteDocument() choose:
+Adding new document. First of all...
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce title of the document to delete:
+Introduce author's name of the document to delete:
+Document deleted.
+
+testProtectDocument() choose:
+Adding new document. First of all...
+Introduce a title for the Document:
+Introduce an author for the Document:
+Introduce text for the Content, return carrier when you finish and write _end_
+Introduce a Language for the Document(ENG, CAT or ESP):
+Introduce a title of the Document to protect:
+Introduce author's name of the Document to protect:
+Introduce password to protect the document:
+Document protected
+
+testNewFolder() choose:
+Introduce name for the new folder:
+Created new folder with name: propFolder
+
+
+Introduce the number allocated to the function you want to test.
