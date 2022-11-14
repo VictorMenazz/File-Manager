@@ -31,3 +31,8 @@
 
 ### Variables i funcions
 - Nomenclatura camelCase
+
+### Compilació
+Per a compilar                      'make'
+(s'ha de tenir instal·lat javac: sudo apt install default-jdk')
+
