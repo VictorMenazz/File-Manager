@@ -12,7 +12,7 @@
 
 ## Clases implementades per cadascun:
 
-| Marc | Julia | Victor | Jordi |
+| Marc | Júlia | Victor | Jordi |
 |-|-|-|-|
 |Folder|BooleanExpresion|Content|Author|
 |Document|-|Sentence|-|
