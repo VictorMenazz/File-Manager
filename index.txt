@@ -2,19 +2,20 @@
 |       Directori general del proyecto       |
 ------------------------------------------------
 
-Aquest és el directori on tenim totes les carpetes escencials del projecte.
+Aquest es el directori on tenim totes les carpetes escencials del projecte.
 
 DIRECTORIS:
 ·FONTS: arxius .java del projecte
-·DOCS: carpeta que conté tota la documentació del projecte
-·lib: carpeta que conté les llibreries externes que hem utilitzat
-·bin: carpeta que conté els binaris
+·DOCS: carpeta que conte tota la documentacio del projecte
+·lib: carpeta que conte les llibreries externes que hem utilitzat
+·bin: carpeta que conte els binaris
 ·test: fitxers de input i output per drivers i JUnits
 ·logs: arxius temporals de output
 ·EXE: executables .class del projecte
 
 FITXERS:
 ·Makefile: fitxer Makefile del projecte
-·README: arxiu readme sobre informació dels integrants del projecte
+·README: arxiu readme sobre informacio dels integrants del projecte
+·DescripcioEquip: informacio sobre els memebres del projecte
 
 
