@@ -1,4 +1,3 @@
-```
 @echo off
 
 if /i %1 == DomainControllerDriver goto :DomainControllerDriver
@@ -87,7 +86,7 @@ jar cfe SentenceDriver.jar FONTS.src.Domain.Controllers.Drivers.SentenceDriver *
 goto :EOF
 
 REM === BooleanExpression ===
-:BooleanExpression
+:BooleanExpressionDriver
 javac FONTS/src/Domain/Controllers/Drivers/BooleanExpressionDriver.java -d .
 jar cfe BooleanExpressionDriver.jar FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver *
 
@@ -98,6 +97,5 @@ REM === AuthorDriver ===
 javac FONTS/src/Domain/Controllers/Drivers/AuthorDriver.java -d .
 jar cfe AuthorDriver.jar FONTS.src.Domain.Controllers.Drivers.AuthorDriver *
 
-
 goto :EOF
-```
+timeout 60
