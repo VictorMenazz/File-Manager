@@ -145,7 +145,7 @@ runDrivers:
 	@java -jar DocumentDriver.jar
 	@java -jar ContentDriver.jar
 	@java -jar SentenceDriver.jar
-	@java -jar BooleanExpression.jar
+	@java -jar BooleanExpressionDriver.jar
 	@java -jar AuthorDriver.jar
 
 runAutomaticSearchController:
@@ -173,7 +173,7 @@ runAutomaticSentence:
 	@java -jar SentenceDriver.jar < test/inputTest/inpSentence.txt
 
 runAutomaticBooleanExpression:
-	@java -jar BooleanExpression.jar < test/inputTest/inpBooleanExpression.txt
+	@java -jar BooleanExpressionDriver.jar < test/inputTest/inpBooleanExpression.txt
 
 runAutomaticAuthor:
 	@java -jar AuthorDriver.jar < test/inputTest/inpAuthor.txt
