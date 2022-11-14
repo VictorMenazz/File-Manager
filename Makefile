@@ -1,10 +1,10 @@
-CLASSES = Code/src/Domain/Classes
-CONTROLLERS =Code/src/Domain/Controllers
-DRIVERS = Code/src/Domain/Controllers/Drivers
-JUNITS = Code/src/Domain/Controllers/JUnits
-STUBS = Code/src/Domain/Controllers/Stubs
-INTERFACE = Code/src/Interface
-DATA = Code/src/Data
+CLASSES = FONTS/src/Domain/Classes
+CONTROLLERS = FONTS/src/Domain/Controllers
+DRIVERS = FONTS/src/Domain/Controllers/Drivers
+JUNITS = FONTS/src/Domain/Controllers/JUnits
+STUBS = FONTS/src/Domain/Controllers/Stubs
+INTERFACE = FONTS/src/Interface
+DATA = FONTS/src/Data
 
 ifeq ($(OS), Windows_NT)
 	CLASSPATH = "bin;lib/junit-4.13.1.jar;lib/hamcrest-core-1.3.jar"
@@ -19,85 +19,85 @@ default: JUnits
 JUnits:
 	@javac -cp $(CLASSPATH) $(JUNITS)/*.java $(CLASSES)/*.java $(STUBS)/*.java -d bin/
 	@echo "Folder JUnit test..."
-	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.FolderTest
+	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.FolderTest
 	@echo "Document JUnit test..."
-	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.DocumentTest
+	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.DocumentTest
 	@echo "Content JUnit test..."
-	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.ContentTest
+	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.ContentTest
 	@echo "Sentence JUnit test..."
-	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.SentenceTest
+	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.SentenceTest
 	@echo "Author JUnit test..."
-	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.AuthorTest
+	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.AuthorTest
 	@echo "BooleanExpression JUnit test..."
-	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.BooleanExpressionTest
+	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.BooleanExpressionTest
 
 
 FolderJUnit:
 	@javac -cp $(CLASSPATH) $(JUNITS)/*.java $(CLASSES)/*.java $(STUBS)/*.java -d bin/
-	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.FolderTest
+	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.FolderTest
 
 DocumentJUnit:
 	@javac -cp $(CLASSPATH) $(JUNITS)/*.java $(CLASSES)/*.java $(STUBS)/*.java -d bin/
-	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.DocumentTest
+	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.DocumentTest
 
 ContentJUnit:
 	@javac -cp $(CLASSPATH) $(JUNITS)/*.java $(CLASSES)/*.java $(STUBS)/*.java -d bin/
-	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.ContentTest
+	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.ContentTest
 
 SentenceJUnit:
 	@javac -cp $(CLASSPATH) $(JUNITS)/*.java $(CLASSES)/*.java $(STUBS)/*.java -d bin/
-	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.SentenceTest
+	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.SentenceTest
 
 BooleanExpressionJUnit:
 	@javac -cp $(CLASSPATH) $(JUNITS)/*.java $(CLASSES)/*.java $(STUBS)/*.java -d bin/
-	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.BooleanExpressionTest
+	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.BooleanExpressionTest
 
 AuthorJUnit:
 	@javac -cp $(CLASSPATH) $(JUNITS)/*.java $(CLASSES)/*.java $(STUBS)/*.java -d bin/
-	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.AuthorTest
+	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.AuthorTest
 
 #COMPILING DRIVERS
 
 FoldersControllerDriver:
 	@javac $(DRIVERS)/FoldersControllerDriver.java -d .
-	@jar cfe FoldersControllerDriver.jar Code.src.Domain.Controllers.Drivers.FoldersControllerDriver *
+	@jar cfe FoldersControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver *
 
 DomainControllerDriver:
 	@javac $(DRIVERS)/DomainControllerDriver.java -d .
-	@jar cfe DomainControllerDriver.jar Code.src.Domain.Controllers.Drivers.DomainControllerDriver *
+	@jar cfe DomainControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.DomainControllerDriver *
 
 AuthorsControllerDriver:
 	@javac $(DRIVERS)/AuthorsControllerDriver.java -d .
-	@jar cfe AuthorsControllerDriver.jar Code.src.Domain.Controllers.Drivers.AuthorsControllerDriver *
+	@jar cfe AuthorsControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.AuthorsControllerDriver *
 
 SearchControllerDriver:
 	@javac $(DRIVERS)/SearchControllerDriver.java -d .
-	@jar cfe SearchControllerDriver.jar Code.src.Domain.Controllers.Drivers.SearchControllerDriver *
+	@jar cfe SearchControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.SearchControllerDriver *
 
 
 FolderDriver:
 	@javac $(DRIVERS)/FolderDriver.java -d .
-	@jar cfe FolderDriver.jar Code.src.Domain.Controllers.Drivers.FolderDriver *
+	@jar cfe FolderDriver.jar FONTS.src.Domain.Controllers.Drivers.FolderDriver *
 
 AuthorDriver:
 	@javac $(DRIVERS)/AuthorDriver.java -d .
-	@jar cfe AuthorDriver.jar Code.src.Domain.Controllers.Drivers.AuthorDriver *
+	@jar cfe AuthorDriver.jar FONTS.src.Domain.Controllers.Drivers.AuthorDriver *
 
 DocumentDriver:
 	@javac $(DRIVERS)/DocumentDriver.java -d .
-	@jar cfe DocumentDriver.jar Code.src.Domain.Controllers.Drivers.DocumentDriver *
+	@jar cfe DocumentDriver.jar FONTS.src.Domain.Controllers.Drivers.DocumentDriver *
 
 ContentDriver:
 	@javac $(DRIVERS)/ContentDriver.java -d .
-	@jar cfe ContentDriver.jar Code.src.Domain.Controllers.Drivers.ContentDriver *
+	@jar cfe ContentDriver.jar FONTS.src.Domain.Controllers.Drivers.ContentDriver *
 
 SentenceDriver:
 	@javac $(DRIVERS)/SentenceDriver.java -d .
-	@jar cfe SentenceDriver.jar Code.src.Domain.Controllers.Drivers.SentenceDriver *
+	@jar cfe SentenceDriver.jar FONTS.src.Domain.Controllers.Drivers.SentenceDriver *
 
 BooleanExpressionDriver:
 	@javac $(DRIVERS)/BooleanExpressionDriver.java -d .
-	@jar cfe BooleanExpressionDriver.jar Code.src.Domain.Controllers.Drivers.BooleanExpressionDriver *
+	@jar cfe BooleanExpressionDriver.jar FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver *
 
 Drivers:
 	@javac $(DRIVERS)/FoldersControllerDriver.java -d .
@@ -111,16 +111,16 @@ Drivers:
 	@javac $(DRIVERS)/SentenceDriver.java -d .
 	@javac $(DRIVERS)/BooleanExpressionDriver.java -d .
 
-	@jar cfe FoldersControllerDriver.jar Code.src.Domain.Controllers.Drivers.FoldersControllerDriver *
-	@jar cfe DomainController.jar Code.src.Domain.Controllers.Drivers.DomainController *
-	@jar cfe AuthorsControllerDriver.jar Code.src.Domain.Controllers.Drivers.AuthorsControllerDriver *
-	@jar cfe SearchControllerDriver.jar Code.src.Domain.Controllers.Drivers.SearchControllerDriver *
-	@jar cfe FolderDriver.jar Code.src.Domain.Controllers.Drivers.FolderDriver *
-	@jar cfe AuthorDriver.jar Code.src.Domain.Controllers.Drivers.AuthorDriver *
-	@jar cfe DocumentDriver.jar Code.src.Domain.Controllers.Drivers.DocumentDriver *
-	@jar cfe ContentDriver.jar Code.src.Domain.Controllers.Drivers.ContentDriver *
-	@jar cfe SentenceDriver.jar Code.src.Domain.Controllers.Drivers.SentenceDriver *
-	@jar cfe BooleanExpressionDriver.jar Code.src.Domain.Controllers.Drivers.BooleanExpressionDriver *
+	@jar cfe FoldersControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver *
+	@jar cfe DomainController.jar FONTS.src.Domain.Controllers.Drivers.DomainController *
+	@jar cfe AuthorsControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.AuthorsControllerDriver *
+	@jar cfe SearchControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.SearchControllerDriver *
+	@jar cfe FolderDriver.jar FONTS.src.Domain.Controllers.Drivers.FolderDriver *
+	@jar cfe AuthorDriver.jar FONTS.src.Domain.Controllers.Drivers.AuthorDriver *
+	@jar cfe DocumentDriver.jar FONTS.src.Domain.Controllers.Drivers.DocumentDriver *
+	@jar cfe ContentDriver.jar FONTS.src.Domain.Controllers.Drivers.ContentDriver *
+	@jar cfe SentenceDriver.jar FONTS.src.Domain.Controllers.Drivers.SentenceDriver *
+	@jar cfe BooleanExpressionDriver.jar FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver *
 
 runAutomaticDrivers:
 	@java -jar SearchControllerDriver.jar < test/inputTest/inpSearchController.txt
