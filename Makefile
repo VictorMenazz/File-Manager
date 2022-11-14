@@ -16,7 +16,7 @@ default: JUnits
 
 #COMPILING JUnits
 
-JUnits: FolderJUnit DocumentJUnit ContentJUnit SentenceJUnit BooleanExpressionJUnit AuthorJUnit
+JUnits:
 	@javac -cp $(CLASSPATH) $(JUNITS)/*.java $(CLASSES)/*.java $(STUBS)/*.java -d bin/
 	@echo "Folder JUnit test..."
 	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.FolderTest
@@ -57,6 +57,11 @@ AuthorJUnit:
 	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore Code.src.Domain.Controllers.JUnits.AuthorTest
 
 #COMPILING DRIVERS
+
+JAR:
+	@javac -cp . -d EXE/FoldersControllerDriver $(DRIVERS)/FoldersControllerDriver.java
+	@jar cfe EXE/FoldersControllerDriver.jar Code.src.Domain.Controllers.Drivers.FoldersControllerDriver
+
 
 FoldersController:
 	@javac -cp . -d EXE/FoldersControllerDriver $(DRIVERS)/FoldersControllerDriver.java
