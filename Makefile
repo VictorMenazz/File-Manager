@@ -112,7 +112,7 @@ Drivers:
 	@javac $(DRIVERS)/BooleanExpressionDriver.java -d .
 
 	@jar cfe FoldersControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver *
-	@jar cfe DomainController.jar FONTS.src.Domain.Controllers.Drivers.DomainController *
+	@jar cfe DomainControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.DomainControllerDriver *
 	@jar cfe AuthorsControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.AuthorsControllerDriver *
 	@jar cfe SearchControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.SearchControllerDriver *
 	@jar cfe FolderDriver.jar FONTS.src.Domain.Controllers.Drivers.FolderDriver *

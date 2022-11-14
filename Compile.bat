@@ -1,3 +1,4 @@
+```
 @echo off
 
 if /i %1 == DomainControllerDriver goto :DomainControllerDriver
@@ -32,70 +33,70 @@ REM === Instructions to Compile the Project ===
 REM === DomainControllerDriver ===
 :DomainControllerDriver
 javac FONTS/src/Domain/Controllers/Drivers/DomainControllerDriver.java -d .
-jar cfe DomainControllerDriver.jar Code.src.Domain.Controllers.Drivers.DomainControllerDriver *
+jar cfe DomainControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.DomainControllerDriver *
 
 goto :EOF
 
 REM === FoldersControllerDriver ===
 :FoldersControllerDriver
 javac FONTS/src/Domain/Controllers/Drivers/FoldersControllerDriver.java -d .
-jar cfe FoldersControllerDriver.jar Code.src.Domain.Controllers.Drivers.FoldersControllerDriver *
+jar cfe FoldersControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver *
 
 goto :EOF
 
 REM === AuthorsControllerDriver ===
 :AuthorsControllerDriver
 javac FONTS/src/Domain/Controllers/Drivers/AuthorsControllerDriver.java -d .
-jar cfe AuthorsControllerDriver.jar Code.src.Domain.Controllers.Drivers.AuthorsControllerDriver *
+jar cfe AuthorsControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.AuthorsControllerDriver *
 
 goto :EOF
 
 REM === SearchControllerDriver ===
 :SearchControllerDriver
 javac FONTS/src/Domain/Controllers/Drivers/SearchControllerDriver.java -d .
-jar cfe SearchControllerDriver.jar Code.src.Domain.Controllers.Drivers.SearchControllerDriver *
+jar cfe SearchControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.SearchControllerDriver *
 
 goto :EOF
 
 REM === FoldersDriver ===
 :FoldersDriver
 javac FONTS/src/Domain/Controllers/Drivers/FolderDriver.java -d .
-jar cfe FolderDriver.jar Code.src.Domain.Controllers.Drivers.FolderDriver *
+jar cfe FolderDriver.jar FONTS.src.Domain.Controllers.Drivers.FolderDriver *
 
 goto :EOF
 
 REM === DocumentDriver ===
 :DocumentDriver
 javac FONTS/src/Domain/Controllers/Drivers/DocumentDriver.java -d .
-jar cfe DocumentDriver.jar Code.src.Domain.Controllers.Drivers.DocumentDriver *
+jar cfe DocumentDriver.jar FONTS.src.Domain.Controllers.Drivers.DocumentDriver *
 
 goto :EOF
 
 REM === ContentDriver ===
 :ContentDriver
 javac FONTS/src/Domain/Controllers/Drivers/ContentDriver.java -d .
-jar cfe ContentDriver.jar Code.src.Domain.Controllers.Drivers.ContentDriver *
+jar cfe ContentDriver.jar FONTS.src.Domain.Controllers.Drivers.ContentDriver *
 
 goto :EOF
 
 REM === SentenceDriver ===
 :SentenceDriver
 javac FONTS/src/Domain/Controllers/Drivers/SentenceDriver.java -d .
-jar cfe SentenceDriver.jar Code.src.Domain.Controllers.Drivers.SentenceDriver *
+jar cfe SentenceDriver.jar FONTS.src.Domain.Controllers.Drivers.SentenceDriver *
 
 goto :EOF
 
 REM === BooleanExpression ===
 :BooleanExpression
 javac FONTS/src/Domain/Controllers/Drivers/BooleanExpressionDriver.java -d .
-jar cfe BooleanExpressionDriver.jar Code.src.Domain.Controllers.Drivers.BooleanExpressionDriver *
+jar cfe BooleanExpressionDriver.jar FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver *
 
 goto :EOF
 
 REM === AuthorDriver ===
 :AuthorDriver
 javac FONTS/src/Domain/Controllers/Drivers/AuthorDriver.java -d .
-jar cfe AuthorDriver.jar Code.src.Domain.Controllers.Drivers.AuthorDriver *
+jar cfe AuthorDriver.jar FONTS.src.Domain.Controllers.Drivers.AuthorDriver *
 
 
 goto :EOF
