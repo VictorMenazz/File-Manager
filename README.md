@@ -10,8 +10,7 @@
 ### Entrega 1
 
 
-
-## Clases Implementades per cadascun:
+## Clases implementades per cadascun:
 
 | Marc | Julia | Victor | Jordi |
 |-|-|-|-|
@@ -19,7 +18,7 @@
 |Document|-|Sentence|-|
 
 
-## Controladores implementados per cadascun:
+## Controladors implementats per cadascun:
 
 | Marc | Júlia | Victor | Jordi |
 |-|-|-|-|
