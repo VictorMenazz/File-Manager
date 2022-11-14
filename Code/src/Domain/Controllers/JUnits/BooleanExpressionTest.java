@@ -29,7 +29,7 @@ public class BooleanExpressionTest {
         //expressions.add("& & |");
         expressions.add("{p1 p2 p3 p3} | \"bon dia\" & !casa");
         //expressions.add("vermell & !groc | ()");
-        expressions.add("vermell & !groc | \"()\"");
+        //expressions.add("vermell & !groc | \"()\"");
         expressions.add("(\"blau marí\" & verd) | groc");
         //expressions.add("( hola & (adeu)");
 
