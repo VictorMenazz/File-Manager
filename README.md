@@ -12,18 +12,18 @@
 
 ## Clases implementades per cadascun:
 
-| Marc | Júlia | Victor | Jordi |
-|-|-|-|-|
-|Folder|BooleanExpresion|Content|Author|
-|Document|-|Sentence|-|
+| Marc   | Júlia          | Victor  | Jordi |
+|-       |-               |-        |-      |
+|Folder  |BooleanExpresion|Content  |Author |
+|Document|-               |Sentence |-      |
 
 
 ## Controladors implementats per cadascun:
 
-| Marc | Júlia | Victor | Jordi |
-|-|-|-|-|
-|DomainController|DomainController|DomainController|DomainController|
-|FoldersController|SearchController|SearchController|AuthorsController|
+| Marc             | Júlia           | Victor          | Jordi            |
+|-                 |-                |-                |-                 |
+|DomainController  |DomainController |DomainController |DomainController  |
+|FoldersController |SearchController |SearchController |AuthorsController |
 
 ## Pautes
 ### Commits
