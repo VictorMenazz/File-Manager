@@ -69,19 +69,19 @@ CopyStopWords:
 
 FoldersControllerDriver: CopyStopWords
 	@javac -cp . -sourcepath . $(DRIVERS)/FoldersControllerDriver.java -d $(BUILDDIR)
-	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver ./FoldersControllerDriver.jar
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs $(OPTIONS_xargs) jar -cef FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver ./FoldersControllerDriver.jar
 
 DomainControllerDriver: CopyStopWords
 	@javac -cp . -sourcepath . $(DRIVERS)/DomainControllerDriver.java -d $(BUILDDIR)
-	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.DomainControllerDriver ./DomainControllerDriver.jar
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs $(OPTIONS_xargs) jar -cef FONTS.src.Domain.Controllers.Drivers.DomainControllerDriver ./DomainControllerDriver.jar
 
 AuthorsControllerDriver: CopyStopWords
 	@javac -cp . -sourcepath . $(DRIVERS)/AuthorsControllerDriver.java -d $(BUILDDIR)
-	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.AuthorsControllerDriver ./AuthorsControllerDriver.jar
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs $(OPTIONS_xargs) jar -cef FONTS.src.Domain.Controllers.Drivers.AuthorsControllerDriver ./AuthorsControllerDriver.jar
 
 SearchControllerDriver: CopyStopWords
 	@javac -cp . -sourcepath . $(DRIVERS)/SearchControllerDriver.java -d $(BUILDDIR)
-	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.SearchControllerDriver ./SearchControllerDriver.jar
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs $(OPTIONS_xargs) jar -cef FONTS.src.Domain.Controllers.Drivers.SearchControllerDriver ./SearchControllerDriver.jar
 
 FolderDriver: CopyStopWords
 	@javac -cp . -sourcepath . $(DRIVERS)/FolderDriver.java -d $(BUILDDIR)
@@ -89,23 +89,23 @@ FolderDriver: CopyStopWords
 
 AuthorDriver: CopyStopWords
 	@javac -cp . -sourcepath . $(DRIVERS)/AuthorDriver.java -d $(BUILDDIR)
-	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.AuthorDriver ./AuthorDriver.jar
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs $(OPTIONS_xargs) jar -cef FONTS.src.Domain.Controllers.Drivers.AuthorDriver ./AuthorDriver.jar
 
 DocumentDriver: CopyStopWords
 	@javac -cp . -sourcepath . $(DRIVERS)/DocumentDriver.java -d $(BUILDDIR)
-	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.DocumentDriver ./DocumentDriver.jar
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs $(OPTIONS_xargs) jar -cef FONTS.src.Domain.Controllers.Drivers.DocumentDriver ./DocumentDriver.jar
 
 ContentDriver: CopyStopWords
 	@javac -cp . -sourcepath . $(DRIVERS)/ContentDriver.java -d $(BUILDDIR)
-	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.ContentDriver ./ContentDriver.jar
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs $(OPTIONS_xargs) jar -cef FONTS.src.Domain.Controllers.Drivers.ContentDriver ./ContentDriver.jar
 
 SentenceDriver: CopyStopWords
 	@javac -cp . -sourcepath . $(DRIVERS)/SentenceDriver.java -d $(BUILDDIR)
-	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.SentenceDriver ./SentenceDriver.jar
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs $(OPTIONS_xargs) jar -cef FONTS.src.Domain.Controllers.Drivers.SentenceDriver ./SentenceDriver.jar
 
 BooleanExpressionDriver: CopyStopWords
 	@javac $(DRIVERS)/BooleanExpressionDriver.java -d $(BUILDDIR)
-	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver ./BooleanExpressionDriver.jar
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs $(OPTIONS_xargs) jar -cef FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver ./BooleanExpressionDriver.jar
 
 Drivers: FoldersControllerDriver DomainControllerDriver SearchControllerDriver AuthorsControllerDriver FolderDriver AuthorDriver DocumentDriver ContentDriver SentenceDriver BooleanExpressionDriver
 
