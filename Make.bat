@@ -100,7 +100,6 @@ GOTO error
 
 
 :FoldersControllerDriver
-    SET CLASSPATH=.
     MKDIR %BUILDDIR%\FONTS\src\Domain\Classes\StopWords
     XCOPY /y /s FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\
 	javac -cp . -sourcepath . %DRIVERS%\FoldersControllerDriver.java -d %BUILDDIR%
@@ -111,7 +110,6 @@ GOTO error
     set search="
     set replace=
     set textFile=aux.txt
-
     for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
         set "line=%%i"
         setlocal enabledelayedexpansion
@@ -128,132 +126,503 @@ GOTO error
 	GOTO :EOF
 
 :DomainControllerDriver
-	CALL make.bat CopyStopWords
-	@javac -cp . -sourcepath . %DRIVERS%\DomainControllerDriver.java -d %BUILDDIR%
-	PUSHD %BUILDDIR% && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.DomainControllerDriver .\DomainControllerDriver.jar && POPD
-	GOTO :EOF
+    MKDIR %BUILDDIR%\FONTS\src\Domain\Classes\StopWords
+    XCOPY /y /s FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\
+    javac -cp . -sourcepath . %DRIVERS%\DomainControllerDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.DomainControllerDriver .\DomainControllerDriver.jar %file-list%
+    POPD
+    GOTO :EOF
 
 :AuthorsControllerDriver
-	CALL make.bat CopyStopWords
-	@javac -cp . -sourcepath . %DRIVERS%\AuthorsControllerDriver.java -d %BUILDDIR%
-	PUSHD %BUILDDIR% && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.AuthorsControllerDriver .\AuthorsControllerDriver.jar && POPD
-	GOTO :EOF
+    MKDIR %BUILDDIR%\FONTS\src\Domain\Classes\StopWords
+    XCOPY /y /s FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\
+    javac -cp . -sourcepath . %DRIVERS%\AuthorsControllerDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.AuthorsControllerDriver .\AuthorsControllerDriver.jar %file-list%
+    POPD
+    GOTO :EOF
 
 :SearchControllerDriver
-	CALL make.bat CopyStopWords
-	@javac -cp . -sourcepath . %DRIVERS%\SearchControllerDriver.java -d %BUILDDIR%
-	PUSHD %BUILDDIR% && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.SearchControllerDriver .\SearchControllerDriver.jar && POPD
-	GOTO :EOF
+    MKDIR %BUILDDIR%\FONTS\src\Domain\Classes\StopWords
+    XCOPY /y /s FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\
+    javac -cp . -sourcepath . %DRIVERS%\SearchControllerDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.SearchControllerDriver .\SearchControllerDriver.jar %file-list%
+    POPD
+    GOTO :EOF
 
 :FolderDriver
-	CALL make.bat CopyStopWords
-	@javac -cp . -sourcepath . %DRIVERS%\FolderDriver.java -d %BUILDDIR%
-	PUSHD %BUILDDIR% && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.FolderDriver .\FolderDriver.jar && POPD
-	GOTO :EOF
+    MKDIR %BUILDDIR%\FONTS\src\Domain\Classes\StopWords
+    XCOPY /y /s FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\
+    javac -cp . -sourcepath . %DRIVERS%\FolderDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.FolderDriver .\FolderDriver.jar %file-list%
+    POPD
+    GOTO :EOF
 
 :AuthorDriver
-	CALL make.bat CopyStopWords
-	@javac -cp . -sourcepath . %DRIVERS%\AuthorDriver.java -d %BUILDDIR%
-	PUSHD %BUILDDIR% && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.AuthorDriver .\AuthorDriver.jar && POPD
-	GOTO :EOF
+    javac -cp . -sourcepath . %DRIVERS%\AuthorDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.AuthorDriver .\AuthorDriver.jar %file-list%
+    POPD
+    GOTO :EOF
 
 :DocumentDriver
-	CALL make.bat CopyStopWords
-	@javac -cp . -sourcepath . %DRIVERS%\DocumentDriver.java -d %BUILDDIR%
-	PUSHD %BUILDDIR% && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.DocumentDriver .\DocumentDriver.jar && POPD
-	GOTO :EOF
+    MKDIR %BUILDDIR%\FONTS\src\Domain\Classes\StopWords
+    XCOPY /y /s FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\
+    javac -cp . -sourcepath . %DRIVERS%\DocumentDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.DocumentDriver .\DocumentDriver.jar %file-list%
+    POPD
+    GOTO :EOF
 
 :ContentDriver
-	CALL make.bat CopyStopWords
-	@javac -cp . -sourcepath . %DRIVERS%\ContentDriver.java -d %BUILDDIR%
-	PUSHD %BUILDDIR% && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.ContentDriver .\ContentDriver.jar && POPD
-	GOTO :EOF
+    MKDIR %BUILDDIR%\FONTS\src\Domain\Classes\StopWords
+    XCOPY /y /s FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\
+    javac -cp . -sourcepath . %DRIVERS%\ContentDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.ContentDriver .\ContentDriver.jar %file-list%
+    POPD
+    GOTO :EOF
 
 :SentenceDriver
     MKDIR %BUILDDIR%\FONTS\src\Domain\Classes\StopWords
-    XCOPY /y /s .\FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\
-	javac -cp . -sourcepath . %DRIVERS%\SentenceDriver.java -d %BUILDDIR%
-	PUSHD %BUILDDIR%
-	where /R . *.class > aux.txt
-	(SET file-list=)
-	FOR /f "delims=" %%x IN (aux.txt) DO (
-	    CALL SET file-list=%%file-list%% %%x
-	)
-	echo jar -cef FONTS.src.Domain.Controllers.Drivers.SentenceDriver .\SentenceDriver.jar %file-list%
-	POPD
-	GOTO :EOF
+    XCOPY /y /s FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\
+    javac -cp . -sourcepath . %DRIVERS%\SentenceDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.SentenceDriver .\SentenceDriver.jar %file-list%
+    POPD
+    GOTO :EOF
 
 :BooleanExpressionDriver
-	CALL make.bat CopyStopWords
-	@javac %DRIVERS%\BooleanExpressionDriver.java -d %BUILDDIR%
-	PUSHD %BUILDDIR% && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver .\BooleanExpressionDriver.jar && POPD
-	GOTO :EOF
+    MKDIR %BUILDDIR%\FONTS\src\Domain\Classes\StopWords
+    XCOPY /y /s FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\
+    javac -cp . -sourcepath . %DRIVERS%\BooleanExpressionDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver .\BooleanExpressionDriver.jar %file-list%
+    POPD
+    GOTO :EOF
 
 :Drivers
-	CALL make.bat FoldersControllerDriver
-	CALL make.bat DomainControllerDriver
-	CALL make.bat SearchControllerDriver
-	CALL make.bat AuthorsControllerDriver
-	CALL make.bat FolderDriver
-	CALL make.bat AuthorDriver
-	CALL make.bat DocumentDriver
-	CALL make.bat ContentDriver
-	CALL make.bat SentenceDriver
-	CALL make.bat BooleanExpressionDriver
+	MKDIR %BUILDDIR%\FONTS\src\Domain\Classes\StopWords
+    XCOPY /y /s FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\
+    javac -cp . -sourcepath . %DRIVERS%\DomainControllerDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.DomainControllerDriver .\DomainControllerDriver.jar %file-list%
+    POPD
+    javac -cp . -sourcepath . %DRIVERS%\FoldersControllerDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver .\FoldersControllerDriver.jar %file-list%
+    POPD
+    javac -cp . -sourcepath . %DRIVERS%\AuthorsControllerDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.AuthorsControllerDriver .\AuthorsControllerDriver.jar %file-list%
+    POPD
+    javac -cp . -sourcepath . %DRIVERS%\SearchControllerDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.SearchControllerDriver .\SearchControllerDriver.jar %file-list%
+    POPD
+    javac -cp . -sourcepath . %DRIVERS%\FolderDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.FolderDriver .\FolderDriver.jar %file-list%
+    POPD
+    javac -cp . -sourcepath . %DRIVERS%\AuthorDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.AuthorDriver .\AuthorDriver.jar %file-list%
+    POPD
+    javac -cp . -sourcepath . %DRIVERS%\DocumentDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.DocumentDriver .\DocumentDriver.jar %file-list%
+    POPD
+    javac -cp . -sourcepath . %DRIVERS%\ContentDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.ContentDriver .\ContentDriver.jar %file-list%
+    POPD
+    javac -cp . -sourcepath . %DRIVERS%\SentenceDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.SentenceDriver .\SentenceDriver.jar %file-list%
+    POPD
+    javac -cp . -sourcepath . %DRIVERS%\BooleanExpressionDriver.java -d %BUILDDIR%
+    PUSHD %BUILDDIR%
+    forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
+    setlocal enableextensions disabledelayedexpansion
+    set search="
+    set replace=
+    set textFile=aux.txt
+    for /f "delims=" %%i in ('type "%textFile%" ^& break ^> "%textFile%" ') do (
+        set "line=%%i"
+        setlocal enabledelayedexpansion
+        >>"%textFile%" echo(!line:%search%=%replace%!
+        endlocal
+    )
+    (SET file-list=)
+    FOR /f "delims=" %%x IN (aux.txt) DO (
+        CALL SET file-list=%%file-list%% %%x
+    )
+    jar -cef FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver .\BooleanExpressionDriver.jar %file-list%
+    POPD
 	GOTO :EOF
 
 :runAutomaticDrivers
-	@java -jar %BUILDDIR%\SearchControllerDriver.jar < test\inputTest\inpSearchController.txt
-	@java -jar %BUILDDIR%\AuthorsControllerDriver.jar < test\inputTest\inpAuthorsController.txt
-	@java -jar %BUILDDIR%\FoldersControllerDriver.jar < test\inputTest\inpFoldersController.txt
-	@java -jar %BUILDDIR%\DomainControllerDriver.jar < test\inputTest\inpDomainController.txt
+	java -jar %BUILDDIR%\SearchControllerDriver.jar < test\inputTest\inpSearchController.txt
+	java -jar %BUILDDIR%\AuthorsControllerDriver.jar < test\inputTest\inpAuthorsController.txt
+	java -jar %BUILDDIR%\FoldersControllerDriver.jar < test\inputTest\inpFoldersController.txt
+	java -jar %BUILDDIR%\DomainControllerDriver.jar < test\inputTest\inpDomainController.txt
+
+	java -jar %BUILDDIR%\FolderDriver.jar < test\inputTest\inpFolder.txt
+    java -jar %BUILDDIR%\DocumentDriver.jar < test\inputTest\inpDocument.txt
+    java -jar %BUILDDIR%\ContentDriver.jar < test\inputTest\inpContent.txt
+    java -jar %BUILDDIR%\SentenceDriver.jar < test\inputTest\inpSentence.txt
+    java -jar %BUILDDIR%\BooleanExpressionDriver.jar < test\inputTest\inpBooleanExpression.txt
+    java -jar %BUILDDIR%\AuthorDriver.jar < test\inputTest\inpAuthor.txt
 	GOTO :EOF
 
 :runDrivers
-	@java -jar %BUILDDIR%\SearchControllerDriver.jar
-	@java -jar %BUILDDIR%\AuthorsControllerDriver.jar
-	@java -jar %BUILDDIR%\FoldersControllerDriver.jar
-	@java -jar %BUILDDIR%\DomainControllerDriver.jar
+	java -jar %BUILDDIR%\SearchControllerDriver.jar
+	java -jar %BUILDDIR%\AuthorsControllerDriver.jar
+	java -jar %BUILDDIR%\FoldersControllerDriver.jar
+	java -jar %BUILDDIR%\DomainControllerDriver.jar
+
+    java -jar %BUILDDIR%\FolderDriver.jar
+    java -jar %BUILDDIR%\DocumentDriver.jar
+    java -jar %BUILDDIR%\ContentDriver.jar
+    java -jar %BUILDDIR%\SentenceDriver.jar
+    java -jar %BUILDDIR%\BooleanExpressionDriver.jar
+    java -jar %BUILDDIR%\AuthorDriver.jar
 	GOTO :EOF
 
 :runAutomaticSearchController
-	@java -jar %BUILDDIR%\SearchControllerDriver.jar < test\inputTest\inpSearchController.txt
+	java -jar %BUILDDIR%\SearchControllerDriver.jar < test\inputTest\inpSearchController.txt
 	GOTO :EOF
 
 :runAutomaticAuthorsController
-	@java -jar %BUILDDIR%\AuthorsControllerDriver.jar < test\inputTest\inpAuthorsController.txt
+	java -jar %BUILDDIR%\AuthorsControllerDriver.jar < test\inputTest\inpAuthorsController.txt
 	GOTO :EOF
 
 :runAutomaticFoldersController
-	@java -jar %BUILDDIR%\FoldersControllerDriver.jar < test\inputTest\inpFoldersController.txt
+	java -jar %BUILDDIR%\FoldersControllerDriver.jar < test\inputTest\inpFoldersController.txt
 	GOTO :EOF
 
 :runAutomaticDomainController
-	@java -jar %BUILDDIR%\DomainControllerDriver.jar < test\inputTest\inpDomainController.txt
+	java -jar %BUILDDIR%\DomainControllerDriver.jar < test\inputTest\inpDomainController.txt
 	GOTO :EOF
 
 :runAutomaticFolder
-	@java -jar %BUILDDIR%\FolderDriver.jar < test\inputTest\inpFolder.txt
+	java -jar %BUILDDIR%\FolderDriver.jar < test\inputTest\inpFolder.txt
 	GOTO :EOF
 
 :runAutomaticDocument
-	@java -jar %BUILDDIR%\DocumentDriver.jar < test\inputTest\inpDocument.txt
+	java -jar %BUILDDIR%\DocumentDriver.jar < test\inputTest\inpDocument.txt
 	GOTO :EOF
 
 :runAutomaticContent
-	@java -jar %BUILDDIR%\ContentDriver.jar < test\inputTest\inpContent.txt
+	java -jar %BUILDDIR%\ContentDriver.jar < test\inputTest\inpContent.txt
 	GOTO :EOF
 
 :runAutomaticSentence
-	@java -jar %BUILDDIR%\SentenceDriver.jar < test\inputTest\inpSentence.txt
+	java -jar %BUILDDIR%\SentenceDriver.jar < test\inputTest\inpSentence.txt
 	GOTO :EOF
 
 :runAutomaticBooleanExpression
-	@java -jar %BUILDDIR%\BooleanExpressionDriver.jar < test\inputTest\inpBooleanExpression.txt
+	java -jar %BUILDDIR%\BooleanExpressionDriver.jar < test\inputTest\inpBooleanExpression.txt
 	GOTO :EOF
 
 :runAutomaticAuthor
-	@java -jar %BUILDDIR%\AuthorDriver.jar < test\inputTest\inpAuthor.txt
+	java -jar %BUILDDIR%\AuthorDriver.jar < test\inputTest\inpAuthor.txt
 	GOTO :EOF
 
 :clean
