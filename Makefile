@@ -8,11 +8,14 @@ INTERFACE = FONTS/src/Interface
 DATA = FONTS/src/Data
 LIBS = FONTS/lib
 BUILDDIR = EXE
+OPTIONS_xargs = ""
 
 ifeq ($(OS), Windows_NT)
 	CLASSPATH = "bin;lib/junit-4.13.1.jar;lib/hamcrest-core-1.3.jar"
+	OPTIONS_xargs = "-d '\n'"
 else
 	CLASSPATH = "bin:lib/junit-4.13.1.jar:lib/hamcrest-core-1.3.jar"
+	OPTIONS_xargs = "-n1"
 endif
 
 default: JUnits
@@ -82,7 +85,7 @@ SearchControllerDriver: CopyStopWords
 
 FolderDriver: CopyStopWords
 	@javac -cp . -sourcepath . $(DRIVERS)/FolderDriver.java -d $(BUILDDIR)
-	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.FolderDriver ./FolderDriver.jar
+		cd $(BUILDDIR) && find . -type f -name "*.class" | xargs $(OPTIONS_xargs) jar -cef FONTS.src.Domain.Controllers.Drivers.FolderDriver ./FolderDriver.jar
 
 AuthorDriver: CopyStopWords
 	@javac -cp . -sourcepath . $(DRIVERS)/AuthorDriver.java -d $(BUILDDIR)
