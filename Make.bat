@@ -626,8 +626,8 @@ GOTO error
 	GOTO :EOF
 
 :clean
-	DEL \Q bin\ -rf
-	DEL \Q EXE\ -rf
+	rmdir /S /Q EXE
+    rmdir /S /Q bin
 	GOTO :EOF
 
 :help
