@@ -555,6 +555,7 @@ GOTO error
     )
     jar -cef FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver .\BooleanExpressionDriver.jar %file-list%
     POPD
+    cd ..
 	GOTO :EOF
 
 :runAutomaticDrivers
