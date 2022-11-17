@@ -3,8 +3,11 @@ CONTROLLERS = FONTS/src/Domain/Controllers
 DRIVERS = FONTS/src/Domain/Controllers/Drivers
 JUNITS = FONTS/src/Domain/Controllers/JUnits
 STUBS = FONTS/src/Domain/Controllers/Stubs
+DOMAIN = FONTS/src/Domain
 INTERFACE = FONTS/src/Interface
 DATA = FONTS/src/Data
+LIBS = FONTS/lib
+BUILDDIR = EXE
 
 ifeq ($(OS), Windows_NT)
 	CLASSPATH = "bin;lib/junit-4.13.1.jar;lib/hamcrest-core-1.3.jar"
@@ -57,126 +60,107 @@ AuthorJUnit:
 	@java -cp $(CLASSPATH) org.junit.runner.JUnitCore FONTS.src.Domain.Controllers.JUnits.AuthorTest
 
 #COMPILING DRIVERS
+CopyStopWords:
+	mkdir -p $(BUILDDIR)/FONTS/src/Domain/Classes/StopWords
+	cp -r ./FONTS/src/Domain/Classes/StopWords  $(BUILDDIR)/FONTS/src/Domain/Classes/
 
-FoldersControllerDriver:
-	@javac $(DRIVERS)/FoldersControllerDriver.java -d .
-	@jar cfe FoldersControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver *
+FoldersControllerDriver: CopyStopWords
+	@javac -cp . -sourcepath . $(DRIVERS)/FoldersControllerDriver.java -d $(BUILDDIR)
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver ./FoldersControllerDriver.jar
 
-DomainControllerDriver:
-	@javac $(DRIVERS)/DomainControllerDriver.java -d .
-	@jar cfe DomainControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.DomainControllerDriver *
+DomainControllerDriver: CopyStopWords
+	@javac -cp . -sourcepath . $(DRIVERS)/DomainControllerDriver.java -d $(BUILDDIR)
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.DomainControllerDriver ./DomainControllerDriver.jar
 
-AuthorsControllerDriver:
-	@javac $(DRIVERS)/AuthorsControllerDriver.java -d .
-	@jar cfe AuthorsControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.AuthorsControllerDriver *
+AuthorsControllerDriver: CopyStopWords
+	@javac -cp . -sourcepath . $(DRIVERS)/AuthorsControllerDriver.java -d $(BUILDDIR)
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.AuthorsControllerDriver ./AuthorsControllerDriver.jar
 
-SearchControllerDriver:
-	@javac $(DRIVERS)/SearchControllerDriver.java -d .
-	@jar cfe SearchControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.SearchControllerDriver *
+SearchControllerDriver: CopyStopWords
+	@javac -cp . -sourcepath . $(DRIVERS)/SearchControllerDriver.java -d $(BUILDDIR)
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.SearchControllerDriver ./SearchControllerDriver.jar
 
+FolderDriver: CopyStopWords
+	@javac -cp . -sourcepath . $(DRIVERS)/FolderDriver.java -d $(BUILDDIR)
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.FolderDriver ./FolderDriver.jar
 
-FolderDriver:
-	@javac $(DRIVERS)/FolderDriver.java -d .
-	@jar cfe FolderDriver.jar FONTS.src.Domain.Controllers.Drivers.FolderDriver *
+AuthorDriver: CopyStopWords
+	@javac -cp . -sourcepath . $(DRIVERS)/AuthorDriver.java -d $(BUILDDIR)
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.AuthorDriver ./AuthorDriver.jar
 
-AuthorDriver:
-	@javac $(DRIVERS)/AuthorDriver.java -d .
-	@jar cfe AuthorDriver.jar FONTS.src.Domain.Controllers.Drivers.AuthorDriver *
+DocumentDriver: CopyStopWords
+	@javac -cp . -sourcepath . $(DRIVERS)/DocumentDriver.java -d $(BUILDDIR)
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.DocumentDriver ./DocumentDriver.jar
 
-DocumentDriver:
-	@javac $(DRIVERS)/DocumentDriver.java -d .
-	@jar cfe DocumentDriver.jar FONTS.src.Domain.Controllers.Drivers.DocumentDriver *
+ContentDriver: CopyStopWords
+	@javac -cp . -sourcepath . $(DRIVERS)/ContentDriver.java -d $(BUILDDIR)
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.ContentDriver ./ContentDriver.jar
 
-ContentDriver:
-	@javac $(DRIVERS)/ContentDriver.java -d .
-	@jar cfe ContentDriver.jar FONTS.src.Domain.Controllers.Drivers.ContentDriver *
+SentenceDriver: CopyStopWords
+	@javac -cp . -sourcepath . $(DRIVERS)/SentenceDriver.java -d $(BUILDDIR)
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.SentenceDriver ./SentenceDriver.jar
 
-SentenceDriver:
-	@javac $(DRIVERS)/SentenceDriver.java -d .
-	@jar cfe SentenceDriver.jar FONTS.src.Domain.Controllers.Drivers.SentenceDriver *
+BooleanExpressionDriver: CopyStopWords
+	@javac $(DRIVERS)/BooleanExpressionDriver.java -d $(BUILDDIR)
+	cd $(BUILDDIR) && find . -type f -name "*.class" | xargs -d '\n' jar -cef FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver ./BooleanExpressionDriver.jar
 
-BooleanExpressionDriver:
-	@javac $(DRIVERS)/BooleanExpressionDriver.java -d .
-	@jar cfe BooleanExpressionDriver.jar FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver *
-
-Drivers:
-	@javac $(DRIVERS)/FoldersControllerDriver.java -d .
-	@javac $(DRIVERS)/DomainControllerDriver.java -d .
-	@javac $(DRIVERS)/AuthorsControllerDriver.java -d .
-	@javac $(DRIVERS)/SearchControllerDriver.java -d .
-	@javac $(DRIVERS)/FolderDriver.java -d .
-	@javac $(DRIVERS)/AuthorDriver.java -d .
-	@javac $(DRIVERS)/DocumentDriver.java -d .
-	@javac $(DRIVERS)/ContentDriver.java -d .
-	@javac $(DRIVERS)/SentenceDriver.java -d .
-	@javac $(DRIVERS)/BooleanExpressionDriver.java -d .
-
-	@jar cfe FoldersControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver *
-	@jar cfe DomainControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.DomainControllerDriver *
-	@jar cfe AuthorsControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.AuthorsControllerDriver *
-	@jar cfe SearchControllerDriver.jar FONTS.src.Domain.Controllers.Drivers.SearchControllerDriver *
-	@jar cfe FolderDriver.jar FONTS.src.Domain.Controllers.Drivers.FolderDriver *
-	@jar cfe AuthorDriver.jar FONTS.src.Domain.Controllers.Drivers.AuthorDriver *
-	@jar cfe DocumentDriver.jar FONTS.src.Domain.Controllers.Drivers.DocumentDriver *
-	@jar cfe ContentDriver.jar FONTS.src.Domain.Controllers.Drivers.ContentDriver *
-	@jar cfe SentenceDriver.jar FONTS.src.Domain.Controllers.Drivers.SentenceDriver *
-	@jar cfe BooleanExpressionDriver.jar FONTS.src.Domain.Controllers.Drivers.BooleanExpressionDriver *
+Drivers: FoldersControllerDriver DomainControllerDriver SearchControllerDriver AuthorsControllerDriver FolderDriver AuthorDriver DocumentDriver ContentDriver SentenceDriver BooleanExpressionDriver
 
 runAutomaticDrivers:
-	@java -jar SearchControllerDriver.jar < test/inputTest/inpSearchController.txt
-	@java -jar AuthorsControllerDriver.jar < test/inputTest/inpAuthorsController.txt
-	@java -jar FoldersControllerDriver.jar < test/inputTest/inpFoldersController.txt
-	@java -jar DomainControllerDriver.jar < test/inputTest/inpDomainController.txt
+	@java -jar $(BUILDDIR)/SearchControllerDriver.jar < test/inputTest/inpSearchController.txt
+	@java -jar $(BUILDDIR)/AuthorsControllerDriver.jar < test/inputTest/inpAuthorsController.txt
+	@java -jar $(BUILDDIR)/FoldersControllerDriver.jar < test/inputTest/inpFoldersController.txt
+	@java -jar $(BUILDDIR)/DomainControllerDriver.jar < test/inputTest/inpDomainController.txt
 
-	@java -jar FolderDriver.jar < test/inputTest/inpFolder.txt
-	@java -jar DocumentDriver.jar < test/inputTest/inpDocument.txt
-	@java -jar ContentDriver.jar < test/inputTest/inpContent.txt
-	@java -jar SentenceDriver.jar < test/inputTest/inpSentence.txt
-	@java -jar BooleanExpressionDriver.jar < test/inputTest/inpBooleanExpression.txt
-	@java -jar AuthorDriver.jar < test/inputTest/inpAuthor.txt
+	@java -jar $(BUILDDIR)/FolderDriver.jar < test/inputTest/inpFolder.txt
+	@java -jar $(BUILDDIR)/DocumentDriver.jar < test/inputTest/inpDocument.txt
+	@java -jar $(BUILDDIR)/ContentDriver.jar < test/inputTest/inpContent.txt
+	@java -jar $(BUILDDIR)/SentenceDriver.jar < test/inputTest/inpSentence.txt
+	@java -jar $(BUILDDIR)/BooleanExpressionDriver.jar < test/inputTest/inpBooleanExpression.txt
+	@java -jar $(BUILDDIR)/AuthorDriver.jar < test/inputTest/inpAuthor.txt
 
 runDrivers:
-	@java -jar SearchControllerDriver.jar
-	@java -jar AuthorsControllerDriver.jar
-	@java -jar FoldersControllerDriver.jar
-	@java -jar DomainControllerDriver.jar
+	@java -jar $(BUILDDIR)/SearchControllerDriver.jar
+	@java -jar $(BUILDDIR)/AuthorsControllerDriver.jar
+	@java -jar $(BUILDDIR)/FoldersControllerDriver.jar
+	@java -jar $(BUILDDIR)/DomainControllerDriver.jar
 
-	@java -jar FoldersDriver.jar
-	@java -jar DocumentDriver.jar
-	@java -jar ContentDriver.jar
-	@java -jar SentenceDriver.jar
-	@java -jar BooleanExpressionDriver.jar
-	@java -jar AuthorDriver.jar
+	@java -jar $(BUILDDIR)/FoldersDriver.jar
+	@java -jar $(BUILDDIR)/DocumentDriver.jar
+	@java -jar $(BUILDDIR)/ContentDriver.jar
+	@java -jar $(BUILDDIR)/SentenceDriver.jar
+	@java -jar $(BUILDDIR)/BooleanExpressionDriver.jar
+	@java -jar $(BUILDDIR)/AuthorDriver.jar
 
 runAutomaticSearchController:
-	@java -jar SearchControllerDriver.jar < test/inputTest/inpSearchController.txt
+	@java -jar $(BUILDDIR)/SearchControllerDriver.jar < test/inputTest/inpSearchController.txt
 
 runAutomaticAuthorsController:
-	@java -jar AuthorsControllerDriver.jar < test/inputTest/inpAuthorsController.txt
+	@java -jar $(BUILDDIR)/AuthorsControllerDriver.jar < test/inputTest/inpAuthorsController.txt
 
 runAutomaticFoldersController:
-	@java -jar FoldersControllerDriver.jar < test/inputTest/inpFoldersController.txt
+	@java -jar $(BUILDDIR)/FoldersControllerDriver.jar < test/inputTest/inpFoldersController.txt
 
 runAutomaticDomainController:
-	@java -jar DomainControllerDriver.jar < test/inputTest/inpDomainController.txt
+	@java -jar $(BUILDDIR)/DomainControllerDriver.jar < test/inputTest/inpDomainController.txt
 
 runAutomaticFolder:
-	@java -jar FolderDriver.jar < test/inputTest/inpFolder.txt
+	@java -jar $(BUILDDIR)/FolderDriver.jar < test/inputTest/inpFolder.txt
 
 runAutomaticDocument:
-	@java -jar DocumentDriver.jar < test/inputTest/inpDocument.txt
+	@java -jar $(BUILDDIR)/DocumentDriver.jar < test/inputTest/inpDocument.txt
 
 runAutomaticContent:
-	@java -jar ContentDriver.jar < test/inputTest/inpContent.txt
+	@java -jar $(BUILDDIR)/ContentDriver.jar < test/inputTest/inpContent.txt
 
 runAutomaticSentence:
-	@java -jar SentenceDriver.jar < test/inputTest/inpSentence.txt
+	@java -jar $(BUILDDIR)/SentenceDriver.jar < test/inputTest/inpSentence.txt
 
 runAutomaticBooleanExpression:
-	@java -jar BooleanExpressionDriver.jar < test/inputTest/inpBooleanExpression.txt
+	@java -jar $(BUILDDIR)/BooleanExpressionDriver.jar < test/inputTest/inpBooleanExpression.txt
 
 runAutomaticAuthor:
-	@java -jar AuthorDriver.jar < test/inputTest/inpAuthor.txt
+	@java -jar $(BUILDDIR)/AuthorDriver.jar < test/inputTest/inpAuthor.txt
 
 clean:
 	rm -rf bin/
