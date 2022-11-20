@@ -175,6 +175,29 @@ public class ModifyContentDocument implements ActionListener {
             else
                 JOptionPane.showMessageDialog(textEditor, "Import operation cancelled");
         }
+        else if(s.equals("Export")) {
+
+        }
+
+        else if(s.equals("Undo")) {
+
+        }
+
+        else if(s.equals("Redo")) {
+
+        }
+
+        else if(s.equals("Copy")) {
+            textArea.copy();
+        }
+
+        else if(s.equals("Cut")) {
+            textArea.cut();
+        }
+
+        else if(s.equals("Paste")) {
+            textArea.paste();
+        }
 
         else if(s.equals("Close")) {
             textEditor.setVisible(false);
