@@ -5,9 +5,7 @@ import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.plaf.metal.OceanTheme;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.nio.file.Files;
 
 public class ModifyContentDocument implements ActionListener {
@@ -176,7 +174,37 @@ public class ModifyContentDocument implements ActionListener {
                 JOptionPane.showMessageDialog(textEditor, "Import operation cancelled");
         }
         else if(s.equals("Export")) {
+            // Create an object of JFileChooser class
+            JFileChooser j = new JFileChooser("f:");
 
+            // Invoke the showsSaveDialog function to show the save dialog
+            int r = j.showSaveDialog(null);
+
+            if (r == JFileChooser.APPROVE_OPTION) {
+
+                // Set the label to the path of the selected directory
+                File fi = new File(j.getSelectedFile().getAbsolutePath());
+
+                try {
+                    // Create a file writer
+                    FileWriter wr = new FileWriter(fi, false);
+
+                    // Create buffered writer to write
+                    BufferedWriter w = new BufferedWriter(wr);
+
+                    // Write
+                    w.write(textArea.getText());
+
+                    w.flush();
+                    w.close();
+                }
+                catch (Exception evt) {
+                    JOptionPane.showMessageDialog(textEditor, evt.getMessage());
+                }
+            }
+            // If the user cancelled the operation
+            else
+                JOptionPane.showMessageDialog(textEditor, "Export operation canceled");
         }
 
         else if(s.equals("Undo")) {
