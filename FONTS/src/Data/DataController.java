@@ -1,6 +1,6 @@
 package FONTS.src.Data;
 
-import FONTS.src.Domain.Classes.Folder;
+import com.google.gson.stream.JsonReader;
 
 public class DataController {
     /**
@@ -20,9 +20,18 @@ public class DataController {
         return dataController;
     }
     public DataController() {
-
+        AuthorsController ctrlAuthors = new AuthorsController();
+        FoldersController ctrlFolder = new FoldersController();
+        BooleanExpressionController ctrlBoolean = new BooleanExpressionController();
     }
-    public Folder getRootFolder() {
+
+    public JsonReader[] getListOfDocuments(){ return null;}
+
+    public JsonReader[] getListOfAuthors(){ return null;}
+
+    public JsonReader[] getListOfFolders(){ return null;}
+
+    public String getRootFolder() {
         return null; //MIRAR COMO SOLUCIONAR EST0, para marc: HOW TO REPAIR THIS FUNCTIONALITY? IT'S NOT POSSIBLE TO SEND A SPECIFIC TYPE
     }
 }

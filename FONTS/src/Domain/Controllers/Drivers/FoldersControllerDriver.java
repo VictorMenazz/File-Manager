@@ -3,6 +3,7 @@ package FONTS.src.Domain.Controllers.Drivers;
 import FONTS.src.Domain.Classes.Document;
 import FONTS.src.Domain.Classes.Folder;
 import FONTS.src.Domain.Controllers.FoldersController;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -140,6 +141,24 @@ public class FoldersControllerDriver {
         System.out.println();
     }
 
+
+    //Function for testing purposes only
+    public static void getOutputsJSON() throws IOException {
+        FoldersController FC = initializeFController();
+        System.out.println("Introduce the number of Output documents");
+        int n = readInputInteger();
+        for(int i = 0; i<n; ++i){
+            Document d = initializeDoc();
+            FC.newDocument(d.getAuthor(),d.getTitle(),d.getContent(),d.getLanguage());
+        }
+        Folder f = FC.getRoot();
+        Gson gson = new Gson();
+        String rootF = gson.toJson(f);
+        System.out.println("JSON response: ");
+        System.out.println(rootF);
+    }
+
+
     public static void main(String[] args) throws IOException {
         String functions = "0. All\n" +
                 "1. testFoldersController\n" +
@@ -152,7 +171,8 @@ public class FoldersControllerDriver {
                 "8. testGetDocument\n" +
                 "9. testProtectDocument\n" +
                 "10. testNewFolder\n" +
-                "11. Exit\n";
+                "11. Exit\n" +
+                "12. TestingJSON\n";
 
         System.out.println("FoldersController Driver:");
         System.out.println("Introduce the number allocated to the function you want to test.");
@@ -200,6 +220,9 @@ public class FoldersControllerDriver {
                 case 10:
                     System.out.println("testNewFolder() choose:");
                     testNewFolder();
+                    break;
+                case 12:
+                    getOutputsJSON();
                     break;
                 default:
                     System.out.println("testFoldersController() test:");

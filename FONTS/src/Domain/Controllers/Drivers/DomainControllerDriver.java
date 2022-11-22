@@ -3,6 +3,7 @@ package FONTS.src.Domain.Controllers.Drivers;
 import FONTS.src.Domain.Classes.Document;
 import FONTS.src.Domain.Classes.Folder;
 import FONTS.src.Domain.Controllers.DomainController;
+import FONTS.src.Domain.Controllers.FoldersController;
 
 
 import java.io.IOException;
@@ -318,7 +319,39 @@ public class DomainControllerDriver {
         System.out.println("Created new folder with name: " + fName);
         System.out.println();
     }
+
+    public static String testConstruct() throws IOException {
+        DomainController dC = new DomainController();
+        for (int i = 0; i < 3; ++i){
+            System.out.println("Introduce a title for the Document:");
+            String title = readInputString();
+            System.out.println("Introduce an author for the Document:");
+            String author = readInputString();
+            String content = readContent();
+            System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
+            String lang = readInputString();
+            dC.newDocument(author, title, content, lang);
+            System.out.println("Added new document with title: " + title + " and author's name " + author);
+            System.out.println();
+        }
+        return dC.saveFoldersSystem();
+    }
+
+    public static void testReConstruct(String JSON){
+        DomainController dC = new DomainController();
+        FoldersController fC = dC.reconstructFoldersSystem(JSON);
+        System.out.println("Number of Docs: " + fC.getRoot().getDocumentAmount());
+        System.out.println("Introduce a title for the Document:");
+        String title = readInputString();
+        System.out.println("Introduce an author for the Document:");
+        String author = readInputString();
+        System.out.println(fC.getRoot().documentContained(title, author));
+    }
+
     public static void main(String[] args) throws Exception {
+        String JSON = testConstruct();
+        System.out.println(JSON);
+        testReConstruct(JSON);
         String functions = "0. All\n" +
                 "1. testDomainController\n" +
                 "2. testImportDocument\n" +

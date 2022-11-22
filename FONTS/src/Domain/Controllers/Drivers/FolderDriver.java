@@ -123,9 +123,6 @@ public class FolderDriver {
         System.out.println();
     }
 
-    // +++++++++++++++++++++
-    // FALTA ACABAR
-    // +++++++++++++++++++++
     public static void testDelDocument() throws IOException {
         Folder f = new Folder(1, "Testname");
 

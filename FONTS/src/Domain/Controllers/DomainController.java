@@ -2,6 +2,7 @@
 package FONTS.src.Domain.Controllers;
 import FONTS.src.Data.DataController;
 import FONTS.src.Domain.Classes.*;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.*;
@@ -45,23 +46,26 @@ public class DomainController {
      * @brief Default creation of DomainController
      */
     public DomainController() {
-        data = DataController.getInstance();
+        //data = DataController.getInstance();
         /*  Possibly initialize the FolderController?
             We've to check if the Data Layer has elements, passing them by parameter at the
             initialization or creating an empty Folder otherwise. (1st Run)
             We supose now that it is empty as we don't have Persistance/Data Layer.
         */
         //FALTA COGER INSTANCIA DE ROOT SI EXISTE
-        if(data == null) {
-            folders = new FoldersController(null);
+        //if(data == null) {
+            folders = new FoldersController();
+            System.out.println("Creation correct " + folders.getRoot().getDocumentAmount());
+            data = new DataController();
             ctrlSearch = new SearchController();
             ctrlAuthors = new AuthorsController();
-        }
+        /*}
         else { //AVERIGUAR FORMA DE COGER CARPETA ROOT
-            folders = new FoldersController(data.getRootFolder());
+            String JSON = data.getRootFolder();
+            folders = reconstructFoldersSystem(JSON);;
             ctrlSearch = new SearchController();
             ctrlAuthors = new AuthorsController();
-        }
+        }*/
     }
 
     /**
@@ -270,5 +274,19 @@ public class DomainController {
      */
     public void newFolder(String fName, int foldId) {
         folders.newFolder(fName, foldId);
+    }
+
+    /** COMUNICATION WITH DATA LAYER **/
+
+    public FoldersController reconstructFoldersSystem(String JSON){
+        Gson gson = new Gson();
+        FoldersController fC = gson.fromJson(JSON, FoldersController.class);
+        return fC;
+    }
+
+    public String saveFoldersSystem(){
+        Gson gson = new Gson();
+        String fC = gson.toJson(folders);
+        return fC;
     }
 }

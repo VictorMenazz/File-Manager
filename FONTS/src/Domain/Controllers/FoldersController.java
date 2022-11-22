@@ -31,6 +31,13 @@ public class FoldersController {
         else rootFolder = root;
     }
 
+    /**
+     * @brief Auxiliar creation of FoldersController
+     */
+    public FoldersController(){
+        rootFolder = new Folder(0, "/");
+    }
+
     /* Initialitzation for the n time we run the program, passing the Data layer elements by parameter.
     public FoldersController( sth DataInfo){
     }*/
