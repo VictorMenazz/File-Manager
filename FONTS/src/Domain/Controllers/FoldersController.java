@@ -1,6 +1,7 @@
 package FONTS.src.Domain.Controllers;
 
 import FONTS.src.Domain.Classes.Folder;
+import com.google.gson.Gson;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -142,5 +143,11 @@ public class FoldersController {
      */
     public boolean isProtected(String author, String title) {
         return rootFolder.isProtected(author, title);
+    }
+
+    public String saveFoldersStructure(){
+        Gson gson = new Gson();
+        String foldersJSON = gson.toJson(this);
+        return foldersJSON;
     }
 }

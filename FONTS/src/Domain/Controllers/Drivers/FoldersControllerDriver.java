@@ -25,6 +25,9 @@ public class FoldersControllerDriver {
 
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
+    public FoldersControllerDriver(){
+    }
+
     private static Folder createTestFolder(){
         System.out.println("Introduce a name for the Folder:");
         String fname = readInputString();
@@ -143,7 +146,7 @@ public class FoldersControllerDriver {
 
 
     //Function for testing purposes only
-    public static void getOutputsJSON() throws IOException {
+    public static String getOutputsJSON() throws IOException {
         FoldersController FC = initializeFController();
         System.out.println("Introduce the number of Output documents");
         int n = readInputInteger();
@@ -156,6 +159,7 @@ public class FoldersControllerDriver {
         String rootF = gson.toJson(f);
         System.out.println("JSON response: ");
         System.out.println(rootF);
+        return rootF;
     }
 
 

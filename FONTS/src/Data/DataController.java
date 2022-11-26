@@ -2,11 +2,20 @@ package FONTS.src.Data;
 
 import com.google.gson.stream.JsonReader;
 
+import java.io.IOException;
+import java.util.ArrayList;
+
 public class DataController {
     /**
      * dataController is the instance of DataController
      */
     private static DataController dataController;
+
+    private static DataAuthorsController ctrlAuthors;
+
+    private static DataFoldersController ctrlFolder;
+
+    private static DataBooleanExpressionController ctrlBoolean;
 
     /**
      * @brief Get instance of DataController, if doesn't exist create one
@@ -20,9 +29,17 @@ public class DataController {
         return dataController;
     }
     public DataController() {
-        AuthorsController ctrlAuthors = new AuthorsController();
-        FoldersController ctrlFolder = new FoldersController();
-        BooleanExpressionController ctrlBoolean = new BooleanExpressionController();
+        ctrlAuthors = new DataAuthorsController();
+        ctrlFolder = new DataFoldersController();
+        ctrlBoolean = new DataBooleanExpressionController();
+    }
+
+    public void saveFolders(String folders) throws IOException {
+        ctrlFolder.saveFolder(folders);
+    }
+
+    public void restoreFolders(){
+        Pair<String, ArrayList<String>> folders = null;
     }
 
     public JsonReader[] getListOfDocuments(){ return null;}

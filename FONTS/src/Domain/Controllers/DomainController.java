@@ -2,6 +2,7 @@
 package FONTS.src.Domain.Controllers;
 import FONTS.src.Data.DataController;
 import FONTS.src.Domain.Classes.*;
+import FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -284,9 +285,9 @@ public class DomainController {
         return fC;
     }
 
-    public String saveFoldersSystem(){
-        Gson gson = new Gson();
-        String fC = gson.toJson(folders);
-        return fC;
+    public String saveFoldersSystem() throws IOException {
+        String folders = "";
+        data.saveFolders(folders);
+        return null;
     }
 }
