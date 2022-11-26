@@ -371,7 +371,7 @@ public class Folder {
     }
 
 
-    /** Recursive functions involved on the efficient Search of Documents and Folders **/
+    /** Recursive functions involved on the efficient Search of Documents and data.Folders **/
 
     /**
      * @brief Recursive function of getsMapsDocs

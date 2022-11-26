@@ -162,6 +162,23 @@ public class FoldersControllerDriver {
         return rootF;
     }
 
+    //Function for testing purposes only
+    public static String recoverFolders() throws IOException {
+        FoldersController FC = initializeFController();
+        System.out.println("Introduce the number of Output documents");
+        int n = readInputInteger();
+        for(int i = 0; i<n; ++i){
+            Document d = initializeDoc();
+            FC.newDocument(d.getAuthor(),d.getTitle(),d.getContent(),d.getLanguage());
+        }
+        Folder f = FC.getRoot();
+        Gson gson = new Gson();
+        String rootF = gson.toJson(f);
+        System.out.println("JSON response: ");
+        System.out.println(rootF);
+        return rootF;
+    }
+
 
     public static void main(String[] args) throws IOException {
         String functions = "0. All\n" +
