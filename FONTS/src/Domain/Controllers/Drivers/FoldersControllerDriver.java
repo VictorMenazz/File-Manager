@@ -2,11 +2,19 @@ package FONTS.src.Domain.Controllers.Drivers;
 
 import FONTS.src.Domain.Classes.Document;
 import FONTS.src.Domain.Classes.Folder;
+import FONTS.src.Domain.Classes.Pair;
 import FONTS.src.Domain.Controllers.FoldersController;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+import com.google.gson.reflect.TypeToken;
 
+import javax.swing.event.DocumentEvent;
 import java.io.IOException;
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -163,20 +171,34 @@ public class FoldersControllerDriver {
     }
 
     //Function for testing purposes only
-    public static String recoverFolders() throws IOException {
-        FoldersController FC = initializeFController();
-        System.out.println("Introduce the number of Output documents");
-        int n = readInputInteger();
-        for(int i = 0; i<n; ++i){
-            Document d = initializeDoc();
-            FC.newDocument(d.getAuthor(),d.getTitle(),d.getContent(),d.getLanguage());
-        }
-        Folder f = FC.getRoot();
+    public static void recoverFolders() throws IOException {
+        System.out.println("Introduce the JSON:");
+        String JSON = readInputString();
         Gson gson = new Gson();
-        String rootF = gson.toJson(f);
-        System.out.println("JSON response: ");
-        System.out.println(rootF);
-        return rootF;
+        //Folder f = gson.fromJson(JSON, Folder.class);
+        JsonParser parser = new JsonParser();
+        JsonElement root = parser.parse(JSON);
+        JsonObject detail = root.getAsJsonObject();
+        JsonElement docs = detail.get("documents");
+        JsonObject doc1 = docs.getAsJsonObject();
+        JsonElement el1 = doc1.get("(Title1, Auth1)");
+        //System.out.println(el1.toString());
+        Document d = gson.fromJson(el1, Document.class);
+        System.out.println("Doc here: " + d.getTitle() + " content: " + d.getContent());
+        //Type list = new TypeToken<HashMap<Pair<String, String>, Document>>(){}.getType();
+        //HashMap<Pair<String, String>, Document> documents_i = gson.fromJson(docs, list);
+
+        //JsonObject documents = docs.getAsJsonObject();
+        //JsonElement title = documents.get("title");
+        //System.out.println(documents_i.size());
+        /*System.out.println(documents);
+        String JSONclean = documents.toString();
+        JSONclean = JSONclean.replaceAll("^\"|\"$", "");
+        System.out.println("Docs: " + JSONclean);
+        System.out.println("JSON response, listing docs...");
+        /**for (String d : f.getDocumentsName())
+            System.out.println(d);**/
+
     }
 
 
@@ -193,7 +215,8 @@ public class FoldersControllerDriver {
                 "9. testProtectDocument\n" +
                 "10. testNewFolder\n" +
                 "11. Exit\n" +
-                "12. TestingJSON\n";
+                "12. TestingJSON\n" +
+                "13. recoverFolders\n";
 
         System.out.println("FoldersController Driver:");
         System.out.println("Introduce the number allocated to the function you want to test.");
@@ -244,6 +267,9 @@ public class FoldersControllerDriver {
                     break;
                 case 12:
                     getOutputsJSON();
+                    break;
+                case 13:
+                    recoverFolders();
                     break;
                 default:
                     System.out.println("testFoldersController() test:");

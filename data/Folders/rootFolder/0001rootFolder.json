@@ -1,1 +1,20 @@
-{"folderId":1,"folderName":"F1","docAmount":4,"subFolders":{},"documents":{"(Title4, Author4)":{"title":"Title4","author":"Author4","cont":{"frequency":{"testing":1},"text":[{"words":["Testing\n"]}],"lang":"ENG"},"language":"ENG"},"(Title 1, Auth 1)":{"title":"Title 1","author":"Auth 1","cont":{"frequency":{"testing":1},"text":[{"words":["Testing\n"]}],"lang":"ENG"},"language":"ENG"},"(Title 2, Author 2)":{"title":"Title 2","author":"Author 2","cont":{"frequency":{"endpoint":1,"testing":1},"text":[{"words":["Testing","endpoint\n"]}],"lang":"ENG"},"language":"ENG"},"(Title 3, Author 3)":{"title":"Title 3","author":"Author 3","cont":{"frequency":{"trying":1},"text":[{"words":["Trying\n"]}],"lang":"ENG"},"language":"ENG"}}}
+{
+  "folderId":1,
+  "folderName":"F1",
+  "docAmount":4,
+  "subFolders":{},
+  "documents":{
+    "(Title4, Author4)":{
+      "title":"Title4",
+      "author":"Author4",
+      "cont":{
+        "frequency":{
+          "testing":1
+        },
+        "text":[{"words":["Testing\n"]}],
+        "lang":"ENG"
+      },
+      "language":"ENG"
+    }
+  }
+}
