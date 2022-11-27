@@ -1,9 +1,12 @@
 package FONTS.src.Data.Drivers;
 
 import FONTS.src.Data.DataController;
+import com.google.gson.Gson;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.LinkedHashSet;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
@@ -21,8 +24,25 @@ public class DataControllerDriver {
         System.out.println("Folder length: " + files.length);
     }
 
+    public static Boolean testSaveHistoral() {
+        DataController dataC = new DataController();
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Introduce a 3 Boolean Expressions:");
+        LinkedHashSet<String> historial = new LinkedHashSet<>();
+        for (int i = 0; i < 3; ++i){
+            String aux = scan.nextLine();
+            historial.add(aux);
+        }
+        scan.close();
+
+        Gson gson = new Gson();
+        String result = gson.toJson(historial);
+        return dataC.saveHistorial(result);
+    }
+
     public static void main(String[] args) throws Exception {
-        testSaveDocuments();
+        //testSaveDocuments();
+        System.out.println(testSaveHistoral());
     }
 
     private static String readInputString() {

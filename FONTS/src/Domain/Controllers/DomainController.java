@@ -290,4 +290,14 @@ public class DomainController {
         data.saveFolders(folders);
         return null;
     }
+
+    public Boolean saveHistorial() {
+        LinkedHashSet<String> historial = ctrlSearch.getBoolExps();
+        Gson gson = new Gson();
+        String result = gson.toJson(historial);
+        return data.saveHistorial(result);
+    }
+
+
+
 }

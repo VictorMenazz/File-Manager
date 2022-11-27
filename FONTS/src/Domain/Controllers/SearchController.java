@@ -81,6 +81,10 @@ public class SearchController {
         return list;
     }
 
+    public LinkedHashSet<String> getBoolExps() {
+        return listBoolExps;
+    }
+
     /**
      * @brief Search of a list of Documents who satisfy the boolean expression
      * @param rootFolder, instance of the root folder

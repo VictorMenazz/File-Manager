@@ -51,4 +51,9 @@ public class DataController {
     public String getRootFolder() {
         return null; //MIRAR COMO SOLUCIONAR EST0, para marc: HOW TO REPAIR THIS FUNCTIONALITY? IT'S NOT POSSIBLE TO SEND A SPECIFIC TYPE
     }
+
+    public Boolean saveHistorial(String jsonHistorial){
+        return ctrlBoolean.saveHistorial(jsonHistorial);
+    }
+
 }
