@@ -1,10 +1,15 @@
 package FONTS.src.Domain.Controllers;
 
+import FONTS.src.Domain.Classes.Document;
 import FONTS.src.Domain.Classes.Folder;
 import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Set;
 
 /**
  * @file FolderController.java
@@ -150,4 +155,15 @@ public class FoldersController {
         String foldersJSON = gson.toJson(this);
         return foldersJSON;
     }
+
+    public void recoverFoldersStructure(String data){
+        rootFolder = new Folder(0, "/");
+        Gson gson = new Gson();
+        JsonParser parser = new JsonParser();
+        JsonElement root = parser.parse(data);
+        JsonObject detail = root.getAsJsonObject();
+        System.out.println("Results...");
+        rootFolder.restoreDocs(detail);
+    }
+
 }

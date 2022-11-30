@@ -1,8 +1,14 @@
 package FONTS.src.Domain.Classes;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 
 /**
  * @file Folder.java
@@ -78,15 +84,16 @@ public class Folder {
      * @param fName, String that will be allocated to this folder name.
      * @param foldId, Integer that identifies the father Folder of the new Folder.
      * */
-    public void createFolder(String fName, Integer foldId) {
+    public Integer createFolder(String fName, Integer foldId) {
         if(foldId == this.folderId) {
-            Folder f = new Folder(lastFolderId+1, fName);
-            subFolders.put(lastFolderId,f);
+            Folder f = new Folder(lastFolderId + 1, fName);
+            subFolders.put(lastFolderId, f);
+            return lastFolderId;
         }
         else{
             int nextId = getNextFolderParent(foldId);
             Folder f = subFolders.get(nextId);
-            f.createFolder(fName, foldId);
+            return f.createFolder(fName, foldId);
         }
     }
 
@@ -258,6 +265,16 @@ public class Folder {
     public String getName() {
         return folderName;
     }
+
+
+    /**
+     * @brief Gets the identifier of this Folder.
+     * @return folderId, Int representing the identifier of the Folder.
+     * */
+    public Integer getId(){ return folderId; }
+
+
+    public Folder getFolder(Integer id){ return subFolders.get(id); }
 
     /**
      * @brief Gets list of documents' names from this folder
@@ -493,5 +510,55 @@ public class Folder {
         if(this.folderContained(foldId)) return folderId;
         else return iGetNextFolderParent(foldId);
     }
+
+    public void restoreDocs(JsonObject detail) {
+        //Organizing its Documents
+        Gson gson = new Gson();
+        JsonElement docs = detail.get("documents");
+        JsonObject doc1 = docs.getAsJsonObject();
+        Set<String> setS = doc1.keySet();
+        for(String s : setS) {
+            JsonElement el1 = doc1.get(s);
+            Document d = gson.fromJson(el1, Document.class);
+            Pair<String, String> key = new Pair<String, String>(d.getTitle(), d.getAuthor());
+            documents.put(key, d);
+        }
+
+        //Organizing its Folders
+        JsonElement subFoldersJSON = detail.get("subFolders");
+        JsonObject subFoldersInf = subFoldersJSON.getAsJsonObject();
+        Set<String> subF = subFoldersInf.keySet();
+        for (String id : subF){
+            JsonElement folderJSON = subFoldersInf.get(id);
+            JsonObject folder =  folderJSON.getAsJsonObject();
+            Integer foldId = gson.fromJson(folder.get("folderId"), Integer.class);
+            String folderName = gson.fromJson(folder.get("folderName"), String.class);
+            Folder subFolder = new Folder(foldId, folderName);
+            subFolders.put(foldId, subFolder);
+            subFolder.restoreDocs(folder);
+        }
+        System.out.println("Folder Report: ");
+        fullReport();
+    }
+
+    private void fullReport(){
+        System.out.println("{");
+        System.out.println("Folder name: " + folderName);
+        System.out.println("Documents:");
+        for (Document d: documents.values()){
+            System.out.println("Document Title: " + d.getTitle());
+            System.out.println("Document Author: " + d.getAuthor());
+            System.out.println("Document Content: " + d.getContent());
+            System.out.println("Document Language: " + d.getLanguage());
+        }
+        System.out.println();
+        System.out.println();
+        System.out.println("Refering to subFolders...");
+        for (Folder folder : subFolders.values()){
+            System.out.println(folder.getName());
+        }
+        System.out.println("}");
+    }
+
 }
 

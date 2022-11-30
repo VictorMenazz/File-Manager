@@ -41,8 +41,8 @@ public class DataControllerDriver {
     }
 
     public static void main(String[] args) throws Exception {
-        //testSaveDocuments();
-        System.out.println(testSaveHistoral());
+        testSaveDocuments();
+        //System.out.println(testSaveHistoral());
     }
 
     private static String readInputString() {

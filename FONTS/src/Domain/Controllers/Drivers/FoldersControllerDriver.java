@@ -164,6 +164,21 @@ public class FoldersControllerDriver {
             FC.newDocument(d.getAuthor(),d.getTitle(),d.getContent(),d.getLanguage());
         }
         Folder f = FC.getRoot();
+        System.out.println("Introduce the number of subFolders");
+        n = readInputInteger();
+        for(int i = 0; i < n; ++i){
+            System.out.println("Introduce name of subFolders");
+            String name = readInputString();
+            Integer idSubFolder = f.createFolder(name, f.getId());
+            Folder subFolder = f.getFolder(idSubFolder);
+            System.out.println("Introduce the number of documents in the subFolder");
+            int m = readInputInteger();
+            for(int j = 0; j < m; ++j){
+                System.out.println("Initialize the Documents of the subFolder");
+                Document d = initializeDoc();
+                subFolder.addDocument(d);
+            }
+        }
         Gson gson = new Gson();
         String rootF = gson.toJson(f);
         System.out.println("JSON response: ");
@@ -173,7 +188,11 @@ public class FoldersControllerDriver {
 
     //Function for testing purposes only
     public static void recoverFolders() throws IOException {
-        System.out.println("Introduce the JSON:");
+        FoldersController FC = new FoldersController();
+        System.out.println("Introduce data String:");
+        String data = readInputString();
+        FC.recoverFoldersStructure(data);
+        /*System.out.println("Introduce the JSON:");
         String JSON = readInputString();
         Gson gson = new Gson();
         JsonParser parser = new JsonParser();
@@ -187,7 +206,7 @@ public class FoldersControllerDriver {
             JsonElement el1 = doc1.get(s);
             Document d = gson.fromJson(el1, Document.class);
             System.out.println("Doc here: " + d.getTitle() + " content: " + d.getContent());
-        }
+        }*/
         //Type list = new TypeToken<HashMap<Pair<String, String>, Document>>(){}.getType();
         //HashMap<Pair<String, String>, Document> documents_i = gson.fromJson(docs, list);
 
