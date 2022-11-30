@@ -16,6 +16,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
+import java.util.Set;
 import java.util.regex.Pattern;
 
 /**
@@ -175,16 +176,18 @@ public class FoldersControllerDriver {
         System.out.println("Introduce the JSON:");
         String JSON = readInputString();
         Gson gson = new Gson();
-        //Folder f = gson.fromJson(JSON, Folder.class);
         JsonParser parser = new JsonParser();
         JsonElement root = parser.parse(JSON);
         JsonObject detail = root.getAsJsonObject();
         JsonElement docs = detail.get("documents");
         JsonObject doc1 = docs.getAsJsonObject();
-        JsonElement el1 = doc1.get("(Title1, Auth1)");
-        //System.out.println(el1.toString());
-        Document d = gson.fromJson(el1, Document.class);
-        System.out.println("Doc here: " + d.getTitle() + " content: " + d.getContent());
+        Set<String> setS = doc1.keySet();
+        for(String s : setS) {
+            System.out.println(s);
+            JsonElement el1 = doc1.get(s);
+            Document d = gson.fromJson(el1, Document.class);
+            System.out.println("Doc here: " + d.getTitle() + " content: " + d.getContent());
+        }
         //Type list = new TypeToken<HashMap<Pair<String, String>, Document>>(){}.getType();
         //HashMap<Pair<String, String>, Document> documents_i = gson.fromJson(docs, list);
 
