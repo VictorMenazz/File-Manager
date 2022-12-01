@@ -26,6 +26,7 @@ public class ModifyContentDocument implements ActionListener {
     public ModifyContentDocument() {
         //create frame
         textEditor = new JFrame("Document Title");
+        textEditor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         try { //CHANGE VIEW
             // Set metal look and feel
@@ -107,7 +108,7 @@ public class ModifyContentDocument implements ActionListener {
         //set configs
         textEditor.setJMenuBar(menuBar);
         textEditor.getContentPane().add(scrollableTextArea);
-        textEditor.setSize(1000, 600);
+        textEditor.setSize(750, 500);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
@@ -115,8 +116,6 @@ public class ModifyContentDocument implements ActionListener {
         int y = (screenSize.height - textEditor.getHeight()) / 2;
         textEditor.setLocation(x, y);
         textEditor.setVisible(true);
-        textEditor.show();
-
     }
 
     @Override

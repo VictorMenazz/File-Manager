@@ -42,4 +42,8 @@ public class PresentationController {
     public void toAddNewDocument() {
 
     }
+
+    public void toModifyContent() {
+
+    }
 }
