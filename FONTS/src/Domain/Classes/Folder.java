@@ -522,8 +522,8 @@ public class Folder {
             Document d = gson.fromJson(el1, Document.class);
             Pair<String, String> key = new Pair<String, String>(d.getTitle(), d.getAuthor());
             documents.put(key, d);
+            ++docAmount;
         }
-
         //Organizing its Folders
         JsonElement subFoldersJSON = detail.get("subFolders");
         JsonObject subFoldersInf = subFoldersJSON.getAsJsonObject();
@@ -534,31 +534,9 @@ public class Folder {
             Integer foldId = gson.fromJson(folder.get("folderId"), Integer.class);
             String folderName = gson.fromJson(folder.get("folderName"), String.class);
             Folder subFolder = new Folder(foldId, folderName);
-            subFolders.put(foldId, subFolder);
             subFolder.restoreDocs(folder);
+            subFolders.put(foldId, subFolder);
         }
-        System.out.println("Folder Report: ");
-        fullReport();
     }
-
-    private void fullReport(){
-        System.out.println("{");
-        System.out.println("Folder name: " + folderName);
-        System.out.println("Documents:");
-        for (Document d: documents.values()){
-            System.out.println("Document Title: " + d.getTitle());
-            System.out.println("Document Author: " + d.getAuthor());
-            System.out.println("Document Content: " + d.getContent());
-            System.out.println("Document Language: " + d.getLanguage());
-        }
-        System.out.println();
-        System.out.println();
-        System.out.println("Refering to subFolders...");
-        for (Folder folder : subFolders.values()){
-            System.out.println(folder.getName());
-        }
-        System.out.println("}");
-    }
-
 }
 

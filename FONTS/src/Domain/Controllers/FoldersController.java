@@ -8,6 +8,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import java.io.IOException;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -162,7 +163,6 @@ public class FoldersController {
         JsonParser parser = new JsonParser();
         JsonElement root = parser.parse(data);
         JsonObject detail = root.getAsJsonObject();
-        System.out.println("Results...");
         rootFolder.restoreDocs(detail);
     }
 

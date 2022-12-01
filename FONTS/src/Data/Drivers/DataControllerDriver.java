@@ -1,6 +1,7 @@
 package FONTS.src.Data.Drivers;
 
 import FONTS.src.Data.DataController;
+import FONTS.src.Domain.Controllers.FoldersController;
 import com.google.gson.Gson;
 
 import java.io.File;
@@ -40,8 +41,14 @@ public class DataControllerDriver {
         return dataC.saveHistorial(result);
     }
 
+    public static void testRecoverFolders(){
+        DataController dC = new DataController();
+        dC.restoreFolders();
+    }
+
     public static void main(String[] args) throws Exception {
-        testSaveDocuments();
+        testRecoverFolders();
+        //testSaveDocuments();
         //System.out.println(testSaveHistoral());
     }
 

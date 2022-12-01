@@ -192,37 +192,7 @@ public class FoldersControllerDriver {
         System.out.println("Introduce data String:");
         String data = readInputString();
         FC.recoverFoldersStructure(data);
-        /*System.out.println("Introduce the JSON:");
-        String JSON = readInputString();
-        Gson gson = new Gson();
-        JsonParser parser = new JsonParser();
-        JsonElement root = parser.parse(JSON);
-        JsonObject detail = root.getAsJsonObject();
-        JsonElement docs = detail.get("documents");
-        JsonObject doc1 = docs.getAsJsonObject();
-        Set<String> setS = doc1.keySet();
-        for(String s : setS) {
-            System.out.println(s);
-            JsonElement el1 = doc1.get(s);
-            Document d = gson.fromJson(el1, Document.class);
-            System.out.println("Doc here: " + d.getTitle() + " content: " + d.getContent());
-        }*/
-        //Type list = new TypeToken<HashMap<Pair<String, String>, Document>>(){}.getType();
-        //HashMap<Pair<String, String>, Document> documents_i = gson.fromJson(docs, list);
-
-        //JsonObject documents = docs.getAsJsonObject();
-        //JsonElement title = documents.get("title");
-        //System.out.println(documents_i.size());
-        /*System.out.println(documents);
-        String JSONclean = documents.toString();
-        JSONclean = JSONclean.replaceAll("^\"|\"$", "");
-        System.out.println("Docs: " + JSONclean);
-        System.out.println("JSON response, listing docs...");
-        /**for (String d : f.getDocumentsName())
-            System.out.println(d);**/
-
     }
-
 
     public static void main(String[] args) throws IOException {
         String functions = "0. All\n" +

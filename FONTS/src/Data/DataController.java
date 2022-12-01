@@ -19,7 +19,6 @@ public class DataController {
 
     /**
      * @brief Get instance of DataController, if doesn't exist create one
-     *
      * @return instance of DataController
      */
     public static DataController getInstance() {
@@ -38,19 +37,12 @@ public class DataController {
         ctrlFolder.saveFolder(folders);
     }
 
-    public void restoreFolders(){
-        Pair<String, ArrayList<String>> folders = null;
+    //It returns String pointing to domain.
+    public String restoreFolders(){
+        return ctrlFolder.getFoldersSerialized();
     }
-
-    public JsonReader[] getListOfDocuments(){ return null;}
 
     public JsonReader[] getListOfAuthors(){ return null;}
-
-    public JsonReader[] getListOfFolders(){ return null;}
-
-    public String getRootFolder() {
-        return null; //MIRAR COMO SOLUCIONAR EST0, para marc: HOW TO REPAIR THIS FUNCTIONALITY? IT'S NOT POSSIBLE TO SEND A SPECIFIC TYPE
-    }
 
     public Boolean saveHistorial(String jsonHistorial){
         return ctrlBoolean.saveHistorial(jsonHistorial);

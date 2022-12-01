@@ -1,9 +1,8 @@
 package FONTS.src.Data;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import com.google.gson.stream.JsonReader;
+
+import java.io.*;
 
 public class DataFoldersController {
 
@@ -21,17 +20,26 @@ public class DataFoldersController {
         documentWr.close();
     }
 
-    private String getTitle(String doc) {
-        /** Need to parse the JSON and extract the name and author */
-        return null;
+    public String getFoldersSerialized() {
+        String basicPath = "data/Folders/rootFolder";
+        File folder = new File(basicPath);
+        if(!folder.exists()) folder.mkdir();
+        File[] folders = folder.listFiles();
+        String identifier = String.format("%04d", folders.length-1);
+        FileReader reader = null;
+        String result = "";
+        try {
+            reader = new FileReader(basicPath + File.separator + identifier + "rootFolder.json");
+            BufferedReader br = new BufferedReader(reader);
+            String iterator = "";
+            while((iterator = br.readLine()) != null){
+                result += iterator;
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException ex){
+            throw new RuntimeException(ex);
+        }
+        return result;
     }
-
-    public boolean existFolder(){
-        return false;
-    }
-
-    public boolean existDocument(){
-        return false;
-    }
-
 }

@@ -320,7 +320,7 @@ public class DomainControllerDriver {
         System.out.println();
     }
 
-    public static String testConstruct() throws IOException {
+    public static void testSaveSystem() throws IOException {
         DomainController dC = new DomainController();
         for (int i = 0; i < 3; ++i){
             System.out.println("Introduce a title for the Document:");
@@ -334,24 +334,19 @@ public class DomainControllerDriver {
             System.out.println("Added new document with title: " + title + " and author's name " + author);
             System.out.println();
         }
-        return dC.saveFoldersSystem();
+        dC.saveFoldersSystem();
     }
 
-    public static void testReConstruct(String JSON){
+    public static void testRecoverSystem(){
         DomainController dC = new DomainController();
-        FoldersController fC = dC.reconstructFoldersSystem(JSON);
-        System.out.println("Number of Docs: " + fC.getRoot().getDocumentAmount());
-        System.out.println("Introduce a title for the Document:");
-        String title = readInputString();
-        System.out.println("Introduce an author for the Document:");
-        String author = readInputString();
-        System.out.println(fC.getRoot().documentContained(title, author));
+        dC.reconstructFoldersSystem();
+        FoldersController fC = dC.getFoldersController();
+        Folder root = fC.getRoot();
+        System.out.println("Number of docs: " + root.getDocumentAmount());
     }
 
     public static void main(String[] args) throws Exception {
-        String JSON = testConstruct();
-        System.out.println(JSON);
-        testReConstruct(JSON);
+        testRecoverSystem();
         String functions = "0. All\n" +
                 "1. testDomainController\n" +
                 "2. testImportDocument\n" +
@@ -370,7 +365,7 @@ public class DomainControllerDriver {
                 "15. testNewFolder\n" +
                 "16. Exit\n";
 
-        System.out.println("FoldersController Driver:");
+        System.out.println("DomainController Driver:");
         System.out.println("Introduce the number allocated to the function you want to test.");
         System.out.println("Functions:");
         System.out.println(functions);

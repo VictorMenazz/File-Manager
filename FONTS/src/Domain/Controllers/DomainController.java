@@ -279,16 +279,14 @@ public class DomainController {
 
     /** COMUNICATION WITH DATA LAYER **/
 
-    public FoldersController reconstructFoldersSystem(String JSON){
-        Gson gson = new Gson();
-        FoldersController fC = gson.fromJson(JSON, FoldersController.class);
-        return fC;
+    public void reconstructFoldersSystem(){
+        String JSON = data.restoreFolders();
+        folders.recoverFoldersStructure(JSON);
     }
 
-    public String saveFoldersSystem() throws IOException {
-        String folders = "";
-        data.saveFolders(folders);
-        return null;
+    public void saveFoldersSystem() throws IOException {
+        String foldersJSON = folders.saveFoldersStructure();
+        data.saveFolders(foldersJSON);
     }
 
     public Boolean saveHistorial() {
@@ -299,5 +297,7 @@ public class DomainController {
     }
 
 
-
+    public FoldersController getFoldersController() {
+        return folders;
+    }
 }
