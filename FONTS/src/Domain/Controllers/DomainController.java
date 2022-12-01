@@ -277,13 +277,19 @@ public class DomainController {
         folders.newFolder(fName, foldId);
     }
 
-    /** COMUNICATION WITH DATA LAYER **/
 
+    /** COMUNICATION WITH DATA LAYER **/
+    /**
+     * @brief Restores the Folders System once the Main System is running.
+     */
     public void reconstructFoldersSystem(){
         String JSON = data.restoreFolders();
         folders.recoverFoldersStructure(JSON);
     }
 
+    /**
+     * @brief Saves the Folders System before the Main System is closed.
+     */
     public void saveFoldersSystem() throws IOException {
         String foldersJSON = folders.saveFoldersStructure();
         data.saveFolders(foldersJSON);
@@ -296,8 +302,4 @@ public class DomainController {
         return data.saveHistorial(result);
     }
 
-
-    public FoldersController getFoldersController() {
-        return folders;
-    }
 }

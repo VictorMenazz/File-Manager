@@ -6,6 +6,9 @@ import java.io.*;
 
 public class DataFoldersController {
 
+    /**
+     * @brief Saves physically the serialized Folder System in JSON format.
+     */
     public void saveFolder(String docs) throws IOException {
         String basicPath = "data/Folders/rootFolder";
         File folder = new File(basicPath);
@@ -20,6 +23,10 @@ public class DataFoldersController {
         documentWr.close();
     }
 
+
+    /**
+     * @brief Reads the physic the serialized Folder System in JSON format.
+     */
     public String getFoldersSerialized() {
         String basicPath = "data/Folders/rootFolder";
         File folder = new File(basicPath);

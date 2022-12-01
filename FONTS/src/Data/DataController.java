@@ -27,17 +27,27 @@ public class DataController {
         }
         return dataController;
     }
+
+    /**
+     * @brief Initializes the Data Controller.
+     */
     public DataController() {
         ctrlAuthors = new DataAuthorsController();
         ctrlFolder = new DataFoldersController();
         ctrlBoolean = new DataBooleanExpressionController();
     }
 
+    /**
+     * @brief Saves physically the serialized Folder System in JSON format.
+     */
     public void saveFolders(String folders) throws IOException {
         ctrlFolder.saveFolder(folders);
     }
 
-    //It returns String pointing to domain.
+    /**
+     * @brief Transfers to DomainController the last log about Folders System.
+     * @return A String representing the Folders System in JSON.
+     */
     public String restoreFolders(){
         return ctrlFolder.getFoldersSerialized();
     }
