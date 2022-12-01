@@ -3,6 +3,7 @@ package FONTS.src.Interface;
 import javax.swing.*;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.plaf.metal.OceanTheme;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
@@ -98,10 +99,22 @@ public class ModifyContentDocument implements ActionListener {
         menuBar.add(edit);
         menuBar.add(close);
 
+        JScrollPane scrollableTextArea = new JScrollPane(textArea);
+
+        scrollableTextArea.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+        scrollableTextArea.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+
         //set configs
         textEditor.setJMenuBar(menuBar);
-        textEditor.add(textArea);
-        textEditor.setSize(1200, 750);
+        textEditor.getContentPane().add(scrollableTextArea);
+        textEditor.setSize(1000, 600);
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        int x = (screenSize.width - textEditor.getWidth()) / 2;
+        int y = (screenSize.height - textEditor.getHeight()) / 2;
+        textEditor.setLocation(x, y);
+        textEditor.setVisible(true);
         textEditor.show();
 
     }
@@ -134,7 +147,7 @@ public class ModifyContentDocument implements ActionListener {
                 int dotIndex = name.lastIndexOf('.');
                 if(dotIndex != -1) {
                     String ext = name.substring(dotIndex + 1);
-                    if((ext == "txt") | (ext == "xml")) {
+                    if((ext.equals("txt")) | ext.equals("xml")) {
                         try {
                             // String
                             String s1 = "", sl = "";
