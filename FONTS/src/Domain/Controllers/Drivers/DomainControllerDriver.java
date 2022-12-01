@@ -337,16 +337,16 @@ public class DomainControllerDriver {
         dC.saveFoldersSystem();
     }
 
-    public static void testRecoverSystem(){
+    /*public static void testRecoverSystem(){
         DomainController dC = new DomainController();
         dC.reconstructFoldersSystem();
         FoldersController fC = dC.getFoldersController();
         Folder root = fC.getRoot();
         System.out.println("Number of docs: " + root.getDocumentAmount());
-    }
+    }*/
 
     public static void main(String[] args) throws Exception {
-        testRecoverSystem();
+        //testRecoverSystem();
         String functions = "0. All\n" +
                 "1. testDomainController\n" +
                 "2. testImportDocument\n" +
