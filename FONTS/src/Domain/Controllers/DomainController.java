@@ -295,6 +295,22 @@ public class DomainController {
         data.saveFolders(foldersJSON);
     }
 
+    /**
+     * @brief Restores the Authors System once the Main System is running.
+     */
+    public void reconstructAuthorsSystem(){
+        String JSON = data.restoreAuthors();
+        ctrlAuthors.recoverFoldersStructure(JSON);
+    }
+
+    /**
+     * @brief Saves the Authors System before the Main System is closed.
+     */
+    public void saveAuthorsSystem() throws IOException {
+        String authorsJSON = ctrlAuthors.saveAuthorsStructure();
+        data.saveAuthors(authorsJSON);
+    }
+
     public Boolean saveHistorial() {
         LinkedHashSet<String> historial = ctrlSearch.getBoolExps();
         Gson gson = new Gson();

@@ -3,32 +3,28 @@ package FONTS.src.Data;
 import java.io.*;
 
 public class DataAuthorsController {
-    public void saveAuthors(String docs) throws IOException {
-        /*
-        String basicPath = "data/Folders/rootFolder";
-        File folder = new File(basicPath);
-        if(!folder.exists()) folder.mkdir();
-        System.out.println(folder.isDirectory() + " " + folder.exists());
-        File[] folders = folder.listFiles();
-        System.out.println("OK");
-        String identifier = String.format("%04d", folders.length);
-        FileWriter file = new FileWriter(basicPath + File.separator + identifier + "rootFolder.json");
+    public void saveAuthors(String newLog) throws IOException {
+        String basicPath = "data/Authors";
+        File authorsFolder = new File(basicPath);
+        if(!authorsFolder.exists()) authorsFolder.mkdir();
+        File[] authorsLogs = authorsFolder.listFiles();
+        String identifier = String.format("%04d", authorsLogs.length);
+        FileWriter file = new FileWriter(basicPath + File.separator + identifier + "Authors.json");
         PrintWriter documentWr = new PrintWriter(file);
-        documentWr.print(docs);
+        documentWr.print(newLog);
         documentWr.close();
-        */
     }
 
     public String getAuthorsSerialized() {
-        /*String basicPath = "data/Folders/rootFolder";
-        File folder = new File(basicPath);
-        if(!folder.exists()) folder.mkdir();
-        File[] folders = folder.listFiles();
-        String identifier = String.format("%04d", folders.length-1);
+        String basicPath = "data/Authors";
+        File authorsFolder = new File(basicPath);
+        if(!authorsFolder.exists()) authorsFolder.mkdir();
+        File[] authorsLog = authorsFolder.listFiles();
+        String identifier = String.format("%04d", authorsLog.length-1);
         FileReader reader = null;
         String result = "";
         try {
-            reader = new FileReader(basicPath + File.separator + identifier + "rootFolder.json");
+            reader = new FileReader(basicPath + File.separator + identifier + "Authors.json");
             BufferedReader br = new BufferedReader(reader);
             String iterator = "";
             while((iterator = br.readLine()) != null){
@@ -39,7 +35,6 @@ public class DataAuthorsController {
         } catch (IOException ex){
             throw new RuntimeException(ex);
         }
-        return result;*/
-        return null;
+        return result;
     }
 }

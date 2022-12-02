@@ -1,8 +1,11 @@
 package FONTS.src.Domain.Controllers.Drivers;
 
 import FONTS.src.Domain.Classes.Author;
+import FONTS.src.Domain.Classes.Content;
+import FONTS.src.Domain.Classes.Document;
 import FONTS.src.Domain.Controllers.AuthorsController;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
@@ -170,7 +173,35 @@ public class AuthorsControllerDriver {
         else System.out.println("The title doesn't belong to the author...");
     }
 
-    public static void main(String[] args) {
+    public static void getJSON() throws IOException {
+        AuthorsController aC = new AuthorsController();
+        System.out.println("Introduce Author name:");
+        String name = readInputString();
+        Author a = new Author(name);
+        aC.addAuthor(name, a);
+        System.out.println("Introduce the number of Author Docs:");
+        int n = readInputInteger();
+        for (int i = 0; i < n; ++i){
+            System.out.println("Introduce the title of the Doc:");
+            String title = readInputString();
+            aC.addTitleAuthor(name, title);
+        }
+        System.out.println(aC.saveAuthorsStructure());
+    }
+
+    public static void recoverFromJSON() throws IOException {
+        System.out.println("Introduce JSON:");
+        String JSON = readInputString();
+        AuthorsController aC = new AuthorsController();
+        aC.recoverFoldersStructure(JSON);
+        for(String s : aC.searchAuthorDocuments("Marc")){
+            System.out.println(s);
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        //getJSON();
+        recoverFromJSON();
         String functions = "0. All\n" +
                 "1. testAuthorsControllerConstruct\n" +
                 "2. testAddAuthor\n" +
@@ -263,6 +294,19 @@ public class AuthorsControllerDriver {
 
     private static int readInputInteger() {
         Integer inp = writer.nextInt();
+        return inp;
+    }
+
+    private static String readContent() {
+        System.out.println("Introduce text for the Content, return carrier when you finish and write _end_");
+        String inp = "";
+        while(writer.hasNext()) {
+            String aux = writer.next();
+            if(aux.equals("_end_")) break;
+            else {
+                inp += (aux + "\n");
+            }
+        }
         return inp;
     }
 }

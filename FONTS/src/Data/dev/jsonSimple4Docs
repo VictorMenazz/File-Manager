@@ -2,3 +2,6 @@
 
 
 {"folderId":1,"folderName":"Folder1","docAmount":1,"subFolders":{},"documents":{"(Title1, Auth1)":{"title":"Title1","author":"Auth1","cont":{"frequency":{"hello":1},"text":[{"words":["Hello\n"]}],"lang":"ENG"},"language":"ENG"}}}
+
+
+{"Marc":{"name":"Marc","docs":["IoT: Matter of future","Ransomware: Danger behind Shadow","Internet Protocols","Swift experiment","Internet Protocols v2"]}}

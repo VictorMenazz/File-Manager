@@ -25,6 +25,23 @@ public class DataControllerDriver {
         System.out.println("Folder length: " + files.length);
     }
 
+    public static void testRecoverFolders(){
+        DataController dC = new DataController();
+        dC.restoreFolders();
+    }
+
+    public static void testSaveAuthors() throws IOException {
+        DataController dC = new DataController();
+        System.out.println("Introduce JSON:");
+        String JSON = readInputString();
+        dC.saveAuthors(JSON);
+    }
+
+    public static void testRecoverAuthors(){
+        DataController dC = new DataController();
+        System.out.println(dC.restoreAuthors());
+    }
+
     public static Boolean testSaveHistoral() {
         DataController dataC = new DataController();
         Scanner scan = new Scanner(System.in);
@@ -41,13 +58,10 @@ public class DataControllerDriver {
         return dataC.saveHistorial(result);
     }
 
-    public static void testRecoverFolders(){
-        DataController dC = new DataController();
-        dC.restoreFolders();
-    }
-
     public static void main(String[] args) throws Exception {
-        testRecoverFolders();
+        //testRecoverAuthors();
+        //testSaveAuthors();
+        //testRecoverFolders();
         //testSaveDocuments();
         //System.out.println(testSaveHistoral());
     }

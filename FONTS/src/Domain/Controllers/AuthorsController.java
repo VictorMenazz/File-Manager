@@ -1,7 +1,10 @@
 package FONTS.src.Domain.Controllers;
 
 import FONTS.src.Domain.Classes.Author;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -115,6 +118,23 @@ public class AuthorsController {
                 authors.remove(authorName);
             }
         }
+    }
+
+    /**
+     * @brief Generates a JSON with a log of Authors System.
+     */
+    public String saveAuthorsStructure() {
+        Gson gson = new Gson();
+        return gson.toJson(authors);
+    }
+
+    /**
+     * @brief Recovers system from a JSON log.
+     */
+    public void recoverFoldersStructure(String authorsJSON) {
+        Gson gson = new Gson();
+        Type authorsList = new TypeToken<HashMap<String, Author>>(){}.getType();
+        authors = gson.fromJson(authorsJSON, authorsList);
     }
 }
 
