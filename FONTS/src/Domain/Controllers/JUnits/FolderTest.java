@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers.JUnits;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.*;
 import FONTS.src.Domain.Controllers.Stubs.DocumentStub;
 import org.junit.Test;
@@ -48,7 +49,7 @@ public class FolderTest {
     }
 
     @Test
-    public void addDocument() {
+    public void addDocument() throws DocumentsException {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         assertFalse(f.documentContained("TitleTest","AuthorTest"));
@@ -64,12 +65,14 @@ public class FolderTest {
             f.addNonConstructedDocument("AuthorTest", "TitleTest", "new Content", "ENG");
         } catch (IOException e) {
             fail(e.getMessage());
+        } catch (DocumentsException e) {
+            throw new RuntimeException(e);
         }
         assertTrue(f.documentContained("TitleTest","AuthorTest"));
     }
 
     @Test
-    public void delDocument() {
+    public void delDocument() throws DocumentsException {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         f.addDocument(doc);
@@ -78,7 +81,7 @@ public class FolderTest {
     }
 
     @Test
-    public void modifyContent() {
+    public void modifyContent() throws DocumentsException {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         assertFalse(f.documentContained("TitleTest","AuthorTest"));
@@ -92,7 +95,7 @@ public class FolderTest {
     }
 
     @Test
-    public void modifyAuthor() {
+    public void modifyAuthor() throws DocumentsException {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         assertFalse(f.documentContained("TitleTest","AuthorTest"));
@@ -106,7 +109,7 @@ public class FolderTest {
     }
 
     @Test
-    public void modifyTitle() {
+    public void modifyTitle() throws DocumentsException {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         assertFalse(f.documentContained("TitleTest", "AuthorTest"));
@@ -120,7 +123,7 @@ public class FolderTest {
     }
 
     @Test
-    public void protectDocument() {
+    public void protectDocument() throws DocumentsException {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         f.addDocument(doc);
@@ -136,7 +139,7 @@ public class FolderTest {
     }
 
     @Test
-    public void getDocumentsName() {
+    public void getDocumentsName() throws DocumentsException {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         f.addDocument(doc);
@@ -146,7 +149,7 @@ public class FolderTest {
     }
 
     @Test
-    public void getDocumentAmount() {
+    public void getDocumentAmount() throws DocumentsException {
         Folder f = new Folder(1, "Test");
         assertEquals(0,f.getDocumentAmount());
         Document doc = new DocumentStub();
@@ -155,7 +158,7 @@ public class FolderTest {
     }
 
     @Test
-    public void getDocument() {
+    public void getDocument() throws DocumentsException {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         f.addDocument(doc);
@@ -167,7 +170,7 @@ public class FolderTest {
     }
 
     @Test
-    public void documentContained() {
+    public void documentContained() throws DocumentsException {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         f.addDocument(doc);

@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers.JUnits;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.Author;
 import org.junit.*;
 
@@ -34,7 +35,7 @@ public class AuthorTest {
     }
 
     @Test
-    public void testGetTitles() {
+    public void testGetTitles() throws DocumentsException {
         Author instance = new Author("Jordi");
         String doc1 = "DocEn";
         String doc2 = "DocCat";
@@ -50,7 +51,7 @@ public class AuthorTest {
     }
 
     @Test
-    public void testGetNumTitles() {
+    public void testGetNumTitles() throws DocumentsException {
         Author instance = new Author("Jordi");
         instance.addTitle("Doc1");
         instance.addTitle("Doc2");
@@ -58,7 +59,7 @@ public class AuthorTest {
     }
 
     @Test
-    public void testAddTitle() {
+    public void testAddTitle() throws DocumentsException {
         Author instance = new Author("Jordi");
         String doc1 = "DocEn";
         String doc2 = "DocCat";
@@ -74,7 +75,7 @@ public class AuthorTest {
     }
 
     @Test
-    public void testDelTitle() {
+    public void testDelTitle() throws DocumentsException {
         Author instance = new Author("Jordi");
         String doc1 = "DocEn";
         String doc2 = "DocCat";

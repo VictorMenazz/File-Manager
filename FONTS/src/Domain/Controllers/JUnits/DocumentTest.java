@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers.JUnits;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.*;
 import FONTS.src.Domain.Controllers.Stubs.ContentStub;
 import org.junit.Test;
@@ -26,8 +27,10 @@ public class DocumentTest {
         try{
             Document d = new Document("Title1", "Auth1","This is test Content","ENG");
         }
-            catch (IOException e) {
+        catch (IOException e) {
             fail(e.getMessage());
+        } catch (DocumentsException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -43,7 +46,7 @@ public class DocumentTest {
     }
 
     @org.junit.Test
-    public void setAuthor() throws IOException {
+    public void setAuthor() throws IOException, DocumentsException {
         //Test initializing way 1
         Content initialContent = new ContentStub();
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
@@ -57,7 +60,7 @@ public class DocumentTest {
     }
 
     @org.junit.Test
-    public void setTitle() throws IOException {
+    public void setTitle() throws IOException, DocumentsException {
         //Test initializing way 1
         Content initialContent = new ContentStub();
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
@@ -72,7 +75,7 @@ public class DocumentTest {
     }
 
     @org.junit.Test
-    public void setContent() throws IOException {
+    public void setContent() throws IOException, DocumentsException {
         //Test initializing way 1
         Content initialContent = new ContentStub();
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
@@ -88,7 +91,7 @@ public class DocumentTest {
     }
 
     @org.junit.Test
-    public void setLanguage() throws IOException {
+    public void setLanguage() throws IOException, DocumentsException {
         //Test initializing way 1
         Content initialContent = new ContentStub();
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
@@ -103,7 +106,7 @@ public class DocumentTest {
     }
 
     @org.junit.Test
-    public void protectDocument() throws IOException {
+    public void protectDocument() throws IOException, DocumentsException {
         //Test initializing way 1
         Content initialContent = new ContentStub();
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
@@ -120,7 +123,7 @@ public class DocumentTest {
         }
 
     @org.junit.Test
-    public void getTitle() throws IOException {
+    public void getTitle() throws IOException, DocumentsException {
         //Test initializing way 1
         Content initialContent = new ContentStub();
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
@@ -133,7 +136,7 @@ public class DocumentTest {
     }
 
     @org.junit.Test
-    public void getAuthor() throws IOException {
+    public void getAuthor() throws IOException, DocumentsException {
         //Test initializing way 1
         Content initialContent = new ContentStub();
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
@@ -146,7 +149,7 @@ public class DocumentTest {
     }
 
     @org.junit.Test
-    public void getContent() throws IOException {
+    public void getContent() throws IOException, DocumentsException {
         //Test initializing way 1
         Content initialContent = new ContentStub();
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
@@ -158,7 +161,7 @@ public class DocumentTest {
     }
 
     @org.junit.Test
-    public void getLanguage() throws IOException {
+    public void getLanguage() throws IOException, DocumentsException {
        //Test initializing way 1
         Content initialContent = new ContentStub();
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
@@ -171,7 +174,7 @@ public class DocumentTest {
     }
 
     @org.junit.Test
-    public void isProtected() throws IOException {
+    public void isProtected() throws IOException, DocumentsException {
         //Test initializing way 1
         Content initialContent = new ContentStub();
         Document d = new Document("Title1", "Author1", initialContent, "ENG");
