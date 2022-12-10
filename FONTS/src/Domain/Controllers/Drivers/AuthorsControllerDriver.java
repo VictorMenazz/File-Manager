@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers.Drivers;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.Author;
 import FONTS.src.Domain.Classes.Content;
 import FONTS.src.Domain.Classes.Document;
@@ -32,7 +33,7 @@ public class AuthorsControllerDriver {
         if (authors.size() == 0) System.out.println("No authors");
     }
 
-    private static int addNAuthors(AuthorsController ctrlAuthors) {
+    private static int addNAuthors(AuthorsController ctrlAuthors) throws DocumentsException {
         System.out.print("Enter the number of Authors to be added:");
         int n = readInputInteger();
         System.out.println();
@@ -51,7 +52,7 @@ public class AuthorsControllerDriver {
         System.out.println("AuthorsController has been created");
     }
 
-    public static void testAddAuthor() {
+    public static void testAddAuthor() throws DocumentsException {
         AuthorsController ctrlAuthors = new AuthorsController();
         System.out.println("List of the names of the authors before adding the Author:");
         showAuthors(ctrlAuthors);
@@ -63,7 +64,7 @@ public class AuthorsControllerDriver {
         showAuthors(ctrlAuthors);
     }
 
-    public static void testDelAuthor() {
+    public static void testDelAuthor() throws DocumentsException {
         AuthorsController ctrlAuthors = new AuthorsController();
         System.out.print("Enter the author name to be added:");
         String newAuthor = readInputString();
@@ -76,7 +77,7 @@ public class AuthorsControllerDriver {
         showAuthors(ctrlAuthors);
     }
 
-    public static void testSize() {
+    public static void testSize() throws DocumentsException {
         AuthorsController ctrlAuthors = new AuthorsController();
         int n = addNAuthors(ctrlAuthors);
         System.out.println("List of the names of the authors after adding " + n + " Authors:");
@@ -84,7 +85,7 @@ public class AuthorsControllerDriver {
         System.out.println("-> There are " + ctrlAuthors.size() + " Authors");
     }
 
-    public static void testSearchAuthorsPrefix() {
+    public static void testSearchAuthorsPrefix() throws DocumentsException {
         AuthorsController ctrlAuthors = new AuthorsController();
         System.out.println("Created a AuthorsController with 0 Authors:");
         int n = addNAuthors(ctrlAuthors);
@@ -104,7 +105,7 @@ public class AuthorsControllerDriver {
         }
     }
 
-    public static void testSearchAuthorDocuments() {
+    public static void testSearchAuthorDocuments() throws DocumentsException {
         AuthorsController ctrlAuthors = new AuthorsController();
         Author aut = new Author("Jordi");
         System.out.println("Jordi doesn't have documents");
@@ -125,7 +126,7 @@ public class AuthorsControllerDriver {
         }
     }
 
-    public static void testAddTitleAuthor() {
+    public static void testAddTitleAuthor() throws DocumentsException {
         AuthorsController ctrlAuthors = new AuthorsController();
         Author aut = new Author("Jordi");
         ctrlAuthors.addAuthor("Jordi", aut);
@@ -141,7 +142,7 @@ public class AuthorsControllerDriver {
         }
     }
 
-    public static void testDelTitleAuthor() {
+    public static void testDelTitleAuthor() throws DocumentsException {
         AuthorsController ctrlAuthors = new AuthorsController();
         Author aut = new Author("Jordi");
         aut.addTitle("testTitle");
@@ -173,7 +174,7 @@ public class AuthorsControllerDriver {
         else System.out.println("The title doesn't belong to the author...");
     }
 
-    public static void getJSON() throws IOException {
+    public static void getJSON() throws IOException, DocumentsException {
         AuthorsController aC = new AuthorsController();
         System.out.println("Introduce Author name:");
         String name = readInputString();
@@ -189,7 +190,7 @@ public class AuthorsControllerDriver {
         System.out.println(aC.saveAuthorsStructure());
     }
 
-    public static void recoverFromJSON() throws IOException {
+    public static void recoverFromJSON() throws IOException, DocumentsException {
         System.out.println("Introduce JSON:");
         String JSON = readInputString();
         AuthorsController aC = new AuthorsController();
@@ -199,7 +200,7 @@ public class AuthorsControllerDriver {
         }
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, DocumentsException {
         //getJSON();
         recoverFromJSON();
         String functions = "0. All\n" +

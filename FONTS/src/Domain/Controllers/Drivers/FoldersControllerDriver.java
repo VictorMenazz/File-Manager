@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers.Drivers;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.Document;
 import FONTS.src.Domain.Classes.Folder;
 import FONTS.src.Domain.Classes.Pair;
@@ -50,7 +51,7 @@ public class FoldersControllerDriver {
         return fCont;
     }
 
-    private static Document initializeDoc() throws IOException {
+    private static Document initializeDoc() throws IOException, DocumentsException {
         System.out.println("Introduce a title for the Document:");
         String title = readInputString();
         System.out.println("Introduce an author for the Document:");
@@ -75,14 +76,14 @@ public class FoldersControllerDriver {
         System.out.println("Root Folder created -> Name: " + fCont.getRoot().getName() + " Docs: " + fCont.getRoot().getDocumentAmount());
         System.out.println();
     }
-    public static void testNewDocument() throws IOException {
+    public static void testNewDocument() throws IOException, DocumentsException {
         FoldersController fCont = initializeFController();
         Document d = initializeDoc();
         fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
         System.out.println("Document added -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Contained: " + fCont.getRoot().documentContained(d.getTitle(), d.getAuthor()));
         System.out.println();
     }
-    public static void testDeleteDocument() throws IOException {
+    public static void testDeleteDocument() throws IOException, DocumentsException {
         FoldersController fCont = initializeFController();
         Document d = initializeDoc();
         fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
@@ -92,7 +93,7 @@ public class FoldersControllerDriver {
         System.out.println("Document added -> Name: " + d.getTitle() + " Author: " + d.getAuthor() + " Contained: " + fCont.getRoot().documentContained(d.getTitle(), d.getAuthor()));
         System.out.println();
     }
-    public static void testModifyContent() throws IOException {
+    public static void testModifyContent() throws IOException, DocumentsException {
         FoldersController fCont = initializeFController();
         Document d = initializeDoc();
         fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
@@ -103,7 +104,7 @@ public class FoldersControllerDriver {
         System.out.println("ModifiedDoc -> Name: " + d.getTitle() + " Author: " + fCont.getDocument(d.getAuthor(), d.getTitle()).get(1) + " Content: " + fCont.getDocument(d.getAuthor(), d.getTitle()).get(2));
         System.out.println();
     }
-    public static void testModifyAuthor() throws IOException {
+    public static void testModifyAuthor() throws IOException, DocumentsException {
         FoldersController fCont = initializeFController();
         Document d = initializeDoc();
         fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
@@ -114,7 +115,7 @@ public class FoldersControllerDriver {
         System.out.println("ModifiedDoc -> Name: " + d.getTitle() + " Author: " + fCont.getDocument(newAuth, d.getTitle()).get(1) + " Content: " + fCont.getDocument(newAuth, d.getTitle()).get(2));
         System.out.println();
     }
-    public static void testModifyTitle() throws IOException {
+    public static void testModifyTitle() throws IOException, DocumentsException {
         FoldersController fCont = initializeFController();
         Document d = initializeDoc();
         fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
@@ -125,14 +126,14 @@ public class FoldersControllerDriver {
         System.out.println("ModifiedDoc -> Name: " + fCont.getDocument(d.getAuthor(),newTitle).get(0) + " Author: " + d.getAuthor() + " Content: " + fCont.getDocument(d.getAuthor(), newTitle).get(2));
         System.out.println();
     }
-    public static void testGetDocument() throws IOException {
+    public static void testGetDocument() throws IOException, DocumentsException {
         FoldersController fCont = initializeFController();
         Document d = initializeDoc();
         fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
         System.out.println("Document -> Name: " + fCont.getDocument(d.getAuthor(),d.getTitle()).get(0) + " Author: " + fCont.getDocument(d.getAuthor(),d.getTitle()).get(1) + " Content: " + fCont.getDocument(d.getAuthor(),d.getTitle()).get(2));
         System.out.println();
     }
-    public static void testProtectDocument() throws IOException {
+    public static void testProtectDocument() throws IOException, DocumentsException {
         FoldersController fCont = initializeFController();
         Document d = initializeDoc();
         fCont.newDocument(d.getAuthor(), d.getTitle(), d.getContent(), d.getLanguage());
@@ -155,7 +156,7 @@ public class FoldersControllerDriver {
 
 
     //Function for testing purposes only
-    public static String getOutputsJSON() throws IOException {
+    public static String getOutputsJSON() throws IOException, DocumentsException {
         FoldersController FC = initializeFController();
         System.out.println("Introduce the number of Output documents");
         int n = readInputInteger();
@@ -194,7 +195,7 @@ public class FoldersControllerDriver {
         FC.recoverFoldersStructure(data);
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, DocumentsException {
         String functions = "0. All\n" +
                 "1. testFoldersController\n" +
                 "2. testGetRoot\n" +

@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers.Drivers;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.Document;
 import FONTS.src.Domain.Classes.Folder;
 import FONTS.src.Domain.Controllers.DomainController;
@@ -30,7 +31,7 @@ public class DomainControllerDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
     private static Folder rootFolder;
-    private static Document initializeDocument() throws IOException {
+    private static Document initializeDocument() throws IOException, DocumentsException {
         System.out.println("Introduce a title for the Document:");
         String title = readInputString();
         System.out.println("Introduce an author for the Document:");
@@ -43,7 +44,7 @@ public class DomainControllerDriver {
         return doc;
     }
 
-    private static void initializeFolder() throws IOException {
+    private static void initializeFolder() throws IOException, DocumentsException {
         Folder f = new Folder(0,"rootFolder");
         Document d = initializeDocument();
         f.createFolder("subFolder1",0);
@@ -220,7 +221,7 @@ public class DomainControllerDriver {
         System.out.println("Document's text: " + d.get(2));
         System.out.println();
     }
-    public static void testAppearanceSearch() throws IOException {
+    public static void testAppearanceSearch() throws IOException, DocumentsException {
         initializeFolder();
         DomainController dC = new DomainController(rootFolder);
         System.out.println("Title of the document to get appearance documents:");
@@ -250,7 +251,7 @@ public class DomainControllerDriver {
         }
         System.out.println();
     }
-    public static void testDocumentsQuery() throws IOException {
+    public static void testDocumentsQuery() throws IOException, DocumentsException {
         initializeFolder();
         DomainController dC = new DomainController(rootFolder);
         System.out.println("Introduce words to look for:");

@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers.Drivers;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.Content;
 import FONTS.src.Domain.Classes.Document;
 import FONTS.src.Domain.Classes.Folder;
@@ -62,7 +63,7 @@ public class FolderDriver {
     }
 
     /** @brief Check the addition of a Document. */
-    public static void testAddDocument() throws IOException {
+    public static void testAddDocument() throws IOException, DocumentsException {
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the Document:");
         String language = readInputString();
         System.out.println("Introduce the title:");
@@ -100,7 +101,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    public static void testAddNonConstructedDocument() throws IOException {
+    public static void testAddNonConstructedDocument() throws IOException, DocumentsException {
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the Document:");
         String language = readInputString();
         System.out.println("Introduce the title:");
@@ -123,7 +124,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    public static void testDelDocument() throws IOException {
+    public static void testDelDocument() throws IOException, DocumentsException {
         Folder f = new Folder(1, "Testname");
 
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the Document:");
@@ -145,7 +146,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    public static void testModifyContent() throws IOException {
+    public static void testModifyContent() throws IOException, DocumentsException {
         //Testing a Document initialized without Content, plain text.
         System.out.println("Checking initializing method 1:");
         Folder f = new Folder(1, "Folder1");
@@ -173,7 +174,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    public static void testModifyAuthor() throws IOException {
+    public static void testModifyAuthor() throws IOException, DocumentsException {
         //Testing a Document initialized without Content, plain text.
         System.out.println("Checking initializing method 1:");
         Folder f = new Folder(1, "Folder1");
@@ -201,7 +202,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    public static void testModifyTitle() throws IOException {
+    public static void testModifyTitle() throws IOException, DocumentsException {
 //Testing a Document initialized without Content, plain text.
         System.out.println("Checking initializing method 1:");
         Folder f = new Folder(1, "Folder1");
@@ -229,7 +230,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    public static void testProtectDocument() throws IOException {
+    public static void testProtectDocument() throws IOException, DocumentsException {
 //Testing a Document initialized without Content, plain text.
         System.out.println("Checking initializing method 1:");
         Folder f = new Folder(1, "Folder1");
@@ -268,7 +269,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    public static void testGetDocumentsName() throws IOException {
+    public static void testGetDocumentsName() throws IOException, DocumentsException {
         System.out.println("Introduce number of Documents:");
         int number = readInputInteger();
         Folder f = new Folder(1, "Folder");
@@ -293,7 +294,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    public static void testGetDocumentAmount() throws IOException {
+    public static void testGetDocumentAmount() throws IOException, DocumentsException {
         System.out.println("Introduce number of Documents:");
         int number = readInputInteger();
         Folder f = new Folder(1, "Folder");
@@ -316,7 +317,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    public static void testGetDocument() throws IOException {
+    public static void testGetDocument() throws IOException, DocumentsException {
         Folder f = new Folder(1,"Folder");
         System.out.println("New Document");
         System.out.println("Title:");
@@ -336,7 +337,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    public static void testGetMapsDocs() throws IOException {
+    public static void testGetMapsDocs() throws IOException, DocumentsException {
         Folder f = new Folder(1,"Test");
         System.out.println("New Document");
         System.out.println("Title:");
@@ -379,7 +380,7 @@ public class FolderDriver {
         }
     }
 
-    public static void testDocumentContained() throws IOException {
+    public static void testDocumentContained() throws IOException, DocumentsException {
         System.out.println("Introduce number of Documents:");
         int number = readInputInteger();
         Folder f = new Folder(1, "Folder");
@@ -411,7 +412,7 @@ public class FolderDriver {
 
 
     //Private functions not need to be proved.
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, DocumentsException {
         String functions = "0. All\n" +
                 "1. testFolder\n" +
                 "2. testSetFolderName\n" +

@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers.Drivers;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.Author;
 
 import java.util.ArrayList;
@@ -19,7 +20,7 @@ import java.util.regex.Pattern;
 public class AuthorDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
-    private static void addNtitles(Author aut) {
+    private static void addNtitles(Author aut) throws DocumentsException {
         System.out.print("Enter the number of titles to be added:");
         int n = readInputInteger();
         System.out.println("");
@@ -60,7 +61,7 @@ public class AuthorDriver {
         System.out.println("Author's name: " + aut.getName());
     }
 
-    public static void testGetTitles() {
+    public static void testGetTitles() throws DocumentsException {
         Author aut = initialCreation1();
         addNtitles(aut);
         ArrayList<String> titles = aut.getTitles();
@@ -71,13 +72,13 @@ public class AuthorDriver {
         System.out.println("-------");
     }
 
-    public static void testGetNumTitles() {
+    public static void testGetNumTitles() throws DocumentsException {
         Author aut = new Author("Jordi");
         addNtitles(aut);
         System.out.println(aut.getNumTitles() + " titles have been added");
     }
 
-    public static void testAddTitle() {
+    public static void testAddTitle() throws DocumentsException {
         Author aut = new Author("Jordi");
         System.out.print("Enter the title to be added:");
         String title = readInputString();
@@ -88,7 +89,7 @@ public class AuthorDriver {
         }
     }
 
-    public static void testDelTitle() {
+    public static void testDelTitle() throws DocumentsException {
         Author aut = new Author("Jordi");
         System.out.print("Enter the title to be added:");
         String title = readInputString();
@@ -116,7 +117,7 @@ public class AuthorDriver {
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws DocumentsException {
         String functions = "0. All\n" +
                 "1. testAuthorConstruct\n" +
                 "2. testSetName\n" +

@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers.Drivers;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.Document;
 import FONTS.src.Domain.Classes.Folder;
 import FONTS.src.Domain.Controllers.SearchController;
@@ -25,7 +26,7 @@ public class SearchControllerDriver {
 
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
-    private static Document initializeDocument() throws IOException {
+    private static Document initializeDocument() throws IOException, DocumentsException {
         System.out.println("Introduce a title for the Document:");
         String title = readInputString();
         System.out.println("Introduce an author for the Document:");
@@ -38,7 +39,7 @@ public class SearchControllerDriver {
         return doc;
     }
 
-    private static Folder initializeFolder() throws IOException {
+    private static Folder initializeFolder() throws IOException, DocumentsException {
         Folder f = new Folder(0,"rootFolder");
         Document d = initializeDocument();
         f.createFolder("subFolder1",0);
@@ -128,7 +129,7 @@ public class SearchControllerDriver {
     }
 
 
-    public static void testAppearanceSearch() throws IOException {
+    public static void testAppearanceSearch() throws IOException, DocumentsException {
         SearchController sC = initialCreation();
         Folder f = initializeFolder();
         System.out.println("Enter the title of the document:");
@@ -147,7 +148,7 @@ public class SearchControllerDriver {
         System.out.println();
     }
 
-    public static void testSearchDocument() throws IOException {
+    public static void testSearchDocument() throws IOException, DocumentsException {
         SearchController sC = initialCreation();
         Folder f = initializeFolder();
         System.out.println("Introduce words to look for:");

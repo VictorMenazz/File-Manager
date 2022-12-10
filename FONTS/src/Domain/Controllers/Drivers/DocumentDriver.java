@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers.Drivers;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.Content;
 import FONTS.src.Domain.Classes.Document;
 
@@ -22,7 +23,7 @@ import java.util.regex.Pattern;
 public class DocumentDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
-    public static Document initialCreation1() throws IOException {
+    public static Document initialCreation1() throws IOException, DocumentsException {
         System.out.println("Introduce a title for the Document:");
         String title = readInputString();
         System.out.println("Introduce an author for the Document:");
@@ -35,14 +36,14 @@ public class DocumentDriver {
         return doc;
     }
 
-    public static void testDocumentConstruct1() throws IOException {
+    public static void testDocumentConstruct1() throws IOException, DocumentsException {
         //Testing initializing way1
         Document d = initialCreation1();
         System.out.println("Document created -> Title:" + d.getTitle() + " Author:" + d.getAuthor());
         System.out.println();
     }
 
-    public static void testDocumentConstruct2() throws IOException {
+    public static void testDocumentConstruct2() throws IOException, DocumentsException {
         //Testing initializing way1
         System.out.println("Introduce a title for the Document:");
         String title = readInputString();
@@ -60,7 +61,7 @@ public class DocumentDriver {
         System.out.println();
     }
 
-    public static void testSetAuthor() throws IOException {
+    public static void testSetAuthor() throws IOException, DocumentsException {
         Document d = initialCreation1();
         System.out.println("Introduce the new Author for the Document:");
         String newAuth = readInputString();
@@ -69,7 +70,7 @@ public class DocumentDriver {
         System.out.println();
     }
 
-    public static void testSetTitle() throws IOException {
+    public static void testSetTitle() throws IOException, DocumentsException {
         Document d = initialCreation1();
         System.out.println("Introduce the new Title for the Document:");
         String newTitle = readInputString();
@@ -78,7 +79,7 @@ public class DocumentDriver {
         System.out.println();
     }
 
-    public static void testSetContent() throws IOException {
+    public static void testSetContent() throws IOException, DocumentsException {
         Document d = initialCreation1();
         System.out.println("Introduce the new Content for the Document:");
         String newCont = readContent();
@@ -89,7 +90,7 @@ public class DocumentDriver {
         System.out.println();
     }
 
-    public static void testSetLanguage() throws IOException {
+    public static void testSetLanguage() throws IOException, DocumentsException {
         Document d = initialCreation1();
         System.out.println("Introduce the new Language for the Document:");
         String newLang = readInputString();
@@ -98,7 +99,7 @@ public class DocumentDriver {
         System.out.println();
     }
 
-    public static void testProtectDocument() throws IOException {
+    public static void testProtectDocument() throws IOException, DocumentsException {
         Document d = initialCreation1();
         System.out.println("Introduce the password for the Document:");
         String passw = readInputString();
@@ -107,32 +108,32 @@ public class DocumentDriver {
         System.out.println();
     }
 
-    public static void testGetTitle() throws IOException {
+    public static void testGetTitle() throws IOException, DocumentsException {
         Document d = initialCreation1();
         System.out.println("Title: " + d.getTitle());
         System.out.println();
     }
 
-    public static void testGetAuthor() throws IOException {
+    public static void testGetAuthor() throws IOException, DocumentsException {
         Document d = initialCreation1();
         System.out.println("Author: " + d.getTitle());
         System.out.println();
     }
 
-    public static void testGetContent() throws IOException {
+    public static void testGetContent() throws IOException, DocumentsException {
         Document d = initialCreation1();
         System.out.println("Content: " + d.getContent());
         System.out.println();
     }
 
-    public static void testGetLanguage() throws IOException {
+    public static void testGetLanguage() throws IOException, DocumentsException {
         Document d = initialCreation1();
         System.out.println("Language: " + d.getLanguage());
         System.out.println();
     }
 
 
-    public static void testContentSearch() throws IOException {
+    public static void testContentSearch() throws IOException, DocumentsException {
         Document d = initialCreation1();
         System.out.println("Checking frequency internal vector:");
         HashMap<String,Integer> docMap = d.contentSearch();
@@ -142,7 +143,7 @@ public class DocumentDriver {
         System.out.println();
     }
 
-    public static void testIsProtected() throws IOException {
+    public static void testIsProtected() throws IOException, DocumentsException {
         Document d = initialCreation1();
         System.out.println("Document Status, Protected: " + d.isProtected());
         System.out.println("Introduce new password:");
@@ -153,7 +154,7 @@ public class DocumentDriver {
 
 
     //Private functions not need to be proved.
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, DocumentsException {
         String functions = "0. All\n" +
                 "1. testDocumentConstruct1\n" +
                 "2. testDocumentConstruct2\n" +
