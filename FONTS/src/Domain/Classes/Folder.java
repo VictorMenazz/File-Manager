@@ -1,10 +1,12 @@
 package FONTS.src.Domain.Classes;
 
+import FONTS.src.DocumentsException;
 import com.google.gson.Gson;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
+import javax.print.Doc;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -136,9 +138,14 @@ public class Folder {
      * @param lang, Represents the Language of the Document.
      * @throws  IOException
      * */
-    public void addNonConstructedDocument(String authorName, String title, String text, String lang) throws IOException {
-        Document doc = new Document(title, authorName, text, lang);
-        this.addDocument(doc);
+    public void addNonConstructedDocument(String authorName, String title, String text, String lang) throws IOException, DocumentsException {
+        try {
+            Document doc = new Document(title, authorName, text, lang);
+            this.addDocument(doc);
+        }
+        catch (DocumentsException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -146,12 +153,16 @@ public class Folder {
      * @param authorName, References to the name of the Document's Author
      * @param title, References to the Document's title
      */
-    public void delDocument(String authorName, String title) {
+    public void delDocument(String authorName, String title) throws DocumentsException {
         Pair<String, String> docKey = new Pair(title, authorName);
         if (documents.containsKey(docKey)) {
             documents.remove(docKey);
         }
-        // exception the document you are trying to delete does not exist
+        else {
+            // exception the document you are trying to delete does not exist
+            throw new DocumentsException("Attempt to delete a document that doesn't exist");
+        }
+
     }
 
     /**

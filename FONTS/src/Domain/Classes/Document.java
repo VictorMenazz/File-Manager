@@ -1,5 +1,7 @@
 package FONTS.src.Domain.Classes;
 
+import FONTS.src.DocumentsException;
+
 import java.io.IOException;
 import java.util.HashMap;
 /**
@@ -68,7 +70,8 @@ public class Document {
          * @param c, Represents the content of a Document.
          * @param lang, Represents the text language of the Document.
          * */
-        public Document(String ttl, String auth, Content c, String lang){
+        public Document(String ttl, String auth, Content c, String lang) throws DocumentsException {
+            if (!lang.equals("CAT") && !lang.equals("ESP") && !lang.equals("ENG")) throw new DocumentsException("Invalid language");
             title = ttl;
             author = auth;
             cont = c;
@@ -83,7 +86,8 @@ public class Document {
          * @param text, Represents text conforming the Content of a Document.
          * @param lang, Represents the text language of the Document.
          * */
-        public Document (String ttl, String auth, String text, String lang) throws IOException {
+        public Document (String ttl, String auth, String text, String lang) throws IOException, DocumentsException {
+            if (!lang.equals("CAT") && !lang.equals("ESP") && !lang.equals("ENG")) throw new DocumentsException("Invalid language");
             title = ttl;
             author = auth;
             language = lang;
@@ -120,7 +124,8 @@ public class Document {
          * @brief Set the Language of a Document.
          * @param lang, String that will be allocated to the Language of this Document.
          * */
-        public void setLanguage(String lang){
+        public void setLanguage(String lang) throws DocumentsException {
+            if (!lang.equals("CAT") && !lang.equals("ESP") && !lang.equals("ENG")) throw new DocumentsException("Invalid language");
             language = lang;
         }
 

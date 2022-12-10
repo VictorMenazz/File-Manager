@@ -1,5 +1,7 @@
 package FONTS.src.Domain.Classes;
 
+import FONTS.src.DocumentsException;
+
 import java.util.ArrayList;
 /**
  * @file Author.java
@@ -35,7 +37,10 @@ public class Author {
      * @brief Add a title document to the Author
      * @param docTitle title of the Document we add
      */
-    public void addTitle(String docTitle) {
+    public void addTitle(String docTitle) throws DocumentsException {
+        if (docs.contains(docTitle)) {
+            throw new DocumentsException("Author already has a document with this title");
+        }
         docs.add(docTitle);
     }
 
@@ -43,7 +48,10 @@ public class Author {
      * @brief Deletes a title document of the Author
      * @param docTitle References to the title to be deleted
      */
-    public void delTitle(String docTitle) {
+    public void delTitle(String docTitle) throws DocumentsException {
+        if (!docs.contains(docTitle)) {
+            throw new DocumentsException("Attempt to de-assign a document to an author who doesn't own it");
+        }
         docs.remove(docTitle);
     }
 
