@@ -1,10 +1,12 @@
 
 package FONTS.src.Domain.Controllers;
 import FONTS.src.Data.DataController;
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.*;
 import FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver;
 import com.google.gson.Gson;
 
+import javax.print.Doc;
 import java.io.IOException;
 import java.util.*;
 
@@ -110,8 +112,13 @@ public class DomainController {
      * @param lang document language
      */
     public void newDocument(String authorName, String title, String text, String lang) throws IOException {
-        folders.newDocument(authorName, title, text, lang);
-        ctrlAuthors.addTitleAuthor(authorName, title);
+        try {
+            folders.newDocument(authorName, title, text, lang);
+            ctrlAuthors.addTitleAuthor(authorName, title);
+        }
+        catch (DocumentsException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -122,22 +129,28 @@ public class DomainController {
      * @param flag if it's 0,
      */
     public void modifyDocument(String authorName, String title, String newData, int flag) throws IOException {
-        /** Switch that differs the many possibilities to modify a Document. **/
-        switch (flag) {
-            case 0:
-                folders.modifyAuthor(authorName, title, newData);
-                ctrlAuthors.delTitleAuthor(authorName, title);
-                ctrlAuthors.addTitleAuthor(newData, title);
-                break;
-            case 1:
-                folders.modifyTitle(authorName, title, newData);
-                ctrlAuthors.delTitleAuthor(authorName, title);
-                ctrlAuthors.addTitleAuthor(authorName, newData);
-                break;
-            case 2:
-                folders.modifyContent(authorName, title, newData);
-                break;
+        try {
+            /** Switch that differs the many possibilities to modify a Document. **/
+            switch (flag) {
+                case 0:
+                    folders.modifyAuthor(authorName, title, newData);
+                    ctrlAuthors.delTitleAuthor(authorName, title);
+                    ctrlAuthors.addTitleAuthor(newData, title);
+                    break;
+                case 1:
+                    folders.modifyTitle(authorName, title, newData);
+                    ctrlAuthors.delTitleAuthor(authorName, title);
+                    ctrlAuthors.addTitleAuthor(authorName, newData);
+                    break;
+                case 2:
+                    folders.modifyContent(authorName, title, newData);
+                    break;
+            }
         }
+        catch (DocumentsException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**
@@ -146,7 +159,13 @@ public class DomainController {
      * @return Arraylist of a documents titles
      */
     public ArrayList<String> authorDocuments(String authorName) {
-        return ctrlAuthors.searchAuthorDocuments(authorName);
+        ArrayList<String> result = new ArrayList<String>();
+        try {
+            result = ctrlAuthors.searchAuthorDocuments(authorName);
+            return result;
+        }
+        catch (DocumentsException e) { e.printStackTrace(); }
+        return result;
     }
 
     /**
@@ -249,9 +268,16 @@ public class DomainController {
         //comunicacion con capa data
         // FALTA ELIMINAR EL FITXER
 
-        folders.deleteDocument(authorName, title);
-        // if Author runs out of documents, it's deleted
-        ctrlAuthors.delTitleAuthor(authorName, title);
+        try {
+            folders.deleteDocument(authorName, title);
+            // if Author runs out of documents, it's deleted
+
+            ctrlAuthors.delTitleAuthor(authorName, title);
+        }
+        catch (DocumentsException e) {
+            e.printStackTrace();
+        }
+
     }
 
     /**

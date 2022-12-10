@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.Document;
 import FONTS.src.Domain.Classes.Folder;
 import com.google.gson.Gson;
@@ -58,7 +59,10 @@ public class FoldersController {
      * @throws IOException
      * */
     public void newDocument(String authorName, String title, String text, String lang) throws IOException {
-        rootFolder.addNonConstructedDocument(authorName, title, text, lang);
+        try {
+            rootFolder.addNonConstructedDocument(authorName, title, text, lang);
+        }
+        catch (DocumentsException e) { e.printStackTrace(); }
     }
 
     /**
@@ -128,7 +132,12 @@ public class FoldersController {
      * @param title, References to the Document's title
      */
     public void deleteDocument(String autorName, String title) {
-        rootFolder.delDocument(autorName, title);
+        try {
+            rootFolder.delDocument(autorName, title);
+        }
+        catch (DocumentsException e) {
+            e.printStackTrace();
+        }
     }
 
     /**

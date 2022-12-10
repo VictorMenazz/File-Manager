@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.Author;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -33,15 +34,23 @@ public class AuthorsController {
      * @param name, name of the author to add
      * @param a, Instance of the author
      */
-    public void addAuthor(String name, Author a) {
-        authors.put(name, a);
+    public void addAuthor(String name, Author a) throws DocumentsException {
+        if (!authors.containsKey(name)) {
+            authors.put(name, a);
+        }
+        else {
+            throw new DocumentsException("There is already an Author with this name");
+        }
     }
 
     /**
      * @brief Remove Author of authors list
      * @param name, name of the author to delete
      */
-    public void delAuthor(String name) {
+    public void delAuthor(String name) throws DocumentsException {
+        if (!authors.containsKey(name)) {
+            throw new DocumentsException("Attempt to remove an author who doesn't exist");
+        }
         authors.remove(name);
     }
 
@@ -85,11 +94,11 @@ public class AuthorsController {
      * @param authorName, References to the name of the Author
      * @return A list of document titles of a specific Author
      */
-    public ArrayList<String> searchAuthorDocuments(String authorName) {
-        if (authors.containsKey(authorName)) {
-            return authors.get(authorName).getTitles();
+    public ArrayList<String> searchAuthorDocuments(String authorName) throws DocumentsException {
+        if (!authors.containsKey(authorName)) {
+            throw new DocumentsException("There is no author with this name");
         }
-        return null;
+        return authors.get(authorName).getTitles();
     }
 
     /**
@@ -97,12 +106,17 @@ public class AuthorsController {
      * @param authorName, References to the Author's name
      * @param title, References to the title of the document
      */
-    public void addTitleAuthor(String authorName, String title) {
+    public void addTitleAuthor(String authorName, String title) throws DocumentsException {
         // if the Author did not exist, it is created
         if (!authors.containsKey(authorName)) {
             authors.put(authorName, new Author(authorName));
         }
-        authors.get(authorName).addTitle(title);
+        try {
+            authors.get(authorName).addTitle(title);
+        }
+        catch (DocumentsException e) {
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -110,13 +124,21 @@ public class AuthorsController {
      * @param authorName, References to the Author's name
      * @param title, References to the title of the document
      */
-    public void delTitleAuthor(String authorName, String title) {
+    public void delTitleAuthor(String authorName, String title) throws DocumentsException {
         if (authors.containsKey(authorName)) {
-            authors.get(authorName).delTitle(title);
-            // if the Author runs out of documents, it is deleted
-            if (authors.get(authorName).getNumTitles() == 0) {
-                authors.remove(authorName);
+            try {
+                authors.get(authorName).delTitle(title);
+                // if the Author runs out of documents, it is deleted
+                if (authors.get(authorName).getNumTitles() == 0) {
+                    authors.remove(authorName);
+                }
             }
+            catch (DocumentsException e) {
+                e.printStackTrace();
+            }
+        }
+        else {
+            throw new DocumentsException("There is no author with this name");
         }
     }
 
