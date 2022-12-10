@@ -1,5 +1,6 @@
 package FONTS.src.Domain.Controllers.Stubs;
 
+import FONTS.src.DocumentsException;
 import FONTS.src.Domain.Classes.Document;
 
 /**
@@ -15,7 +16,7 @@ import FONTS.src.Domain.Classes.Document;
 
 public class DocumentStub extends Document {
 
-    public DocumentStub() {
+    public DocumentStub() throws DocumentsException {
         super("TitleTest","AuthorTest", new ContentStub(), "ENG");
     }
 
