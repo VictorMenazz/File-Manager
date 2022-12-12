@@ -198,19 +198,25 @@ public class DomainController {
         }
     */
 
-    /*
-    public ArrayList<Document> o Path inicial? INITIALQUERY()
-    My recommendation  is:
 
-    public ArrayList<String> initialQueryAuthors(){
+    //public ArrayList<Document> o Path inicial? INITIALQUERY()
+    //My recommendation  is:
+
+    public ArrayList<String> getDocumentAuthors(int folderIdentifier){
+        return null;
     }
 
-    public ArrayList<String> initialQueryTitle(){
+    public ArrayList<String> getDocumentTitles(int folderIdentifier){
+        return null;
     }
 
-    It would return an ArrayList of n elements with the i elements of the first vector related with the i
-    element of the other vector.
-     */
+    public HashMap<Integer, String> getSubFolders(int folderIdentifier){
+        return null;
+    }
+
+    //It would return an ArrayList of n elements with the i elements of the first vector related with the i
+    //element of the other vector.
+
 
     /**
      * @brief Search of k documents that appears to specific document
