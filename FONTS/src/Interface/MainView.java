@@ -4,7 +4,6 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileSystemView;
-import javax.swing.tree.DefaultTreeModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -29,11 +28,6 @@ public class MainView {
     private FileSystemView fileSystemView;
 
     /**
-     * Currently selected File
-     */
-    private File currentFile;
-
-    /**
      * Main GUI container
      */
     private JPanel panel;
@@ -53,8 +47,6 @@ public class MainView {
      */
     private ListSelectionListener listSelectionListener;
 
-    private boolean cellSizesSet = false;
-    private int rowIconPadding = 6;
     private JFrame mainView;
 
     /**
@@ -70,9 +62,7 @@ public class MainView {
     private JButton help;
 
     private JLabel fileName;
-    private JTextField path;
-    private JLabel date;
-    private JLabel size;
+    private JLabel author;
     private JRadioButton isDirectory;
     private JRadioButton isFile;
 
@@ -91,6 +81,11 @@ public class MainView {
             fileSystemView = FileSystemView.getFileSystemView();
 
             JPanel detailView = new JPanel(new BorderLayout(3,3));
+
+            //String[(authors.size()+ subfolders.size())][3] data;
+
+
+            String[] columnNames = {"Type", "Name", "Author"};
 
             table = new JTable();
             table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -116,16 +111,10 @@ public class MainView {
             fileDetailsLabels.add(new JLabel("File", JLabel.TRAILING));
             fileName = new JLabel();
             fileDetailsValues.add(fileName);
-            fileDetailsLabels.add(new JLabel("Path/name", JLabel.TRAILING));
-            path = new JTextField(5);
-            path.setEditable(false);
-            fileDetailsValues.add(path);
-            fileDetailsLabels.add(new JLabel("Last Modified", JLabel.TRAILING));
-            date = new JLabel();
-            fileDetailsValues.add(date);
-            fileDetailsLabels.add(new JLabel("File size", JLabel.TRAILING));
-            size = new JLabel();
-            fileDetailsValues.add(size);
+            fileDetailsLabels.add(new JLabel("Author", JLabel.TRAILING));
+            author = new JLabel();
+            fileDetailsValues.add(author);
+
             fileDetailsLabels.add(new JLabel("Type", JLabel.TRAILING));
 
             JPanel flags = new JPanel(new FlowLayout(FlowLayout.LEADING,4,0));
@@ -138,10 +127,6 @@ public class MainView {
             flags.add(isFile);
             fileDetailsValues.add(flags);
 
-            int count = fileDetailsLabels.getComponentCount();
-            for (int ii=0; ii<count; ii++) {
-                fileDetailsLabels.getComponent(ii).setEnabled(false);
-            }
 
             JToolBar toolBar = new JToolBar();
             // mnemonics stop working in a floated toolbar
