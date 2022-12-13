@@ -3,6 +3,7 @@ package FONTS.src.Interface;
 import javax.swing.*;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.plaf.metal.OceanTheme;
+import javax.swing.undo.UndoManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -131,6 +132,7 @@ public class ModifyContentDocument implements ActionListener {
         else if(s.equals("Save")) {
 
         }
+
         else if(s.equals("Import")) {
             //Create an object of JFileChooser class
             JFileChooser fc = new JFileChooser("File:");
@@ -220,7 +222,6 @@ public class ModifyContentDocument implements ActionListener {
         }
 
         else if(s.equals("Undo")) {
-
         }
 
         else if(s.equals("Redo")) {

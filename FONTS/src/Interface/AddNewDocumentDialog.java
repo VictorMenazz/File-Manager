@@ -36,4 +36,7 @@ public class AddNewDocumentDialog {
     public AddNewDocumentDialog() {
 
     }
+
+    public
+
 }
