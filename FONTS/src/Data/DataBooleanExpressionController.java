@@ -1,5 +1,7 @@
 package FONTS.src.Data;
 
+import com.google.gson.Gson;
+
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -40,19 +42,8 @@ public class DataBooleanExpressionController {
      * @brief Retorna el último historial guardado en formato string
      */
     public String loadHistorial() {
-        StringBuilder result = new StringBuilder();
-        try {
-            File file = new File(path);
-            Scanner scan = new Scanner(file);
-            while (scan.hasNextLine()) {
-                String aux = scan.nextLine();
-                result.append(aux);
-                if (scan.hasNextLine()) result.append("\n");
-            }
-            scan.close();
-        } catch (FileNotFoundException e) {
-            return "";  //Devolvemos string vacío
-        }
-        return result.toString();
+        File file = new File(path);
+        return file.toString();
     }
+
 }

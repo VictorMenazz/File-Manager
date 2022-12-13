@@ -35,6 +35,11 @@ public class SearchController {
         listBoolExps = new LinkedHashSet<>();
     }
 
+    public Boolean setListBoolExps(LinkedHashSet<String> list) {
+        listBoolExps = list;
+        return true;
+    }
+
     /**
      * @brief Saves a boolean expression to the history.
      * @param boolExp, string with the boolean expression.

@@ -42,7 +42,7 @@ public class DataControllerDriver {
         System.out.println(dC.restoreAuthors());
     }
 
-    public static Boolean testSaveHistoral() {
+    public static void testSaveHistorial() {
         DataController dataC = new DataController();
         Scanner scan = new Scanner(System.in);
         System.out.println("Introduce a 3 Boolean Expressions:");
@@ -55,7 +55,19 @@ public class DataControllerDriver {
 
         Gson gson = new Gson();
         String result = gson.toJson(historial);
-        return dataC.saveHistorial(result);
+        dataC.saveHistorial(result);
+    }
+
+    public static void testLoadHistorial() {
+        testSaveHistorial();
+
+        DataController dataC = new DataController();
+        String result = dataC.loadHistorial();
+
+        Gson gson = new Gson();
+        LinkedHashSet<String> historial = gson.fromJson(result, LinkedHashSet.class);
+        for (String h : historial) System.out.println(h);
+
     }
 
     public static void main(String[] args) throws Exception {
@@ -64,6 +76,7 @@ public class DataControllerDriver {
         //testRecoverFolders();
         //testSaveDocuments();
         //System.out.println(testSaveHistoral());
+        testLoadHistorial();
     }
 
     private static String readInputString() {

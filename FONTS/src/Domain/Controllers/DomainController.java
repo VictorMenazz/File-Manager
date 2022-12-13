@@ -350,4 +350,12 @@ public class DomainController {
         return data.saveHistorial(result);
     }
 
+    public void loadHistorial() {
+        Gson gson = new Gson();
+        String list = data.loadHistorial();
+        LinkedHashSet<String> result = gson.fromJson(list, LinkedHashSet.class);
+        ctrlSearch.setListBoolExps(result);
+    }
+
+
 }

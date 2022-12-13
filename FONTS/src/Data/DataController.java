@@ -70,4 +70,8 @@ public class DataController {
     public Boolean saveHistorial(String jsonHistorial){
         return ctrlBoolean.saveHistorial(jsonHistorial);
     }
+
+    public String loadHistorial(){
+        return ctrlBoolean.loadHistorial();
+    }
 }
