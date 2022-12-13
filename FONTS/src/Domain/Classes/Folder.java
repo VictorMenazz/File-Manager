@@ -549,5 +549,47 @@ public class Folder {
             subFolders.put(foldId, subFolder);
         }
     }
+
+    public HashMap<Integer, String> getSubFolders(int folderIdentifier) {
+        if (folderIdentifier == this.folderId){
+            HashMap<Integer, String> result = new HashMap<Integer, String>();
+            for (Folder f : subFolders.values()) {
+                result.put(f.folderId, f.folderName);
+            }
+            return result;
+        }
+        else{
+            int nextId = getNextFolderParent(folderIdentifier);
+            return getSubFolders(nextId);
+        }
+    }
+
+    public ArrayList<String> getDocumentTitles(int folderIdentifier) {
+        if (folderIdentifier == this.folderId){
+            ArrayList<String> result = new ArrayList<String>();
+            for (Pair<String, String> doc : documents.keySet()) {
+                result.add(doc.first);
+            }
+            return result;
+        }
+        else{
+            int nextId = getNextFolderParent(folderIdentifier);
+            return getDocumentTitles(nextId);
+        }
+    }
+
+    public ArrayList<String> getDocumentAuthors(int folderIdentifier) {
+        if (folderIdentifier == this.folderId){
+            ArrayList<String> result = new ArrayList<String>();
+            for (Pair<String, String> doc : documents.keySet()) {
+                result.add(doc.second);
+            }
+            return result;
+        }
+        else{
+            int nextId = getNextFolderParent(folderIdentifier);
+            return getDocumentTitles(nextId);
+        }
+    }
 }
 

@@ -11,6 +11,7 @@ import com.google.gson.JsonParser;
 import java.io.IOException;
 import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Set;
 
 /**
@@ -175,4 +176,15 @@ public class FoldersController {
         rootFolder.restoreDocs(detail);
     }
 
+    public ArrayList<String> getDocumentAuthors(int folderIdentifier) {
+        return rootFolder.getDocumentAuthors(folderIdentifier);
+    }
+
+    public ArrayList<String> getDocumentTitles(int folderIdentifier) {
+        return rootFolder.getDocumentTitles(folderIdentifier);
+    }
+
+    public HashMap<Integer, String> getSubFolders(int folderIdentifier) {
+        return rootFolder.getSubFolders(folderIdentifier);
+    }
 }

@@ -203,15 +203,15 @@ public class DomainController {
     //My recommendation  is:
 
     public ArrayList<String> getDocumentAuthors(int folderIdentifier){
-        return null;
+        return folders.getDocumentAuthors(folderIdentifier);
     }
 
     public ArrayList<String> getDocumentTitles(int folderIdentifier){
-        return null;
+        return folders.getDocumentTitles(folderIdentifier);
     }
 
     public HashMap<Integer, String> getSubFolders(int folderIdentifier){
-        return null;
+        return folders.getSubFolders(folderIdentifier);
     }
 
     //It would return an ArrayList of n elements with the i elements of the first vector related with the i
