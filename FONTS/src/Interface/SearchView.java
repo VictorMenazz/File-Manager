@@ -33,7 +33,7 @@ public class SearchView {
         String[] types = {"Titles list", "Authors list", "Specific document", "Documents list"};
 
         JButton b1 = new JButton("Titles list");
-        JButton b2 = new JButton("Authors list")
+        JButton b2 = new JButton("Authors list");
         //queda acabar de posar la resta per les queries
 
 
