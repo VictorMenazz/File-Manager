@@ -12,13 +12,9 @@ public class Main {
         if (Integer.parseInt(args[0]) == 1)
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                   // CtrlUI ui = CtrlUI.getInstance();
-                    //ui.run();
+                    PresentationController ctrlPres = PresentationController.getInstance();
+                    ctrlPres.run();
                 }
             });
-        else {
-            PresentationController ctrlPresentation = new PresentationController();
-           // ctrlPresentation.run();
-        }
     }
 }

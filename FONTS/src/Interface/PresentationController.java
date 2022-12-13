@@ -3,6 +3,9 @@ package FONTS.src.Interface;
 import FONTS.src.Domain.Controllers.DomainController;
 
 import javax.swing.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class PresentationController {
@@ -31,12 +34,20 @@ public class PresentationController {
     }
 
     public void run() {
-        //...
+        mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        mainFrame.setSize(1200,800);
+        //mainFrame.setIconImage(Utils.getLogo().getImage());
         toMain();
     }
 
     public void toMain() {
-
+        ArrayList<String> authors = ctrlDomain.getDocumentAuthors(0);
+        ArrayList<String> documents = ctrlDomain.getDocumentTitles(0);
+        HashMap<Integer, String> subfolders = ctrlDomain.getSubFolders(0);
+        main = new MainView(authors, documents, subfolders);
+        mainFrame.setTitle("File Manager");
+        mainFrame.setContentPane(main.getDefaultPanel());
+        mainFrame.setVisible(true);
     }
 
     public void toAddNewDocument() {
@@ -45,5 +56,29 @@ public class PresentationController {
 
     public void toModifyContent() {
 
+    }
+
+    public void toModifyDoc() {
+
+    }
+
+    public void toDeleteDoc() {
+
+    }
+
+    public void toAddNewFolder(){
+
+    }
+
+    public void toDeleteFolder() {
+
+    }
+
+    public void toSearch() {
+
+    }
+
+    public void addDocument(String authorName, String title, String text, String lang) throws IOException {
+        ctrlDomain.newDocument(authorName,title,text,lang);
     }
 }
