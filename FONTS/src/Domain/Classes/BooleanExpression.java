@@ -158,14 +158,18 @@ public class BooleanExpression {
      */
     private Boolean recursiveFind(String sentence, Node n) {
         sentence = sentence.toLowerCase();
+
         if (n == null) return false;
         //if node is a leaf
         if (n.right == null & n.left == null) {
             if (n.data.charAt(0) == '!') {
                 //int idx = n.data.indexOf(n.data.substring(1));
                 String s = n.data.substring(1);
+                //String regex = ".*\\b" + Pattern.quote(s) + "\\b.*"; // \b is a word boundary
                 return !sentence.contains(s);
             }
+            //String regex = ".*\\b" + Pattern.quote(n.data) + "\\b.*"; // \b is a word boundary
+            //return sentence.matches("")
             return sentence.contains(n.data);
         }
         //node is an operand

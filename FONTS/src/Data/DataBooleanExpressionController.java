@@ -41,9 +41,11 @@ public class DataBooleanExpressionController {
     /***
      * @brief Retorna el último historial guardado en formato string
      */
-    public String loadHistorial() {
+    public String loadHistorial() throws FileNotFoundException{
         File file = new File(path);
-        return file.toString();
+        Scanner scanner = new Scanner(file);
+        scanner.useDelimiter("\\Z");
+        return scanner.next();
     }
 
 }

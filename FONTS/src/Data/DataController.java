@@ -3,6 +3,7 @@ package FONTS.src.Data;
 import com.google.gson.Gson;
 import com.google.gson.stream.JsonReader;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
@@ -71,7 +72,7 @@ public class DataController {
         return ctrlBoolean.saveHistorial(jsonHistorial);
     }
 
-    public String loadHistorial(){
+    public String loadHistorial() throws FileNotFoundException {
         return ctrlBoolean.loadHistorial();
     }
 }

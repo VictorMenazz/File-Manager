@@ -7,6 +7,7 @@ import FONTS.src.Domain.Controllers.Drivers.FoldersControllerDriver;
 import com.google.gson.Gson;
 
 import javax.print.Doc;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
 
@@ -350,7 +351,7 @@ public class DomainController {
         return data.saveHistorial(result);
     }
 
-    public void loadHistorial() {
+    public void loadHistorial() throws FileNotFoundException {
         Gson gson = new Gson();
         String list = data.loadHistorial();
         LinkedHashSet<String> result = gson.fromJson(list, LinkedHashSet.class);

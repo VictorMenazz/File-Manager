@@ -5,6 +5,7 @@ import FONTS.src.Domain.Controllers.FoldersController;
 import com.google.gson.Gson;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.LinkedHashSet;
@@ -58,7 +59,7 @@ public class DataControllerDriver {
         dataC.saveHistorial(result);
     }
 
-    public static void testLoadHistorial() {
+    public static void testLoadHistorial() throws FileNotFoundException {
         testSaveHistorial();
 
         DataController dataC = new DataController();
