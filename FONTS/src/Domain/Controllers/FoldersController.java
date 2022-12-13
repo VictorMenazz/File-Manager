@@ -187,4 +187,8 @@ public class FoldersController {
     public HashMap<Integer, String> getSubFolders(int folderIdentifier) {
         return rootFolder.getSubFolders(folderIdentifier);
     }
+
+    public void deleteFolder(Integer foldId) {
+        rootFolder.deleteFolder(foldId);
+    }
 }

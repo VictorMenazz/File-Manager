@@ -560,7 +560,8 @@ public class Folder {
         }
         else{
             int nextId = getNextFolderParent(folderIdentifier);
-            return getSubFolders(nextId);
+            Folder f = subFolders.get(nextId);
+            return f.getSubFolders(nextId);
         }
     }
 
@@ -589,6 +590,15 @@ public class Folder {
         else{
             int nextId = getNextFolderParent(folderIdentifier);
             return getDocumentTitles(nextId);
+        }
+    }
+
+    public void deleteFolder(Integer foldId) {
+        if(subFolders.containsKey(foldId)) subFolders.remove(foldId);
+        else {
+            int next = getNextFolderParent(foldId);
+            Folder f = subFolders.get(next);
+            f.deleteFolder(foldId);
         }
     }
 }

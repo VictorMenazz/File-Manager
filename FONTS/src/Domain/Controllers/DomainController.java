@@ -287,6 +287,10 @@ public class DomainController {
 
     }
 
+    public void deleteFolder(Integer foldId){
+        folders.deleteFolder(foldId);
+    }
+
     /**
      * @brief Protects a Document with the password.
      * @param authorName, Represents the author of the Document.
