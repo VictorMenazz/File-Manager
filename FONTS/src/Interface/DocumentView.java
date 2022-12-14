@@ -3,28 +3,26 @@ package FONTS.src.Interface;
 import javax.swing.*;
 import javax.swing.plaf.metal.MetalLookAndFeel;
 import javax.swing.plaf.metal.OceanTheme;
-import javax.swing.undo.UndoManager;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
-import java.nio.file.Files;
 
-public class ModifyContentDocument implements ActionListener {
+public class DocumentView implements ActionListener {
     /**
      * Represents text component
      */
-    JTextArea textArea;
+    private JTextArea textArea;
 
     /**
      * Represents window of text editor
      */
-    JFrame textEditor;
+    private JFrame textEditor;
 
     /**
      * @brief Default creation of text editor
      */
-    public ModifyContentDocument() {
+    public DocumentView() {
         //create frame
         textEditor = new JFrame("Document Title");
         textEditor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -247,6 +245,6 @@ public class ModifyContentDocument implements ActionListener {
 
     //Provisional Main
     public static void main(String args[]) {
-        ModifyContentDocument te = new ModifyContentDocument();
+        DocumentView te = new DocumentView();
     }
 }
