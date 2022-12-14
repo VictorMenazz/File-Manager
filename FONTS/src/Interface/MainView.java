@@ -9,6 +9,8 @@ import javax.swing.table.TableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +19,7 @@ import java.util.HashMap;
  * FIRST VIEW WHEN USERS OPEN THE APP AND WHERE STRUCTURE OF FOLDERS AND DOCUMENTS IS SHOW
  */
 
-public class MainView  implements ActionListener {
+public class MainView implements ActionListener, MouseListener {
 
     private PresentationController ctrlPres = PresentationController.getInstance();
 
@@ -178,6 +180,7 @@ public class MainView  implements ActionListener {
             //Adding action listener
             newFolder.addActionListener(this);
             openFolder.addActionListener(this);
+            openFolder.addMouseListener(this);
             editFolder.addActionListener(this);
             deleteFolder.addActionListener(this);
 
@@ -292,7 +295,7 @@ public class MainView  implements ActionListener {
             ctrlPres.toAddNewDocument();
         }
         else if(s.equals("Open file")) {
-
+            ctrlPres.toDocument();
         }
         else if(s.equals("Import file")) {
             //Create an object of JFileChooser class
@@ -309,7 +312,7 @@ public class MainView  implements ActionListener {
                 int dotIndex = name.lastIndexOf('.');
                 if(dotIndex != -1) {
                     String ext = name.substring(dotIndex + 1);
-                    if((ext.equals("txt")) | ext.equals("xml")) {
+                    if((ext.equals("txt")) | ext.equals("xml") | ext.equals("json")) {
                         try {
                             // String
                             String s1 = "", sl = "";
@@ -338,7 +341,7 @@ public class MainView  implements ActionListener {
                         }
                     }
                     else {
-                        JOptionPane.showMessageDialog(mainView, "Incorrect type of document. It must be .txt ot .xml");
+                        JOptionPane.showMessageDialog(mainView, "Incorrect type of document. It must be .txt, .xml or .json");
                     }
                 }
                 else{
@@ -395,6 +398,11 @@ public class MainView  implements ActionListener {
 
         }
         else if(s.equals("Close")) {
+            try {
+                ctrlPres.saveDB();
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
             System.exit(0);
         }
     }
@@ -413,5 +421,30 @@ public class MainView  implements ActionListener {
         subfolders.put(1, "AUX");
 
         MainView mv = new MainView(authors, documents, subfolders);
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+
     }
 }

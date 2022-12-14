@@ -12,7 +12,11 @@ public class Main {
             javax.swing.SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
                     PresentationController ctrlPres = PresentationController.getInstance();
-                    ctrlPres.run();
+                    try {
+                        ctrlPres.run();
+                    } catch (FileNotFoundException e) {
+                        throw new RuntimeException(e);
+                    }
                 }
             });
     }

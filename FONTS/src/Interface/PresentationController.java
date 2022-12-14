@@ -3,6 +3,7 @@ package FONTS.src.Interface;
 import FONTS.src.Domain.Controllers.DomainController;
 
 import javax.swing.*;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,10 +34,13 @@ public class PresentationController {
         ctrlDomain = new DomainController();
     }
 
-    public void run() {
+    public void run() throws FileNotFoundException {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(1200,800);
         //mainFrame.setIconImage(Utils.getLogo().getImage());
+        ctrlDomain.reconstructFoldersSystem();
+        ctrlDomain.reconstructAuthorsSystem();
+        ctrlDomain.loadHistorial();
         toMain();
     }
 
@@ -48,6 +52,10 @@ public class PresentationController {
         mainFrame.setTitle("File Manager");
         mainFrame.setContentPane(main.getDefaultPanel());
         mainFrame.setVisible(true);
+    }
+
+    public void toDocument() {
+
     }
 
     public void toAddNewDocument() {
@@ -78,7 +86,30 @@ public class PresentationController {
 
     }
 
-    public void addDocument(String authorName, String title, String text, String lang) throws IOException {
+    public void newDocument(String authorName, String title, String text, String lang) throws IOException {
         ctrlDomain.newDocument(authorName,title,text,lang);
     }
+
+    public void modifyAuthor(String authorName, String title, String newData) throws IOException {
+        ctrlDomain.modifyDocument(authorName, title, newData, 0);
+    }
+
+    public void modifyTitle(String authorName, String title, String newData) throws IOException {
+        ctrlDomain.modifyDocument(authorName, title, newData, 1);
+    }
+
+    public void modifyContent(String authorName, String title, String newData) throws IOException {
+        ctrlDomain.modifyDocument(authorName, title, newData, 2);
+    }
+
+    public ArrayList<String> getDocument(String author, String title) {
+        return ctrlDomain.getDocument(author, title);
+    }
+
+    public void saveDB() throws IOException {
+        ctrlDomain.saveFoldersSystem();
+        ctrlDomain.saveAuthorsSystem();
+        ctrlDomain.saveHistorial();
+    }
+
 }
