@@ -23,10 +23,20 @@ public class DocumentView implements ActionListener {
      */
     private JFrame textEditor;
 
+    private String title;
+    private String author;
+    private String language;
+    private boolean newDoc;
+
     /**
      * @brief Default creation of text editor
      */
-    public DocumentView(String author, String title, String language, boolean newDoc) {
+    public DocumentView(String aut, String tit, String lang, boolean newD) {
+        author = aut;
+        title = tit;
+        language = lang;
+        newDoc = newD;
+
         //create frame
         textEditor = new JFrame("Document Title");
         textEditor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -119,9 +129,20 @@ public class DocumentView implements ActionListener {
 
         if(s.equals("Save")) {
             //DIALOGO CONFIRMAR GUARDAR CAMBIOS
-            //Como encuentro author y lenguaje??????
-            //ctrlPres.newDocument(); NUEVO
-            //ctrlPres.modifyContent(); MODIFICACION
+            if(!newDoc) {
+                try {
+                    ctrlPres.modifyContent(author, title, textArea.getText());
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
+            else {
+                try {
+                    ctrlPres.newDocument(author, title, textArea.getText(), language);
+                } catch (IOException ex) {
+                    throw new RuntimeException(ex);
+                }
+            }
         }
 
         else if(s.equals("Copy")) {

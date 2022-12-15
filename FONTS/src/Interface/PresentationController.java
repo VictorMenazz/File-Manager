@@ -54,7 +54,12 @@ public class PresentationController {
         mainFrame.setVisible(true);
     }
 
-    public void toDocument() {
+    public void toDocument(String author, String title) {
+        //ctrlDomain.getLanguage(author, title);
+        //DocumentView doc = new DocumentView(author, title, );
+    }
+
+    public void toFolderView(int foldID) {
 
     }
 

@@ -64,10 +64,11 @@ public class MainView implements ActionListener, MouseListener {
     private JRadioButton isDirectory;
     private JRadioButton isFile;
 
-
-    //private PresentationController CtrlPres = PresentationController.getInstance();
+    private HashMap<Integer, String> subF;
 
     public MainView(ArrayList<String> authors, ArrayList<String> documents, HashMap<Integer, String> subfolders) {
+        subF = subfolders;
+
         //create frame
         mainView = new JFrame(appTitle);
         mainView.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -283,7 +284,16 @@ public class MainView implements ActionListener, MouseListener {
             ctrlPres.toAddNewFolder();
         }
         else if(s.equals("Open folder")) {
-
+            int row = table.getSelectedRow();
+            String name = (String) table.getValueAt(row, 1);
+            int folderID = 0;
+            for(Integer aux : subF.keySet()) {
+                if(subF.get(aux) == name) {
+                    folderID = aux;
+                    break;
+                }
+            }
+            ctrlPres.toFolderView(folderID);
         }
         else if(s.equals("Edit folder")) {
 
@@ -295,7 +305,10 @@ public class MainView implements ActionListener, MouseListener {
             ctrlPres.toAddNewDocument();
         }
         else if(s.equals("Open file")) {
-            ctrlPres.toDocument();
+            int row = table.getSelectedRow();
+            String author = (String) table.getValueAt(row, 2);
+            String title = (String) table.getValueAt(row, 1);
+            ctrlPres.toDocument(author, title);
         }
         else if(s.equals("Import file")) {
             //Create an object of JFileChooser class
