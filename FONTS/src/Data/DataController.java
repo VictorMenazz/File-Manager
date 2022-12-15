@@ -83,4 +83,22 @@ public class DataController {
     public String loadHistorial() throws FileNotFoundException {
         return ctrlBoolean.loadHistorial();
     }
+
+    /**
+     * @brief Reads a Document physic File and loads it in Domain.
+     * @param path, Representing the physic path to read.
+     */
+    public String importDocument(String path) {
+        return ctrlFolder.importDocument(path);
+    }
+
+    /**
+     * @brief Writes a Document onto a physic File out of the System.
+     * @param path, Representing the physic path to write the Doc.
+     * @param Content, Representing the Content to write onto the new physic File.
+     */
+    public Boolean exportDocument(String path, String Content){
+        return ctrlFolder.exportDocument(path, Content);
+    }
+
 }
