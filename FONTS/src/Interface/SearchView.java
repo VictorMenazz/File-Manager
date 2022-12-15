@@ -8,9 +8,10 @@ public class SearchView {
     private JFrame frame;
 
 
-    /***
+    /**
      * @brief Constructor
      */
+
     public SearchView() {
         frame = new JFrame("Search");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -26,7 +27,7 @@ public class SearchView {
 
     }
 
-    /***
+    /**
      * @brief Content to show when the SearchView initially starts
      */
     private void ini() {
@@ -42,7 +43,7 @@ public class SearchView {
 
     //-----------DIALOGS----------//
 
-    /***
+    /**
      * @brief Pops a dialog to let the user introduce an author for the query.
      */
     public void queryTitlesDialog() {
@@ -50,7 +51,7 @@ public class SearchView {
 
     }
 
-    /***
+    /**
      * @brief Pops a dialog to let the user introduce an author prefix for the query.
      */
     public void queryAuthorsDialog() {
@@ -58,21 +59,21 @@ public class SearchView {
     }
 
 
-    /***
+    /**
      * @brief Pops a dialog to let the user introduce a document to find it.
      */
     public void queryDocumentDialog() {
 
     }
 
-    /***
+    /**
      * @brief Pops a dialog to let the user make their document similarity query.
      */
     public void documentSimilarityDialog() {
 
     }
 
-    /***
+    /**
      * @brief Pops a dialog to let the user make their boolean expression query
      */
     public void documentBooleanDialog(){
@@ -80,7 +81,7 @@ public class SearchView {
 
     }
 
-    /***
+    /**
      * @brief Pops a dialog to let the user make their word relevance query
      */
     public void documentRelevanceDialog(){
@@ -92,7 +93,7 @@ public class SearchView {
 
     //-----------VIEW CONTENT TO SHOW----------//
 
-    /***
+    /**
      * @brief Show a list with all the titles from the query
      */
     private void showTitlesList() {
@@ -100,14 +101,14 @@ public class SearchView {
 
     }
 
-    /***
+    /**
      * @brief Show a list with all the authors from the query
      */
     private void showAuthorsList() {
 
     }
 
-    /***
+    /**
      * @brief Show a list with all the documents from the query
      */
     private void showDocumentsList() {
@@ -120,10 +121,5 @@ public class SearchView {
     public static void main(String args[]) {
         SearchView sv = new SearchView();
     }
-
-
-
-
-
 
 }

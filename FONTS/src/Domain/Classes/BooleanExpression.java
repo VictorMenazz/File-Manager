@@ -166,11 +166,22 @@ public class BooleanExpression {
                 //int idx = n.data.indexOf(n.data.substring(1));
                 String s = n.data.substring(1);
                 //String regex = ".*\\b" + Pattern.quote(s) + "\\b.*"; // \b is a word boundary
-                return !sentence.contains(s);
+                Pattern p = Pattern.compile("\b" + s + "\b");
+                Matcher m = p.matcher(sentence);
+                return !m.matches();
             }
             //String regex = ".*\\b" + Pattern.quote(n.data) + "\\b.*"; // \b is a word boundary
             //return sentence.matches("")
-            return sentence.contains(n.data);
+
+            Pattern p = Pattern.compile(n.data);
+            System.out.println(n.data);
+            Matcher m = p.matcher(sentence);
+            return sentence.matches(n.data);
+
+            //System.out.println(sentence);
+            //System.out.println(m.matches());
+
+            //return m.matches();
         }
         //node is an operand
         if (n.data.equals("&")) return recursiveFind(sentence, n.right) & recursiveFind(sentence, n.left);

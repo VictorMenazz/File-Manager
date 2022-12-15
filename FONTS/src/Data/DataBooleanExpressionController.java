@@ -13,8 +13,8 @@ public class DataBooleanExpressionController {
     static private String path = "data/BooleanExpression/historial.json";
 
     /**
-     * @brief Operación de guardar historial expresiones booleanas
-     * booleanExpressions, string formato JSON que incluye
+     * @brief Operation to save the historial of booleanExpressions
+     * @param booleanExpressions, string that includes the JSON of the boolean expression list.
      */
     public Boolean saveHistorial(String booleanExpressions) {
         File file = new File("data/BooleanExpression/");
@@ -39,7 +39,7 @@ public class DataBooleanExpressionController {
 
 
     /***
-     * @brief Retorna el último historial guardado en formato string
+     * @brief Returns the last historial saved, in JSON.
      */
     public String loadHistorial() throws FileNotFoundException{
         File file = new File(path);
