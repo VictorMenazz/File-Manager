@@ -522,6 +522,10 @@ public class Folder {
         else return iGetNextFolderParent(foldId);
     }
 
+    /**
+     * @brief Restores last record of Folder System from Data Layer.
+     * @param detail, Representing the JSON of the Folder wanted to restore.
+     */
     public void restoreDocs(JsonObject detail) {
         //Organizing its Documents
         Gson gson = new Gson();
@@ -550,6 +554,11 @@ public class Folder {
         }
     }
 
+    /**
+     * @brief Gets the information about subFolders.
+     * @param folderIdentifier
+     * @return A HashMap<Integer, String> with all identifier and Folder Name the subFolders.
+     */
     public HashMap<Integer, String> getSubFolders(int folderIdentifier) {
         if (folderIdentifier == this.folderId){
             HashMap<Integer, String> result = new HashMap<Integer, String>();
@@ -565,6 +574,11 @@ public class Folder {
         }
     }
 
+    /**
+     * @brief Get information about Document titles pertaining to this Folder.
+     * @param folderIdentifier, identifying the Folder.
+     * @return An ArrayList containing all Document Titles.
+     */
     public ArrayList<String> getDocumentTitles(int folderIdentifier) {
         if (folderIdentifier == this.folderId){
             ArrayList<String> result = new ArrayList<String>();
@@ -579,6 +593,11 @@ public class Folder {
         }
     }
 
+    /**
+     * @brief Get information about Document authors pertaining to this Folder.
+     * @param folderIdentifier, identifying the Folder.
+     * @return An ArrayList containing all Document authors.
+     * */
     public ArrayList<String> getDocumentAuthors(int folderIdentifier) {
         if (folderIdentifier == this.folderId){
             ArrayList<String> result = new ArrayList<String>();
@@ -593,6 +612,10 @@ public class Folder {
         }
     }
 
+    /**
+     * @brief Deletes the folder with identifier foldId.
+     * @param foldId, Represents the id of the Folder desired.
+     */
     public void deleteFolder(Integer foldId) {
         if(subFolders.containsKey(foldId)) subFolders.remove(foldId);
         else {

@@ -161,12 +161,19 @@ public class FoldersController {
         return rootFolder.isProtected(author, title);
     }
 
+    /**
+     * @brief Saves FoldersController to Persistance/Data layer.
+     */
     public String saveFoldersStructure(){
         Gson gson = new Gson();
         String foldersJSON = gson.toJson(this);
         return foldersJSON;
     }
 
+    /**
+     * @brief Recovers the last FoldersController saved from Persistance/Data layer.
+     * @param data, Representing the JSON containing FoldersController serialized.
+     */
     public void recoverFoldersStructure(String data){
         rootFolder = new Folder(0, "/");
         Gson gson = new Gson();
@@ -176,18 +183,37 @@ public class FoldersController {
         rootFolder.restoreDocs(detail);
     }
 
+    /**
+     * @brief Recovers the last FoldersController saved from Persistance/Data layer.
+     * @param folderIdentifier, An Integer identifying the Folder.
+     * @returns A ArrayList<String> representing all the Authors in the Folder identified with folderIdentifier.
+     */
     public ArrayList<String> getDocumentAuthors(int folderIdentifier) {
         return rootFolder.getDocumentAuthors(folderIdentifier);
     }
 
+    /**
+     * @brief Returns all the titles of this Folder Documents.
+     * @param folderIdentifier identifying the folder.
+     * @return An ArrayList containing all titles of the Folder.
+     */
     public ArrayList<String> getDocumentTitles(int folderIdentifier) {
         return rootFolder.getDocumentTitles(folderIdentifier);
     }
 
+    /**
+     * @brief Returns all the identifiers of the subFolders.
+     * @param folderIdentifier identifying the folder parent.
+     * @return An ArrayList containing all the subFolders.
+     */
     public HashMap<Integer, String> getSubFolders(int folderIdentifier) {
         return rootFolder.getSubFolders(folderIdentifier);
     }
 
+    /**
+     * @brief Deletes the Folder with  identifier foldId.
+     * @param foldId identifies the folder parent.
+     */
     public void deleteFolder(Integer foldId) {
         rootFolder.deleteFolder(foldId);
     }

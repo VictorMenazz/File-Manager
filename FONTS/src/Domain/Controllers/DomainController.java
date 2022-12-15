@@ -203,6 +203,10 @@ public class DomainController {
     //public ArrayList<Document> o Path inicial? INITIALQUERY()
     //My recommendation  is:
 
+    /** @brief
+     * @param folderIdentifier
+     * @return
+     */
     public ArrayList<String> getDocumentAuthors(int folderIdentifier){
         return folders.getDocumentAuthors(folderIdentifier);
     }
@@ -255,16 +259,6 @@ public class DomainController {
         return ctrlSearch.searchDocuments(rootFolder, pWords, language, k);
     }
 
-    /** Saves a Document with changes in the Data Layer.
-     * @param authorName, Represents the Author of the Document.
-     * @param title, Represents the Title of the Document.
-     */
-    public void saveDocument(String authorName, String title) {
-        //Communication with Data Layer.
-        //ArrayList<String> Cont = folders.getContent(authorName, title);
-        //data.saveDocument();
-    }
-
     /**
      * @brief Delete specific document of the system
      * @param authorName, Represents the Author of the Document.
@@ -300,10 +294,6 @@ public class DomainController {
     public void protectDocument(String authorName, String title, String password) {
         folders.protectDocument(authorName,  title, password);
     }
-
-    /**
-     * EXIT???
-     */
 
     /**
      * @brief Creates a new Folder.
@@ -348,6 +338,9 @@ public class DomainController {
         data.saveAuthors(authorsJSON);
     }
 
+    /**
+     * @brief Saves the Boolean Expression System before the Main System is closed.
+     */
     public Boolean saveHistorial() {
         LinkedHashSet<String> historial = ctrlSearch.getBoolExps();
         Gson gson = new Gson();
@@ -355,6 +348,9 @@ public class DomainController {
         return data.saveHistorial(result);
     }
 
+    /**
+     * @brief Recovers the Boolean Expression System before the Main System is closed.
+     */
     public void loadHistorial() throws FileNotFoundException {
         Gson gson = new Gson();
         String list = data.loadHistorial();
