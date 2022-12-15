@@ -355,7 +355,7 @@ public class MainView implements ActionListener, MouseListener {
             int row = table.getSelectedRow();
             String author = (String) table.getValueAt(row, 2);
             String title = (String) table.getValueAt(row, 1);
-            ctrlPres.toDocument(author, title);
+            ctrlPres.toDocument(author, title, false);
         }
         else if(s.equals("Import file")) {
             //Create an object of JFileChooser class

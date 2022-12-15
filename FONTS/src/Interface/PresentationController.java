@@ -96,7 +96,7 @@ public class PresentationController {
      * @param author, author's name of the document
      * @param title, title of the document
      */
-    public void toDocument(String author, String title) {
+    public void toDocument(String author, String title, boolean newDoc) {
         //ctrlDomain.getLanguage(author, title);
         //DocumentView doc = new DocumentView(author, title, );
     }
