@@ -2,29 +2,40 @@ package FONTS.src.Interface;
 
 import javax.swing.*;
 
+/**
+ * @file AddNewDocumentDialog.java
+ * @brief Class <em>AddNewDocumentDialog</em>
+ */
+
+/**
+ * @brief Dialog to add new document
+ *
+ * @author Víctor Mena Doz
+ */
+
 public class AddNewDocumentDialog {
     /**
-     * Represents dialog's panel.
+     * @brief Represents dialog's panel.
      */
     private JPanel panel;
 
     /**
-     * Represents OK button.
+     * @brief Represents OK button.
      */
     private JButton buttonOK;
 
     /**
-     * Represents Cancel button.
+     * @brief Represents Cancel button.
      */
     private JButton buttonCancel;
 
     /**
-     * Represents field where user specifies title of the document.
+     * @brief Represents field where user specifies title of the document.
      */
     private JTextField inputInitialTitle;
 
     /**
-     * Represents field where user specifies author's name.
+     * @brief Represents field where user specifies author's name.
      */
     private JTextField inputAuthor;
 

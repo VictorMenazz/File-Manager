@@ -4,6 +4,18 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * @file SearchView.java
+ * @brief Class <em>Search View</em>
+ */
+
+/**
+ * @brief Class Search view for viewing many kinds of search
+ *
+ * @author Júlia Amenós Dien
+ * @author Víctor Mena Doz
+ */
+
 public class SearchView {
     private JFrame frame;
 

@@ -9,27 +9,59 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 
-public class DocumentView implements ActionListener {
+/**
+ * @file DocumentView.java
+ * @brief Class <em>DocumentView</em>
+ */
 
+/**
+ * @brief View of document
+ *
+ * @author Víctor Mena Doz
+ */
+
+public class DocumentView implements ActionListener {
+    /**
+     * @brief Instance of Presentation Controller
+     */
     private PresentationController ctrlPres = PresentationController.getInstance();
 
     /**
-     * Represents text component
+     * @brief Represents text component
      */
     private JTextArea textArea;
 
     /**
-     * Represents window of text editor
+     * @brief Represents window of text editor
      */
     private JFrame textEditor;
 
+    /**
+     * @brief title of the document shown
+     */
     private String title;
+
+    /**
+     * @brief author's name of the document shown
+     */
     private String author;
+
+    /**
+     * @brief language of the document shown
+     */
     private String language;
+
+    /**
+     * @brief if true: it's a new document
+     */
     private boolean newDoc;
 
     /**
      * @brief Default creation of text editor
+     * @param aut, author's name of the document
+     * @param tit, title of the document
+     * @param lang, language of the document
+     * @param newD, boolean that if true: it's a new document
      */
     public DocumentView(String aut, String tit, String lang, boolean newD) {
         author = aut;
@@ -111,7 +143,7 @@ public class DocumentView implements ActionListener {
         }
         else {
             textEditor.setTitle(title);
-            String s1 = "AUTHOR: "+ author + "\n" + "TITLE: "+ title + "\n" + "LANGUAGE: " + language + "\n";
+            String s1 = author + "\n" + title + "\n" + language + "\n";
             textArea.setText(s1);
         }
 
@@ -123,6 +155,10 @@ public class DocumentView implements ActionListener {
         textEditor.setVisible(true);
     }
 
+    /**
+     * @brief Define action of buttons
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();

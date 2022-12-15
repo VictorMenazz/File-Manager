@@ -3,6 +3,17 @@ package FONTS.src;
 import FONTS.src.Interface.PresentationController;
 import java.io.FileNotFoundException;
 
+/**
+ * @file Main.java
+ * @brief Class <em>Main</em>
+ */
+
+/**
+ * @brief Main class of the project
+ *
+ * @author Víctor Mena Doz
+ */
+
 public class Main {
 
     /**

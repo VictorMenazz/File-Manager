@@ -16,25 +16,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
- * FIRST VIEW WHEN USERS OPEN THE APP AND WHERE STRUCTURE OF FOLDERS AND DOCUMENTS IS SHOW
+ * @file MainView.java
+ * @brief Class <em>MainView</em>
+ */
+
+/**
+ * @brief First view when users open the app and where structure of folders and documents is show
+ *
+ * @author Víctor Mena Doz
  */
 
 public class MainView implements ActionListener, MouseListener {
-
+    /**
+     * @brief Instance of the Presentation Controller
+     */
     private PresentationController ctrlPres = PresentationController.getInstance();
 
     /**
-     * Title of the application
+     * @brief Title of the application
      */
     public static final String appTitle = "File Manager";
 
     /**
-     * Provides nice icons and names for files
+     * @brief Provides nice icons and names for files
      */
     private FileSystemView fileSystemView;
 
     /**
-     * Main GUI container
+     * @brief Main GUI container
      */
     private JPanel panel;
 
@@ -43,29 +52,59 @@ public class MainView implements ActionListener, MouseListener {
      private DefaultTreeModel treeModel; */
 
     /**
-     * Directory listing
+     * @brief Directory listing
      */
     private JTable table;
+
+    /**
+     * @brief To see the progress of an action
+     */
     private JProgressBar progressBar;
 
     /**
-     * Table model for File[]
+     * @brief Table model for File[]
      */
     private ListSelectionListener listSelectionListener;
 
+    /**
+     * @brief Frame of the view
+     */
     private JFrame mainView;
 
     /**
      * File controls
      */
-
+    /**
+     * @brief Label for show file's name
+     */
     private JLabel fileName;
+
+    /**
+     * @brief Label for show author's name
+     */
     private JLabel author;
+
+    /**
+     * @brief Radiobutton that says if it's a directory
+     */
     private JRadioButton isDirectory;
+
+    /**
+     * @brief Radiobutton that says if it's a file
+     */
     private JRadioButton isFile;
 
+    /**
+     * @brief List of subfolders
+     */
     private HashMap<Integer, String> subF;
 
+    /**
+     * @brief Constructor of MainView
+     * @param authors, list of authors of files inside the folder
+     * @param documents, list of documents' titles of files inside the folder
+     * @param subfolders, list of subfolders
+     */
     public MainView(ArrayList<String> authors, ArrayList<String> documents, HashMap<Integer, String> subfolders) {
         subF = subfolders;
 
@@ -272,10 +311,18 @@ public class MainView implements ActionListener, MouseListener {
         mainView.setVisible(true);
     }
 
+    /**
+     * @brief Getter of the panel of the view class
+     * @return panel of the MainView
+     */
     public JPanel getDefaultPanel() {
         return panel;
     }
 
+    /**
+     * @brief Define action of buttons
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
@@ -420,6 +467,51 @@ public class MainView implements ActionListener, MouseListener {
         }
     }
 
+    /**
+     * @brief Define function of mouse clicked
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseClicked(MouseEvent e) {
+
+    }
+
+    /**
+     * @brief Define function of mouse pressed
+     * @param e the event to be processed
+     */
+    @Override
+    public void mousePressed(MouseEvent e) {
+
+    }
+
+    /**
+     * @brief Define function of mouse released
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseReleased(MouseEvent e) {
+
+    }
+
+    /**
+     * @brief Define function of mouse entered
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseEntered(MouseEvent e) {
+
+    }
+
+    /**
+     * @brief Define function of mouse exited
+     * @param e the event to be processed
+     */
+    @Override
+    public void mouseExited(MouseEvent e) {
+
+    }
+
     //PROVISIONAL MAIN
     public static void main(String args[]) {
         ArrayList<String> authors = new ArrayList<>();
@@ -434,30 +526,5 @@ public class MainView implements ActionListener, MouseListener {
         subfolders.put(1, "AUX");
 
         MainView mv = new MainView(authors, documents, subfolders);
-    }
-
-    @Override
-    public void mouseClicked(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mousePressed(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseReleased(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseEntered(MouseEvent e) {
-
-    }
-
-    @Override
-    public void mouseExited(MouseEvent e) {
-
     }
 }

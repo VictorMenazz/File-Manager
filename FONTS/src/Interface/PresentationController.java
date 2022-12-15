@@ -9,6 +9,17 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
 
+/**
+ * @file PresentationController.java
+ * @brief Class <em>Presentation Controller</em>
+ */
+
+/**
+ * @brief Controller of the layer Interface
+ *
+ * @author Víctor Mena Doz
+ */
+
 public class PresentationController {
     /**
      * @brief Domain controller instance
@@ -116,10 +127,10 @@ public class PresentationController {
         ArrayList<String> titles = (ArrayList<String>) aux.keySet();
         ArrayList<String> authors = (ArrayList<String>) aux.values();
         MainView result = new MainView(authors, titles, null);
-        //NO ESTA BIEN USAR LA MAINVIEW PORQUE CREA FRAME DENTRO
-        JFrame resWindow = new JFrame("Result for boolean expression search");
+        JFrame resWindow = new JFrame();
         resWindow.setContentPane(result.getDefaultPanel());
         resWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        resWindow.setTitle("Result for boolean expression search");
         resWindow.setVisible(true);
     }
 
@@ -134,10 +145,10 @@ public class PresentationController {
         ArrayList<String> titles = (ArrayList<String>) aux.keySet();
         ArrayList<String> authors = (ArrayList<String>) aux.values();
         MainView result = new MainView(authors, titles, null);
-        //NO ESTA BIEN USAR LA MAINVIEW PORQUE CREA FRAME DENTRO
-        JFrame resWindow = new JFrame("Result for boolean expression search");
+        JFrame resWindow = new JFrame();
         resWindow.setContentPane(result.getDefaultPanel());
         resWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        resWindow.setTitle("Result for boolean expression search");
         resWindow.setVisible(true);
     }
 
@@ -153,10 +164,10 @@ public class PresentationController {
         ArrayList<String> titles = (ArrayList<String>) aux.keySet();
         ArrayList<String> authors = (ArrayList<String>) aux.values();
         MainView result = new MainView(authors, titles, null);
-        //NO ESTA BIEN USAR LA MAINVIEW PORQUE CREA FRAME DENTRO
-        JFrame resWindow = new JFrame("Result for boolean expression search");
+        JFrame resWindow = new JFrame();
         resWindow.setContentPane(result.getDefaultPanel());
         resWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        resWindow.setTitle("Result for boolean expression search");
         resWindow.setVisible(true);
     }
 
@@ -169,16 +180,16 @@ public class PresentationController {
         ArrayList<String> authors = new ArrayList<>();
         for(int i = 0; i < titles.size(); ++i) authors.add(authorName);
         MainView result = new MainView(authors, titles, null);
-        //NO ESTA BIEN USAR LA MAINVIEW PORQUE CREA FRAME DENTRO
-        JFrame resWindow = new JFrame("Result for boolean expression search");
+        JFrame resWindow = new JFrame();
         resWindow.setContentPane(result.getDefaultPanel());
         resWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        resWindow.setTitle("Result for boolean expression search");
         resWindow.setVisible(true);
     }
 
     /**
      * @brief Create view for open a folder
-     * @param foldID
+     * @param foldID, id of the folder
      */
     public void toFolderView(int foldID) {
 
@@ -192,45 +203,72 @@ public class PresentationController {
     }
 
     /**
-     * @brief
+     * @brief create dialog to modify document
      */
-    public void toModifyContent() {
-
-    }
-
     public void toModifyDoc() {
 
     }
 
+    /**
+     * @brief create dialog to delete specific document
+     */
     public void toDeleteDoc() {
 
     }
 
+    /**
+     * @brief create dialog to add new folder
+     */
     public void toAddNewFolder(){
 
     }
 
+    /**
+     * @brief create dialog to delete folder
+     */
     public void toDeleteFolder() {
 
     }
 
+    /**
+     * @brief Add new document to database
+     * @param authorName, author's name of the document
+     * @param title, title of the document
+     * @param text, text of the document
+     * @param lang, language of the document
+     * @throws IOException
+     */
     public void newDocument(String authorName, String title, String text, String lang) throws IOException {
         ctrlDomain.newDocument(authorName,title,text,lang);
     }
 
+    /**
+     * @brief Modify author of specific document
+     * @param authorName, author's name of the document to modify
+     * @param title, title of the document
+     * @param newData, new author's name to change
+     * @throws IOException
+     */
     public void modifyAuthor(String authorName, String title, String newData) throws IOException {
         ctrlDomain.modifyDocument(authorName, title, newData, 0);
     }
 
+    /**
+     * @brief Modify title of specific document
+     * @param authorName, author's name of the document to modify
+     * @param title, title of the document
+     * @param newData, new title to change
+     * @throws IOException
+     */
     public void modifyTitle(String authorName, String title, String newData) throws IOException {
         ctrlDomain.modifyDocument(authorName, title, newData, 1);
     }
 
     /**
-     * @brief
-     * @param authorName
-     * @param title
-     * @param newData
+     * @brief Modify content of specific document
+     * @param authorName, author's name of the document to modify
+     * @param title, title of the document
+     * @param newData, new content to change
      * @throws IOException
      */
     public void modifyContent(String authorName, String title, String newData) throws IOException {
@@ -241,7 +279,7 @@ public class PresentationController {
      * @brief Get information of a specific document
      * @param author, author's name of the document
      * @param title, title of the document
-     * @return
+     * @return List of the information of the document
      */
     public ArrayList<String> getDocument(String author, String title) {
         return ctrlDomain.getDocument(author, title);
