@@ -49,4 +49,23 @@ public class DataFoldersController {
         }
         return result;
     }
+
+    /**
+     * @brief Reads a Document physic File and loads it in Domain.
+     *  @param path, Representing the physic path to read the Doc.
+     */
+    public String importDocument(String path) {
+        //TODO
+        return null;
+    }
+
+    /**
+     * @brief Writes a Document onto a physic File out of the System.
+     * @param path, Representing the physic path to write the Doc.
+     * @param Content, Representing the Content to write onto the new physic File.
+     */
+    public Boolean exportDocument(String path, String Content) {
+        //TODO
+        return null;
+    }
 }

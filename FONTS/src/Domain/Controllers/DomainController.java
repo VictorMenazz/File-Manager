@@ -358,5 +358,32 @@ public class DomainController {
         ctrlSearch.setListBoolExps(result);
     }
 
+    /**
+     * @brief
+     * @param path
+     * @param foldId
+     * @param lang
+     * @return
+     */
+    public Boolean importDocument(String path, String foldId, String lang){
+        String doc = data.importDocument(path);
+        //Logic to get Author and Title
+        //foldersController.newDocument
+        return true;
+    }
+
+    /**
+     * @brief
+     * @param title
+     * @param author
+     * @param path
+     * @return
+     */
+    public Boolean exportDocument(String title, String author, String path){
+        //foldersController.getDocument(....)
+
+        return true;
+    }
+
 
 }
