@@ -3,6 +3,11 @@ package FONTS.src.Data;
 import java.io.*;
 
 public class DataAuthorsController {
+    /**
+     * @brief Writes on a physic File all Authors System.
+     * @param newLog representing the Information that will be written on the file.
+     * @throws IOException
+     */
     public void saveAuthors(String newLog) throws IOException {
         String basicPath = "data/Authors";
         File authorsFolder = new File(basicPath);
@@ -15,6 +20,10 @@ public class DataAuthorsController {
         documentWr.close();
     }
 
+    /**
+     * @brief Recovers/Reads System from the physic File.
+     * @return A String containing all Authors System that must be recovered by the Domain Layer.
+     */
     public String getAuthorsSerialized() {
         String basicPath = "data/Authors";
         File authorsFolder = new File(basicPath);

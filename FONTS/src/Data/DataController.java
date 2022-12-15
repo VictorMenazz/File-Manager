@@ -66,12 +66,20 @@ public class DataController {
      */
     public String restoreAuthors() { return ctrlAuthors.getAuthorsSerialized(); }
 
-    public JsonReader[] getListOfAuthors(){ return null;}
-
+    /**
+     * @brief Saves the Boolean Expression System.
+     * @param jsonHistorial identifying the JSON Object.
+     * @return A Boolean indicating if saving is correct.
+     */
     public Boolean saveHistorial(String jsonHistorial){
         return ctrlBoolean.saveHistorial(jsonHistorial);
     }
 
+    /**
+     * @brief Recovers the Boolean Expression System from the System last log.
+     * @return A String containing the JSON that Domain Layer will recover.
+     * @throws FileNotFoundException
+     */
     public String loadHistorial() throws FileNotFoundException {
         return ctrlBoolean.loadHistorial();
     }
