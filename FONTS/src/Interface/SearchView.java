@@ -6,11 +6,11 @@ import java.util.ArrayList;
 
 /**
  * @file SearchView.java
- * @brief Class <em>Search View</em>
+ * Class <em>Search View</em>
  */
 
 /**
- * @brief Class Search view for viewing many kinds of search
+ * Class Search view for viewing many kinds of search
  *
  * @author Júlia Amenós Dien
  * @author Víctor Mena Doz
@@ -21,7 +21,7 @@ public class SearchView {
 
 
     /**
-     * @brief Constructor
+     * Constructor
      */
 
     public SearchView() {
@@ -40,7 +40,7 @@ public class SearchView {
     }
 
     /**
-     * @brief Content to show when the SearchView initially starts
+     * Content to show when the SearchView initially starts
      */
     private void ini() {
         String[] types = {"Titles list", "Authors list", "Specific document", "Documents list"};
@@ -56,7 +56,7 @@ public class SearchView {
     //-----------DIALOGS----------//
 
     /**
-     * @brief Pops a dialog to let the user introduce an author for the query.
+     * Pops a dialog to let the user introduce an author for the query.
      */
     public void queryTitlesDialog() {
 
@@ -64,7 +64,7 @@ public class SearchView {
     }
 
     /**
-     * @brief Pops a dialog to let the user introduce an author prefix for the query.
+     * Pops a dialog to let the user introduce an author prefix for the query.
      */
     public void queryAuthorsDialog() {
 
@@ -72,21 +72,21 @@ public class SearchView {
 
 
     /**
-     * @brief Pops a dialog to let the user introduce a document to find it.
+     * Pops a dialog to let the user introduce a document to find it.
      */
     public void queryDocumentDialog() {
 
     }
 
     /**
-     * @brief Pops a dialog to let the user make their document similarity query.
+     * Pops a dialog to let the user make their document similarity query.
      */
     public void documentSimilarityDialog() {
 
     }
 
     /**
-     * @brief Pops a dialog to let the user make their boolean expression query
+     * Pops a dialog to let the user make their boolean expression query
      */
     public void documentBooleanDialog(){
 
@@ -94,7 +94,7 @@ public class SearchView {
     }
 
     /**
-     * @brief Pops a dialog to let the user make their word relevance query
+     * Pops a dialog to let the user make their word relevance query
      */
     public void documentRelevanceDialog(){
 
@@ -106,7 +106,7 @@ public class SearchView {
     //-----------VIEW CONTENT TO SHOW----------//
 
     /**
-     * @brief Show a list with all the titles from the query
+     * Show a list with all the titles from the query
      */
     private void showTitlesList() {
 
@@ -114,14 +114,14 @@ public class SearchView {
     }
 
     /**
-     * @brief Show a list with all the authors from the query
+     * Show a list with all the authors from the query
      */
     private void showAuthorsList() {
 
     }
 
     /**
-     * @brief Show a list with all the documents from the query
+     * Show a list with all the documents from the query
      */
     private void showDocumentsList() {
 

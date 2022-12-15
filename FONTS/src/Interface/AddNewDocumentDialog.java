@@ -9,56 +9,66 @@ import java.awt.event.ActionListener;
 
 /**
  * @file AddNewDocumentDialog.java
- * @brief Class <em>AddNewDocumentDialog</em>
+ * Class <em>AddNewDocumentDialog</em>
  */
 
 /**
- * @brief Dialog to add new document
+ * Dialog to add new document
  *
  * @author Víctor Mena Doz
  */
 
 public class AddNewDocumentDialog implements ActionListener {
     /**
-     * @brief Represents the dialog window
+     * Instance of the Presentation Controller
+     */
+    private PresentationController ctrlPres = PresentationController.getInstance();
+
+    /**
+     * Represents the dialog window
      */
     private JDialog dialog;
 
     /**
-     * @brief Represents dialog's panel.
+     * Represents dialog's panel.
      */
     private JPanel panel;
 
     /**
-     * @brief Represents OK button.
+     * Represents OK button.
      */
     private JButton buttonOK;
 
     /**
-     * @brief Represents Cancel button.
+     * Represents Cancel button.
      */
     private JButton buttonCancel;
 
     /**
-     * @brief Represents field where user specifies title of the document.
+     * Represents field where user specifies title of the document.
      */
     private JTextField inputInitialTitle;
 
     /**
-     * @brief Represents field where user specifies author's name.
+     * Represents field where user specifies author's name.
      */
     private JTextField inputAuthor;
 
     /**
-     * @brief Represents field where user choose language
+     * Represents field where user choose language
      */
     private JComboBox lang;
 
     /**
-     * @brief Default creator of dialog
+     * Default creator of dialog
      */
     public AddNewDocumentDialog() {
+        dialog = new JDialog();
+        dialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
+
         panel = new JPanel();
+        panel.setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
 
         try { //CHANGE VIEW
             // Set metal look and feel
@@ -73,11 +83,8 @@ public class AddNewDocumentDialog implements ActionListener {
 
         JLabel title = new JLabel("Title: ");
         JLabel author = new JLabel("Author: ");
-        inputInitialTitle = new JTextField();
-        inputAuthor = new JTextField();
-
-        title.add(inputInitialTitle);
-        author.add(inputAuthor);
+        inputInitialTitle = new JTextField(16);
+        inputAuthor = new JTextField(16);
 
         lang = new JComboBox<>();
         lang.addItem("Spanish");
@@ -90,27 +97,54 @@ public class AddNewDocumentDialog implements ActionListener {
         buttonOK.addActionListener(this);
         buttonCancel.addActionListener(this);
 
-        panel.add(title);
-        panel.add(author);
+        c.gridx = 0;
+        c.gridy = 0;
+        panel.add(title, c);
+        c.gridx = 1;
+        c.gridy = 0;
+        panel.add(inputInitialTitle, c);
+        c.gridx = 0;
+        c.gridy = 2;
+        panel.add(author, c);
+        c.gridx = 1;
+        c.gridy = 2;
+        panel.add(inputAuthor, c);
+        c.gridx = 0;
+        c.gridy = 4;
         panel.add(lang);
+        c.gridx = 0;
+        c.gridy = 6;
+        panel.add(buttonOK, c);
+        c.gridx = 1;
+        c.gridy = 3;
+        panel.add(buttonCancel, c);
 
         dialog.add(panel);
+        dialog.setSize(300, 350);
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
 
         int x = (screenSize.width - dialog.getWidth()) / 2;
         int y = (screenSize.height - dialog.getHeight()) / 2;
+
         dialog.setLocation(x, y);
         dialog.setVisible(true);
     }
 
     /**
-     * @brief Define action of buttons
+     * Define action of buttons
      * @param e the event to be processed
      */
     @Override
     public void actionPerformed(ActionEvent e) {
+        String s = e.getActionCommand();
 
+        if(s.equals("OK")) {
+
+        }
+        else if(s.equals("Cancel")) {
+
+        }
     }
 
     public static void main(String args[]) {

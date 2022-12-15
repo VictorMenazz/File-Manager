@@ -5,11 +5,11 @@ import java.io.FileNotFoundException;
 
 /**
  * @file Main.java
- * @brief Class <em>Main</em>
+ * Class <em>Main</em>
  */
 
 /**
- * @brief Main class of the project
+ * Main class of the project
  *
  * @author Víctor Mena Doz
  */
@@ -17,7 +17,7 @@ import java.io.FileNotFoundException;
 public class Main {
 
     /**
-     * @brief Función inicial que lanza la interfaz (en este caso por consola)
+     * Función inicial que lanza la interfaz (en este caso por consola)
      */
     public static void main(String[] args) throws FileNotFoundException {
             javax.swing.SwingUtilities.invokeLater(new Runnable() {

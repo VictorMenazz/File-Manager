@@ -17,33 +17,33 @@ import java.util.HashMap;
 
 /**
  * @file MainView.java
- * @brief Class <em>MainView</em>
+ * Class <em>MainView</em>
  */
 
 /**
- * @brief First view when users open the app and where structure of folders and documents is show
+ * First view when users open the app and where structure of folders and documents is show
  *
  * @author Víctor Mena Doz
  */
 
 public class MainView implements ActionListener, MouseListener {
     /**
-     * @brief Instance of the Presentation Controller
+     * Instance of the Presentation Controller
      */
     private PresentationController ctrlPres = PresentationController.getInstance();
 
     /**
-     * @brief Title of the application
+     * Title of the application
      */
     public static final String appTitle = "File Manager";
 
     /**
-     * @brief Provides nice icons and names for files
+     * Provides nice icons and names for files
      */
     private FileSystemView fileSystemView;
 
     /**
-     * @brief Main GUI container
+     * Main GUI container
      */
     private JPanel panel;
 
@@ -52,22 +52,22 @@ public class MainView implements ActionListener, MouseListener {
      private DefaultTreeModel treeModel; */
 
     /**
-     * @brief Directory listing
+     * Directory listing
      */
     private JTable table;
 
     /**
-     * @brief To see the progress of an action
+     * To see the progress of an action
      */
     private JProgressBar progressBar;
 
     /**
-     * @brief Table model for File[]
+     * Table model for File[]
      */
     private ListSelectionListener listSelectionListener;
 
     /**
-     * @brief Frame of the view
+     * Frame of the view
      */
     private JFrame mainView;
 
@@ -75,32 +75,32 @@ public class MainView implements ActionListener, MouseListener {
      * File controls
      */
     /**
-     * @brief Label for show file's name
+     * Label for show file's name
      */
     private JLabel fileName;
 
     /**
-     * @brief Label for show author's name
+     * Label for show author's name
      */
     private JLabel author;
 
     /**
-     * @brief Radiobutton that says if it's a directory
+     * Radiobutton that says if it's a directory
      */
     private JRadioButton isDirectory;
 
     /**
-     * @brief Radiobutton that says if it's a file
+     * Radiobutton that says if it's a file
      */
     private JRadioButton isFile;
 
     /**
-     * @brief List of subfolders
+     * List of subfolders
      */
     private HashMap<Integer, String> subF;
 
     /**
-     * @brief Constructor of MainView
+     * Constructor of MainView
      * @param authors, list of authors of files inside the folder
      * @param documents, list of documents' titles of files inside the folder
      * @param subfolders, list of subfolders
@@ -312,7 +312,7 @@ public class MainView implements ActionListener, MouseListener {
     }
 
     /**
-     * @brief Getter of the panel of the view class
+     * Getter of the panel of the view class
      * @return panel of the MainView
      */
     public JPanel getDefaultPanel() {
@@ -320,7 +320,7 @@ public class MainView implements ActionListener, MouseListener {
     }
 
     /**
-     * @brief Define action of buttons
+     * Define action of buttons
      * @param e the event to be processed
      */
     @Override
@@ -468,7 +468,7 @@ public class MainView implements ActionListener, MouseListener {
     }
 
     /**
-     * @brief Define function of mouse clicked
+     * Define function of mouse clicked
      * @param e the event to be processed
      */
     @Override
@@ -477,7 +477,7 @@ public class MainView implements ActionListener, MouseListener {
     }
 
     /**
-     * @brief Define function of mouse pressed
+     * Define function of mouse pressed
      * @param e the event to be processed
      */
     @Override
@@ -486,7 +486,7 @@ public class MainView implements ActionListener, MouseListener {
     }
 
     /**
-     * @brief Define function of mouse released
+     * Define function of mouse released
      * @param e the event to be processed
      */
     @Override
@@ -495,7 +495,7 @@ public class MainView implements ActionListener, MouseListener {
     }
 
     /**
-     * @brief Define function of mouse entered
+     * Define function of mouse entered
      * @param e the event to be processed
      */
     @Override
@@ -504,7 +504,7 @@ public class MainView implements ActionListener, MouseListener {
     }
 
     /**
-     * @brief Define function of mouse exited
+     * Define function of mouse exited
      * @param e the event to be processed
      */
     @Override

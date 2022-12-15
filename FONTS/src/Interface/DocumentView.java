@@ -11,53 +11,53 @@ import java.util.ArrayList;
 
 /**
  * @file DocumentView.java
- * @brief Class <em>DocumentView</em>
+ * Class <em>DocumentView</em>
  */
 
 /**
- * @brief View of document
+ * View of document
  *
  * @author Víctor Mena Doz
  */
 
 public class DocumentView implements ActionListener {
     /**
-     * @brief Instance of Presentation Controller
+     * Instance of Presentation Controller
      */
     private PresentationController ctrlPres = PresentationController.getInstance();
 
     /**
-     * @brief Represents text component
+     * Represents text component
      */
     private JTextArea textArea;
 
     /**
-     * @brief Represents window of text editor
+     * Represents window of text editor
      */
     private JFrame textEditor;
 
     /**
-     * @brief title of the document shown
+     * title of the document shown
      */
     private String title;
 
     /**
-     * @brief author's name of the document shown
+     * author's name of the document shown
      */
     private String author;
 
     /**
-     * @brief language of the document shown
+     * language of the document shown
      */
     private String language;
 
     /**
-     * @brief if true: it's a new document
+     * if true: it's a new document
      */
     private boolean newDoc;
 
     /**
-     * @brief Default creation of text editor
+     * Default creation of text editor
      * @param aut, author's name of the document
      * @param tit, title of the document
      * @param lang, language of the document
@@ -156,7 +156,7 @@ public class DocumentView implements ActionListener {
     }
 
     /**
-     * @brief Define action of buttons
+     * Define action of buttons
      * @param e the event to be processed
      */
     @Override

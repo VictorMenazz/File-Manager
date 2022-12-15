@@ -11,33 +11,33 @@ import java.util.Scanner;
 
 /**
  * @file PresentationController.java
- * @brief Class <em>Presentation Controller</em>
+ * Class <em>Presentation Controller</em>
  */
 
 /**
- * @brief Controller of the layer Interface
+ * Controller of the layer Interface
  *
  * @author Víctor Mena Doz
  */
 
 public class PresentationController {
     /**
-     * @brief Domain controller instance
+     * Domain controller instance
      */
     private DomainController ctrlDomain;
 
     /**
-     * @brief Scanner to read input
+     * Scanner to read input
      */
     private Scanner reader = new Scanner(System.in);
 
     /**
-     * @brief Main window of the application
+     * Main window of the application
      */
     private JFrame mainFrame = new JFrame();
 
     /**
-     * @brief Presentation controller own instance
+     * Presentation controller own instance
      */
     private static PresentationController ctrlPresent;
 
@@ -47,7 +47,7 @@ public class PresentationController {
     private MainView main;
 
     /**
-     * @brief Function to get the instance of the controller
+     * Function to get the instance of the controller
      * @return Instance of Presentation Controller
      */
     public static PresentationController getInstance() {
@@ -58,14 +58,14 @@ public class PresentationController {
     }
 
     /**
-     * @brief Default create of PresentationController
+     * Default create of PresentationController
      */
     public PresentationController() {
         ctrlDomain = new DomainController();
     }
 
     /**
-     * @brief Principal function of the project for reconstruct database
+     * Principal function of the project for reconstruct database
      * @throws FileNotFoundException
      */
     public void run() throws FileNotFoundException {
@@ -79,7 +79,7 @@ public class PresentationController {
     }
 
     /**
-     * @brief Function to create the main view
+     * Function to create the main view
      */
     public void toMain() {
         ArrayList<String> authors = ctrlDomain.getDocumentAuthors(0);
@@ -92,7 +92,7 @@ public class PresentationController {
     }
 
     /**
-     * @brief Create a document view for a specific document, new or save
+     * Create a document view for a specific document, new or save
      * @param author, author's name of the document
      * @param title, title of the document
      */
@@ -102,14 +102,14 @@ public class PresentationController {
     }
 
     /**
-     * @brief Create a search view
+     * Create a search view
      */
     public void toSearch() {
 
     }
 
     /**
-     * @brief Create view for the result of the list of authors given a prefix
+     * Create view for the result of the list of authors given a prefix
      * @param prefix, string contained in authors' names
      */
     public void toResultSearchAuthors(String prefix) {
@@ -118,7 +118,7 @@ public class PresentationController {
     }
 
     /**
-     * @brief Create view for the result of the boolean expression search
+     * Create view for the result of the boolean expression search
      * @param boolExp, string with the boolean expression
      * @throws Exception
      */
@@ -135,7 +135,7 @@ public class PresentationController {
     }
 
     /**
-     * @brief Create view for the result of the appearance search
+     * Create view for the result of the appearance search
      * @param authorName, author's name of the document
      * @param title, title of the document
      * @param k, integer of how many appearance documents to return
@@ -153,7 +153,7 @@ public class PresentationController {
     }
 
     /**
-     * @brief Create view for the result of the search documents given a list of words
+     * Create view for the result of the search documents given a list of words
      * @param pWords, list of specific words
      * @param language, language of the search
      * @param k, integer of how many relevant documents to return
@@ -172,7 +172,7 @@ public class PresentationController {
     }
 
     /**
-     * @brief Create view for the result of the documents given one author
+     * Create view for the result of the documents given one author
      * @param authorName, references to the name of the Author
      */
     public void toResultAutDocs(String authorName) {
@@ -188,7 +188,7 @@ public class PresentationController {
     }
 
     /**
-     * @brief Create view for open a folder
+     * Create view for open a folder
      * @param foldID, id of the folder
      */
     public void toFolderView(int foldID) {
@@ -196,42 +196,42 @@ public class PresentationController {
     }
 
     /**
-     * @brief Create dialog to add a new document
+     * Create dialog to add a new document
      */
     public void toAddNewDocument() {
 
     }
 
     /**
-     * @brief create dialog to modify document
+     * create dialog to modify document
      */
     public void toModifyDoc() {
 
     }
 
     /**
-     * @brief create dialog to delete specific document
+     * create dialog to delete specific document
      */
     public void toDeleteDoc() {
 
     }
 
     /**
-     * @brief create dialog to add new folder
+     * create dialog to add new folder
      */
     public void toAddNewFolder(){
 
     }
 
     /**
-     * @brief create dialog to delete folder
+     * create dialog to delete folder
      */
     public void toDeleteFolder() {
 
     }
 
     /**
-     * @brief Add new document to database
+     * Add new document to database
      * @param authorName, author's name of the document
      * @param title, title of the document
      * @param text, text of the document
@@ -243,7 +243,7 @@ public class PresentationController {
     }
 
     /**
-     * @brief Modify author of specific document
+     * Modify author of specific document
      * @param authorName, author's name of the document to modify
      * @param title, title of the document
      * @param newData, new author's name to change
@@ -254,7 +254,7 @@ public class PresentationController {
     }
 
     /**
-     * @brief Modify title of specific document
+     * Modify title of specific document
      * @param authorName, author's name of the document to modify
      * @param title, title of the document
      * @param newData, new title to change
@@ -265,7 +265,7 @@ public class PresentationController {
     }
 
     /**
-     * @brief Modify content of specific document
+     * Modify content of specific document
      * @param authorName, author's name of the document to modify
      * @param title, title of the document
      * @param newData, new content to change
@@ -276,7 +276,7 @@ public class PresentationController {
     }
 
     /**
-     * @brief Get information of a specific document
+     * Get information of a specific document
      * @param author, author's name of the document
      * @param title, title of the document
      * @return List of the information of the document
@@ -286,7 +286,7 @@ public class PresentationController {
     }
 
     /**
-     * @brief Save all the information of the database
+     * Save all the information of the database
      * @throws IOException
      */
     public void saveDB() throws IOException {
