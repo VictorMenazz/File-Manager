@@ -22,11 +22,14 @@ public class ConfirmationDialog implements ActionListener {
 
     private JDialog dialog;
 
+    /**
+     * Represents dialog's panel.
+     */
     private JPanel panel;
 
-    private JButton ok;
+    private JButton buttonOk;
 
-    private JButton cancel;
+    private JButton buttonCancel;
 
 
     public ConfirmationDialog() {

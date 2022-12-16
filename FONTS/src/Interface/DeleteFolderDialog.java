@@ -5,6 +5,7 @@ package FONTS.src.Interface;
  * Class <em>DeleteFolderDialog</em>
  */
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -20,6 +21,23 @@ public class DeleteFolderDialog  implements ActionListener {
      * Instance of the Presentation Controller
      */
     private PresentationController ctrlPres = PresentationController.getInstance();
+
+    private JDialog dialog;
+
+    /**
+     * Represents dialog's panel.
+     */
+    private JPanel panel;
+
+    /**
+     * Represents OK button.
+     */
+    private JButton buttonOK;
+
+    /**
+     * Represents Cancel button.
+     */
+    private JButton buttonCancel;
 
     /**
      * Constructor of DeleteFolderDialog

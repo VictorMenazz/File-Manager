@@ -23,8 +23,14 @@ public class ModifyDocumentDialog implements ActionListener {
      */
     private PresentationController ctrlPres = PresentationController.getInstance();
 
+    /**
+     * Represents the dialog window
+     */
     private JDialog dialog;
 
+    /**
+     * Represents dialog's panel.
+     */
     private JPanel panel;
 
     private JComboBox change;
