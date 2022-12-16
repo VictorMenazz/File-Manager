@@ -33,10 +33,19 @@ public class ModifyDocumentDialog implements ActionListener {
      */
     private JPanel panel;
 
+    /**
+     * Represents what user wants to modify of the document
+     */
     private JComboBox change;
 
+    /**
+     * Represents field where user specifies title of the document.
+     */
     private JTextField title;
 
+    /**
+     * Represents field where user specifies author's name.
+     */
     private JTextField author;
 
     /**
@@ -49,10 +58,17 @@ public class ModifyDocumentDialog implements ActionListener {
      */
     private JButton buttonCancel;
 
+    /**
+     * Constructor of ModifyDocumentDialog
+     */
     public ModifyDocumentDialog() {
 
     }
 
+    /**
+     * Define action of buttons
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();

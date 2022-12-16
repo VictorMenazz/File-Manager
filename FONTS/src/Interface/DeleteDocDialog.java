@@ -24,6 +24,9 @@ public class DeleteDocDialog implements ActionListener {
      */
     private PresentationController ctrlPres = PresentationController.getInstance();
 
+    /**
+     * Represents the dialog window
+     */
     private JDialog dialog;
 
     /**
@@ -31,8 +34,14 @@ public class DeleteDocDialog implements ActionListener {
      */
     private JPanel panel;
 
+    /**
+     * Represents OK button.
+     */
     private JButton buttonOk;
 
+    /**
+     * Represents Cancel button.
+     */
     private JButton buttonCancel;
 
     /**
@@ -45,6 +54,10 @@ public class DeleteDocDialog implements ActionListener {
 
     }
 
+    /**
+     * Define action of buttons
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();

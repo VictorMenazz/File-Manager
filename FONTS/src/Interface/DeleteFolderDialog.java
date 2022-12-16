@@ -22,6 +22,9 @@ public class DeleteFolderDialog  implements ActionListener {
      */
     private PresentationController ctrlPres = PresentationController.getInstance();
 
+    /**
+     * Represents the dialog window
+     */
     private JDialog dialog;
 
     /**
@@ -47,6 +50,10 @@ public class DeleteFolderDialog  implements ActionListener {
 
     }
 
+    /**
+     * Define action of buttons
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();

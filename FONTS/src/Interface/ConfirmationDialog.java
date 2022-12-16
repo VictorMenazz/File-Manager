@@ -20,6 +20,9 @@ public class ConfirmationDialog implements ActionListener {
      */
     private PresentationController ctrlPres = PresentationController.getInstance();
 
+    /**
+     * Represents the dialog window
+     */
     private JDialog dialog;
 
     /**
@@ -27,15 +30,27 @@ public class ConfirmationDialog implements ActionListener {
      */
     private JPanel panel;
 
+    /**
+     * Represents OK button.
+     */
     private JButton buttonOk;
 
+    /**
+     * Represents Cancel button.
+     */
     private JButton buttonCancel;
 
-
+    /**
+     * Constructor of ConfirmationDialog
+     */
     public ConfirmationDialog() {
 
     }
 
+    /**
+     * Define action of buttons
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
