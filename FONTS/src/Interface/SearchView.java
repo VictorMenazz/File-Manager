@@ -17,7 +17,28 @@ import java.util.ArrayList;
  */
 
 public class SearchView {
+    /**
+     * Instance of the Presentation Controller
+     */
+    private PresentationController ctrlPres = PresentationController.getInstance();
+
+    /**
+     * Represents the window to show the information
+     */
     private JFrame frame;
+
+    /**
+     * Represents button to
+     */
+    private JButton sBoolExp;
+
+    private JButton sSimilarity;
+
+    private JButton sRelevance;
+
+    private JButton sAuthors;
+
+    private JButton sTitles;
 
 
     /**

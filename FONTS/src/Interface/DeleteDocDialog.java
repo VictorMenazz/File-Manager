@@ -2,6 +2,8 @@ package FONTS.src.Interface;
 
 
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 
 /**
@@ -15,7 +17,20 @@ import javax.swing.*;
  * @author Júlia Alice Amenós Dien
  * @author Víctor Mena Doz
  */
-public class DeleteDocDialog {
+public class DeleteDocDialog implements ActionListener {
+
+    /**
+     * Instance of the Presentation Controller
+     */
+    private PresentationController ctrlPres = PresentationController.getInstance();
+
+    private JDialog dialog;
+
+    private JPanel panel;
+
+    private JButton ok;
+
+    private JButton cancel;
 
     /**
      * Constructor of DeleteDocDialog
@@ -27,5 +42,8 @@ public class DeleteDocDialog {
 
     }
 
-
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String s = e.getActionCommand();
+    }
 }

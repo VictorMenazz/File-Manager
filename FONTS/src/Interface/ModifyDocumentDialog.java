@@ -5,6 +5,10 @@ package FONTS.src.Interface;
  * Class <em>ModifyDocumentDialog</em>
  */
 
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  * Class to show dialog for modify the information of a document
  *
@@ -13,6 +17,38 @@ package FONTS.src.Interface;
  */
 
 
-public class ModifyDocumentDialog {
+public class ModifyDocumentDialog implements ActionListener {
+    /**
+     * Instance of the Presentation Controller
+     */
+    private PresentationController ctrlPres = PresentationController.getInstance();
 
+    private JDialog dialog;
+
+    private JPanel panel;
+
+    private JComboBox change;
+
+    private JTextField title;
+
+    private JTextField author;
+
+    /**
+     * Represents OK button.
+     */
+    private JButton buttonOK;
+
+    /**
+     * Represents Cancel button.
+     */
+    private JButton buttonCancel;
+
+    public ModifyDocumentDialog() {
+
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String s = e.getActionCommand();
+    }
 }
