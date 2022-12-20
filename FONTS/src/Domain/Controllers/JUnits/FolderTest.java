@@ -16,7 +16,7 @@ import static org.junit.Assert.*;
  */
 
 /**
- * @brief Test of Folder class
+ * Test of Folder class
  *
  * @author Marc Navarro Acosta
  */

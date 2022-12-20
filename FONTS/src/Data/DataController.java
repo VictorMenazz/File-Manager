@@ -21,7 +21,7 @@ public class DataController {
     private static DataBooleanExpressionController ctrlBoolean;
 
     /**
-     * @brief Get instance of DataController, if doesn't exist create one
+     * Get instance of DataController, if doesn't exist create one
      * @return instance of DataController
      */
     public static DataController getInstance() {
@@ -32,7 +32,7 @@ public class DataController {
     }
 
     /**
-     * @brief Initializes the Data Controller.
+     * Initializes the Data Controller.
      */
     public DataController() {
         ctrlAuthors = new DataAuthorsController();
@@ -41,14 +41,14 @@ public class DataController {
     }
 
     /**
-     * @brief Saves physically the serialized Folder System in JSON format.
+     * Saves physically the serialized Folder System in JSON format.
      */
     public void saveFolders(String folders) throws IOException {
         ctrlFolder.saveFolder(folders);
     }
 
     /**
-     * @brief Transfers to DomainController the last log about Folders System.
+     * Transfers to DomainController the last log about Folders System.
      * @return A String representing the Folders System in JSON.
      */
     public String restoreFolders(){
@@ -56,18 +56,18 @@ public class DataController {
     }
 
     /**
-     * @brief Saves physically the serialized Authors System in JSON format.
+     * Saves physically the serialized Authors System in JSON format.
      */
     public void saveAuthors(String authorsJSON) throws IOException { ctrlAuthors.saveAuthors(authorsJSON); }
 
     /**
-     * @brief Transfers to DomainController the last log about Authors System.
+     * Transfers to DomainController the last log about Authors System.
      * @return A String representing the Authors System in JSON.
      */
     public String restoreAuthors() { return ctrlAuthors.getAuthorsSerialized(); }
 
     /**
-     * @brief Saves the Boolean Expression System.
+     * Saves the Boolean Expression System.
      * @param jsonHistorial identifying the JSON Object.
      * @return A Boolean indicating if saving is correct.
      */
@@ -76,7 +76,7 @@ public class DataController {
     }
 
     /**
-     * @brief Recovers the Boolean Expression System from the System last log.
+     * Recovers the Boolean Expression System from the System last log.
      * @return A String containing the JSON that Domain Layer will recover.
      * @throws FileNotFoundException
      */
@@ -85,20 +85,20 @@ public class DataController {
     }
 
     /**
-     * @brief Reads a Document physic File and loads it in Domain.
+     * Reads a Document physic File and loads it in Domain.
      * @param path, Representing the physic path to read.
      */
-    public String importDocument(String path) {
-        return ctrlFolder.importDocument(path);
+    public ArrayList<String> importDocument(String path, String docT) {
+        return ctrlFolder.importDocument(path, docT);
     }
 
     /**
-     * @brief Writes a Document onto a physic File out of the System.
+     * Writes a Document onto a physic File out of the System.
      * @param path, Representing the physic path to write the Doc.
      * @param Content, Representing the Content to write onto the new physic File.
      */
-    public Boolean exportDocument(String path, String Content){
-        return ctrlFolder.exportDocument(path, Content);
+    public Boolean exportDocument(String path, String author, String title, String Content, String docT){
+        return ctrlFolder.exportDocument(path, author, title, Content, docT);
     }
 
 }

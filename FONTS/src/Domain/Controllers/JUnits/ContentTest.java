@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  */
 
 /**
- * @brief Test of the Content class
+ * Test of the Content class
  *
  * @author Victor Mena Doz
  */

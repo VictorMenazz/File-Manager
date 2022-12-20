@@ -11,11 +11,11 @@ import java.util.HashMap;
 
 /**
  * @file AuthorsController.java
- * @brief Class <em>Authors Controller</em>
+ * Class <em>Authors Controller</em>
  */
 
 /**
- * @brief Class AuthorsController that delegates functions to the Domain Object Author.
+ * Class AuthorsController that delegates functions to the Domain Object Author.
  *
  * @author Jordi Soley Masats
  */
@@ -23,14 +23,14 @@ public class AuthorsController {
     HashMap<String, Author> authors;
 
     /**
-     * @brief Default creator of AuthorsController
+     * Default creator of AuthorsController
      */
     public AuthorsController() {
         authors = new HashMap<String, Author>();
     }
 
     /**
-     * @brief Add new Author to authors
+     * Add new Author to authors
      * @param name, name of the author to add
      * @param a, Instance of the author
      */
@@ -44,7 +44,7 @@ public class AuthorsController {
     }
 
     /**
-     * @brief Remove Author of authors list
+     * Remove Author of authors list
      * @param name, name of the author to delete
      */
     public void delAuthor(String name) throws DocumentsException {
@@ -55,7 +55,7 @@ public class AuthorsController {
     }
 
     /**
-     * @brief Returns the total number of authors
+     * Returns the total number of authors
      * @return Integer of the total authors in the system
      */
     public int size() {
@@ -63,7 +63,7 @@ public class AuthorsController {
     }
 
     /**
-     * @brief Returns a list of the authors' names
+     * Returns a list of the authors' names
      * @return list of strings of authors' names
      */
     public ArrayList<String> getAuthorsName() {
@@ -75,7 +75,7 @@ public class AuthorsController {
     }
 
     /**
-     * @brief Returns a vector of the names of authors starting with a given prefix
+     * Returns a vector of the names of authors starting with a given prefix
      * @param prefix, string contained in authors' names
      * @return ArrayList of names of authors starting with a given prefix
      */
@@ -90,7 +90,7 @@ public class AuthorsController {
     }
 
     /**
-     * @brief Returns the Documents titles of an Author
+     * Returns the Documents titles of an Author
      * @param authorName, References to the name of the Author
      * @return A list of document titles of a specific Author
      */
@@ -102,7 +102,7 @@ public class AuthorsController {
     }
 
     /**
-     * @brief Add a document title given to a specific Author, if the author does not exist it is created
+     * Add a document title given to a specific Author, if the author does not exist it is created
      * @param authorName, References to the Author's name
      * @param title, References to the title of the document
      */
@@ -120,7 +120,7 @@ public class AuthorsController {
     }
 
     /**
-     * @brief Deletes a document title given of a specific Author, if once deleted, it has 0 docs, Author is also removed
+     * Deletes a document title given of a specific Author, if once deleted, it has 0 docs, Author is also removed
      * @param authorName, References to the Author's name
      * @param title, References to the title of the document
      */
@@ -143,7 +143,7 @@ public class AuthorsController {
     }
 
     /**
-     * @brief Generates a JSON with a log of Authors System.
+     * Generates a JSON with a log of Authors System.
      */
     public String saveAuthorsStructure() {
         Gson gson = new Gson();
@@ -151,7 +151,7 @@ public class AuthorsController {
     }
 
     /**
-     * @brief Recovers system from a JSON log.
+     * Recovers system from a JSON log.
      */
     public void recoverFoldersStructure(String authorsJSON) {
         Gson gson = new Gson();

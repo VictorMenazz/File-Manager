@@ -9,7 +9,7 @@ import FONTS.src.Domain.Classes.Document;
  */
 
 /**
- * @brief Stub of Document class
+ * Stub of Document class
  *
  * @author Marc Navarro Acosta
  */

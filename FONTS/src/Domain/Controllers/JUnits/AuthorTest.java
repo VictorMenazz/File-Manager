@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  */
 
 /**
- * @brief Test of class Author
+ * Test of class Author
  *
  * @author Jordi Soley Masats
  */

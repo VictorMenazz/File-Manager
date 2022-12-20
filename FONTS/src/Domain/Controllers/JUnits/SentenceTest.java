@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  */
 
 /**
- * @brief Test of Sentence class
+ * Test of Sentence class
  *
  * @author Victor Mena Doz
  */

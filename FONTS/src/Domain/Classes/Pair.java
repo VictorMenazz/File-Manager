@@ -6,7 +6,7 @@ package FONTS.src.Domain.Classes;
  */
 
 /**
- * @brief Structure used as key of other Domain Classes.
+ * Structure used as key of other Domain Classes.
  *
  * @author Victor Mena Doz
  * @author Marc Navarro Acosta
@@ -16,7 +16,7 @@ public class Pair<U, V> {
         public final V second;      // el segundo campo de un par
 
         /**
-         * @brief Default creator of Pair
+         * Default creator of Pair
          * @param first element of the pair
          * @param second element of the pair
          */

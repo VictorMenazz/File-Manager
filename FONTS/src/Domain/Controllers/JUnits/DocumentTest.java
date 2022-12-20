@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
  */
 
 /**
- * @brief Test of Document class
+ * Test of Document class
  *
  * @author Marc Navarro Acosta
  */

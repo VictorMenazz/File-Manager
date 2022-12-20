@@ -11,7 +11,7 @@ import java.util.ArrayList;
  */
 
 /**
- * @brief Test of the BooleanExpression class
+ * Test of the BooleanExpression class
  * @author Júlia Amenós Dien
  */
 

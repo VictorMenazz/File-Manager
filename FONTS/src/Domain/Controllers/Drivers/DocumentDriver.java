@@ -15,7 +15,7 @@ import java.util.regex.Pattern;
  */
 
 /**
- * @brief Driver of class Document
+ * Driver of class Document
  *
  * @author Marc Navarro Acosta
  */

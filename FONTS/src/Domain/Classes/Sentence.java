@@ -2,11 +2,11 @@ package FONTS.src.Domain.Classes;
 
 /**
  * @file Sentence.java
- * @brief Class <em>Sentence</em>
+ * Class <em>Sentence</em>
  */
 
 /**
- * @brief Class Sentence that saves one line of the text
+ * Class Sentence that saves one line of the text
  *
  * @author Victor Mena Doz
  */
@@ -14,14 +14,14 @@ public class Sentence {
     private String[] words;
 
     /**
-     * @brief Default creator of Sentence
+     * Default creator of Sentence
      * */
     public Sentence()
     {
     }
 
     /**
-     * @brief Creation of Sentence with words
+     * Creation of Sentence with words
      * @param nWords, words of the sentence
      */
     public Sentence(String nWords)
@@ -30,7 +30,7 @@ public class Sentence {
     }
 
     /**
-     * @brief Search word or words in Sentence
+     * Search word or words in Sentence
      * @param wSearch, word or words to look for them
      * @return true if words found in the sentence, otherwise false
      */
@@ -47,7 +47,7 @@ public class Sentence {
     }
 
     /**
-     * @brief Reconstruct the sentence
+     * Reconstruct the sentence
      * @return Sentence in one string
      */
     public String getSentence() {

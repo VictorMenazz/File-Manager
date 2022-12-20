@@ -13,11 +13,11 @@ import java.util.stream.Stream;
 
 /**
  * @file Content.java
- * @brief Class <em>Content</em>
+ *   Class <em>Content</em>
  */
 
 /**
- * @brief Class Content that saves the text of the Document
+ * Class Content that saves the text of the Document
  *
  * @author Victor Mena Doz
  */
@@ -38,14 +38,14 @@ public class Content {
     private String lang;
 
     /**
-     * @brief Default create of Content
+     * Default create of Content
      * */
     public Content()
     {
     }
 
     /**
-     * @brief Creation of content with text
+     * Creation of content with text
      * @param textDoc, content of the document
      * @param language, language of the text (esp, eng, cat)
      * @throws IOException
@@ -129,7 +129,7 @@ public class Content {
     }
 
     /**
-     * @brief Get text write in a String
+     * Get text write in a String
      * @return text in a string
      */
     public String getText(){
@@ -143,7 +143,7 @@ public class Content {
     }
 
     /**
-     * @brief Get all the sentences of the content
+     * Get all the sentences of the content
      * @return List of sentences of the content
      */
     public ArrayList<String> getSentences() {
@@ -156,7 +156,7 @@ public class Content {
         return aux;
     }
     /**
-     * @brief Get language of the context
+     * Get language of the context
      * @return String language of the content
      */
     public String getLanguage() {
@@ -171,7 +171,7 @@ public class Content {
     }
 
     /**
-     * @brief Get vector of important words of the text
+     * Get vector of important words of the text
      * @return map of frequency
      */
     public HashMap<String,Integer> getVector()
@@ -180,7 +180,7 @@ public class Content {
     }
 
     /**
-     * @brief Consult if word or words are on the text
+     * Consult if word or words are on the text
      * @param wSearch, word to look for
      * @return true if word appears in the text, otherwise false
      */

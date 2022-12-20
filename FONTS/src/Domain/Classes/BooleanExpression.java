@@ -5,37 +5,37 @@ import java.util.regex.*;
 
  /**
   * @file BooleanExpression.java
-  * @brief Class <em>Boolean Expression</em>
+  *   Class <em>Boolean Expression</em>
   */
 
 /**
- * @brief Class Boolean Expression to search documents
+ * Class Boolean Expression to search documents
  *
  * @author Júlia Amenós Dien
  */
 public class BooleanExpression {
     /**
-     * @brief Original boolean expression
+     * Original boolean expression
      */
     private String originalBoolExpr;
 
     /**
-     * @brief Adjusted boolean expression
+     * Adjusted boolean expression
      */
     private String boolExpr;
 
     /**
-     * @brief Boolean expression without quotes
+     * Boolean expression without quotes
      */
     private String noQuotes;
 
     /**
-     * @brief Root of the expression tree
+     * Root of the expression tree
      */
     private Node root;
 
     /**
-     * @brief Node for the expression tree.
+     * Node for the expression tree.
      */
     static private class Node {
         String data;
@@ -43,7 +43,7 @@ public class BooleanExpression {
     };
 
     /**
-     * @brief Creates an empty node with data.
+     * Creates an empty node with data.
      * @param c, string with the value for the data of the node.
      * @return the created node.
      */
@@ -55,7 +55,7 @@ public class BooleanExpression {
     }
 
     /**
-     * @brief Build Expression Tree from boolExpr.
+     * Build Expression Tree from boolExpr.
      * @return Node, which will be the root of the Expression Tree.
      */
      private Node build(){
@@ -152,7 +152,7 @@ public class BooleanExpression {
     }
 
     /**
-     * @brief Recursive function to check a sentence by the boolean expression
+     * Recursive function to check a sentence by the boolean expression
      * @param sentence, a sentence from a document.
      * @param n, node of the expression tree
      */
@@ -190,7 +190,7 @@ public class BooleanExpression {
     }
 
     /**
-     * @brief Checks correct format from boolean operands.
+     * Checks correct format from boolean operands.
      * @throws Exception
      */
     private void checkOperands() throws Exception {
@@ -229,7 +229,7 @@ public class BooleanExpression {
     }
 
     /**
-     * @brief Checks correct order parentheses
+     * Checks correct order parentheses
      * @throws Exception
      */
     private void checkParentheses() throws Exception {
@@ -261,7 +261,7 @@ public class BooleanExpression {
     }
 
     /**
-     * @brief Deletes duplicate elements from the sets of words
+     * Deletes duplicate elements from the sets of words
      * @param s, content inside braces -> { s }
      * @return s without duplicates.
      */
@@ -271,7 +271,7 @@ public class BooleanExpression {
     }
 
     /**
-     * @brief Checks if the content inside braces is correct + removes content inside (to simplify analysis)
+     * Checks if the content inside braces is correct + removes content inside (to simplify analysis)
      * @throws Exception
      */
     private void checkBraces() throws Exception {
@@ -295,7 +295,7 @@ public class BooleanExpression {
     }
 
     /**
-     * @brief Put space between parentheses and word to simplify tree building
+     * Put space between parentheses and word to simplify tree building
      * @throws Exception
      */
     private void separateParentheses() throws Exception {
@@ -314,7 +314,7 @@ public class BooleanExpression {
     }
 
     /**
-     * @brief Deletes content inside quotes (to simplify analysis)
+     * Deletes content inside quotes (to simplify analysis)
      * @throws Exception
      */
     private void removeQuotes() throws Exception {
@@ -335,7 +335,7 @@ public class BooleanExpression {
     //------------------- PUBLIC METHODS -------------------//
 
     /**
-     * @brief Default creator of boolean expression
+     * Default creator of boolean expression
      * @param s, represents the boolean expression.
      * @throws Exception
      */
@@ -353,7 +353,7 @@ public class BooleanExpression {
     }
 
     /**
-     * @brief Returns the original boolean expression
+     * Returns the original boolean expression
      * @return original boolean expression
      */
     public String getExpression(){
@@ -362,7 +362,7 @@ public class BooleanExpression {
 
 
     /**
-     * @brief Checks if a sentence is valid by the expression.
+     * Checks if a sentence is valid by the expression.
      * @param sentence, string to validate expression.
      * @return True if the sentence conforms the boolean expression, false otherwise.
      */

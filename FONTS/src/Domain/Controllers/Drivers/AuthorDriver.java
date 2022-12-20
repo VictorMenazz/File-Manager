@@ -13,7 +13,7 @@ import java.util.regex.Pattern;
  */
 
 /**
- * @brief Driver of class Author
+ * Driver of class Author
  *
  * @author Jordi Soley Masats
  */

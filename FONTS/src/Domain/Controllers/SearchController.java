@@ -16,7 +16,7 @@ import java.util.stream.Stream;
  */
 
 /**
- * @brief Controller of searches to get documents that meet conditions
+ * Controller of searches to get documents that meet conditions
  *
  * @author Victor Mena Doz
  * @author Julia Alice Amenos Dien

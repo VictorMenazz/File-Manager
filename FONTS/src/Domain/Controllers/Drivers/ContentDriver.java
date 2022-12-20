@@ -14,7 +14,7 @@ import java.util.regex.Pattern;
  */
 
 /**
- * @brief Driver of the class Content
+ * Driver of the class Content
  *
  * @author Victor Mena Doz
  */

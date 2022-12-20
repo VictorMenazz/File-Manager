@@ -19,7 +19,7 @@ import java.util.regex.Pattern;
  */
 
 /**
- * @brief Driver of class DomainController
+ * Driver of class DomainController
  *
  * @author Victor Mena Doz
  * @author Marc Navarro Acosta

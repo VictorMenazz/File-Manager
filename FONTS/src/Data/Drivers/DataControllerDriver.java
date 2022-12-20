@@ -77,7 +77,8 @@ public class DataControllerDriver {
         //testRecoverFolders();
         //testSaveDocuments();
         //System.out.println(testSaveHistoral());
-        testLoadHistorial();
+        DataController data = new DataController();
+        data.exportDocument("FONTS/src/Data/dev", "Marc", "Test22", "Testinggg new possibilities", "txt");
     }
 
     private static String readInputString() {

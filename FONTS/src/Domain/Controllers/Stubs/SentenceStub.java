@@ -8,7 +8,7 @@ import FONTS.src.Domain.Classes.Sentence;
  */
 
 /**
- * @brief Stub of Sentence class
+ * Stub of Sentence class
  *
  * @author Victor Mena Doz
  */

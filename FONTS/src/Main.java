@@ -18,6 +18,8 @@ public class Main {
 
     /**
      * Función inicial que lanza la interfaz (en este caso por consola)
+     * @param args, Initial Arguments
+     * @throws FileNotFoundException
      */
     public static void main(String[] args) throws FileNotFoundException {
             javax.swing.SwingUtilities.invokeLater(new Runnable() {

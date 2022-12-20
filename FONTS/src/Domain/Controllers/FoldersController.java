@@ -20,7 +20,7 @@ import java.util.Set;
  */
 
 /**
- * @brief Class FolderController that delegates functions to the Domain Object Folder.
+ * Class FolderController that delegates functions to the Domain Object Folder.
  *
  * @author Victor Mena Doz
  * @author Marc Navarro Acosta
@@ -216,5 +216,13 @@ public class FoldersController {
      */
     public void deleteFolder(Integer foldId) {
         rootFolder.deleteFolder(foldId);
+    }
+
+    public String getJSON(String title, String author) {
+        return rootFolder.getJSON(title, author);
+    }
+
+    public void restoreJSON(String JSON, Integer folderId) {
+        rootFolder.restoreJSON(JSON, folderId);
     }
 }

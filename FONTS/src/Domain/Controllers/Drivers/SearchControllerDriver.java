@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
  */
 
 /**
- * @brief Driver of the SearchController class
+ * Driver of the SearchController class
  *
  * @author Júlia Amenós Dien
  * @author Victor Mena Doz

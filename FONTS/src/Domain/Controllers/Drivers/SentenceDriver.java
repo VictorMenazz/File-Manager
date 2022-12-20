@@ -12,7 +12,7 @@ import java.util.regex.Pattern;
  */
 
 /**
- * @brief Driver of class Sentence
+ * Driver of class Sentence
  *
  * @author Victor Mena Doz
  */

@@ -13,11 +13,11 @@ import java.util.*;
 
 /**
  * @file DomainController.java
- * @brief Class <em>Domain Controller</em>
+ * Class <em>Domain Controller</em>
  */
 
 /**
- * @brief Controller of the layer Domain
+ * Controller of the layer Domain
  *
  * @author Marc Navarro Acosta
  * @author Victor Mena Doz
@@ -27,27 +27,27 @@ import java.util.*;
 public class DomainController {
 
     /**
-     * @brief Persistence controller instance
+     * Persistence controller instance
      */
     private DataController data;
 
     /**
-     * @brief Instance of the folder controller
+     * Instance of the folder controller
      */
     private FoldersController folders;
 
     /**
-     * @brief Instance of the search controller
+     * Instance of the search controller
      */
     private SearchController ctrlSearch;
 
     /**
-     * @brief Instance of the Authors controller
+     * Instance of the Authors controller
      */
     private AuthorsController ctrlAuthors;
 
     /**
-     * @brief Default creation of DomainController
+     * Default creation of DomainController
      */
     public DomainController() {
         //data = DataController.getInstance();
@@ -73,7 +73,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Auxiliary creation of DomainController
+     * Auxiliary creation of DomainController
      * @param rootFolder, References instance of root folder
      */
     public DomainController(Folder rootFolder) {
@@ -83,7 +83,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Import a document from outside our platform
+     * Import a document from outside our platform
      * @param path directory of the file to import
      */
     //Create excepyion
@@ -93,7 +93,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Export a document from our platform to outside
+     * Export a document from our platform to outside
      * @param authorName, name of the author
      * @param title, title of the document
      * @return Document to export
@@ -106,11 +106,12 @@ public class DomainController {
     //create exception
 
     /**
-     * @brief Creates a new document in the system
+     * Creates a new document in the system
      * @param authorName name of the author of the document
      * @param title document title
      * @param text document content
      * @param lang document language
+     * @throws IOException
      */
     public void newDocument(String authorName, String title, String text, String lang) throws IOException {
         try {
@@ -123,11 +124,12 @@ public class DomainController {
     }
 
     /**
-     * @brief Modify specific document
+     * Modify specific document
      * @param authorName if flag = 0, contains the new authorName
      * @param title if flag = 1, contains the new title
      * @param newData, needed to replace the attribute.
      * @param flag if it's 0,
+     * @throws IOException
      */
     public void modifyDocument(String authorName, String title, String newData, int flag) throws IOException {
         try {
@@ -155,7 +157,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Returns a list of documents titles that its author matches a given name
+     * Returns a list of documents titles that its author matches a given name
      * @param authorName, References to the name of the Author
      * @return Arraylist of a documents titles
      */
@@ -170,7 +172,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Returns a list of names of Authors that begins with a given prefix
+     * Returns a list of names of Authors that begins with a given prefix
      * @param prefix, References to the prefix
      * @return List of Authors names that begins with "prefix"
      */
@@ -179,7 +181,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Get information of the selected document
+     * Get information of the selected document
      * @param authorName, References author's name of the document
      * @param title, References title of the document
      * @return list that contains required information:
@@ -203,18 +205,29 @@ public class DomainController {
     //public ArrayList<Document> o Path inicial? INITIALQUERY()
     //My recommendation  is:
 
-    /** @brief
-     * @param folderIdentifier
-     * @return
+    /**
+     * Gives all the authors of the Document Folder.
+     * @param folderIdentifier, Representing the identifier of the Folder.
+     * @return An ArrayList<String> containing all the Documents Authors.
      */
     public ArrayList<String> getDocumentAuthors(int folderIdentifier){
         return folders.getDocumentAuthors(folderIdentifier);
     }
 
+    /**
+     * Gives all the titles of the Document Folder.
+     * @param folderIdentifier, Representing the identifier of the Folder.
+     * @return An ArrayList<String> containing all the Documents Titles.
+     */
     public ArrayList<String> getDocumentTitles(int folderIdentifier){
         return folders.getDocumentTitles(folderIdentifier);
     }
 
+    /**
+     * Gives all the subFolders of the Document Folder.
+     * @param folderIdentifier, Representing the identifier of the Folder.
+     * @return An ArrayList<String> containing all the identifiers of the SubFolders.
+     */
     public HashMap<Integer, String> getSubFolders(int folderIdentifier){
         return folders.getSubFolders(folderIdentifier);
     }
@@ -224,7 +237,7 @@ public class DomainController {
 
 
     /**
-     * @brief Search of k documents that appears to specific document
+     * Search of k documents that appears to specific document
      * @param authorName, References author's name of the specific document
      * @param title, title of the specific document
      * @param k, integer of how many appearance documents to return
@@ -236,7 +249,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Search of a list of Documents who satisfy the boolean expression
+     * Search of a list of Documents who satisfy the boolean expression
      * @param boolExp, instance of the boolean expression to use
      * @return list of documents that satisfy boolean expression
      * @throws Exception
@@ -247,7 +260,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Search of k documents more relevant for a list of specific words
+     * Search of k documents more relevant for a list of specific words
      * @param pWords, list of specific words
      * @param language, language of the search
      * @param k, integer of how many relevant documents to return
@@ -260,7 +273,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Delete specific document of the system
+     * Delete specific document of the system
      * @param authorName, Represents the Author of the Document.
      * @param title, Represents the Title of the Document.
      */
@@ -286,7 +299,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Protects a Document with the password.
+     * Protects a Document with the password.
      * @param authorName, Represents the author of the Document.
      * @param title, Represents the title of the Document.
      * @param password, Represents the password of the Document.
@@ -296,7 +309,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Creates a new Folder.
+     * Creates a new Folder.
      * @param fName, Representing the name of the new Folder.
      * @param foldId, Representing the folderId Parent of the allocation.
      */
@@ -307,7 +320,7 @@ public class DomainController {
 
     /** COMUNICATION WITH DATA LAYER **/
     /**
-     * @brief Restores the Folders System once the Main System is running.
+     * Restores the Folders System once the Main System is running.
      */
     public void reconstructFoldersSystem(){
         String JSON = data.restoreFolders();
@@ -315,7 +328,8 @@ public class DomainController {
     }
 
     /**
-     * @brief Saves the Folders System before the Main System is closed.
+     * Saves the Folders System before the Main System is closed.
+     * @throws IOException
      */
     public void saveFoldersSystem() throws IOException {
         String foldersJSON = folders.saveFoldersStructure();
@@ -323,7 +337,7 @@ public class DomainController {
     }
 
     /**
-     * @brief Restores the Authors System once the Main System is running.
+     * Restores the Authors System once the Main System is running.
      */
     public void reconstructAuthorsSystem(){
         String JSON = data.restoreAuthors();
@@ -331,7 +345,8 @@ public class DomainController {
     }
 
     /**
-     * @brief Saves the Authors System before the Main System is closed.
+     * Saves the Authors System before the Main System is closed.
+     * @throws IOException
      */
     public void saveAuthorsSystem() throws IOException {
         String authorsJSON = ctrlAuthors.saveAuthorsStructure();
@@ -339,7 +354,8 @@ public class DomainController {
     }
 
     /**
-     * @brief Saves the Boolean Expression System before the Main System is closed.
+     * Saves the Boolean Expression System before the Main System is closed.
+     * @return A Boolean expressing the State of the process.
      */
     public Boolean saveHistorial() {
         LinkedHashSet<String> historial = ctrlSearch.getBoolExps();
@@ -349,7 +365,8 @@ public class DomainController {
     }
 
     /**
-     * @brief Recovers the Boolean Expression System before the Main System is closed.
+     * Recovers the Boolean Expression System before the Main System is closed.
+     * @throws FileNotFoundException
      */
     public void loadHistorial() throws FileNotFoundException {
         Gson gson = new Gson();
@@ -359,30 +376,45 @@ public class DomainController {
     }
 
     /**
-     * @brief
-     * @param path
-     * @param foldId
-     * @param lang
-     * @return
+     * Reads a Document physic File and loads it in Domain.
+     * @param path, Representing the physic path to read.
+     * @param foldId, Representing the identifier of the Folder.
+     * @param lang, Representing the language of Document.
+     * @return The result of the process.
      */
-    public Boolean importDocument(String path, String foldId, String lang){
-        String doc = data.importDocument(path);
-        //Logic to get Author and Title
-        //foldersController.newDocument
-        return true;
+    public Boolean importDocument(String path, Integer foldId, String lang, String docType){
+        ArrayList<String> doc = data.importDocument(path, docType);
+        if(docType.equals("json")){
+            folders.restoreJSON(doc.get(0), foldId);
+            return true;
+        }
+        else if (docType.equals("xml") || docType.equals("txt")){
+            try {
+                folders.newDocument(doc.get(0), doc.get(1), doc.get(2), lang);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            return true;
+        }
+        else return false;
     }
 
     /**
-     * @brief
-     * @param title
-     * @param author
-     * @param path
-     * @return
+     * Writes a Document onto a physic File out of the System.
+     * @param title, Representing the title of the Document.
+     * @param author, Representing the author of the Document.
+     * @param path, Representing the physic path to write the Doc.
+     * @return The result of the process.
      */
-    public Boolean exportDocument(String title, String author, String path){
-        //foldersController.getDocument(....)
-
-        return true;
+    public Boolean exportDocument(String title, String author, String path, String docT){
+        if(docT.equals("json")){
+            String docJSON = folders.getJSON(title, author);
+            return data.exportDocument(path, "null", title, docJSON, docT);
+        }
+        else{
+            ArrayList<String> document = folders.getDocument(author, title);
+            return data.exportDocument(path, title, author, document.get(2), docT);
+        }
     }
 
 

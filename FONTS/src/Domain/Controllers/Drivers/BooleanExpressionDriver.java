@@ -11,8 +11,7 @@ import java.util.regex.Pattern;
  */
 
 /**
- * @brief Driver of the BooleanExpression class
- *
+ * Driver of the BooleanExpression class
  * @author Júlia Amenós Dien
  */
 public class BooleanExpressionDriver {

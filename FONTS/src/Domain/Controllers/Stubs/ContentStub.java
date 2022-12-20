@@ -10,7 +10,7 @@ import java.util.*;
  */
 
 /**
- * @brief Stub of Content class
+ * Stub of Content class
  *
  * @author Marc Navarro Acosta
  */

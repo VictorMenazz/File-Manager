@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  */
 
 /**
- * @brief Driver of class AuthorsController
+ * Driver of class AuthorsController
  *
  * @author Jordi Soley Masats
  */

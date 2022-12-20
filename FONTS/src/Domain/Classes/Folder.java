@@ -14,54 +14,54 @@ import java.util.Set;
 
 /**
  * @file Folder.java
- * @brief Class <em>Folder</em>
+ * Class <em>Folder</em>
  */
 
 /**
- * @brief Class Folder that saves the Documents.
+ * Class Folder that saves the Documents.
  * @author Marc Navarro Acosta
  */
 public class Folder {
     /**
-     * @brief Unique identifier for the folder.
+     * Unique identifier for the folder.
      * @param folderId, an Integer that represents the unique ID.
      * */
     private int folderId;
 
     /**
-     * @brief Last Identifier assigned. Value shared by all the Folder instances.
+     * Last Identifier assigned. Value shared by all the Folder instances.
      * @param lastFolderId, an Integer that represents the last assigned ID.
      * */
     private static int lastFolderId;
 
     /**
-     * @brief Name of the folder.
+     * Name of the folder.
      * @param folderName, String allocated to the name of this folder.
      * */
     private String folderName;
 
     /**
-     * @brief Represent the amount of Documents contained in the folder.
+     * Represent the amount of Documents contained in the folder.
      * @param docAmount, Number of documents in this folder.
      * */
     private int docAmount;
 
     /**
-     * @brief Represent the subfolders contained in this Folder.
+     * Represent the subfolders contained in this Folder.
      * @integer Representing the unique identifier of the Folder.
      * @param subFolders, ArrayList with all the Folder objects included in this folder.
      * */
     private HashMap<Integer, Folder> subFolders;
 
     /**
-     * @brief Contains all Documents in the folder
+     * Contains all Documents in the folder
      * @param documents, Contains the Objects allocated to every Document present in this folder.
      * */
     private HashMap<Pair<String, String>, Document> documents;
 
     //Creators
     /**
-     * @brief Default Constructor for the Object Folder
+     * Default Constructor for the Object Folder
      * @param id, Identifier given by the FoldersController to the Folder.
      * @param fName, Represents the name of the folder.
      * */
@@ -75,7 +75,7 @@ public class Folder {
 
     //Setters
     /**
-     * @brief Set the name of the Folder
+     * Set the name of the Folder
      * @param name, String that will be allocated to this folder name.
      * */
     public void setFolderName(String name){
@@ -101,7 +101,7 @@ public class Folder {
 
 
     /**
-     * @brief Add a Document to this folder
+     * Add a Document to this folder
      * @param newD, Document that will be associated to this folder.
      * */
     public void addDocument(Document newD){
@@ -113,7 +113,7 @@ public class Folder {
     }
 
     /**
-     * @brief Add document to specific subfolder
+     * Add document to specific subfolder
      * @param newD, Instance of the new document to add
      * @param foldId, Id of the parent folder
      */
@@ -131,7 +131,7 @@ public class Folder {
     }
 
     /**
-     * @brief Constructs the Document and adds it to the Folder.
+     * Constructs the Document and adds it to the Folder.
      * @param authorName, References the Author of a Document.
      * @param title, Represents the title of the Document.
      * @param text, Represents the Content of the Document on plain text.
@@ -149,7 +149,7 @@ public class Folder {
     }
 
     /**
-     * @brief Delete a Document from this folder
+     * Delete a Document from this folder
      * @param authorName, References to the name of the Document's Author
      * @param title, References to the Document's title
      */
@@ -166,7 +166,7 @@ public class Folder {
     }
 
     /**
-     * @brief Modifies the Content of a certain Document.
+     * Modifies the Content of a certain Document.
      * @param authorName, References the Author of a Document.
      * @param title, Represents the title of the Document.
      * @param text, Represents the Content of the Document on plain text.
@@ -192,7 +192,7 @@ public class Folder {
     }
 
     /**
-     * @brief Modifies the author of a certain Document.
+     * Modifies the author of a certain Document.
      * @param authorName, References the Author of a Document.
      * @param title, Represents the title of the Document.
      * @param newAuthor, Represents the new Author associated to the Document.
@@ -220,7 +220,7 @@ public class Folder {
     }
 
     /**
-     * @brief Modifies the title of a certain Document.
+     * Modifies the title of a certain Document.
      * @param authorName, References the Author of a Document.
      * @param title, Represents the title of the Document.
      * @param newTitle, Represents the Content of the Document on plain text.
@@ -248,7 +248,7 @@ public class Folder {
     }
 
     /**
-     * @brief Protects the Document identified by <title, authorName> with password.
+     * Protects the Document identified by <title, authorName> with password.
      * @param authorName, References the Author of a Document.
      * @param title, Represents the title of the Document.
      * @param password, Represents the Content of the Document on plain text.
@@ -270,7 +270,7 @@ public class Folder {
     //Getters
 
     /**
-     * @brief Gets the name of this Folder.
+     * Gets the name of this Folder.
      * @return folderName, String representing the name of the Folder.
      * */
     public String getName() {
@@ -279,7 +279,7 @@ public class Folder {
 
 
     /**
-     * @brief Gets the identifier of this Folder.
+     * Gets the identifier of this Folder.
      * @return folderId, Int representing the identifier of the Folder.
      * */
     public Integer getId(){ return folderId; }
@@ -288,7 +288,7 @@ public class Folder {
     public Folder getFolder(Integer id){ return subFolders.get(id); }
 
     /**
-     * @brief Gets list of documents' names from this folder
+     * Gets list of documents' names from this folder
      * @return list of documents' names contained on this folder
      */
     public ArrayList<String> getDocumentsName(){
@@ -300,7 +300,7 @@ public class Folder {
     }
 
     /**
-     * @brief Gets the amount of documents contained in this folder.
+     * Gets the amount of documents contained in this folder.
      * @return docAmount, Integer that represents the amount of documents contained in the folder.
      * */
     public int getDocumentAmount(){
@@ -308,7 +308,7 @@ public class Folder {
     }
 
     /**
-     * @brief Gets the Document identified by his Author&Title.
+     * Gets the Document identified by his Author&Title.
      * @param authorName, Represents the writer of the Document.
      * @param title, Represents the title of a Document.
      * @return A Document identified by an Author and a Title.
@@ -330,7 +330,7 @@ public class Folder {
     }
 
     /**
-     * @brief Gets map of frequency's vectors of all the documents and their keys
+     * Gets map of frequency's vectors of all the documents and their keys
      * @return map of keys that identifies documents and their frequency's vectors
      */
     public HashMap<Pair<String, String>, HashMap<String,Integer>> getMapsDocs(){
@@ -351,7 +351,7 @@ public class Folder {
     }
 
     /**
-     * @brief Gets map of texts of all the documents and their keys
+     * Gets map of texts of all the documents and their keys
      * @return map of keys that identifies documents and their texts
      */
     public HashMap<Pair<String, String>, ArrayList<String>> getAllContent(){
@@ -371,7 +371,7 @@ public class Folder {
     //Consultants
 
     /**
-     * @brief Consult if a certain document is in the folder.
+     * Consult if a certain document is in the folder.
      * @return A boolean that indicates true if the document identified by a title and an author is contained, false otherwise.
      * */
     public boolean documentContained(String titl, String auth){
@@ -380,7 +380,7 @@ public class Folder {
     }
 
     /**
-     * @brief Consult if a certain folder is a Subfolder of this Instance.
+     * Consult if a certain folder is a Subfolder of this Instance.
      * @return A boolean that indicates true if the Folder identified by an Id is contained in subFolders.
      * */
     public boolean folderContained(Integer foldId) {
@@ -388,7 +388,7 @@ public class Folder {
     }
 
     /**
-     * @brief Obtain if the Document identified by <title, authorName> is protected
+     * Obtain if the Document identified by <title, authorName> is protected
      * @param author, References the Author of a Document
      * @param title, Represents the title of the Document
      * @return true if Document is protected, otherwise false
@@ -402,7 +402,7 @@ public class Folder {
     /** Recursive functions involved on the efficient Search of Documents and data.Folders **/
 
     /**
-     * @brief Recursive function of getsMapsDocs
+     * Recursive function of getsMapsDocs
      * @return submap of keys that identifies documents and their frequency's vectors
      */
     private HashMap<Pair<String, String>, HashMap<String,Integer>> igetMapsDocs(){
@@ -416,7 +416,7 @@ public class Folder {
     }
 
     /**
-     * @brief Recursive function of getAllContent
+     * Recursive function of getAllContent
      * @return submap of keys that identifies documents and their texts
      */
     private HashMap<Pair<String, String>, ArrayList<String>> iGetAllContent(){
@@ -431,7 +431,7 @@ public class Folder {
     }
 
     /**
-     * @brief Recursive Search to verify the Document is included in this or one of the subFolders.
+     * Recursive Search to verify the Document is included in this or one of the subFolders.
      * @param ttl, Represents the title of the Document.
      * @param auth, Represents the author of the Document.
      * */
@@ -449,7 +449,7 @@ public class Folder {
 
 
     /**
-     * @brief Recursive Search to find the next Folder to reach the Document.
+     * Recursive Search to find the next Folder to reach the Document.
      * @param ttl, Represents the title of the Document.
      * @param auth, Represents the author of the Document.
      * @return An Integer that identifies the next Folder to visit.
@@ -468,7 +468,7 @@ public class Folder {
     }
 
     /**
-     * @brief Search to find the next Folder to visit.
+     * Search to find the next Folder to visit.
      * @param ttl, Represents the title of the Document.
      * @param auth, Represents the author of the Document.
      * @return An Integer with the next folderId to visit.
@@ -479,7 +479,7 @@ public class Folder {
     }
 
     /**
-     * @brief Recursive Search to verify the Folder is included in this or one of the subFolders.
+     * Recursive Search to verify the Folder is included in this or one of the subFolders.
      * @param foldId, Represents the id of the Folder.
      * */
     private boolean folderSubContained(Integer foldId){
@@ -495,7 +495,7 @@ public class Folder {
     }
 
     /**
-     * @brief Recursive Search to find the next Folder to reach the Folder desired.
+     * Recursive Search to find the next Folder to reach the Folder desired.
      * @param foldId, Represents the id of the Folder.
      * @return An Integer that identifies the next Folder to visit.
      * */
@@ -513,7 +513,7 @@ public class Folder {
     }
 
     /**
-     * @brief Search to find the next Folder to visit.
+     * Search to find the next Folder to visit.
      * @param foldId, Represents the id of the Folder desired.
      * @return An Integer with the next folderId to visit.
      * */
@@ -523,7 +523,7 @@ public class Folder {
     }
 
     /**
-     * @brief Restores last record of Folder System from Data Layer.
+     * Restores last record of Folder System from Data Layer.
      * @param detail, Representing the JSON of the Folder wanted to restore.
      */
     public void restoreDocs(JsonObject detail) {
@@ -555,8 +555,8 @@ public class Folder {
     }
 
     /**
-     * @brief Gets the information about subFolders.
-     * @param folderIdentifier
+     * Gets the information about subFolders.
+     * @param folderIdentifier, Identifies the Folder in the System.
      * @return A HashMap<Integer, String> with all identifier and Folder Name the subFolders.
      */
     public HashMap<Integer, String> getSubFolders(int folderIdentifier) {
@@ -575,7 +575,7 @@ public class Folder {
     }
 
     /**
-     * @brief Get information about Document titles pertaining to this Folder.
+     * Get information about Document titles pertaining to this Folder.
      * @param folderIdentifier, identifying the Folder.
      * @return An ArrayList containing all Document Titles.
      */
@@ -594,7 +594,7 @@ public class Folder {
     }
 
     /**
-     * @brief Get information about Document authors pertaining to this Folder.
+     * Get information about Document authors pertaining to this Folder.
      * @param folderIdentifier, identifying the Folder.
      * @return An ArrayList containing all Document authors.
      * */
@@ -613,7 +613,7 @@ public class Folder {
     }
 
     /**
-     * @brief Deletes the folder with identifier foldId.
+     * Deletes the folder with identifier foldId.
      * @param foldId, Represents the id of the Folder desired.
      */
     public void deleteFolder(Integer foldId) {
@@ -622,6 +622,32 @@ public class Folder {
             int next = getNextFolderParent(foldId);
             Folder f = subFolders.get(next);
             f.deleteFolder(foldId);
+        }
+    }
+
+    public String getJSON(String title, String author) {
+        Pair<String, String> keyDoc = new Pair(title, author);
+        if(documents.containsKey(keyDoc)) {
+            Gson gson = new Gson();
+            Document d = documents.get(keyDoc);
+            return gson.toJson(d);
+        }
+        else {
+            int foldId = getNextFolder(title, author);
+            Folder f = subFolders.get(foldId);
+            return f.getJSON(author, title);
+        }
+    }
+
+    public void restoreJSON(String json, Integer foldId) {
+        if(foldId.equals(this.folderId)){
+            Gson gson = new Gson();
+            gson.fromJson(json, Document.class);
+        }
+        else{
+            int n = getNextFolderParent(foldId);
+            Folder f = subFolders.get(n);
+            restoreJSON(json, foldId);
         }
     }
 }

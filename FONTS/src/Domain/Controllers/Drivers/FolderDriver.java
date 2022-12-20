@@ -14,11 +14,11 @@ import java.util.regex.Pattern;
 
 /**
  * @file FolderDriver.java
- * @brief Driver <em>Folder</em>
+ * Driver <em>Folder</em>
  */
 
 /**
- * @brief Driver of class Folder
+ * Driver of class Folder
  *
  * @author Marc Navarro Acosta
  */
@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
 public class FolderDriver {
     private static Scanner writer = new Scanner(System.in).useDelimiter(Pattern.compile("[\\r\\n;]+"));
 
-    /** @brief Creator test. */
+    /** Creator test. */
     public static void testFolder() {
         System.out.println("Introduce a name for the Folder:");
         String name = readInputString();
@@ -36,7 +36,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    /** @brief Check the function SetFolderName of Folder class. */
+    /** Check the function SetFolderName of Folder class. */
     public static void testSetFolderName() {
         System.out.println("It will initialize a Folder with name 'Folder1'");
         System.out.println("Introduce a name to test function:");
@@ -50,7 +50,7 @@ public class FolderDriver {
         System.out.println();
     }
 
-    /** @brief Check the creation of a SubFolder */
+    /** Check the creation of a SubFolder */
     public static void testCreateFolder() {
         System.out.println("Introduce a name for the new Folder:");
         String inputName = readInputString();
@@ -62,7 +62,10 @@ public class FolderDriver {
         System.out.println();
     }
 
-    /** @brief Check the addition of a Document. */
+    /** Check the addition of a Document.
+     * @throws IOException
+     * @throws DocumentsException
+     * */
     public static void testAddDocument() throws IOException, DocumentsException {
         System.out.println("Introduce the lang(ESP, CAT or ENG) for the Document:");
         String language = readInputString();

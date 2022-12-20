@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
  */
 
 /**
- * @brief Driver of class FoldersController
+ * Driver of class FoldersController
  *
  * @author Marc Navarro Acosta
  */

@@ -7,48 +7,48 @@ import java.util.HashMap;
 /**
  * @file Document.java
  *
- * @brief Class <em>Document</em>
+ *   Class <em>Document</em>
  */
 
 /**
- * @brief Class Document representing a structure able to save certain
- * @brief content and identified by a Title and an Author.
+ * Class Document representing a structure able to save certain
+ * content and identified by a Title and an Author.
  *
  * @author Marc Navarro Acosta
  */
 public class Document {
         /**
-         * @brief Title of the Document.
+         * Title of the Document.
          * @param title, String representing the Title of the Document.
          * */
         private String title;
 
         /**
-         * @brief Author of the Document.
+         * Author of the Document.
          * @param author, String representing the Author of the Document.
          */
         private String author;
 
         /**
-         * @brief Contains the Content of the Document.
+         * Contains the Content of the Document.
          * @param cont, Represents the Content of a Document.
          * */
         private Content cont;
 
         /**
-         * @brief Contains the language of the Document
+         * Contains the language of the Document
          * @param cont, Represents the language of the Document, could be ESP, CAT or ENG.
          * */
         private String language;
 
         /**
-         * @brief Represent the password for an encrypted Document.
+         * Represent the password for an encrypted Document.
          * @param password, String that identifies the key of a Document.
          * */
         private String password;
 
         /**
-        * @brief ENUM that differ the possible type for a Document.
+        * ENUM that differ the possible type for a Document.
         * */
         enum DOC_TYPE{
             XML,
@@ -56,7 +56,7 @@ public class Document {
         }
 
         /**
-         * @brief Indicates the format of the Document imported.
+         * Indicates the format of the Document imported.
          * @param format, ENUM that differ the possible kinds of formats.
          * */
         private DOC_TYPE format;
@@ -64,7 +64,7 @@ public class Document {
 
         //Creators
         /**
-         * @brief Constructor for the Object Document.
+         * Constructor for the Object Document.
          * @param ttl, Represents the title of the Document.
          * @param auth, Represents the author of the Document.
          * @param c, Represents the content of a Document.
@@ -80,7 +80,7 @@ public class Document {
         }
 
         /**
-         * @brief Constructor for the Object Document.
+         * Constructor for the Object Document.
          * @param ttl, Represents the title of the Document.
          * @param auth, Represents the author of the Document.
          * @param text, Represents text conforming the Content of a Document.
@@ -97,7 +97,7 @@ public class Document {
 
     //Setters
         /**
-         * @brief Set the Author of a Document.
+         * Set the Author of a Document.
          * @param auth, String that will be allocated to the Author of this Document.
          * */
         public void setAuthor(String auth){
@@ -105,7 +105,7 @@ public class Document {
         }
 
         /**
-         * @brief Set the Title of a Document.
+         * Set the Title of a Document.
          * @param titl, String that will be allocated to the Title of this Document.
          * */
         public void setTitle(String titl){
@@ -113,7 +113,7 @@ public class Document {
         }
 
         /**
-         * @brief Set the Content of a Document.
+         * Set the Content of a Document.
          * @param c, String that will be allocated to the Content of this Document.
          * */
         public void setContent(Content c){
@@ -121,7 +121,7 @@ public class Document {
         }
 
         /**
-         * @brief Set the Language of a Document.
+         * Set the Language of a Document.
          * @param lang, String that will be allocated to the Language of this Document.
          * */
         public void setLanguage(String lang) throws DocumentsException {
@@ -130,7 +130,7 @@ public class Document {
         }
 
         /**
-         * @brief Protect the Document with a password
+         * Protect the Document with a password
          * @param passw, String that will protect this Document
          * */
         public void protectDocument(String passw) {
@@ -139,7 +139,7 @@ public class Document {
 
         //Getters
         /**
-         * @brief Gets the Title of the Document.
+         * Gets the Title of the Document.
          * @return title, String that represents the title of the document.
          * */
         public String getTitle(){
@@ -147,7 +147,7 @@ public class Document {
         }
 
         /**
-         * @brief Gets the Author of the Document.
+         * Gets the Author of the Document.
          * @return author's name, String that represents the author of the document.
          * */
         public String getAuthor(){
@@ -155,7 +155,7 @@ public class Document {
         }
 
         /**
-         * @brief Gets the Content of the Document.
+         * Gets the Content of the Document.
          * @return text, String that represents the content of the document.
          * */
         public String getContent(){
@@ -163,13 +163,13 @@ public class Document {
         }
 
         /**
-         * @brief Gets the Content of the Document.
+         * Gets the Content of the Document.
          * @return Content Instance of the Document.
          * */
         public Content getContentInstance() {return cont;}
 
         /**
-         * @brief Gets the Language of the Document.
+         * Gets the Language of the Document.
          * @return language, String that represents the Language of the Document Content.
          * */
         public String getLanguage() {
@@ -177,7 +177,7 @@ public class Document {
         }
 
         /**
-         * @brief Gets the frequency's vector of the Document's content.
+         * Gets the frequency's vector of the Document's content.
          * @return HashMap that represents this vector.
          * */
         public HashMap<String, Integer> contentSearch() {
@@ -186,7 +186,7 @@ public class Document {
 
     //Consultants
         /**
-         * @brief Check if Document is protected.
+         * Check if Document is protected.
          * @return boolean that represents true if document is protected, otherwise false.
          * */
         public boolean isProtected(){

@@ -12,7 +12,7 @@ import java.util.HashMap;
  */
 
 /**
- * @brief Stub of Folder class
+ * Stub of Folder class
  *
  * @author Victor Mena Doz
  */
