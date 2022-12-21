@@ -18,7 +18,7 @@ import java.awt.event.ActionListener;
  * @author Víctor Mena Doz
  */
 
-public class AddNewDocumentDialog implements ActionListener {
+public class AddNewDocument implements ActionListener {
     /**
      * Instance of the Presentation Controller
      */
@@ -62,7 +62,7 @@ public class AddNewDocumentDialog implements ActionListener {
     /**
      * Default creator of dialog
      */
-    public AddNewDocumentDialog() {
+    public AddNewDocument() {
         dialog = new JDialog();
         dialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
 
@@ -148,6 +148,6 @@ public class AddNewDocumentDialog implements ActionListener {
     }
 
     public static void main(String args[]) {
-        AddNewDocumentDialog ad = new AddNewDocumentDialog();
+        AddNewDocument ad = new AddNewDocument();
     }
 }

@@ -62,8 +62,9 @@ public class DocumentView implements ActionListener {
      * @param tit, title of the document
      * @param lang, language of the document
      * @param newD, boolean that if true: it's a new document
+     * @param mod, if can modify document
      */
-    public DocumentView(String aut, String tit, String lang, boolean newD) {
+    public DocumentView(String aut, String tit, String lang, boolean newD, boolean mod) {
         author = aut;
         title = tit;
         language = lang;
@@ -141,10 +142,11 @@ public class DocumentView implements ActionListener {
             textArea.setText(aux.get(2));
             textEditor.setTitle(aux.get(0));
         }
+        if(!mod) {
+            textArea.setEditable(false);
+        }
         else {
             textEditor.setTitle(title);
-            String s1 = author + "\n" + title + "\n" + language + "\n";
-            textArea.setText(s1);
         }
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -204,6 +206,6 @@ public class DocumentView implements ActionListener {
         String author = "Victor Mena";
         String lang = "Spanish";
 
-        DocumentView te = new DocumentView(author, title, lang,true);
+        DocumentView te = new DocumentView(author, title, lang,true, true);
     }
 }

@@ -85,20 +85,19 @@ public class PresentationController {
         ArrayList<String> authors = ctrlDomain.getDocumentAuthors(0);
         ArrayList<String> documents = ctrlDomain.getDocumentTitles(0);
         HashMap<Integer, String> subfolders = ctrlDomain.getSubFolders(0);
-        main = new MainView(authors, documents, subfolders);
-        mainFrame.setTitle("File Manager");
-        mainFrame.setContentPane(main.getDefaultPanel());
-        mainFrame.setVisible(true);
+        main = new MainView();
     }
 
     /**
      * Create a document view for a specific document, new or save
      * @param author, author's name of the document
      * @param title, title of the document
+     * @param newDoc, if the document is new
+     * @param modify, if can modify the content
      */
-    public void toDocument(String author, String title, boolean newDoc) {
-        //ctrlDomain.getLanguage(author, title);
-        //DocumentView doc = new DocumentView(author, title, );
+    public void toDocument(String author, String title, boolean newDoc, boolean modify) {
+        //if(!newDoc) ctrlDomain.getLanguage(author, title);
+        //DocumentView document =  new DocumentView(author, title, lang, newDoc, modify);
     }
 
     /**
@@ -126,9 +125,7 @@ public class PresentationController {
         HashMap<String, String> aux = ctrlDomain.booleanExpressionSearch(boolExp);
         ArrayList<String> titles = (ArrayList<String>) aux.keySet();
         ArrayList<String> authors = (ArrayList<String>) aux.values();
-        MainView result = new MainView(authors, titles, null);
         JFrame resWindow = new JFrame();
-        resWindow.setContentPane(result.getDefaultPanel());
         resWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         resWindow.setTitle("Result for boolean expression search");
         resWindow.setVisible(true);
@@ -144,9 +141,7 @@ public class PresentationController {
         HashMap<String, String> aux = ctrlDomain.appearanceSearch(authorName, title, k);
         ArrayList<String> titles = (ArrayList<String>) aux.keySet();
         ArrayList<String> authors = (ArrayList<String>) aux.values();
-        MainView result = new MainView(authors, titles, null);
         JFrame resWindow = new JFrame();
-        resWindow.setContentPane(result.getDefaultPanel());
         resWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         resWindow.setTitle("Result for boolean expression search");
         resWindow.setVisible(true);
@@ -163,9 +158,7 @@ public class PresentationController {
         HashMap<String, String> aux = ctrlDomain.documentsQuery(pWords, language, k);
         ArrayList<String> titles = (ArrayList<String>) aux.keySet();
         ArrayList<String> authors = (ArrayList<String>) aux.values();
-        MainView result = new MainView(authors, titles, null);
         JFrame resWindow = new JFrame();
-        resWindow.setContentPane(result.getDefaultPanel());
         resWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         resWindow.setTitle("Result for boolean expression search");
         resWindow.setVisible(true);
@@ -179,9 +172,7 @@ public class PresentationController {
         ArrayList<String> titles = ctrlDomain.authorDocuments(authorName);
         ArrayList<String> authors = new ArrayList<>();
         for(int i = 0; i < titles.size(); ++i) authors.add(authorName);
-        MainView result = new MainView(authors, titles, null);
         JFrame resWindow = new JFrame();
-        resWindow.setContentPane(result.getDefaultPanel());
         resWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         resWindow.setTitle("Result for boolean expression search");
         resWindow.setVisible(true);
