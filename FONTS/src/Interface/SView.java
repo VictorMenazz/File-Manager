@@ -4,18 +4,19 @@ import javax.swing.*;
 import javax.swing.border.Border;
 import javax.swing.text.NumberFormatter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.text.NumberFormat;
 
-public class SView implements ItemListener {
+public class SView implements ItemListener, ActionListener {
     JPanel cards; //a panel that uses CardLayout
-    final static String BUTTONPANEL = "Card with JButtons";
-    final static String TEXTPANEL = "Card with JTextField";
 
     JTextField f1, f2, f31, f32, f41, f42, f43, f61, f62, f5;
 
-    JButton b51, b52;
+    JButton b51;
+    JButton s1, s2, s3, s4, s5, s6;
 
 
     public void initTextFields() {
@@ -52,14 +53,12 @@ public class SView implements ItemListener {
 
 
     }
-    JButton bSearch;
 
     public void addComponentToPane(Container pane) {
 
         JPanel comboBoxPane = new JPanel();
         String comboBoxItems[] = {"Title list", "Authors list", "Find document", "Similarity", "Boolean", "Relevance"};
         JComboBox cb = new JComboBox(comboBoxItems);
-        bSearch = new JButton("Get Results");
         cb.setEditable(false);
         cb.addItemListener(this);
         comboBoxPane.add(cb);
@@ -149,8 +148,6 @@ public class SView implements ItemListener {
         card5.add(b51, c);
 
 
-
-
         //CARD6
         JPanel card6 = new JPanel();
         card6.setLayout(new GridBagLayout());
@@ -167,7 +164,6 @@ public class SView implements ItemListener {
         c.gridx = 1;
         c.gridy = 1;
         card6.add(f62, c);
-
 
 
         //BUTTONS
@@ -206,9 +202,6 @@ public class SView implements ItemListener {
 
 
 
-
-
-
     public void itemStateChanged(ItemEvent evt) {
         CardLayout cl = (CardLayout)(cards.getLayout());
         cl.show(cards, (String)evt.getItem());
@@ -239,6 +232,22 @@ public class SView implements ItemListener {
         frame.setVisible(true);
     }
 
+    private void titleListSearch(){
+        //resultats busqueda 1
+
+    }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        String s = e.getActionCommand();
+
+        if (s.equals("s1")){
+            titleListSearch();
+        } else if (s.equals("s2")){
+
+        }
+
+    }
+
     public static void main(String[] args) {
         /* Use an appropriate Look and Feel */
         try {
@@ -264,6 +273,7 @@ public class SView implements ItemListener {
             }
         });
     }
+
 
 
 
