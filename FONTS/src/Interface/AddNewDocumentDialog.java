@@ -109,14 +109,14 @@ public class AddNewDocumentDialog implements ActionListener {
         c.gridx = 1;
         c.gridy = 2;
         panel.add(inputAuthor, c);
-        c.gridx = 0;
+        c.gridx = 1;
         c.gridy = 4;
-        panel.add(lang);
+        panel.add(lang, c);
         c.gridx = 0;
         c.gridy = 6;
         panel.add(buttonOK, c);
-        c.gridx = 1;
-        c.gridy = 3;
+        c.gridx = 3;
+        c.gridy = 6;
         panel.add(buttonCancel, c);
 
         dialog.add(panel);
