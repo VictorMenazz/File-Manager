@@ -1,15 +1,57 @@
 package FONTS.src.Interface;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.text.NumberFormat;
 
 public class SView implements ItemListener {
     JPanel cards; //a panel that uses CardLayout
     final static String BUTTONPANEL = "Card with JButtons";
     final static String TEXTPANEL = "Card with JTextField";
 
+    JTextField f1, f2, f31, f32, f41, f42, f43, f61, f62, f5;
+
+    JButton b51, b52;
+
+
+    public void initTextFields() {
+        NumberFormat format = NumberFormat.getNumberInstance();
+        NumberFormatter formatter = new NumberFormatter(format);
+        formatter.setValueClass(Integer.class);  // only allow integers
+        formatter.setMinimum(0);  // set the minimum value
+        formatter.setMaximum(100);  // set the maximum value
+        formatter.setAllowsInvalid(false);  // don't allow invalid input
+
+        f1 = new JTextField();
+        f1.setPreferredSize(new Dimension(300, 20));
+        f2 = new JTextField();
+        f2.setPreferredSize(new Dimension(300, 20));
+        f31 = new JTextField();
+        f31.setPreferredSize(new Dimension(300, 20));
+        f32 = new JTextField();
+        f32.setPreferredSize(new Dimension(300, 20));
+        f41 = new JTextField();
+        f41.setPreferredSize(new Dimension(300, 20));
+        f42 = new JTextField();
+        f42.setPreferredSize(new Dimension(300, 20));
+        f43 = new JFormattedTextField(formatter);
+        f43.setPreferredSize(new Dimension(300, 20));
+        f61 = new JTextField();
+        f61.setPreferredSize(new Dimension(300, 20));
+        f5 = new JTextField();
+        f5.setPreferredSize(new Dimension(700, 20));
+        f62 = new JFormattedTextField(formatter);
+        f62.setPreferredSize(new Dimension(300, 20));
+
+        b51 = new JButton("Add");
+        //b52 = new JButton("Remove");
+
+
+    }
     JButton bSearch;
 
     public void addComponentToPane(Container pane) {
@@ -21,62 +63,115 @@ public class SView implements ItemListener {
         cb.setEditable(false);
         cb.addItemListener(this);
         comboBoxPane.add(cb);
-
-        //ENTRY
-        JPanel jp1 = new JPanel();
-        JTextField a = new JTextField("", 10);
-        jp1.add(new JLabel("Author prefix "));
-        jp1.add(a);    //Agafar text amb entry.getText()
-
-        JPanel jp2 = new JPanel();
-        JTextField t = new JTextField("", 10);
-        jp2.add(new JLabel("Title "));
-        jp2.add(t);    //Agafar text amb entry.getText()
-
-        JPanel jp3 = new JPanel();
-        JTextField author = new JTextField("", 10);
-        jp3.add(new JLabel("Title "));
-        jp3.add(author);    //Agafar text amb entry.getText()
-
-        JPanel jp4 = new JPanel();
-        JTextField title = new JTextField("", 10);
-        jp4.add(new JLabel("Author "));
-        jp4.add(title);    //Agafar text amb entry.getText()
-
-        JPanel jp5 = new JPanel();
-        JTextField k = new JTextField("", 10);
-        jp5.add(new JLabel("k "));
-        jp5.add(k);    //Agafar text amb entry.getText()
+        initTextFields();
 
 
+        //GRID
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(5, 0, 5, 0);
 
 
         //CARD1
         JPanel card1 = new JPanel();
-        card1.setLayout(new BoxLayout(card1, BoxLayout.Y_AXIS));
-        card1.add(jp1);
-
+        card1.setLayout(new GridBagLayout());
+        c.gridx = 0;
+        c.gridy = 0;
+        card1.add(new JLabel("Title: "), c);
+        c.gridx = 1;
+        c.gridy = 0;
+        card1.add(f1, c);
 
         //CARD2
         JPanel card2 = new JPanel();
-        card2.setLayout(new BoxLayout(card2, BoxLayout.Y_AXIS));
-        card2.add(jp2);
-
+        card2.setLayout(new GridBagLayout());
+        c.gridx = 0;
+        c.gridy = 0;
+        card2.add(new JLabel("Author's prefix: "), c);
+        c.gridx = 1;
+        c.gridy = 0;
+        card2.add(f2, c);
 
         //CARD3
         JPanel card3 = new JPanel();
-        card3.setLayout(new BoxLayout(card3, BoxLayout.Y_AXIS));
-        card3.add(jp4);
-        card3.add(jp3);
-
+        card3.setLayout(new GridBagLayout());
+        c.gridx = 0;
+        c.gridy = 0;
+        card3.add(new JLabel("Title: "), c);
+        c.gridx = 1;
+        c.gridy = 0;
+        c.gridwidth = 2;
+        card3.add(f31, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        c.gridwidth = 1;
+        card3.add(new JLabel("Author: "), c);
+        c.gridx = 1;
+        c.gridy = 1;
+        card3.add(f32, c);
 
         //CARD4
         JPanel card4 = new JPanel();
-        card4.setLayout(new BoxLayout(card4, BoxLayout.Y_AXIS));
-        card4.add(jp5);
+        card4.setLayout(new GridBagLayout());
+        c.gridx = 0;
+        c.gridy = 0;
+        card4.add(new JLabel("Title: "), c);
+        c.gridx = 1;
+        c.gridy = 0;
+        card4.add(f41, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        card4.add(new JLabel("Author: "), c);
+        c.gridx = 1;
+        c.gridy = 1;
+        card4.add(f42, c);
+        c.gridx = 0;
+        c.gridy = 2;
+        card4.add(new JLabel("Number of desired documents: "), c);
+        c.gridx = 1;
+        c.gridy = 2;
+        card4.add(f43, c);
+
+        //CARD5
+        String boolExpr[] = {"Ejemplo1", "Ejemplo2", "Find document", "Similarity", "Boolean", "Relevance"};    //conectar para obtener data
+        JComboBox beList = new JComboBox(boolExpr);
+        beList.setPreferredSize(new Dimension(700, 25));
+
+        JPanel card5 = new JPanel();
+        card5.setLayout(new GridBagLayout());
+        c.gridx = 0;
+        c.gridy = 0;
+        card5.add(beList, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        card5.add(f5, c);
+        c.gridx = 0;
+        c.gridy = 2;
+        card5.add(b51, c);
 
 
 
+
+        //CARD6
+        JPanel card6 = new JPanel();
+        card6.setLayout(new GridBagLayout());
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridwidth = 1;
+        card6.add(new JLabel("Words to search: "), c);
+        c.gridx = 1;
+        c.gridy = 0;
+        card6.add(f61, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        card6.add(new JLabel("Number of documents to search: "), c);
+        c.gridx = 1;
+        c.gridy = 1;
+        card6.add(f62, c);
+
+
+
+        //BUTTONS
+        JButton b = new JButton("Search");
 
         //Create the panel that contains the "cards".
         cards = new JPanel(new CardLayout());
@@ -84,15 +179,35 @@ public class SView implements ItemListener {
         cards.add(card2, comboBoxItems[1]);
         cards.add(card3, comboBoxItems[2]);
         cards.add(card4, comboBoxItems[3]);
+        cards.add(card5, comboBoxItems[4]);
+        cards.add(card6, comboBoxItems[5]);
 
         pane.setSize(1000, 750);
+        pane.setLayout(new GridBagLayout());
 
+        GridBagConstraints cPane = new GridBagConstraints();
+        cPane.insets = new Insets(0, 0, 30, 0);
 
-        pane.add(comboBoxPane, BorderLayout.PAGE_START);
-        pane.add(cards, BorderLayout.CENTER);
+        cPane.gridx = 0;
+        cPane.gridy = 0;
+        pane.add(comboBoxPane, cPane);
+
+        //cPane.insets = new Insets(0, 0, 0, 0);
+        cPane.gridx = 0;
+        cPane.gridy = 1;
+        pane.add(cards, cPane);
+
+        cPane.gridx = 4;
+        cPane.gridy = 2;
+        //pane.add(b, cPane);
 
 
     }
+
+
+
+
+
 
     public void itemStateChanged(ItemEvent evt) {
         CardLayout cl = (CardLayout)(cards.getLayout());
