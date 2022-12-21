@@ -11,9 +11,13 @@ import java.awt.event.ItemListener;
 import java.text.NumberFormat;
 
 public class SView implements ItemListener, ActionListener {
+
+    private PresentationController ctrlPres = PresentationController.getInstance();
+
     JPanel cards; //a panel that uses CardLayout
 
     JTextField f1, f2, f31, f32, f41, f42, f43, f61, f62, f5;
+    JComboBox cb1;
 
     JButton b51;
     JButton s1, s2, s3, s4, s5, s6;
@@ -48,8 +52,14 @@ public class SView implements ItemListener, ActionListener {
         f62 = new JFormattedTextField(formatter);
         f62.setPreferredSize(new Dimension(300, 20));
 
-        b51 = new JButton("Add");
+        b51 = new JButton("Search");
+        s1 = new JButton("Search");
+        s2 = new JButton("Search");
+        s3 = new JButton("Search");
+        s4 = new JButton("Search");
+        s6 = new JButton("Search");
         //b52 = new JButton("Remove");
+
 
 
     }
@@ -75,30 +85,39 @@ public class SView implements ItemListener, ActionListener {
         card1.setLayout(new GridBagLayout());
         c.gridx = 0;
         c.gridy = 0;
-        card1.add(new JLabel("Title: "), c);
+        card1.add(new JLabel("Author: "), c);
         c.gridx = 1;
         c.gridy = 0;
         card1.add(f1, c);
+        c.gridx = 0;
+        c.gridy = 3;
+        c.gridwidth = 2;
+        card1.add(s1, c);
 
         //CARD2
         JPanel card2 = new JPanel();
         card2.setLayout(new GridBagLayout());
         c.gridx = 0;
         c.gridy = 0;
+        c.gridwidth = 1;
         card2.add(new JLabel("Author's prefix: "), c);
         c.gridx = 1;
         c.gridy = 0;
         card2.add(f2, c);
+        c.gridx = 0;
+        c.gridy = 3;
+        c.gridwidth = 2;
+        card2.add(s2, c);
 
         //CARD3
         JPanel card3 = new JPanel();
         card3.setLayout(new GridBagLayout());
         c.gridx = 0;
         c.gridy = 0;
+        c.gridwidth = 1;
         card3.add(new JLabel("Title: "), c);
         c.gridx = 1;
         c.gridy = 0;
-        c.gridwidth = 2;
         card3.add(f31, c);
         c.gridx = 0;
         c.gridy = 1;
@@ -107,12 +126,17 @@ public class SView implements ItemListener, ActionListener {
         c.gridx = 1;
         c.gridy = 1;
         card3.add(f32, c);
+        c.gridx = 0;
+        c.gridy = 3;
+        c.gridwidth = 2;
+        card3.add(s3, c);
 
         //CARD4
         JPanel card4 = new JPanel();
         card4.setLayout(new GridBagLayout());
         c.gridx = 0;
         c.gridy = 0;
+        c.gridwidth = 1;
         card4.add(new JLabel("Title: "), c);
         c.gridx = 1;
         c.gridy = 0;
@@ -129,6 +153,10 @@ public class SView implements ItemListener, ActionListener {
         c.gridx = 1;
         c.gridy = 2;
         card4.add(f43, c);
+        c.gridx = 0;
+        c.gridy = 3;
+        c.gridwidth = 2;
+        card4.add(s4, c);
 
         //CARD5
         String boolExpr[] = {"Ejemplo1", "Ejemplo2", "Find document", "Similarity", "Boolean", "Relevance"};    //conectar para obtener data
@@ -139,11 +167,12 @@ public class SView implements ItemListener, ActionListener {
         card5.setLayout(new GridBagLayout());
         c.gridx = 0;
         c.gridy = 0;
+        c.gridwidth = 1;
         card5.add(beList, c);
         c.gridx = 0;
         c.gridy = 1;
         card5.add(f5, c);
-        c.gridx = 0;
+        c.gridx = 1;
         c.gridy = 2;
         card5.add(b51, c);
 
@@ -164,6 +193,11 @@ public class SView implements ItemListener, ActionListener {
         c.gridx = 1;
         c.gridy = 1;
         card6.add(f62, c);
+        c.gridx = 0;
+        c.gridy = 3;
+        c.gridwidth = 2;
+        card6.add(s6, c);
+
 
 
         //BUTTONS
@@ -192,10 +226,6 @@ public class SView implements ItemListener, ActionListener {
         cPane.gridx = 0;
         cPane.gridy = 1;
         pane.add(cards, cPane);
-
-        cPane.gridx = 4;
-        cPane.gridy = 2;
-        //pane.add(b, cPane);
 
 
     }
@@ -233,7 +263,7 @@ public class SView implements ItemListener, ActionListener {
     }
 
     private void titleListSearch(){
-        //resultats busqueda 1
+
 
     }
     @Override
