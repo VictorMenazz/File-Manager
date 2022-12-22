@@ -114,6 +114,11 @@ public class RelevantDocumentsSearch extends JPanel {
         //search.addActionListener(BuscarTitulos);
     }
 
+    public void reset(){
+        k.setText("");
+        p.setText("");
+    }
+
 
     public static void main(String args[]) {
         JFrame f = new JFrame();

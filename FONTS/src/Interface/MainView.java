@@ -376,23 +376,23 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Titles Author Search":{
-                new TitlesAuthorSearch();
+                titlesAuthorSearch.load();
                 break;
             }
             case "Authors Prefix Search":{
-                new AuthorsPrefixSearch();
+                authorsPrefixSearch.reset();
                 break;
             }
             case "Document Search": {
-                new DocumentSearch();
+                documentSearch.setVisible(true);
                 break;
             }
             case "Similar Documents Search":{
-                new SimilarityDocumentsSearch();
+                similarityDocumentsSearch.reset();
                 break;
             }
             case "Relevant Documents Search":{
-                new RelevantDocumentsSearch();
+                relevantDocumentsSearch.reset();
                 break;
             }
             case "Boolean Expression Search":{

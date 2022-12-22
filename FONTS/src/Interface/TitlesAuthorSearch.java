@@ -21,15 +21,7 @@ public class TitlesAuthorSearch extends JPanel {
     private JButton search = new JButton("Search");
     private JFrame frame = new JFrame ("JFrame");
 
-    public TitlesAuthorSearch(){
-        setLayout(null);
-        setPreferredSize(new Dimension(500,350));
-        setMaximumSize(new Dimension(500,350));
-        setMinimumSize(new Dimension(500,350));
-        titleView.setBounds(165,5,200,30);
-        add(titleView);
-
-
+    public void load() {
         ArrayList<String> list = CtrlPres.getAuthorsName();
         authors = new JComboBox(list.toArray());
         authors.setBounds(160, 100, 200, 20);
@@ -53,7 +45,7 @@ public class TitlesAuthorSearch extends JPanel {
                 if (titles.isEmpty()){
                     JOptionPane.showMessageDialog(new JDialog(), "Error, Author does not have any Document");
                 } else {
-
+                    showResults(titles);
                 }
 
                 /*String titulos = CtrlPres.buscarTitulos(txtAutor.getText());
@@ -95,6 +87,23 @@ public class TitlesAuthorSearch extends JPanel {
         };
         //search.addActionListener(BuscarTitulos);
     }
+
+    public TitlesAuthorSearch(){
+        setLayout(null);
+        setPreferredSize(new Dimension(500,350));
+        setMaximumSize(new Dimension(500,350));
+        setMinimumSize(new Dimension(500,350));
+        titleView.setBounds(165,5,200,30);
+        add(titleView);
+
+        load();
+
+    }
+
+    public void showResults(ArrayList<String> titles) {
+
+    }
+
 
 
     public static void main(String args[]) {
