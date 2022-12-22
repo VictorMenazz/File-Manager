@@ -110,15 +110,14 @@ public class ModifyBoolExpr extends JPanel{
                             String creation = CtrlPres.addExpression(txtExpr.getText());
                             if (creation.equals("OK")) {
                                 JOptionPane.showMessageDialog(new JDialog(), "Boolean Expression has been created");
-                                reloadTable();
+                                reset();
                             } else JOptionPane.showMessageDialog(new JDialog(), creation);
                         }
                     }
                 } else if (e.getSource() == bModify){
                     String modify = CtrlPres.modifyExpression(txtExpr.getText(), txtExpr.getText());
                     if (modify.equals("OK")){
-                        txtExpr.setText("");
-                        reloadTable();
+                        reset();
                     }
                 } else if (e.getSource() == bDelete) {
                     Integer row = list.getSelectedRow();
@@ -127,7 +126,7 @@ public class ModifyBoolExpr extends JPanel{
                     String expr = s.toString();
                     if (CtrlPres.deleteExpression(expr)) {
                         JOptionPane.showMessageDialog(new JDialog(), s + " has been deleted");
-                        reloadTable();
+                        reset();
                     }
 
                 }
@@ -167,6 +166,7 @@ public class ModifyBoolExpr extends JPanel{
 
     public void reset() {
         txtExpr.setText("");
+        reloadTable();
     }
 
     public static void main(String args[]) {
