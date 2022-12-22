@@ -409,8 +409,12 @@ public class DomainController {
         else if (docType.equals("xml") || docType.equals("txt")){
             try {
                 folders.newDocument(doc.get(0), doc.get(1), doc.get(2), lang,0);
+                ctrlAuthors.addTitleAuthor(doc.get(0), doc.get(1));
+
             } catch (IOException e) {
                 return false;
+            } catch (DocumentsException e) {
+                throw new RuntimeException(e);
             }
             return true;
         }
