@@ -77,6 +77,7 @@ public class CreateBoolExpr extends JPanel{
 
     public void reset() {
         txtExpr.setText("");
+        setVisible(true);
     }
 
     /*public static void main(String args[]) {

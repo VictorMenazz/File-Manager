@@ -370,7 +370,7 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Create Folder":{
-                new AddNewFolder(this);
+                addNewFolder.reset();
                 break;
             }
             case "Search": {
@@ -398,7 +398,7 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Document Search": {
-                documentSearch.setVisible(true);
+                documentSearch.reset();
                 break;
             }
             case "Similar Documents Search":{
@@ -410,7 +410,7 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Boolean Expression Search":{
-                new BoolExprSearch();
+                boolExprSearch.reset();
                 break;
             }
         }

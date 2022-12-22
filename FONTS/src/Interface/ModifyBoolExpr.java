@@ -39,7 +39,7 @@ public class ModifyBoolExpr extends JPanel{
         model.setDataVector(data, col);
         list.updateUI();
         updateUI();
-
+        setVisible(true);
     }
     public ModifyBoolExpr() {
         setPreferredSize(new Dimension(500, 350));

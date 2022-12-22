@@ -113,7 +113,10 @@ public class SimilarityDocumentsSearch extends JPanel {
     }
 
     public void reset(){
+        authors.setSelectedIndex(-1);
+        titles.setSelectedIndex(-1);
         k.setText("");
+        setVisible(true);
     }
 
 

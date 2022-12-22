@@ -99,6 +99,11 @@ public class DocumentSearch extends JPanel {
         //search.addActionListener(BuscarTitulos);
     }
 
+    public void reset() {
+        authors.setSelectedIndex(-1);
+        titles.setSelectedIndex(-1);
+        setVisible(true);
+    }
 
     public static void main(String args[]) {
         JFrame f = new JFrame();

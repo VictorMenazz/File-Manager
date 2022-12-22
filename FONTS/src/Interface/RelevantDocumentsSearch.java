@@ -117,6 +117,7 @@ public class RelevantDocumentsSearch extends JPanel {
     public void reset(){
         k.setText("");
         p.setText("");
+        setVisible(true);
     }
 
 

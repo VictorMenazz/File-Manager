@@ -56,13 +56,8 @@ public class FolderView extends JPanel implements ActionListener {
         setMinimumSize(new Dimension(500,350));
 
         ArrayList<String> authors = ctrlPres.getDocumentAuthors(id);
-        authors.add("Victor");
-        authors.add("Jesus Andujar");
         ArrayList<String> documents = ctrlPres.getDocumentTitles(id);
-        documents.add("Marc burro");
-        documents.add("Julia la mas lista");
         HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(id);
-        subfolders.put(1, "AUX");
         fileSystemView = FileSystemView.getFileSystemView();
 
         Object[][] data = new Object[(authors.size() + subfolders.size())][3];
@@ -222,6 +217,8 @@ public class FolderView extends JPanel implements ActionListener {
             int row = table.getSelectedRow();
             String author = (String) table.getValueAt(row, 2);
             String title = (String) table.getValueAt(row, 1);
+            System.out.println(author);
+            System.out.println(title);
             ctrlPres.toDocument(author, title, "null", false, false);
         }
         else if(s.equals("Edit file")) {

@@ -111,6 +111,9 @@ public class BoolExprSearch extends JPanel {
         //search.addActionListener(BuscarTitulos);
     }
 
+    public void reset() {
+        setVisible(true);
+    }
 
     public static void main(String args[]) {
         JFrame f = new JFrame();

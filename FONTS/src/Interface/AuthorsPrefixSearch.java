@@ -86,6 +86,7 @@ public class AuthorsPrefixSearch extends JPanel {
 
     public void reset() {
         prefix.setText("");
+        setVisible(true);
     }
 
     public static void main(String args[]) {
