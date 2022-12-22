@@ -63,7 +63,7 @@ public class ExprManager extends JPanel{
     }
 
     public void load() {
-
+        setVisible(true);
     }
 
     public static void main(String args[]) {

@@ -181,7 +181,7 @@ public class FolderView extends JPanel implements ActionListener {
         String[] col = {"Type", "Name", "Author"};
         Object[][] data = new Object[(authors.size() + subfolders.size())][3];
         Icon folderIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/folder-icon.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
-        Icon documentIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/icogit ne-fichier-document-noir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+        Icon documentIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/icone-fichier-document-noir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
         int j = 0;
         for (Integer key : subfolders.keySet()) {
             data[j][0] = folderIcon;
@@ -194,7 +194,7 @@ public class FolderView extends JPanel implements ActionListener {
             data[i][1] = documents.get(i - subfolders.size());
             data[i][2] = authors.get(i - subfolders.size());
         }
-        model.setDataVector(data, col);
+        if(data.length != 0)model.setDataVector(data, col);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setPreferredScrollableViewportSize(table.getPreferredSize());
         table.setAutoCreateRowSorter(true);

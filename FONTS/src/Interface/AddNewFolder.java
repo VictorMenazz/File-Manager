@@ -97,6 +97,12 @@ public class AddNewFolder extends JPanel implements ActionListener {
         setVisible(true);
     }
 
+    public void reset() {
+        inputInitialName.setText(" ");
+
+        setVisible(true);
+    }
+
     /**
      * Define action of buttons
      * @param e the event to be processed
@@ -109,7 +115,7 @@ public class AddNewFolder extends JPanel implements ActionListener {
             int aux = ids.size();
             ctrlPres.newFolder(inputInitialName.getText(), 0);
             ids.add(aux);
-            inputInitialName.setText(" ");
+            reset();
         }
         else if(s.equals("Cancel")) {
             JOptionPane.showMessageDialog(this, "Create Folder operation canceled");

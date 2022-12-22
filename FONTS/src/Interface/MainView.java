@@ -238,6 +238,20 @@ public class MainView extends JFrame implements ActionListener {
         panelTitle.setText(state);
         menu.setSelected(state);
 
+        addNewDocument.setVisible(false);
+        addNewFolder.setVisible(false);
+        folderView.setVisible(false);
+        searchViewN.setVisible(false);
+        exprManager.setVisible(false);
+        modifyBoolExpr.setVisible(false);
+        createBoolExpr.setVisible(false);
+        titlesAuthorSearch.setVisible(false);
+        authorsPrefixSearch.setVisible(false);
+        documentSearch.setVisible(false);
+        similarityDocumentsSearch.setVisible(false);
+        relevantDocumentsSearch.setVisible(false);
+        boolExprSearch.setVisible(false);
+
         switch(state) {
             case "Init":{
                 folderView.setVisible(true);
@@ -352,7 +366,7 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Create Document":{
-                new AddNewDocument(this);
+                addNewDocument.reset();
                 break;
             }
             case "Create Folder":{
@@ -360,7 +374,7 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Search": {
-                new SearchViewN(this);
+                searchViewN.restart();
                 break;
             }
             case "Boolean Expressions": {

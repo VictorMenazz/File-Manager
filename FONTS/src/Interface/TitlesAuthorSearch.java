@@ -24,6 +24,9 @@ public class TitlesAuthorSearch extends JPanel {
 
     public void load() {
         ArrayList<String> list = CtrlPres.getAuthorsName();
+        for(String aux : list){
+            System.out.println(aux);
+        }
         authors = new JComboBox(list.toArray());
         authors.setBounds(160, 100, 200, 20);
         add(authors);
@@ -34,6 +37,8 @@ public class TitlesAuthorSearch extends JPanel {
         search.setBounds(200,200,100,20);
         add(search);
 
+        authors.updateUI();
+        updateUI();
         setVisible(true);
 
 

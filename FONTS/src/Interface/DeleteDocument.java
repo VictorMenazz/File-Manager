@@ -17,7 +17,7 @@ import java.awt.event.ActionListener;
  * @author Júlia Alice Amenós Dien
  * @author Víctor Mena Doz
  */
-public class DeleteDocument implements ActionListener {
+public class DeleteDocument extends JPanel implements ActionListener {
 
     /**
      * Instance of the Presentation Controller

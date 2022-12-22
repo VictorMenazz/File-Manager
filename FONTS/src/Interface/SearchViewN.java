@@ -116,7 +116,7 @@ public class SearchViewN extends JPanel {
     }
 
     public void restart(){
-
+        setVisible(true);
     }
 
     /*public static void main(String args[]) {

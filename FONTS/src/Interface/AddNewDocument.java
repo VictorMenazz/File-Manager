@@ -111,6 +111,13 @@ public class AddNewDocument extends JPanel implements ActionListener {
         setVisible(true);
     }
 
+    public void reset() {
+        inputAuthor.setText(" ");
+        inputInitialTitle.setText(" ");
+
+        setVisible(true);
+    }
+
     /**
      * Define action of buttons
      * @param e the event to be processed
@@ -121,8 +128,7 @@ public class AddNewDocument extends JPanel implements ActionListener {
 
         if(s.equals("OK")) {
             ctrlPres.toDocument(inputAuthor.getText(), inputInitialTitle.getText(), (String)lang.getSelectedItem(), true, true);
-            inputAuthor.setText(" ");
-            inputInitialTitle.setText(" ");
+            reset();
         }
         else if(s.equals("Cancel")) {
             JOptionPane.showMessageDialog(this, "Create document operation canceled");
