@@ -25,14 +25,66 @@ public class SearchViewN extends JPanel {
         setPreferredSize(new Dimension(500, 350));
         setMaximumSize(new Dimension(500, 350));
         setMinimumSize(new Dimension(500, 350));
-        /*GridBagLayout layout = new GridBagLayout();
+        setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        setLayout(layout);
+
+        b1.setMinimumSize(new Dimension(300, 40));
+        b1.setMaximumSize(new Dimension(300, 40));
+        b1.setPreferredSize(new Dimension(300, 40));
+        b2.setMinimumSize(new Dimension(300, 40));
+        b2.setMaximumSize(new Dimension(300, 40));
+        b2.setPreferredSize(new Dimension(300, 40));
+        b3.setMinimumSize(new Dimension(300, 40));
+        b3.setMaximumSize(new Dimension(300, 40));
+        b3.setPreferredSize(new Dimension(300, 40));
+        b4.setMinimumSize(new Dimension(300, 40));
+        b4.setMaximumSize(new Dimension(300, 40));
+        b4.setPreferredSize(new Dimension(300, 40));
+        b5.setMinimumSize(new Dimension(300, 40));
+        b5.setMaximumSize(new Dimension(300, 40));
+        b5.setPreferredSize(new Dimension(300, 40));
+
+        b1.setBackground(Color.decode("#8516f5"));
+        b2.setBackground(Color.decode("#8516f5"));
+        b3.setBackground(Color.decode("#8516f5"));
+        b4.setBackground(Color.decode("#8516f5"));
+        b5.setBackground(Color.decode("#8516f5"));
+
+        b1.setForeground(Color.white);
+        b2.setForeground(Color.white);
+        b3.setForeground(Color.white);
+        b4.setForeground(Color.white);
+        b5.setForeground(Color.white);
+
         c.gridx = 0;
         c.gridy = 0;
-        layout*/
-        setLayout(null);
-        b1.setBounds(280, 100, 300, 40);
+        add(b1, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        add(new JLabel(" "), c);
+        c.gridx = 0;
+        c.gridy = 2;
+        add(b2, c);
+        c.gridx = 0;
+        c.gridy = 3;
+        add(new JLabel(" "), c);
+        c.gridx = 0;
+        c.gridy = 4;
+        add(b3, c);
+        c.gridx = 0;
+        c.gridy = 5;
+        add(new JLabel(" "), c);
+        c.gridx = 0;
+        c.gridy = 6;
+        add(b4, c);
+        c.gridx = 0;
+        c.gridy = 7;
+        add(new JLabel(" "), c);
+        c.gridx = 0;
+        c.gridy = 8;
+        add(b5, c);
+
+        /*b1.setBounds(280, 100, 300, 40);
         add(b1);
         b2.setBounds(280, 150, 300, 40);
         add(b2);
@@ -43,8 +95,7 @@ public class SearchViewN extends JPanel {
         b5.setBounds(280, 300, 300, 40);
         add(b5);
         b6.setBounds(280, 350, 300, 40);
-        add(b6);
-
+        add(b6);*/
 
         setVisible(true);
 

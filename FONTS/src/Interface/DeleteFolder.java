@@ -16,21 +16,11 @@ import java.awt.event.ActionListener;
  * @author Víctor Mena Doz
  */
 
-public class DeleteFolder implements ActionListener {
+public class DeleteFolder extends JPanel implements ActionListener {
     /**
      * Instance of the Presentation Controller
      */
     private PresentationController ctrlPres = PresentationController.getInstance();
-
-    /**
-     * Represents the dialog window
-     */
-    private JDialog dialog;
-
-    /**
-     * Represents dialog's panel.
-     */
-    private JPanel panel;
 
     /**
      * Represents OK button.
