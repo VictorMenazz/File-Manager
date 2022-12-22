@@ -86,6 +86,15 @@ public class DomainController {
         return ctrlSearch.existsExpression(boolExpr);
     }
 
+    public String addExpression(String boolExpr) {
+        return ctrlSearch.addExpression(boolExpr);
+
+    }
+
+    public String[] getBoolExpr() {
+        return ctrlSearch.getBoolExps();
+    }
+
     public ArrayList<String> getAuthorsName() {
         return ctrlAuthors.getAuthorsName();
     }
@@ -344,7 +353,8 @@ public class DomainController {
      * @return A Boolean expressing the State of the process.
      */
     public Boolean saveHistorial() {
-        LinkedHashSet<String> historial = ctrlSearch.getBoolExps();
+        LinkedHashSet<String> historial = ctrlSearch.getList();
+
         Gson gson = new Gson();
         String result = gson.toJson(historial);
         return data.saveHistorial(result);

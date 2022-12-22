@@ -4,25 +4,66 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.LinkedHashSet;
 
 public class ModifyBoolExpr extends JPanel{
 
     private PresentationController CtrlPres = PresentationController.getInstance();
-    private JTextArea TxtExpr = new JTextArea();
-    private JLabel l = new JLabel("Choose the boolean expression to modify");
-    private JButton bModify = new JButton("Modify");
+    private JTextArea txtExpr = new JTextArea();
 
-    private TitlesAuthorSearch titleAuthorSearch;
+    private JLabel l = new JLabel("Write a new boolean expression or choose one to modify");
+    private JButton bModify = new JButton("Modify");
+    private JButton bCreate = new JButton("Create");
+    private JButton bDelete = new JButton("Delete");
+
+    private JList list;
 
     private JFrame frame = new JFrame ("JFrame");
 
-    private JComboBox cb;
 
     public ModifyBoolExpr() {
         setPreferredSize(new Dimension(500, 350));
         setMaximumSize(new Dimension(500, 350));
         setMinimumSize(new Dimension(500, 350));
-        setLayout(null);
+
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(5, 0, 5, 0);
+
+        //String[] bExpr = CtrlPres.getBoolExpr();
+        String[] bExpr = {"Hola", "Adeu"};
+        list = new JList<>(bExpr);
+        txtExpr.setPreferredSize(new Dimension(400, 40));
+        list.setPreferredSize(new Dimension(400, 200));
+
+
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridwidth = 3;
+        add(l, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        add(txtExpr, c);
+        c.gridy = 2;
+        c.gridheight = 3;
+        add(list, c);
+        c.gridx = 0;
+        c.gridy = 5;
+        c.gridheight = 1;
+        c.gridwidth = 1;
+        add(bCreate, c);
+        c.gridy = 5;
+        c.gridx = 1;
+        add(bModify, c);
+        c.gridx = 2;
+        c.gridy = 5;
+        add(bDelete, c);
+
+
+
+
+
+        /*setLayout(null);
         bModify.setBounds(280, 150, 150, 40);
         add(bModify);
         TxtExpr.setBounds(70, 160, 150, 20);
@@ -30,11 +71,13 @@ public class ModifyBoolExpr extends JPanel{
         l.setBounds(115, 65, 330, 30);
         add(l);
 
-        String[] list = {"Title list", "Authors list"}; //get list from presentation controller
+        String[] list = CtrlPres.getBoolExpr();
+
+        //String[] list = {"Title list", "Authors list"}; //get list from presentation controller
         cb = new JComboBox(list);
         cb.setSize(new Dimension(40, 20));
         cb.setBounds(70, 120, 400, 20);
-        add(cb);
+        add(cb);*/
 
         setVisible(true);
 
@@ -42,6 +85,22 @@ public class ModifyBoolExpr extends JPanel{
         ActionListener createExpression = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (e.getSource() == bCreate){
+                    if (txtExpr.getText().length() == 0) {
+                        JOptionPane.showMessageDialog(new JDialog(), "Error, empty Boolean Expression");
+                    }
+                    else {
+                        if (CtrlPres.existsExpression(txtExpr.getText())){
+                            JOptionPane.showMessageDialog(new JDialog(), "Error, Boolean Expression already exists");
+                        }
+                        else {
+                            String creation = CtrlPres.addExpression(txtExpr.getText());
+                            if (creation.equals("OK")) {
+                                JOptionPane.showMessageDialog(new JDialog(), "Boolean Expression has been created");
+                            } else JOptionPane.showMessageDialog(new JDialog(), creation);
+                        }
+                    }
+                }
 
             }
 
@@ -76,7 +135,7 @@ public class ModifyBoolExpr extends JPanel{
     }
 
     public void reset() {
-        TxtExpr.setText("");
+        txtExpr.setText("");
     }
 
     public static void main(String args[]) {

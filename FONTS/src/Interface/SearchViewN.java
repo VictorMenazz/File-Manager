@@ -52,7 +52,6 @@ public class SearchViewN extends JPanel {
         ActionListener chooseSearch = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String s = e.getActionCommand();
                 if (e.getSource() == b1){
                     mv.setGo("Titles Author Search");
                 } else if (e.getSource() == b2){

@@ -7,6 +7,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashSet;
 import java.util.Scanner;
 
 /**
@@ -86,7 +87,15 @@ public class PresentationController {
     }
 
     public Boolean existsExpression(String boolExpr){
-        return ctrlPresent.existsExpression(boolExpr);
+        return ctrlDomain.existsExpression(boolExpr);
+    }
+
+    public String addExpression(String boolExpr){
+        return ctrlDomain.addExpression(boolExpr);
+    }
+
+    public String[] getBoolExpr(){
+        return ctrlDomain.getBoolExpr();
     }
 
     public ArrayList<String> getDocumentAuthors(int id) {

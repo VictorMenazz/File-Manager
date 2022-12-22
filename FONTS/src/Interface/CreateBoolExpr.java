@@ -56,69 +56,24 @@ public class CreateBoolExpr extends JPanel{
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (txtExpr.getText().length() == 0) {
-                    setError("Error, empty Boolean Expression","Invalid expression");
+                    JOptionPane.showMessageDialog(new JDialog(), "Error, empty Boolean Expression");
                 }
                 else {
                     if (CtrlPres.existsExpression(txtExpr.getText())){
-                        setError("Error, Boolean Expression already exists","Invalid expression");
+                        JOptionPane.showMessageDialog(new JDialog(), "Error, Boolean Expression already exists");
                     }
-                    /*else if (!CtrlPres.expresionCorrecta(TxtExpr.getText())) ferror("Error, Boolean Expression syntax is not correct","Invalid expression");
                     else {
-
-                        CtrlPres.crearExpresion(TxtExpr.getText());
-                        JDialog Creado =  new JDialog(frame, "La expresión se ha creado");
-                        Creado.setBounds(800, 300, 400, 200);
-                        Creado.setLayout(null);
-                        JLabel txtErr = new JLabel("La expresión se ha creado");
-                        txtErr.setBounds(80, 20, 400, 40);
-                        JButton BOkay = new JButton("Aceptar");
-                        BOkay.setVisible(true);
-                        BOkay.setBounds(150, 110, 100, 30);
-                        Creado.add(txtErr);
-                        Creado.add(BOkay);
-                        Creado.setVisible(true);
-                        frame.setResizable(false);
-
-                        ActionListener Salir = new ActionListener() {
-                            @Override
-                            public void actionPerformed(ActionEvent e) {
-                                txtErr.setText("");
-                                Creado.dispose();
-                                Creado.setVisible(false);
-                            }
-                        };
-                        BOkay.addActionListener(Salir);
-                    }*/
+                        String creation = CtrlPres.addExpression(txtExpr.getText());
+                        if (creation.equals("OK")) {
+                            JOptionPane.showMessageDialog(new JDialog(), "Boolean Expression has been created");
+                        } else JOptionPane.showMessageDialog(new JDialog(), creation);
+                    }
                 }
             }
         };
         bCreate.addActionListener(createExpression);
     }
-    private void setError(String error, String message) {
-        JDialog invalidExpr = new JDialog(frame, message);
-        invalidExpr.setBounds(800, 300, 400, 200);
-        invalidExpr.setLayout(null);
 
-        JLabel txtErr = new JLabel(error);
-        txtErr.setBounds(80, 20, 400, 40);
-        JButton BOkay = new JButton("OK");
-        BOkay.setVisible(true);
-        BOkay.setBounds(150, 110, 100, 30);
-        invalidExpr.add(txtErr);
-        invalidExpr.add(BOkay);
-        invalidExpr.setVisible(true);
-        frame.setResizable(false);
-
-        ActionListener Close = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                reset();
-                invalidExpr.dispose();
-                invalidExpr.setVisible(false);
-            }
-        };
-        BOkay.addActionListener(Close);
-    }
 
     public void reset() {
         txtExpr.setText("");

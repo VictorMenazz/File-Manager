@@ -301,11 +301,11 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Create Boolean Expression":{
-                new CreateBoolExpr();
+                createBoolExpr.reset();
                 break;
             }
-            case "Modify Boolean Expression List":{
-                new ModifyBoolExpr();
+            case "Modify Boolean Expressions List":{
+                modifyBoolExpr.reset();
                 break;
             }
             case "Titles Author Search":{

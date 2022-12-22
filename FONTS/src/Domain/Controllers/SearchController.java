@@ -45,9 +45,14 @@ public class SearchController {
      * @param boolExp, string with the boolean expression.
      * @throws Exception
      */
-    public void addExpression(String boolExp) throws Exception {
-        BooleanExpression bExpr = new BooleanExpression(boolExp);
-        listBoolExps.add(bExpr.getExpression());
+    public String addExpression(String boolExp) {
+        try {
+            BooleanExpression bExpr = new BooleanExpression(boolExp);
+            listBoolExps.add(bExpr.getExpression());
+            return "OK";
+        } catch(Exception e) {
+            return e.getMessage();
+        }
     }
 
     public Boolean existsExpression(String boolExp) {
@@ -90,7 +95,12 @@ public class SearchController {
         return list;
     }
 
-    public LinkedHashSet<String> getBoolExps() {
+
+    public String[] getBoolExps() {
+        return listBoolExps.toArray(new String[listBoolExps.size()]);
+    }
+
+    public LinkedHashSet<String> getList() {
         return listBoolExps;
     }
 
