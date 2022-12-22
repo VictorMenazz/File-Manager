@@ -29,7 +29,7 @@ public class ModifyBoolExpr extends JPanel{
         String[] col = {"Boolean Expressions"};
         String[][] data = new String[bExpr.length][1];
         for (int i = 0; i < bExpr.length; i++) {
-            data[i][1] = bExpr[i];
+            data[i][0] = bExpr[i];
         }
         model.setDataVector(data, col);
         list.updateUI();
@@ -49,15 +49,24 @@ public class ModifyBoolExpr extends JPanel{
         String[] col = {"Boolean Expressions"};
         String[][] data = new String[bExpr.length][1];
         for (int i = 0; i < bExpr.length; i++) {
-            data[i][1] = bExpr[i];
+            data[i][0] = bExpr[i];
         }
 
         model = new DefaultTableModel(data, col);
-        list = new JTable(model);
+        list = new JTable(model) {
+            private static final long serialVersionUID = 1L;
 
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
 
+        list.setAutoCreateRowSorter(true);
+
+        JScrollPane tableScroll = new JScrollPane(list);
+        tableScroll.setPreferredSize(new Dimension(400, 200));
         txtExpr.setPreferredSize(new Dimension(400, 40));
-        list.setPreferredSize(new Dimension(400, 200));
+
 
 
         c.gridx = 0;
@@ -69,7 +78,7 @@ public class ModifyBoolExpr extends JPanel{
         add(txtExpr, c);
         c.gridy = 2;
         c.gridheight = 3;
-        add(list, c);
+        add(tableScroll, c);
         c.gridx = 0;
         c.gridy = 5;
         c.gridheight = 1;
@@ -82,23 +91,6 @@ public class ModifyBoolExpr extends JPanel{
         c.gridy = 5;
         add(bDelete, c);
 
-
-
-        /*setLayout(null);
-        bModify.setBounds(280, 150, 150, 40);
-        add(bModify);
-        TxtExpr.setBounds(70, 160, 150, 20);
-        add(TxtExpr);
-        l.setBounds(115, 65, 330, 30);
-        add(l);
-
-        String[] list = CtrlPres.getBoolExpr();
-
-        //String[] list = {"Title list", "Authors list"}; //get list from presentation controller
-        cb = new JComboBox(list);
-        cb.setSize(new Dimension(40, 20));
-        cb.setBounds(70, 120, 400, 20);
-        add(cb);*/
 
         setVisible(true);
 
