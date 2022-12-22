@@ -1,4 +1,6 @@
 package FONTS.src.Interface;
 
-public class BoolExprSearch {
+import javax.swing.*;
+
+public class BoolExprSearch extends JPanel {
 }

@@ -220,8 +220,8 @@ public class MainView extends JFrame implements ActionListener {
         content.add(authorsPrefixSearch, "Authors Prefix Search");
         content.add(documentSearch, "Document Search");
         content.add(similarityDocumentsSearch, "Similar Documents Search");
-        //content.add(relevantDocumentsSearch, "Relevant Documents Search");
-        //content.add(boolExprSearch, "Boolean Expression Search");
+        content.add(relevantDocumentsSearch, "Relevant Documents Search");
+        content.add(boolExprSearch, "Boolean Expression Search");
 
         setGo("Folder View");
     }

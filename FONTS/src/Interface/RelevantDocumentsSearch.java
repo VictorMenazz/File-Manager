@@ -1,4 +1,6 @@
 package FONTS.src.Interface;
 
-public class RelevantDocumentsSearch {
+import javax.swing.*;
+
+public class RelevantDocumentsSearch extends JPanel {
 }
