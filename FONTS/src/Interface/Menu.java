@@ -48,7 +48,7 @@ public class Menu extends JPanel{
         };
 
         items = new HashMap<>();
-        MenuItem mItem = new MenuItem("", "Main");
+        MenuItem mItem = new MenuItem("FONTS/src/Interface/Utils/main.png", "Main");
         mItem.addMouseListener(mouseListener);
         items.put("Main", mItem);
         add(mItem);

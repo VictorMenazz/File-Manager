@@ -1,24 +1,22 @@
 package FONTS.src.Interface;
 
+/**
+ * @file DeleteFolderDialog.java
+ * Class <em>DeleteFolderDialog</em>
+ */
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-
 /**
- * @file DeleteDocDialog.java
- * Class <em>DeleteDocDialog</em>
- */
-
-/**
- * Dialog to delete document
+ * Class to show a confirmation dialog to delete a given folder, with all it's content.
  *
  * @author Júlia Alice Amenós Dien
  * @author Víctor Mena Doz
  */
-public class DeleteDocDialog implements ActionListener {
 
+public class DeleteFolder implements ActionListener {
     /**
      * Instance of the Presentation Controller
      */
@@ -37,7 +35,7 @@ public class DeleteDocDialog implements ActionListener {
     /**
      * Represents OK button.
      */
-    private JButton buttonOk;
+    private JButton buttonOK;
 
     /**
      * Represents Cancel button.
@@ -45,12 +43,10 @@ public class DeleteDocDialog implements ActionListener {
     private JButton buttonCancel;
 
     /**
-     * Constructor of DeleteDocDialog
-     * @param title, title of the document to delete
-     * @param author, author's name of the document to delete
+     * Constructor of DeleteFolderDialog
+     * @param folderID, identification of the folder
      */
-    public  DeleteDocDialog(String title, String author) {
-
+    public DeleteFolder(int folderID) {
 
     }
 

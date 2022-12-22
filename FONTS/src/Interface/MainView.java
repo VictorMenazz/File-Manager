@@ -30,6 +30,7 @@ public class MainView extends JFrame implements ActionListener {
 
     private Menu menu;
     private AddNewDocument addNewDocument;
+    private AddNewFolder addNewFolder;
     private DocumentView documentView;
     private SearchViewN searchViewN;
     private ExprManager exprManager;
@@ -196,6 +197,7 @@ public class MainView extends JFrame implements ActionListener {
         content.setLayout(card);
 
         addNewDocument = new AddNewDocument(this);
+        addNewFolder = new AddNewFolder(this);
         //searchView = new SearchView();
         folderView = new FolderView(this, folderID);
         searchViewN = new SearchViewN(this);
@@ -214,6 +216,7 @@ public class MainView extends JFrame implements ActionListener {
         content.add(searchViewN, "Search");
         content.add(exprManager, "Boolean Expressions");
         content.add(addNewDocument, "Create Document");
+        content.add(addNewFolder, "Create Folder");
         content.add(createBoolExpr, "Create Boolean Expression");
         content.add(modifyBoolExpr, "Modify Boolean Expressions List");
         content.add(titlesAuthorSearch, "Titles Author Search");
@@ -233,7 +236,7 @@ public class MainView extends JFrame implements ActionListener {
 
         switch(state) {
             case "Main":{
-                new FolderView(this, 0);
+                folderView.setVisible(true);
                 break;
             }
             case "Folder View":{
@@ -268,8 +271,8 @@ public class MainView extends JFrame implements ActionListener {
                     }
                 }
                 // If the user cancelled the operation
-                else
-                    JOptionPane.showMessageDialog(this, "Import operation cancelled");
+                else JOptionPane.showMessageDialog(this, "Import operation cancelled");
+                setGo("Main");
                 break;
             }
             case "Export Document":{
@@ -284,12 +287,16 @@ public class MainView extends JFrame implements ActionListener {
 
                 }
                 // If the user cancelled the operation
-                else
-                    JOptionPane.showMessageDialog(this, "Export operation canceled");
+                else JOptionPane.showMessageDialog(this, "Export operation canceled");
+                setGo("Main");
                 break;
             }
             case "Create Document":{
                 new AddNewDocument(this);
+                break;
+            }
+            case "Create Folder":{
+                new AddNewFolder(this);
                 break;
             }
             case "Search": {

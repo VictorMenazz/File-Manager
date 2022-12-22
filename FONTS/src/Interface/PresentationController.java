@@ -74,8 +74,8 @@ public class PresentationController {
         mainFrame.setSize(1200,800);
         //mainFrame.setIconImage(Utils.getLogo().getImage());
         //ctrlDomain.reconstructFoldersSystem();
-        //ctrlDomain.reconstructAuthorsSystem();
-        //ctrlDomain.loadHistorial();
+        ctrlDomain.reconstructAuthorsSystem();
+        ctrlDomain.loadHistorial();
         toMain();
     }
 
@@ -141,13 +141,6 @@ public class PresentationController {
      */
     public void toDocument(String author, String title, String language, boolean newDoc, boolean modify) {
         DocumentView document =  new DocumentView(author, title, language, newDoc, modify);
-    }
-
-    /**
-     * Create a search view
-     */
-    public void toSearch() {
-
     }
 
     /**
@@ -221,48 +214,6 @@ public class PresentationController {
         resWindow.setVisible(true);
     }
 
-    /**
-     * Create view for open a folder
-     * @param foldID, id of the folder
-     */
-    public void toFolderView(int foldID) {
-
-    }
-
-    /**
-     * Create dialog to add a new document
-     */
-    public void toAddNewDocument() {
-
-    }
-
-    /**
-     * create dialog to modify document
-     */
-    public void toModifyDoc() {
-
-    }
-
-    /**
-     * create dialog to delete specific document
-     */
-    public void toDeleteDoc() {
-
-    }
-
-    /**
-     * create dialog to add new folder
-     */
-    public void toAddNewFolder(){
-
-    }
-
-    /**
-     * create dialog to delete folder
-     */
-    public void toDeleteFolder() {
-
-    }
 
     /**
      * Add new document to database
@@ -274,6 +225,18 @@ public class PresentationController {
      */
     public void newDocument(String authorName, String title, String text, String lang) throws IOException {
         ctrlDomain.newDocument(authorName,title,text,lang);
+    }
+
+    public void newFolder(String fName, int foldId){
+        ctrlDomain.newFolder(fName, foldId);
+    }
+
+    public void deleteDocument(String author, String title) {
+        ctrlDomain.deleteDocument(author, title);
+    }
+
+    public void deleteFolder(Integer folderID) {
+        ctrlDomain.deleteFolder(folderID);
     }
 
     /**

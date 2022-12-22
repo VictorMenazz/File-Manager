@@ -6,6 +6,8 @@ import javax.swing.plaf.metal.OceanTheme;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @file AddNewFolderDialog.java
@@ -44,12 +46,18 @@ public class AddNewFolder extends JPanel implements ActionListener {
      */
     private JTextField inputInitialName;
 
+    /**
+     * Folders id used
+     */
+    private HashSet<Integer> ids;
 
     /**
      * Default creator of dialog
      */
     public AddNewFolder(MainView mv) {
         mainView = mv;
+        ids = new HashSet<>();
+        ids.add(0);
 
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
@@ -68,7 +76,7 @@ public class AddNewFolder extends JPanel implements ActionListener {
             throw new RuntimeException(e);
         }
 
-        JLabel title = new JLabel("Name: ");
+        JLabel name = new JLabel("Name: ");
         inputInitialName = new JTextField(16);
 
 
@@ -80,10 +88,16 @@ public class AddNewFolder extends JPanel implements ActionListener {
 
         c.gridx = 0;
         c.gridy = 0;
-        add(title, c);
+        add(name, c);
         c.gridx = 1;
         c.gridy = 0;
         add(inputInitialName, c);
+        c.gridx = 0;
+        c.gridy = 2;
+        add(new JLabel(" "), c);
+        c.gridx = 1;
+        c.gridy = 3;
+        add(new JLabel(" "), c);
         c.gridx = 0;
         c.gridy = 6;
         add(buttonOK, c);
@@ -103,7 +117,9 @@ public class AddNewFolder extends JPanel implements ActionListener {
         String s = e.getActionCommand();
 
         if(s.equals("OK")) {
-            //CREATE FOLDER
+            int aux = ids.size();
+            ctrlPres.newFolder(inputInitialName.getText(), 0);
+            ids.add(aux);
             inputInitialName.setText(" ");
         }
         else if(s.equals("Cancel")) {

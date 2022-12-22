@@ -118,18 +118,14 @@ public class FolderView extends JPanel implements ActionListener {
 
         //Create items for menu
         JMenuItem openFolder = new JMenuItem("Open folder");
-        JMenuItem editFolder = new JMenuItem("Edit folder");
         JMenuItem deleteFolder = new JMenuItem("Delete folder");
 
 
         //Adding action listener
         openFolder.addActionListener(this);
-        editFolder.addActionListener(this);
         deleteFolder.addActionListener(this);
 
         folder.add(openFolder);
-        folder.addSeparator();
-        folder.add(editFolder);
         folder.addSeparator();
         folder.add(deleteFolder);
 
@@ -137,13 +133,17 @@ public class FolderView extends JPanel implements ActionListener {
         JMenu file = new JMenu("File");
         //Create items for menu
         JMenuItem openDoc = new JMenuItem("Open file");
+        JMenuItem editDoc = new JMenuItem("Edit file");
         JMenuItem deleteDoc = new JMenuItem("Delete file");
 
         //Adding action listener
         openDoc.addActionListener(this);
+        editDoc.addActionListener(this);
         deleteDoc.addActionListener(this);
 
         file.add(openDoc);
+        file.addSeparator();
+        file.add(editDoc);
         file.addSeparator();
         file.add(deleteDoc);
 
@@ -173,10 +173,6 @@ public class FolderView extends JPanel implements ActionListener {
         return folderID;
     }
 
-    public ArrayList<String> getSelectedDocument(){
-        return null;
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
@@ -186,10 +182,7 @@ public class FolderView extends JPanel implements ActionListener {
         }
 
         else if(s.equals("Delete folder")) {
-            ctrlPres.toDeleteFolder();
-        }
-        else if(s.equals("New file")) {
-            ctrlPres.toAddNewDocument();
+
         }
         else if(s.equals("Open file")) {
             int row = table.getSelectedRow();
@@ -199,14 +192,11 @@ public class FolderView extends JPanel implements ActionListener {
             String title = (String) table.getValueAt(row, 1);
             ctrlPres.toDocument(author, title, "null", false, false);
         }
-        else if(s.equals("Export file")) {
+        else if(s.equals("Edit file")) {
 
         }
-        else if(s.equals("Edit file")) {
-            ctrlPres.toDeleteDoc();
-        }
         else if(s.equals("Delete file")) {
-            ctrlPres.toDeleteDoc();
+
         }
     }
 }

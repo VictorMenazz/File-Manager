@@ -108,6 +108,9 @@ public class AddNewDocument extends JPanel implements ActionListener {
         c.gridx = 1;
         c.gridy = 4;
         add(lang, c);
+        c.gridx = 1;
+        c.gridy = 5;
+        add(new JLabel(" "), c);
         c.gridx = 0;
         c.gridy = 6;
         add(buttonOK, c);
