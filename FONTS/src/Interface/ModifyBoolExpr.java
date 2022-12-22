@@ -67,8 +67,6 @@ public class ModifyBoolExpr extends JPanel{
         tableScroll.setPreferredSize(new Dimension(400, 200));
         txtExpr.setPreferredSize(new Dimension(400, 40));
 
-
-
         c.gridx = 0;
         c.gridy = 0;
         c.gridwidth = 3;

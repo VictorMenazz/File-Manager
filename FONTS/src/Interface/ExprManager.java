@@ -28,8 +28,11 @@ public class ExprManager extends JPanel{
         bModify.setMaximumSize(new Dimension(300, 40));
         bModify.setPreferredSize(new Dimension(300, 40));
 
+        /*bCreate.setBackground(Color.decode("#8516f5"));
+        bModify.setBackground(Color.decode("#8516f5"));
+
         bCreate.setForeground(Color.white);
-        bModify.setForeground(Color.white);
+        bModify.setForeground(Color.white);*/
 
         c.gridx = 0;
         c.gridy = 0;
@@ -40,9 +43,6 @@ public class ExprManager extends JPanel{
         c.gridx = 0;
         c.gridy = 2;
         add(bModify, c);
-
-        bCreate.setBackground(Color.decode("#8516f5"));
-        bModify.setBackground(Color.decode("#8516f5"));
 
         setVisible(true);
 
