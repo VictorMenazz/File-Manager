@@ -53,7 +53,7 @@ public class TitlesAuthorSearch extends JPanel {
                 if (titles.isEmpty()){
                     JOptionPane.showMessageDialog(new JDialog(), "Error, Author does not have any Document");
                 } else {
-                    //Vista titulos resultado
+
                 }
 
                 /*String titulos = CtrlPres.buscarTitulos(txtAutor.getText());

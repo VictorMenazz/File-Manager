@@ -66,6 +66,8 @@ public class MainView extends JFrame implements ActionListener {
     private String language;
     private int folderID;
 
+
+
     /**
      * Constructor of MainView
      */
@@ -228,6 +230,8 @@ public class MainView extends JFrame implements ActionListener {
 
         setGo("Init");
     }
+
+
 
     public void setGo(String state) {
         card.show(content, state);
