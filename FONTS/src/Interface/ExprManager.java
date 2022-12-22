@@ -14,7 +14,7 @@ public class ExprManager extends JPanel{
     private JFrame frame = new JFrame ("JFrame");
 
 
-    public ExprManager() {
+    public ExprManager(MainView mv) {
         setPreferredSize(new Dimension(500, 350));
         setMaximumSize(new Dimension(500, 350));
         setMinimumSize(new Dimension(500, 350));
@@ -31,7 +31,12 @@ public class ExprManager extends JPanel{
         ActionListener manageExpr = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if(e.getSource() == bCreate){
+                    mv.setGo("Create Boolean Expression");
+                }
+                else if(e.getSource() == bModify){
+                    mv.setGo("Modify Boolean Expressions List");
+                }
             }
 
         };
@@ -42,7 +47,7 @@ public class ExprManager extends JPanel{
     public static void main(String args[]) {
         JFrame f = new JFrame();
         f.setLayout(new BorderLayout());
-        f.add(new ExprManager(), BorderLayout.CENTER);
+        f.add(new ExprManager(new MainView()), BorderLayout.CENTER);
         f.setSize(1000, 750);
         f.setLocation(100, 100);
         f.setVisible(true);

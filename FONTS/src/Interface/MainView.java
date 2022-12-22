@@ -34,6 +34,8 @@ public class MainView extends JFrame implements ActionListener {
     private SearchViewN searchViewN;
     private ExprManager exprManager;
     private FolderView folderView;
+    private ModifyBoolExpr modifyBoolExpr;
+    private CreateBoolExpr createBoolExpr;
 
 
     private int x,y;
@@ -191,13 +193,17 @@ public class MainView extends JFrame implements ActionListener {
         //searchView = new SearchView();
         folderView = new FolderView(ctrlPres, folderID);
         searchViewN = new SearchViewN();
-        exprManager = new ExprManager();
+        exprManager = new ExprManager(this);
+        modifyBoolExpr = new ModifyBoolExpr();
+        createBoolExpr = new CreateBoolExpr();
 
 
         content.add(folderView, "Folder View");
         content.add(searchViewN, "Search");
         content.add(exprManager, "Boolean Expressions");
         content.add(addNewDocument, "Create Document");
+        content.add(createBoolExpr, "Create Boolean Expression");
+        content.add(modifyBoolExpr, "Modify Boolean Expressions List");
 
         setGo("Folder View");
     }
@@ -267,7 +273,15 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Boolean Expressions": {
-                new ExprManager();
+                new ExprManager(this);
+                break;
+            }
+            case "Create Boolean Expression":{
+                new CreateBoolExpr();
+                break;
+            }
+            case "Modify Boolean Expression List":{
+                new ModifyBoolExpr();
                 break;
             }
         }
