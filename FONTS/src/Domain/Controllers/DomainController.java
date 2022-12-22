@@ -95,6 +95,14 @@ public class DomainController {
         return ctrlSearch.getBoolExps();
     }
 
+    public String modifyExpression(String oldExpr, String newExpr) {
+        return ctrlSearch.modifyExpression(oldExpr, newExpr);
+    }
+
+    public Boolean deleteExpression(String boolExpr){
+        return ctrlSearch.deleteExpression(boolExpr);
+    }
+
     public ArrayList<String> getAuthorsName() {
         return ctrlAuthors.getAuthorsName();
     }

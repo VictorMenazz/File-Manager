@@ -65,22 +65,33 @@ public class SearchController {
      * @param newExpr, new boolean expression
      * @throws Exception
      */
-    public void modifyExpression(String oldExpr, String newExpr) throws Exception {
-        BooleanExpression bold = new BooleanExpression(oldExpr);
-        listBoolExps.remove(bold.getExpression());
+    public String modifyExpression(String oldExpr, String newExpr) {
+        try {
+            BooleanExpression bold = new BooleanExpression(oldExpr);
+            listBoolExps.remove(bold.getExpression());
 
-        BooleanExpression bnew = new BooleanExpression(newExpr);
-        listBoolExps.add(bnew.getExpression());
+            BooleanExpression bnew = new BooleanExpression(newExpr);
+            listBoolExps.add(bnew.getExpression());
+            return "OK";
+        } catch(Exception e) {
+            return e.getMessage();
+        }
     }
+
 
     /**
      * @brief Deletes a boolean expression of the history(list)
      * @param boolExp, string with the boolean expression.
      * @throws Exception
      */
-    public void deleteExpression(String boolExp) throws Exception {
-        BooleanExpression be = new BooleanExpression(boolExp);
-        listBoolExps.remove(be.getExpression());
+    public Boolean deleteExpression(String boolExp) {
+        try {
+            BooleanExpression be = new BooleanExpression(boolExp);
+            listBoolExps.remove(be.getExpression());
+            return true;
+        } catch(Exception e){
+            return false;
+        }
     }
 
     /**

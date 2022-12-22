@@ -98,6 +98,14 @@ public class PresentationController {
         return ctrlDomain.getBoolExpr();
     }
 
+    public String modifyExpression(String oldExpr, String newExpr){
+        return ctrlDomain.modifyExpression(oldExpr, newExpr);
+    }
+
+    public Boolean deleteExpression(String boolExpr){
+        return ctrlDomain.deleteExpression(boolExpr);
+    }
+
     public ArrayList<String> getDocumentAuthors(int id) {
         return ctrlDomain.getDocumentAuthors(id);
     }

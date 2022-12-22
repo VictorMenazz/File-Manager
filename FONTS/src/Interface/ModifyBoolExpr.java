@@ -16,7 +16,7 @@ public class ModifyBoolExpr extends JPanel{
     private JButton bCreate = new JButton("Create");
     private JButton bDelete = new JButton("Delete");
 
-    private JList list;
+    private JList<String> list;
 
     private JFrame frame = new JFrame ("JFrame");
 
@@ -97,11 +97,24 @@ public class ModifyBoolExpr extends JPanel{
                             String creation = CtrlPres.addExpression(txtExpr.getText());
                             if (creation.equals("OK")) {
                                 JOptionPane.showMessageDialog(new JDialog(), "Boolean Expression has been created");
+                                list.updateUI();
                             } else JOptionPane.showMessageDialog(new JDialog(), creation);
                         }
                     }
-                }
+                } else if (e.getSource() == bModify){
+                    String modify = CtrlPres.modifyExpression(txtExpr.getText(), txtExpr.getText());
+                    if (modify.equals("OK")){
+                        txtExpr.setText("");
+                        list.updateUI();
+                    }
+                } else if (e.getSource() == bDelete) {
+                    String s = list.getSelectedValue();
+                    if (CtrlPres.deleteExpression(s)) {
+                        JOptionPane.showMessageDialog(new JDialog(), s + " has been deleted");
+                        list.updateUI();
+                    }
 
+                }
             }
 
         };
