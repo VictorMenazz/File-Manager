@@ -27,24 +27,21 @@ public class DataFoldersController {
 
     /**
      * Saves physically the serialized Folder System in JSON format.
-     *
      * @param docs, Representing the Documents Serialized.
-     * @throws IOException
      */
-    public void saveFolder(String docs) {
+    public Boolean saveFolder(String docs){
         String basicPath = "data/Folders/rootFolder";
         File folder = new File(basicPath);
         if (!folder.exists()) folder.mkdir();
         File[] folders = folder.listFiles();
         String identifier = String.format("%04d", folders.length);
         String defPath = basicPath + File.separator + identifier + "rootFolder.json";
-        writeDoc(defPath, docs);
+        return writeDoc(defPath, docs);
     }
 
 
     /**
      * Reads the physic the serialized Folder System in JSON format.
-     *
      * @return A String representing the last log saved.
      */
     public String getFoldersSerialized() {
@@ -57,7 +54,7 @@ public class DataFoldersController {
         return result;
     }
 
-    private void writeDoc(String path, String cont) {
+    private Boolean writeDoc(String path, String cont) {
         FileWriter file = null;
         try {
             file = new FileWriter(path);
@@ -65,8 +62,9 @@ public class DataFoldersController {
             documentWr.print(cont);
             documentWr.close();
         } catch (IOException e) {
-            //throw new RuntimeException(e);
+            return false;
         }
+        return true;
     }
 
     private String readDoc(String path) {
@@ -89,7 +87,6 @@ public class DataFoldersController {
 
     /**
      * Reads a Document physic File and loads it in Domain.
-     *
      * @param path, Representing the physic path to read the Doc.
      * @return A Boolean indicating if the process finshed well.
      */
@@ -238,8 +235,7 @@ public class DataFoldersController {
             }
         } else if(docT.equals("json")){
             //case JSON
-            writeDoc(path, Content);
-            return readDoc(path).equals(Content);
+            return writeDoc(path, Content);
         }
         return false;
     }

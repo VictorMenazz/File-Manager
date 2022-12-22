@@ -87,29 +87,6 @@ public class DomainController {
     }
 
     /**
-     * Import a document from outside our platform
-     * @param path directory of the file to import
-     */
-    //Create excepyion
-    public void importDocument(String path) {
-        //Interface y data?
-        //Lectures a la capa de Data millor no?
-    }
-
-    /**
-     * Export a document from our platform to outside
-     * @param authorName, name of the author
-     * @param title, title of the document
-     * @return Document to export
-     */
-    public Document exportDocument(String authorName, String title) {
-        //Data and Interface??
-        return null;
-    }
-
-    //create exception
-
-    /**
      * Creates a new document in the system
      * @param authorName name of the author of the document
      * @param title document title
@@ -283,9 +260,6 @@ public class DomainController {
      */
     //crear excepcion
     public void deleteDocument(String authorName, String title) {
-        //comunicacion con capa data
-        // FALTA ELIMINAR EL FITXER
-
         try {
             folders.deleteDocument(authorName, title);
             // if Author runs out of documents, it's deleted
@@ -321,40 +295,44 @@ public class DomainController {
         folders.newFolder(fName, foldId);
     }
 
-
     /** COMUNICATION WITH DATA LAYER **/
+
     /**
      * Restores the Folders System once the Main System is running.
+     * @return A Boolean indicating if the process is correct.
      */
-    public void reconstructFoldersSystem(){
+    public Boolean reconstructFoldersSystem(){
         String JSON = data.restoreFolders();
         folders.recoverFoldersStructure(JSON);
+        return JSON.equals("");
     }
 
     /**
      * Saves the Folders System before the Main System is closed.
-     * @throws IOException
+     * @return A Boolean that indicates if the process was correct or not.
      */
-    public void saveFoldersSystem() throws IOException {
+    public Boolean saveFoldersSystem(){
         String foldersJSON = folders.saveFoldersStructure();
-        data.saveFolders(foldersJSON);
+        return data.saveFolders(foldersJSON);
     }
 
     /**
      * Restores the Authors System once the Main System is running.
+     * @return A Boolean, indicating if the process is correct.
      */
-    public void reconstructAuthorsSystem(){
+    public Boolean reconstructAuthorsSystem(){
         String JSON = data.restoreAuthors();
         ctrlAuthors.recoverFoldersStructure(JSON);
+        return JSON.equals("");
     }
 
     /**
      * Saves the Authors System before the Main System is closed.
-     * @throws IOException
+     * @return A Boolean, indicating if the process is correct.
      */
-    public void saveAuthorsSystem() throws IOException {
+    public Boolean saveAuthorsSystem() {
         String authorsJSON = ctrlAuthors.saveAuthorsStructure();
-        data.saveAuthors(authorsJSON);
+        return data.saveAuthors(authorsJSON);
     }
 
     /**
@@ -370,13 +348,20 @@ public class DomainController {
 
     /**
      * Recovers the Boolean Expression System before the Main System is closed.
-     * @throws FileNotFoundException
+     * @return A Boolean, indicating if the process is correct.
      */
-    public void loadHistorial() throws FileNotFoundException {
+    public Boolean loadHistorial() {
         Gson gson = new Gson();
-        String list = data.loadHistorial();
+        String list = null;
+        Boolean res = true;
+        try {
+            list = data.loadHistorial();
+        } catch (FileNotFoundException e) {
+            res = false;
+        }
         LinkedHashSet<String> result = gson.fromJson(list, LinkedHashSet.class);
         ctrlSearch.setListBoolExps(result);
+        return res;
     }
 
     /**
@@ -384,11 +369,12 @@ public class DomainController {
      * @param path, Representing the physic path to read.
      * @param foldId, Representing the identifier of the Folder.
      * @param lang, Representing the language of Document.
-     * @return The result of the process.
+     * @return The result of the process (false, process failed, true process correct).
      */
     public Boolean importDocument(String path, Integer foldId, String lang, String docType){
         ArrayList<String> doc = data.importDocument(path, docType);
-        if(docType.equals("json")){
+        if(doc.size() == 0) return false;
+        else if(docType.equals("json")){
             folders.restoreJSON(doc.get(0), foldId);
             return true;
         }
@@ -408,7 +394,7 @@ public class DomainController {
      * @param title, Representing the title of the Document.
      * @param author, Representing the author of the Document.
      * @param path, Representing the physic path to write the Doc.
-     * @return The result of the process.
+     * @return The result of the process (false, process failed, true process correct).
      */
     public Boolean exportDocument(String title, String author, String path, String docT){
         if(docT.equals("json")){

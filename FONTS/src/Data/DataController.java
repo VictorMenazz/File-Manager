@@ -43,8 +43,8 @@ public class DataController {
     /**
      * Saves physically the serialized Folder System in JSON format.
      */
-    public void saveFolders(String folders) throws IOException {
-        ctrlFolder.saveFolder(folders);
+    public Boolean saveFolders(String folders){
+        return ctrlFolder.saveFolder(folders);
     }
 
     /**
@@ -58,7 +58,9 @@ public class DataController {
     /**
      * Saves physically the serialized Authors System in JSON format.
      */
-    public void saveAuthors(String authorsJSON) throws IOException { ctrlAuthors.saveAuthors(authorsJSON); }
+    public Boolean saveAuthors(String authorsJSON) {
+        return ctrlAuthors.saveAuthors(authorsJSON);
+    }
 
     /**
      * Transfers to DomainController the last log about Authors System.

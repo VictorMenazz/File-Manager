@@ -6,9 +6,9 @@ public class DataAuthorsController {
     /**
      * @brief Writes on a physic File all Authors System.
      * @param newLog representing the Information that will be written on the file.
-     * @throws IOException
+     * @return A Boolean, indicating if the process was correct.
      */
-    public void saveAuthors(String newLog){
+    public Boolean saveAuthors(String newLog){
         String basicPath = "data/Authors";
         File authorsFolder = new File(basicPath);
         if(!authorsFolder.exists()) authorsFolder.mkdir();
@@ -18,11 +18,12 @@ public class DataAuthorsController {
         try {
             file = new FileWriter(basicPath + File.separator + identifier + "Authors.json");
         } catch (IOException e) {
-            //throw new RuntimeException(e);
+            return false;
         }
         PrintWriter documentWr = new PrintWriter(file);
         documentWr.print(newLog);
         documentWr.close();
+        return true;
     }
 
     /**
