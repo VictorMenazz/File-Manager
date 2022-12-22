@@ -6,10 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-public class TitlesAuthorSearch extends JPanel {
+public class DocumentSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
-    private JLabel titleView = new JLabel("Get documents from an author");
-    private JLabel l = new JLabel("Author's name");
+    private JLabel titleView = new JLabel("Get document");
+    private JLabel l = new JLabel("Author");
+    private JLabel l2 = new JLabel("Title");
 
     /*public void setAutor(String txtAutor) {
         this.txtAutor.setText(txtAutor);
@@ -17,27 +18,36 @@ public class TitlesAuthorSearch extends JPanel {
     }*/
 
     private JComboBox authors;
+    private JComboBox titles;
 
     private JButton search = new JButton("Search");
     private JFrame frame = new JFrame ("JFrame");
 
-    public TitlesAuthorSearch(){
+    public DocumentSearch(){
         setLayout(null);
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
         setMinimumSize(new Dimension(500,350));
-        titleView.setBounds(165,5,200,30);
+        titleView.setBounds(175,5,200,30);
         add(titleView);
 
-
+        //Obtener lista dsd controlador;
         ArrayList<String> list = CtrlPres.getAuthorsName();
-        authors = new JComboBox(list);
+        authors = new JComboBox(list.toArray());
         authors.setBounds(160, 100, 200, 20);
         add(authors);
 
 
-        l.setBounds(25,100,200,20);
+        ArrayList<String> t = CtrlPres.getAuthorDocuments(list.get(authors.getSelectedIndex()));
+        titles = new JComboBox(t.toArray());
+        titles.setBounds(160, 150, 200, 20);
+        add(titles);
+
+
+        l.setBounds(100,100,200,20);
         add(l);
+        l2.setBounds(100, 150, 200, 20);
+        add(l2);
         search.setBounds(200,200,100,20);
         add(search);
 
@@ -92,7 +102,7 @@ public class TitlesAuthorSearch extends JPanel {
     public static void main(String args[]) {
         JFrame f = new JFrame();
         f.setLayout(new BorderLayout());
-        f.add(new TitlesAuthorSearch(), BorderLayout.CENTER);
+        f.add(new DocumentSearch(), BorderLayout.CENTER);
         f.setSize(1000, 750);
         f.setLocation(100, 100);
         f.setVisible(true);

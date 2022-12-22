@@ -4,24 +4,23 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
-public class TitlesAuthorSearch extends JPanel {
+public class AuthorsPrefixSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
-    private JLabel titleView = new JLabel("Get documents from an author");
-    private JLabel l = new JLabel("Author's name");
+    private JLabel titleView = new JLabel("Get authors list from a prefix");
+    private JLabel l = new JLabel("Author's prefix:");
 
-    /*public void setAutor(String txtAutor) {
-        this.txtAutor.setText(txtAutor);
+    /*public void setAuthor(String s) {
+        this.prefix.setText(s);
         search.doClick();
     }*/
 
-    private JComboBox authors;
+    private JTextArea prefix = new JTextArea();
 
     private JButton search = new JButton("Search");
     private JFrame frame = new JFrame ("JFrame");
 
-    public TitlesAuthorSearch(){
+    public AuthorsPrefixSearch(){
         setLayout(null);
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
@@ -30,14 +29,10 @@ public class TitlesAuthorSearch extends JPanel {
         add(titleView);
 
 
-        ArrayList<String> list = CtrlPres.getAuthorsName();
-        authors = new JComboBox(list);
-        authors.setBounds(160, 100, 200, 20);
-        add(authors);
-
-
         l.setBounds(25,100,200,20);
         add(l);
+        prefix.setBounds(160, 100, 200, 20);
+        add(prefix);
         search.setBounds(200,200,100,20);
         add(search);
 
@@ -89,10 +84,14 @@ public class TitlesAuthorSearch extends JPanel {
     }
 
 
+    public void reset() {
+        prefix.setText("");
+    }
+
     public static void main(String args[]) {
         JFrame f = new JFrame();
         f.setLayout(new BorderLayout());
-        f.add(new TitlesAuthorSearch(), BorderLayout.CENTER);
+        f.add(new AuthorsPrefixSearch(), BorderLayout.CENTER);
         f.setSize(1000, 750);
         f.setLocation(100, 100);
         f.setVisible(true);

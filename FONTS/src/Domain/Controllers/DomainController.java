@@ -82,6 +82,10 @@ public class DomainController {
         ctrlAuthors = new AuthorsController();
     }
 
+    public ArrayList<String> getAuthorsName() {
+        return ctrlAuthors.getAuthorsName();
+    }
+
     /**
      * Import a document from outside our platform
      * @param path directory of the file to import

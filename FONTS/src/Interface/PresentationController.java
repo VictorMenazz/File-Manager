@@ -97,6 +97,14 @@ public class PresentationController {
         return ctrlDomain.getSubFolders(id);
     }
 
+    public ArrayList<String> getAuthorsName(){
+        ctrlDomain.getAuthorsName();
+    }
+
+    public ArrayList<String> getAuthorDocuments(String author){
+        ctrlDomain.authorDocuments(author);
+    }
+
     public void importDocument(String path, Integer folderID, String lang, String docType) {
         ctrlDomain.importDocument(path, folderID, lang, docType);
     }
