@@ -325,7 +325,7 @@ public class DomainController {
     public Boolean reconstructFoldersSystem(){
         String JSON = data.restoreFolders();
         folders.recoverFoldersStructure(JSON);
-        return JSON.equals("");
+        return !JSON.equals("");
     }
 
     /**
@@ -344,7 +344,7 @@ public class DomainController {
     public Boolean reconstructAuthorsSystem(){
         String JSON = data.restoreAuthors();
         ctrlAuthors.recoverFoldersStructure(JSON);
-        return JSON.equals("");
+        return !JSON.equals("");
     }
 
     /**
@@ -404,7 +404,7 @@ public class DomainController {
             try {
                 folders.newDocument(doc.get(0), doc.get(1), doc.get(2), lang);
             } catch (IOException e) {
-                throw new RuntimeException(e);
+                return false;
             }
             return true;
         }
