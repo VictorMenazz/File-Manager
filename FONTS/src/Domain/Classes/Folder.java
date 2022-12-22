@@ -531,27 +531,29 @@ public class Folder {
         //Organizing its Documents
         Gson gson = new Gson();
         JsonElement docs = detail.get("documents");
-        JsonObject doc1 = docs.getAsJsonObject();
-        Set<String> setS = doc1.keySet();
-        for(String s : setS) {
-            JsonElement el1 = doc1.get(s);
-            Document d = gson.fromJson(el1, Document.class);
-            Pair<String, String> key = new Pair<String, String>(d.getTitle(), d.getAuthor());
-            documents.put(key, d);
-            ++docAmount;
-        }
-        //Organizing its Folders
-        JsonElement subFoldersJSON = detail.get("subFolders");
-        JsonObject subFoldersInf = subFoldersJSON.getAsJsonObject();
-        Set<String> subF = subFoldersInf.keySet();
-        for (String id : subF){
-            JsonElement folderJSON = subFoldersInf.get(id);
-            JsonObject folder =  folderJSON.getAsJsonObject();
-            Integer foldId = gson.fromJson(folder.get("folderId"), Integer.class);
-            String folderName = gson.fromJson(folder.get("folderName"), String.class);
-            Folder subFolder = new Folder(foldId, folderName);
-            subFolder.restoreDocs(folder);
-            subFolders.put(foldId, subFolder);
+        if(docs != null) {
+            JsonObject doc1 = docs.getAsJsonObject();
+            Set<String> setS = doc1.keySet();
+            for(String s : setS) {
+                JsonElement el1 = doc1.get(s);
+                Document d = gson.fromJson(el1, Document.class);
+                Pair<String, String> key = new Pair<String, String>(d.getTitle(), d.getAuthor());
+                documents.put(key, d);
+                ++docAmount;
+            }
+            //Organizing its Folders
+            JsonElement subFoldersJSON = detail.get("subFolders");
+            JsonObject subFoldersInf = subFoldersJSON.getAsJsonObject();
+            Set<String> subF = subFoldersInf.keySet();
+            for (String id : subF){
+                JsonElement folderJSON = subFoldersInf.get(id);
+                JsonObject folder =  folderJSON.getAsJsonObject();
+                Integer foldId = gson.fromJson(folder.get("folderId"), Integer.class);
+                String folderName = gson.fromJson(folder.get("folderName"), String.class);
+                Folder subFolder = new Folder(foldId, folderName);
+                subFolder.restoreDocs(folder);
+                subFolders.put(foldId, subFolder);
+            }
         }
     }
 

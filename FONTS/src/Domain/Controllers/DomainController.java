@@ -325,6 +325,7 @@ public class DomainController {
     public Boolean reconstructFoldersSystem(){
         String JSON = data.restoreFolders();
         if(!JSON.equals("")){
+            System.out.println(JSON);
             folders.recoverFoldersStructure(JSON);
             return true;
         }
@@ -361,7 +362,6 @@ public class DomainController {
         String authorsJSON = ctrlAuthors.saveAuthorsStructure();
         return data.saveAuthors(authorsJSON);
     }
-
     /**
      * Saves the Boolean Expression System before the Main System is closed.
      * @return A Boolean expressing the State of the process.
