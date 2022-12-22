@@ -2,6 +2,7 @@ package FONTS.src.Interface;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class TitlesAuthorSearch extends JPanel {
@@ -11,9 +12,10 @@ public class TitlesAuthorSearch extends JPanel {
 
     public void setAutor(String txtAutor) {
         this.txtAutor.setText(txtAutor);
-        buscar.doClick();
+        search.doClick();
     }
 
+    private JComboBox authors;
     private JTextArea txtAutor = new JTextArea();
     private JButton search = new JButton("Search");
     private JFrame frame = new JFrame ("JFrame");
@@ -25,6 +27,10 @@ public class TitlesAuthorSearch extends JPanel {
         setMinimumSize(new Dimension(500,350));
         titleView.setBounds(165,5,200,30);
         add(titleView);
+
+        //Obtener lista;
+        String[] list = {};
+        authors = new JComboBox(list);
 
 
         l.setBounds(25,100,200,20);
@@ -41,7 +47,7 @@ public class TitlesAuthorSearch extends JPanel {
         ActionListener SearchTitles = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String titulos = CtrlPres.buscarTitulos(txtAutor.getText());
+                /*String titulos = CtrlPres.buscarTitulos(txtAutor.getText());
                 if (titulos == null) {
                     ferror();
                 }
@@ -64,6 +70,8 @@ public class TitlesAuthorSearch extends JPanel {
                     frame.setLocationRelativeTo(null);
                     frame.setVisible(true);
                     frame.setResizable(false);
+
+
                 }
                 ActionListener Salir = new ActionListener() {
                     @Override
@@ -72,11 +80,14 @@ public class TitlesAuthorSearch extends JPanel {
                     }
                 };
                 //BOkay.addActionListener(Salir);
+                */
+
             }
         };
-        search.addActionListener(BuscarTitulos);
+        //search.addActionListener(BuscarTitulos);
     }
-    private void ferror() {
+
+    private void setError() {
         JDialog SinTitulo =  new JDialog(frame, "Autor incorrecto");
         SinTitulo.setBounds(800, 300, 400, 200);
         SinTitulo.setLayout(null);
@@ -104,5 +115,15 @@ public class TitlesAuthorSearch extends JPanel {
 
     public void reset() {
         txtAutor.setText("");
+    }
+
+    public static void main(String args[]) {
+        JFrame f = new JFrame();
+        f.setLayout(new BorderLayout());
+        f.add(new TitlesAuthorSearch(), BorderLayout.CENTER);
+        f.setSize(1000, 750);
+        f.setLocation(100, 100);
+        f.setVisible(true);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }

@@ -28,7 +28,7 @@ public class ModifyBoolExpr extends JPanel{
         l.setBounds(115, 65, 330, 30);
         add(l);
 
-        String[] list = {"Title list", "Authors list"};
+        String[] list = {"Title list", "Authors list"}; //get list from presentation controller
         cb = new JComboBox(list);
         cb.setSize(new Dimension(40, 20));
         cb.setBounds(70, 120, 400, 20);
