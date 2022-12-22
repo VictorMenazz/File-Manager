@@ -177,6 +177,7 @@ public class FolderView extends JPanel implements ActionListener {
         ArrayList<String> authors = ctrlPres.getDocumentAuthors(folderID);
         ArrayList<String> documents = ctrlPres.getDocumentTitles(folderID);
         HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(folderID);
+        table.updateUI();
     }
 
     @Override
