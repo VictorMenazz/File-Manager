@@ -67,7 +67,7 @@ public class DocumentView implements ActionListener {
     public DocumentView(String aut, String tit, String lang, boolean newD, boolean mod) {
         author = aut;
         title = tit;
-        language = lang;
+        if(!lang.equals("null")) language = lang;
         newDoc = newD;
 
         //create frame
@@ -169,12 +169,11 @@ public class DocumentView implements ActionListener {
         String s = e.getActionCommand();
 
         if(s.equals("Save")) {
-            //DIALOGO CONFIRMAR GUARDAR CAMBIOS
             if(!newDoc) {
                 try {
                     ctrlPres.modifyContent(author, title, textArea.getText());
                 } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                    JOptionPane.showMessageDialog(new JDialog(), "Can't modify the content");
                 }
             }
             else {
@@ -184,7 +183,7 @@ public class DocumentView implements ActionListener {
                     else ctrlPres.newDocument(author, title, textArea.getText(), "ENG");
 
                 } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                    JOptionPane.showMessageDialog(new JDialog(), "Can't save the document");
                 }
             }
             JOptionPane.showMessageDialog(new JDialog(), "Document saved");

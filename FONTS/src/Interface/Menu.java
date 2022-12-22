@@ -48,7 +48,11 @@ public class Menu extends JPanel{
         };
 
         items = new HashMap<>();
-        MenuItem mItem = new MenuItem("FONTS/src/Interface/Utils/createFolder.png", "Create Folder");
+        MenuItem mItem = new MenuItem("", "Main");
+        mItem.addMouseListener(mouseListener);
+        items.put("Main", mItem);
+        add(mItem);
+        mItem = new MenuItem("FONTS/src/Interface/Utils/createFolder.png", "Create Folder");
         mItem.addMouseListener(mouseListener);
         items.put("Create Folder", mItem);
         add(mItem);
@@ -78,7 +82,6 @@ public class Menu extends JPanel{
         add(mItem);
     }
 
-
     public void setSelected(String item){
         if(items.containsKey(item)){
             for(String key : items.keySet()){
@@ -89,6 +92,4 @@ public class Menu extends JPanel{
             }
         }
     }
-
-
 }

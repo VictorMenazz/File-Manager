@@ -195,9 +195,9 @@ public class MainView extends JFrame implements ActionListener {
         card = new CardLayout();
         content.setLayout(card);
 
-        addNewDocument = new AddNewDocument(ctrlPres);
+        addNewDocument = new AddNewDocument(this);
         //searchView = new SearchView();
-        folderView = new FolderView(ctrlPres, folderID);
+        folderView = new FolderView(this, folderID);
         searchViewN = new SearchViewN(this);
         exprManager = new ExprManager(this);
         modifyBoolExpr = new ModifyBoolExpr();
@@ -223,7 +223,7 @@ public class MainView extends JFrame implements ActionListener {
         content.add(relevantDocumentsSearch, "Relevant Documents Search");
         content.add(boolExprSearch, "Boolean Expression Search");
 
-        setGo("Folder View");
+        setGo("Main");
     }
 
     public void setGo(String state) {
@@ -232,7 +232,13 @@ public class MainView extends JFrame implements ActionListener {
         menu.setSelected(state);
 
         switch(state) {
+            case "Main":{
+                new FolderView(this, 0);
+                break;
+            }
             case "Folder View":{
+                int aux = folderView.getSelectedFolder();
+                new FolderView(this, aux);
                 break;
             }
             case "Import Document":{
@@ -283,7 +289,7 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Create Document":{
-                new AddNewDocument(ctrlPres);
+                new AddNewDocument(this);
                 break;
             }
             case "Search": {

@@ -16,7 +16,12 @@ public class FolderView extends JPanel implements ActionListener {
     /**
      * Instance of the Presentation Controller
      */
-    private PresentationController ctrlPres;
+    private PresentationController ctrlPres = PresentationController.getInstance();
+
+    /**
+     * Instance of the main view
+     */
+    private MainView mainView;
 
     /**
      * Provides nice icons and names for files
@@ -40,8 +45,8 @@ public class FolderView extends JPanel implements ActionListener {
      */
     private HashMap<Integer, String> subF;
 
-    public FolderView(PresentationController pc, int id) {
-        ctrlPres = pc;
+    public FolderView(MainView mv, int id) {
+        mainView = mv;
         folderID = id;
 
         setPreferredSize(new Dimension(500,350));
@@ -155,25 +160,29 @@ public class FolderView extends JPanel implements ActionListener {
         setVisible(true);
     }
 
+    public int getSelectedFolder(){
+        int row = table.getSelectedRow();
+        String name = (String) table.getValueAt(row, 1);
+        int folderID = 0;
+        for(Integer aux : subF.keySet()) {
+            if(subF.get(aux) == name) {
+                return aux;
+
+            }
+        }
+        return folderID;
+    }
+
+    public ArrayList<String> getSelectedDocument(){
+        return null;
+    }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
 
-        if(s.equals("New folder")) {
-            ctrlPres.toAddNewFolder();
-        }
-        else if(s.equals("Open folder")) {
-            int row = table.getSelectedRow();
-            String name = (String) table.getValueAt(row, 1);
-            int folderID = 0;
-            for(Integer aux : subF.keySet()) {
-                if(subF.get(aux) == name) {
-                    folderID = aux;
-                    break;
-                }
-            }
-            ctrlPres.toFolderView(folderID);
+        if(s.equals("Open folder")) {
+            mainView.setGo("Open Folder");
         }
 
         else if(s.equals("Delete folder")) {
@@ -184,9 +193,11 @@ public class FolderView extends JPanel implements ActionListener {
         }
         else if(s.equals("Open file")) {
             int row = table.getSelectedRow();
+            System.out.println(table.getValueAt(row, 2));
+            System.out.println(table.getValueAt(row, 1));
             String author = (String) table.getValueAt(row, 2);
             String title = (String) table.getValueAt(row, 1);
-            ctrlPres.toDocument(author, title, null, false, false);
+            ctrlPres.toDocument(author, title, "null", false, false);
         }
         else if(s.equals("Export file")) {
 
