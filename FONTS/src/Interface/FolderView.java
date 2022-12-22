@@ -28,33 +28,10 @@ public class FolderView extends JPanel implements ActionListener {
      */
     private ListSelectionListener listSelectionListener;
 
-
-    /** File-system tree. Built Lazily
-     private JTree tree;
-     private DefaultTreeModel treeModel; */
-
     /**
      * Directory listing
      */
     private JTable table;
-
-    /**
-     * To see the progress of an action
-     */
-    private JProgressBar progressBar;
-
-    /**
-     * File controls
-     */
-    /**
-     * Label for show file's name
-     */
-    private JLabel fileName;
-
-    /**
-     * Label for show author's name
-     */
-    private JLabel author;
 
     private int folderID;
 
@@ -66,6 +43,11 @@ public class FolderView extends JPanel implements ActionListener {
     public FolderView(PresentationController pc, int id) {
         ctrlPres = pc;
         folderID = id;
+
+        setPreferredSize(new Dimension(500,350));
+        setMaximumSize(new Dimension(500,350));
+        setMinimumSize(new Dimension(500,350));
+
         ArrayList<String> authors = ctrlPres.getDocumentAuthors(id);
         authors.add("Victor");
         authors.add("Jesus Andujar");
@@ -176,6 +158,8 @@ public class FolderView extends JPanel implements ActionListener {
                 menuBar,
                 detailView);
         add(splitPane, BorderLayout.CENTER);
+
+        setVisible(true);
     }
 
 

@@ -196,7 +196,7 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     public void setGo(String state) {
-        card.show(content, state);
+        //card.show(content, state);
         panelTitle.setText(state);
         menu.setSelected(state);
 
@@ -249,6 +249,10 @@ public class MainView extends JFrame implements ActionListener {
                 // If the user cancelled the operation
                 else
                     JOptionPane.showMessageDialog(this, "Export operation canceled");
+                break;
+            }
+            case "Create Document":{
+                new AddNewDocument();
                 break;
             }
         }

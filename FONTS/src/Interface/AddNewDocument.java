@@ -18,22 +18,7 @@ import java.awt.event.ActionListener;
  * @author Víctor Mena Doz
  */
 
-public class AddNewDocument implements ActionListener {
-    /**
-     * Instance of the Presentation Controller
-     */
-    private PresentationController ctrlPres = PresentationController.getInstance();
-
-    /**
-     * Represents the dialog window
-     */
-    private JDialog dialog;
-
-    /**
-     * Represents dialog's panel.
-     */
-    private JPanel panel;
-
+public class AddNewDocument extends JPanel implements ActionListener {
     /**
      * Represents OK button.
      */
@@ -63,11 +48,10 @@ public class AddNewDocument implements ActionListener {
      * Default creator of dialog
      */
     public AddNewDocument() {
-        dialog = new JDialog();
-        dialog.setDefaultCloseOperation(JDialog.HIDE_ON_CLOSE);
-
-        panel = new JPanel();
-        panel.setLayout(new GridBagLayout());
+        setPreferredSize(new Dimension(500,350));
+        setMaximumSize(new Dimension(500,350));
+        setMinimumSize(new Dimension(500,350));
+        setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
         try { //CHANGE VIEW
@@ -99,36 +83,27 @@ public class AddNewDocument implements ActionListener {
 
         c.gridx = 0;
         c.gridy = 0;
-        panel.add(title, c);
+        add(title, c);
         c.gridx = 1;
         c.gridy = 0;
-        panel.add(inputInitialTitle, c);
+        add(inputInitialTitle, c);
         c.gridx = 0;
         c.gridy = 2;
-        panel.add(author, c);
+        add(author, c);
         c.gridx = 1;
         c.gridy = 2;
-        panel.add(inputAuthor, c);
+        add(inputAuthor, c);
         c.gridx = 1;
         c.gridy = 4;
-        panel.add(lang, c);
+        add(lang, c);
         c.gridx = 0;
         c.gridy = 6;
-        panel.add(buttonOK, c);
+        add(buttonOK, c);
         c.gridx = 3;
         c.gridy = 6;
-        panel.add(buttonCancel, c);
+        add(buttonCancel, c);
 
-        dialog.add(panel);
-        dialog.setSize(300, 350);
-
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-
-        int x = (screenSize.width - dialog.getWidth()) / 2;
-        int y = (screenSize.height - dialog.getHeight()) / 2;
-
-        dialog.setLocation(x, y);
-        dialog.setVisible(true);
+        setVisible(true);
     }
 
     /**
@@ -143,7 +118,7 @@ public class AddNewDocument implements ActionListener {
 
         }
         else if(s.equals("Cancel")) {
-
+            JOptionPane.showMessageDialog(this, "Create document operation canceled");
         }
     }
 
