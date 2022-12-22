@@ -138,13 +138,20 @@ public class Folder {
      * @param lang, Represents the Language of the Document.
      * @throws  IOException
      * */
-    public void addNonConstructedDocument(String authorName, String title, String text, String lang) throws IOException, DocumentsException {
-        try {
-            Document doc = new Document(title, authorName, text, lang);
-            this.addDocument(doc);
+    public void addNonConstructedDocument(String authorName, String title, String text, String lang, int foldId) throws IOException, DocumentsException {
+        if(folderId == foldId){
+            try {
+                Document doc = new Document(title, authorName, text, lang);
+                this.addDocument(doc);
+            }
+            catch (DocumentsException e) {
+                e.printStackTrace();
+            }
         }
-        catch (DocumentsException e) {
-            e.printStackTrace();
+        else {
+            int nextFolder = getNextFolderParent(foldId);
+            Folder f = getFolder(foldId);
+            f.addNonConstructedDocument(authorName,title,text,lang,foldId);
         }
     }
 

@@ -87,7 +87,7 @@ public class DomainControllerDriver {
         String content = readContent();
         System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
         String lang = readInputString();
-        dC.newDocument(author, title, content, lang);
+        dC.newDocument(author, title, content, lang,0);
         System.out.println("Added new document with title: " + title + " and author's name " + author);
         System.out.println();
     }
@@ -101,7 +101,7 @@ public class DomainControllerDriver {
         String content = readContent();
         System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
         String lang = readInputString();
-        dC.newDocument(author, title, content, lang);
+        dC.newDocument(author, title, content, lang,0);
         System.out.println("Select document to modify:");
         System.out.println("Introduce title of the Document:");
         title = readInputString();
@@ -138,7 +138,7 @@ public class DomainControllerDriver {
         String content = readContent();
         System.out.println("Introduce a Language for the first Document(ENG, CAT or ESP):");
         String lang = readInputString();
-        dC.newDocument(author, title, content, lang);
+        dC.newDocument(author, title, content, lang,0);
         System.out.println("Introduce a title for the second Document:");
         title = readInputString();
         System.out.println("Introduce an author for the second Document:");
@@ -146,7 +146,7 @@ public class DomainControllerDriver {
         content = readContent();
         System.out.println("Introduce a Language for the second Document(ENG, CAT or ESP):");
         lang = readInputString();
-        dC.newDocument(author, title, content, lang);
+        dC.newDocument(author, title, content, lang,0);
         System.out.println("Introduce a title for the third Document:");
         title = readInputString();
         System.out.println("Introduce an author for the third Document:");
@@ -154,7 +154,7 @@ public class DomainControllerDriver {
         content = readContent();
         System.out.println("Introduce a Language for the third Document(ENG, CAT or ESP):");
         lang = readInputString();
-        dC.newDocument(author, title, content, lang);
+        dC.newDocument(author, title, content, lang,0);
         System.out.println("Introduce author's name to obtain his documents:");
         author = readInputString();
         ArrayList<String> result = dC.authorDocuments(author);
@@ -176,7 +176,7 @@ public class DomainControllerDriver {
         String content = readContent();
         System.out.println("Introduce a Language for the first Document(ENG, CAT or ESP):");
         String lang = readInputString();
-        dC.newDocument(author, title, content, lang);
+        dC.newDocument(author, title, content, lang,0);
         System.out.println("Introduce a title for the second Document:");
         title = readInputString();
         System.out.println("Introduce an author for the second Document:");
@@ -184,7 +184,7 @@ public class DomainControllerDriver {
         content = readContent();
         System.out.println("Introduce a Language for the second Document(ENG, CAT or ESP):");
         lang = readInputString();
-        dC.newDocument(author, title, content, lang);
+        dC.newDocument(author, title, content, lang,0);
         System.out.println("Introduce a title for the third Document:");
         title = readInputString();
         System.out.println("Introduce an author for the third Document:");
@@ -192,7 +192,7 @@ public class DomainControllerDriver {
         content = readContent();
         System.out.println("Introduce a Language for the third Document(ENG, CAT or ESP):");
         lang = readInputString();
-        dC.newDocument(author, title, content, lang);
+        dC.newDocument(author, title, content, lang,0);
         System.out.println("Introduce prefix to search authors:");
         String prefix = readInputString();
         ArrayList<String> result = dC.searchAuthors(prefix);
@@ -214,7 +214,7 @@ public class DomainControllerDriver {
         String content = readContent();
         System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
         String lang = readInputString();
-        dC.newDocument(author, title, content, lang);
+        dC.newDocument(author, title, content, lang,0);
         ArrayList<String> d = dC.getDocument(author,title);
         System.out.println("Document's title: " + d.get(0));
         System.out.println("Document's author: " + d.get(1));
@@ -281,7 +281,7 @@ public class DomainControllerDriver {
         String content = readContent();
         System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
         String lang = readInputString();
-        dC.newDocument(author, title, content, lang);
+        dC.newDocument(author, title, content, lang,0);
         System.out.println("Introduce title of the document to delete:");
         title = readInputString();
         System.out.println("Introduce author's name of the document to delete:");
@@ -300,7 +300,7 @@ public class DomainControllerDriver {
         String content = readContent();
         System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
         String lang = readInputString();
-        dC.newDocument(author, title, content, lang);
+        dC.newDocument(author, title, content, lang,0);
         System.out.println("Introduce a title of the Document to protect:");
         title = readInputString();
         System.out.println("Introduce author's name of the Document to protect:");
@@ -331,7 +331,7 @@ public class DomainControllerDriver {
             String content = readContent();
             System.out.println("Introduce a Language for the Document(ENG, CAT or ESP):");
             String lang = readInputString();
-            dC.newDocument(author, title, content, lang);
+            dC.newDocument(author, title, content, lang,0);
             System.out.println("Added new document with title: " + title + " and author's name " + author);
             System.out.println();
         }

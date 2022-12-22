@@ -62,7 +62,7 @@ public class FolderTest {
         Folder f = new Folder(1, "Test");
         assertFalse(f.documentContained("TitleTest","AuthorTest"));
         try {
-            f.addNonConstructedDocument("AuthorTest", "TitleTest", "new Content", "ENG");
+            f.addNonConstructedDocument("AuthorTest", "TitleTest", "new Content", "ENG", f.getId());
         } catch (IOException e) {
             fail(e.getMessage());
         } catch (DocumentsException e) {
@@ -76,7 +76,7 @@ public class FolderTest {
         Folder f = new Folder(1, "Test");
         Document doc = new DocumentStub();
         f.addDocument(doc);
-        f.delDocument("authorTest", "titleTest");
+        f.delDocument("AuthorTest", "TitleTest");
         assertFalse(f.documentContained("titleTest", "authorTest"));
     }
 
@@ -166,6 +166,7 @@ public class FolderTest {
         res.add("TitleTest");
         res.add("AuthorTest");
         res.add("Simple Content Test");
+        res.add("ENG");
         assertEquals(res,f.getDocument("AuthorTest", "TitleTest"));
     }
 

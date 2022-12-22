@@ -120,7 +120,7 @@ public class FolderDriver {
         System.out.println("List of Docs before addition:");
         showDocs(f);
         //Addition
-        f.addNonConstructedDocument(author, title, ContentText, language);
+        f.addNonConstructedDocument(author, title, ContentText, language, f.getId());
         System.out.println("List of Docs after addition:");
         showDocs(f);
         System.out.println("Testing 'testAddNonConstructedDocument()' finished.");

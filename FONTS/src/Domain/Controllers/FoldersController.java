@@ -59,9 +59,9 @@ public class FoldersController {
      * @param lang, Represents the Language of the Document.
      * @throws IOException
      * */
-    public void newDocument(String authorName, String title, String text, String lang) throws IOException {
+    public void newDocument(String authorName, String title, String text, String lang, int folderId) throws IOException {
         try {
-            rootFolder.addNonConstructedDocument(authorName, title, text, lang);
+            rootFolder.addNonConstructedDocument(authorName, title, text, lang, folderId);
         }
         catch (DocumentsException e) { e.printStackTrace(); }
     }

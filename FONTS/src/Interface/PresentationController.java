@@ -223,7 +223,7 @@ public class PresentationController {
      * @throws IOException
      */
     public void newDocument(String authorName, String title, String text, String lang) throws IOException {
-        ctrlDomain.newDocument(authorName,title,text,lang);
+        ctrlDomain.newDocument(authorName,title,text,lang,0);
     }
 
     public void newFolder(String fName, int foldId){

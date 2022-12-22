@@ -115,9 +115,9 @@ public class DomainController {
      * @param lang document language
      * @throws IOException
      */
-    public void newDocument(String authorName, String title, String text, String lang) throws IOException {
+    public void newDocument(String authorName, String title, String text, String lang, int folderId) throws IOException {
         try {
-            folders.newDocument(authorName, title, text, lang);
+            folders.newDocument(authorName, title, text, lang, folderId);
             ctrlAuthors.addTitleAuthor(authorName, title);
         }
         catch (DocumentsException e) {
@@ -408,7 +408,7 @@ public class DomainController {
         }
         else if (docType.equals("xml") || docType.equals("txt")){
             try {
-                folders.newDocument(doc.get(0), doc.get(1), doc.get(2), lang);
+                folders.newDocument(doc.get(0), doc.get(1), doc.get(2), lang,0);
             } catch (IOException e) {
                 return false;
             }
