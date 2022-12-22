@@ -21,7 +21,7 @@ public class SearchViewN extends JPanel {
     private TitlesAuthorSearch titlesAuthorSearch;
 
 
-    public SearchViewN() {
+    public SearchViewN(MainView mv) {
         setPreferredSize(new Dimension(500, 350));
         setMaximumSize(new Dimension(500, 350));
         setMinimumSize(new Dimension(500, 350));
@@ -54,7 +54,13 @@ public class SearchViewN extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 String s = e.getActionCommand();
                 if (e.getSource() == b1){
-                    new TitlesAuthorSearch();
+                    mv.setGo("Titles Author Search");
+                } else if (e.getSource() == b2){
+                    mv.setGo("Authors Prefix Search");
+                } else if (e.getSource() == b3){
+                    mv.setGo("Document Search");
+                } else if (e.getSource() == b4){
+
                 }
 
             }

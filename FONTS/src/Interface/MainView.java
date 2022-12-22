@@ -36,6 +36,12 @@ public class MainView extends JFrame implements ActionListener {
     private FolderView folderView;
     private ModifyBoolExpr modifyBoolExpr;
     private CreateBoolExpr createBoolExpr;
+    private TitlesAuthorSearch titlesAuthorSearch;
+    private AuthorsPrefixSearch authorsPrefixSearch;
+    private DocumentSearch documentSearch;
+    private SimilarityDocumentsSearch similarityDocumentsSearch;
+    private RelevantDocumentsSearch relevantDocumentsSearch;
+    private BoolExprSearch boolExprSearch;
 
 
     private int x,y;
@@ -192,10 +198,16 @@ public class MainView extends JFrame implements ActionListener {
         addNewDocument = new AddNewDocument(ctrlPres);
         //searchView = new SearchView();
         folderView = new FolderView(ctrlPres, folderID);
-        searchViewN = new SearchViewN();
+        searchViewN = new SearchViewN(this);
         exprManager = new ExprManager(this);
         modifyBoolExpr = new ModifyBoolExpr();
         createBoolExpr = new CreateBoolExpr();
+        titlesAuthorSearch = new TitlesAuthorSearch();
+        authorsPrefixSearch = new AuthorsPrefixSearch();
+        documentSearch = new DocumentSearch();
+        similarityDocumentsSearch = new SimilarityDocumentsSearch();
+        relevantDocumentsSearch = new RelevantDocumentsSearch();
+        boolExprSearch = new BoolExprSearch();
 
 
         content.add(folderView, "Folder View");
@@ -204,6 +216,12 @@ public class MainView extends JFrame implements ActionListener {
         content.add(addNewDocument, "Create Document");
         content.add(createBoolExpr, "Create Boolean Expression");
         content.add(modifyBoolExpr, "Modify Boolean Expressions List");
+        content.add(titlesAuthorSearch, "Titles Author Search");
+        content.add(authorsPrefixSearch, "Authors Prefix Search");
+        content.add(documentSearch, "Document Search");
+        content.add(similarityDocumentsSearch, "Similar Documents Search");
+        //content.add(relevantDocumentsSearch, "Relevant Documents Search");
+        //content.add(boolExprSearch, "Boolean Expression Search");
 
         setGo("Folder View");
     }
@@ -269,7 +287,7 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Search": {
-                new SearchViewN();
+                new SearchViewN(this);
                 break;
             }
             case "Boolean Expressions": {
@@ -282,6 +300,30 @@ public class MainView extends JFrame implements ActionListener {
             }
             case "Modify Boolean Expression List":{
                 new ModifyBoolExpr();
+                break;
+            }
+            case "Titles Author Search":{
+                new TitlesAuthorSearch();
+                break;
+            }
+            case "Authors Prefix Search":{
+                new AuthorsPrefixSearch();
+                break;
+            }
+            case "Document Search": {
+                new DocumentSearch();
+                break;
+            }
+            case "Similar Documents Search":{
+                new SimilarityDocumentsSearch();
+                break;
+            }
+            case "Relevant Documents Search":{
+                new RelevantDocumentsSearch();
+                break;
+            }
+            case "Boolean Expression Search":{
+                new BoolExprSearch();
                 break;
             }
         }

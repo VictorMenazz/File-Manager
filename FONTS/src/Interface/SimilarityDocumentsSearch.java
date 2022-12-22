@@ -1,29 +1,30 @@
 package FONTS.src.Interface;
 
 import javax.swing.*;
+import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 
-public class DocumentSearch extends JPanel {
+public class SimilarityDocumentsSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
-    private JLabel titleView = new JLabel("Get document");
+    private JLabel titleView = new JLabel("Get similar documents");
     private JLabel l = new JLabel("Author");
     private JLabel l2 = new JLabel("Title");
 
-    /*public void setAutor(String txtAutor) {
-        this.txtAutor.setText(txtAutor);
-        search.doClick();
-    }*/
+    private JLabel l3 = new JLabel("Desired documents");
 
     private JComboBox authors;
     private JComboBox titles;
 
+    private JFormattedTextField k;
+
     private JButton search = new JButton("Search");
     private JFrame frame = new JFrame ("JFrame");
 
-    public DocumentSearch(){
+    public SimilarityDocumentsSearch(){
         setLayout(null);
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
@@ -44,6 +45,14 @@ public class DocumentSearch extends JPanel {
             add(titles);
         }
 
+        NumberFormat format = NumberFormat.getNumberInstance();
+        NumberFormatter formatter = new NumberFormatter(format);
+        formatter.setValueClass(Integer.class);  // only allow integers
+        formatter.setMinimum(0);  // set the minimum value
+        formatter.setMaximum(100);  // set the maximum value
+        formatter.setAllowsInvalid(false);  // don't allow invalid input
+        k = new JFormattedTextField(formatter);
+
 
         l.setBounds(100,100,200,20);
         add(l);
@@ -51,6 +60,10 @@ public class DocumentSearch extends JPanel {
         add(l2);
         search.setBounds(200,200,100,20);
         add(search);
+        l3.setBounds(100, 200, 200, 20);
+        add(l3);
+        k.setBounds(100, 200, 200, 20);
+        add(l3);
 
         setVisible(true);
 
