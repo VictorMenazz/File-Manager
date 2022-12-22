@@ -189,7 +189,6 @@ public class DocumentView implements ActionListener {
             }
             JOptionPane.showMessageDialog(new JDialog(), "Document saved");
             textEditor.setVisible(false);
-            ctrlPres.toMain();
         }
 
         else if(s.equals("Copy")) {

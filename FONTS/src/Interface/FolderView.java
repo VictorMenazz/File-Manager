@@ -58,8 +58,6 @@ public class FolderView extends JPanel implements ActionListener {
         subfolders.put(1, "AUX");
         fileSystemView = FileSystemView.getFileSystemView();
 
-        JPanel detailView = new JPanel(new BorderLayout(3, 3));
-
         Object[][] data = new Object[(authors.size() + subfolders.size())][3];
         Icon folderIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/folder-icon.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
         Icon documentIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/icone-fichier-document-noir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
@@ -105,30 +103,25 @@ public class FolderView extends JPanel implements ActionListener {
 
         table.getSelectionModel().addListSelectionListener(listSelectionListener);
         JScrollPane tableScroll = new JScrollPane(table);
-        Dimension d = tableScroll.getPreferredSize();
-        tableScroll.setPreferredSize(new Dimension((int) d.getWidth(), (int) d.getHeight() / 2));
-        detailView.add(tableScroll, BorderLayout.CENTER);
+        tableScroll.setPreferredSize(new Dimension(550, 390));
 
         //Create menuBar
         JMenuBar menuBar = new JMenuBar();
 
         //Create menu for Bar
         JMenu folder = new JMenu("Folder");
+
         //Create items for menu
-        JMenuItem newFolder = new JMenuItem("New folder");
         JMenuItem openFolder = new JMenuItem("Open folder");
         JMenuItem editFolder = new JMenuItem("Edit folder");
         JMenuItem deleteFolder = new JMenuItem("Delete folder");
 
 
         //Adding action listener
-        newFolder.addActionListener(this);
         openFolder.addActionListener(this);
         editFolder.addActionListener(this);
         deleteFolder.addActionListener(this);
 
-        folder.add(newFolder);
-        folder.addSeparator();
         folder.add(openFolder);
         folder.addSeparator();
         folder.add(editFolder);
@@ -156,7 +149,7 @@ public class FolderView extends JPanel implements ActionListener {
         JSplitPane splitPane = new JSplitPane(
                 JSplitPane.VERTICAL_SPLIT,
                 menuBar,
-                detailView);
+                tableScroll);
         add(splitPane, BorderLayout.CENTER);
 
         setVisible(true);

@@ -122,6 +122,8 @@ public class AddNewDocument extends JPanel implements ActionListener {
 
         if(s.equals("OK")) {
             ctrlPres.toDocument(inputAuthor.getText(), inputInitialTitle.getText(), (String)lang.getSelectedItem(), true, true);
+            inputAuthor.setText(" ");
+            inputInitialTitle.setText(" ");
         }
         else if(s.equals("Cancel")) {
             JOptionPane.showMessageDialog(this, "Create document operation canceled");
