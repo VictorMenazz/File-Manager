@@ -31,7 +31,7 @@ public class DataFoldersController {
      * @param docs, Representing the Documents Serialized.
      * @throws IOException
      */
-    public void saveFolder(String docs) throws IOException {
+    public void saveFolder(String docs) {
         String basicPath = "data/Folders/rootFolder";
         File folder = new File(basicPath);
         if (!folder.exists()) folder.mkdir();
@@ -65,7 +65,7 @@ public class DataFoldersController {
             documentWr.print(cont);
             documentWr.close();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            //throw new RuntimeException(e);
         }
     }
 
@@ -80,9 +80,9 @@ public class DataFoldersController {
                 result += iterator;
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            return result;
         } catch (IOException ex) {
-            throw new RuntimeException(ex);
+            return result;
         }
         return result;
     }
@@ -109,9 +109,9 @@ public class DataFoldersController {
                     try {
                         document = builder.parse(new InputSource(new StringReader(doc)));
                     } catch (SAXException e) {
-                        throw new RuntimeException(e);
+                        return result;
                     } catch (IOException e) {
-                        throw new RuntimeException(e);
+                        return result;
                     }
                     Element root = document.getDocumentElement();
                     auth = getAtt("Author", root);
@@ -133,9 +133,9 @@ public class DataFoldersController {
                         cont += iterator;
                     }
                 } catch (FileNotFoundException e) {
-                    throw new RuntimeException(e);
+                    return result;
                 } catch (IOException ex) {
-                    throw new RuntimeException(ex);
+                    return result;
                 }
             }
             result.add(auth);
@@ -154,7 +154,6 @@ public class DataFoldersController {
         NodeList list = element.getElementsByTagName(tagName);
         if (list != null && list.getLength() > 0) {
             NodeList subList = list.item(0).getChildNodes();
-
             if (subList != null && subList.getLength() > 0) {
                 return subList.item(0).getNodeValue();
             }
@@ -165,7 +164,7 @@ public class DataFoldersController {
     /**
      * Writes a Document onto a physic File out of the System.
      *
-     * @param path,    Representing the physic path to write the Doc.
+     * @param path, Representing the physic path to write the Doc.
      * @param Content, Representing the Content to write onto the new physic File.
      * @return A Boolean indicating if the process finshed well.
      */
@@ -178,7 +177,7 @@ public class DataFoldersController {
                 try {
                     docBuilder = docFactory.newDocumentBuilder();
                 } catch (ParserConfigurationException e) {
-                    throw new RuntimeException(e);
+                    return false;
                 }
 
                 Document doc = docBuilder.newDocument();
@@ -214,14 +213,14 @@ public class DataFoldersController {
                 try {
                     transformer = transformerFactory.newTransformer();
                 } catch (TransformerConfigurationException e) {
-                    throw new RuntimeException(e);
+                    return false;
                 }
                 DOMSource source = new DOMSource(doc);
                 StreamResult result = new StreamResult(new File(path));
                 try {
                     transformer.transform(source, result);
                 } catch (TransformerException e) {
-                    throw new RuntimeException(e);
+                    return false;
                 }
             } else {
                 FileWriter file = null;
@@ -233,7 +232,7 @@ public class DataFoldersController {
                     documentWr.print(Content);
                     documentWr.close();
                 } catch (IOException e) {
-                    throw new RuntimeException(e);
+                    return false;
                 }
                 return true;
             }

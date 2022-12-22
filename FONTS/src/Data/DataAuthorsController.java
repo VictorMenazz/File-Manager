@@ -8,13 +8,18 @@ public class DataAuthorsController {
      * @param newLog representing the Information that will be written on the file.
      * @throws IOException
      */
-    public void saveAuthors(String newLog) throws IOException {
+    public void saveAuthors(String newLog){
         String basicPath = "data/Authors";
         File authorsFolder = new File(basicPath);
         if(!authorsFolder.exists()) authorsFolder.mkdir();
         File[] authorsLogs = authorsFolder.listFiles();
         String identifier = String.format("%04d", authorsLogs.length);
-        FileWriter file = new FileWriter(basicPath + File.separator + identifier + "Authors.json");
+        FileWriter file = null;
+        try {
+            file = new FileWriter(basicPath + File.separator + identifier + "Authors.json");
+        } catch (IOException e) {
+            //throw new RuntimeException(e);
+        }
         PrintWriter documentWr = new PrintWriter(file);
         documentWr.print(newLog);
         documentWr.close();
@@ -40,9 +45,9 @@ public class DataAuthorsController {
                 result += iterator;
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
+            return result;
         } catch (IOException ex){
-            throw new RuntimeException(ex);
+            return result;
         }
         return result;
     }
