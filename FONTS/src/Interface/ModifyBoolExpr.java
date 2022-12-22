@@ -2,6 +2,7 @@ package FONTS.src.Interface;
 
 import javax.swing.*;
 import javax.swing.event.ListDataListener;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -13,6 +14,10 @@ public class ModifyBoolExpr extends JPanel{
     private PresentationController CtrlPres = PresentationController.getInstance();
     private JTextArea txtExpr = new JTextArea();
 
+    /**
+     * Table model for File[]
+     */
+    private ListSelectionListener listSelectionListener;
     private JLabel l = new JLabel("Write a new boolean expression or choose one to modify");
     private JButton bModify = new JButton("Modify");
     private JButton bCreate = new JButton("Create");
@@ -62,7 +67,8 @@ public class ModifyBoolExpr extends JPanel{
         };
 
         list.setAutoCreateRowSorter(true);
-
+        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        list.getSelectionModel().addListSelectionListener(listSelectionListener);
         JScrollPane tableScroll = new JScrollPane(list);
         tableScroll.setPreferredSize(new Dimension(400, 200));
         txtExpr.setPreferredSize(new Dimension(400, 40));
@@ -89,9 +95,7 @@ public class ModifyBoolExpr extends JPanel{
         c.gridy = 5;
         add(bDelete, c);
 
-
         setVisible(true);
-
 
         ActionListener manageExpressions = new ActionListener() {
             @Override
@@ -113,9 +117,17 @@ public class ModifyBoolExpr extends JPanel{
                         }
                     }
                 } else if (e.getSource() == bModify){
-                    String modify = CtrlPres.modifyExpression(txtExpr.getText(), txtExpr.getText());
-                    if (modify.equals("OK")){
-                        reset();
+                    if (txtExpr.getText().length() == 0) {
+                        JOptionPane.showMessageDialog(new JDialog(), "Error, empty Boolean Expression");
+                    }
+                    else {
+                        int row = list.getSelectedRow();
+                        if(row == -1) JOptionPane.showMessageDialog(new JDialog(), "Error, not selected Boolean Expression to modify");
+                        String modify = CtrlPres.modifyExpression((String)list.getValueAt(row, 0), txtExpr.getText());
+                        if (modify.equals("OK")) {
+                            JOptionPane.showMessageDialog(new JDialog(), "Modified Boolean Expression");
+                            reset();
+                        }
                     }
                 } else if (e.getSource() == bDelete) {
                     Integer row = list.getSelectedRow();
@@ -126,7 +138,6 @@ public class ModifyBoolExpr extends JPanel{
                         JOptionPane.showMessageDialog(new JDialog(), s + " has been deleted");
                         reset();
                     }
-
                 }
             }
 
@@ -176,7 +187,4 @@ public class ModifyBoolExpr extends JPanel{
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
-
-
-
 }

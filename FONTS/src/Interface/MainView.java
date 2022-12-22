@@ -63,7 +63,7 @@ public class MainView extends JFrame implements ActionListener {
 
     private CardLayout card;
 
-    private String author;
+    private String language;
     private int folderID;
 
     /**
@@ -236,7 +236,7 @@ public class MainView extends JFrame implements ActionListener {
 
         switch(state) {
             case "Main":{
-                folderView.setVisible(true);
+                folderView.reload();
                 break;
             }
             case "Folder View":{
@@ -260,7 +260,59 @@ public class MainView extends JFrame implements ActionListener {
                     if(dotIndex != -1) {
                         String ext = name.substring(dotIndex + 1);
                         if((ext.equals("txt")) | ext.equals("xml") | ext.equals("json")) {
-                            ctrlPres.importDocument(fc.getSelectedFile().getAbsolutePath(), folderID, "ENG", ext);
+                            JDialog chooseLang = new JDialog();
+                            chooseLang.setPreferredSize(new Dimension(300, 200));
+                            chooseLang.setMaximumSize(new Dimension(300, 200));
+                            chooseLang.setMinimumSize(new Dimension(300, 200));
+                            chooseLang.setLocationRelativeTo(null);
+
+                            chooseLang.setLayout(new GridBagLayout());
+                            GridBagConstraints c = new GridBagConstraints();
+                            JComboBox chooser = new JComboBox<>();
+                            chooser.addItem("Spanish");
+                            chooser.addItem("English");
+                            chooser.addItem("Catalan");
+                            JButton buttonOK = new JButton("OK");
+
+                            c.gridx = 0;
+                            c.gridy = 0;
+                            chooseLang.add(new JLabel("Choose the language of the imported file:"), c);
+                            c.gridx = 0;
+                            c.gridy = 1;
+                            chooseLang.add(new JLabel(" "), c);
+                            c.gridx = 0;
+                            c.gridy = 2;
+                            chooseLang.add(chooser, c);
+                            c.gridx = 0;
+                            c.gridy = 3;
+                            chooseLang.add(new JLabel(" "), c);
+                            c.gridx = 0;
+                            c.gridy = 4;
+                            chooseLang.add(buttonOK, c);
+
+                            chooseLang.setVisible(true);
+
+                            ActionListener chooseL = new ActionListener() {
+                                @Override
+                                public void actionPerformed(ActionEvent e) {
+                                    if (e.getSource() == buttonOK){
+                                        language = (String) chooser.getSelectedItem();
+                                        chooseLang.setVisible(false);
+
+                                        if(language.equals("Spanish")) language = "ESP";
+                                        else if (language.equals("Catalan")) language = "CAT";
+                                        else language = "ENG";
+
+                                        ctrlPres.importDocument(fc.getSelectedFile().getAbsolutePath(), folderID, language, ext);
+                                        JOptionPane.showMessageDialog(new JOptionPane(), "File imported");
+
+                                        setGo("Main");
+                                    }
+                                }
+                            };
+
+                            buttonOK.addActionListener(chooseL);
+
                         }
                         else {
                             JOptionPane.showMessageDialog(this, "Incorrect type of document. It must be .txt, .xml or .json");

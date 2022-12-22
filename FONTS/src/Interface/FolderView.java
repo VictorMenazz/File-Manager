@@ -177,7 +177,24 @@ public class FolderView extends JPanel implements ActionListener {
         ArrayList<String> authors = ctrlPres.getDocumentAuthors(folderID);
         ArrayList<String> documents = ctrlPres.getDocumentTitles(folderID);
         HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(folderID);
+        Object[][] data = new Object[(authors.size() + subfolders.size())][3];
+        Icon folderIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/folder-icon.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+        Icon documentIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/icone-fichier-document-noir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+        int j = 0;
+        for (Integer key : subfolders.keySet()) {
+            data[j][0] = folderIcon;
+            data[j][1] = subfolders.get(key);
+            data[j][2] = "-";
+            ++j;
+        }
+        for (int i = subfolders.size(); i < (authors.size() + subfolders.size()); ++i) {
+            data[i][0] = documentIcon;
+            data[i][1] = documents.get(i - subfolders.size());
+            data[i][2] = authors.get(i - subfolders.size());
+        }
         table.updateUI();
+        updateUI();
+        setVisible(true);
     }
 
     @Override
@@ -193,8 +210,6 @@ public class FolderView extends JPanel implements ActionListener {
         }
         else if(s.equals("Open file")) {
             int row = table.getSelectedRow();
-            System.out.println(table.getValueAt(row, 2));
-            System.out.println(table.getValueAt(row, 1));
             String author = (String) table.getValueAt(row, 2);
             String title = (String) table.getValueAt(row, 1);
             ctrlPres.toDocument(author, title, "null", false, false);
