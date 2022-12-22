@@ -66,16 +66,6 @@ public class AddNewDocument extends JPanel implements ActionListener {
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
 
-        try { //CHANGE VIEW
-            // Set metal look and feel
-            UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-
-            // Set theme to ocean
-            MetalLookAndFeel.setCurrentTheme(new OceanTheme());
-        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException |
-                 IllegalAccessException e) {
-            throw new RuntimeException(e);
-        }
 
         JLabel title = new JLabel("Title: ");
         JLabel author = new JLabel("Author: ");
