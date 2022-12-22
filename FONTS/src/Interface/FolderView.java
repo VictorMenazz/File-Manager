@@ -173,6 +173,12 @@ public class FolderView extends JPanel implements ActionListener {
         return folderID;
     }
 
+    public void reload(){
+        ArrayList<String> authors = ctrlPres.getDocumentAuthors(folderID);
+        ArrayList<String> documents = ctrlPres.getDocumentTitles(folderID);
+        HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(folderID);
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();

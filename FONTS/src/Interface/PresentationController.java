@@ -72,8 +72,7 @@ public class PresentationController {
     public void run() throws FileNotFoundException {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(1200,800);
-        //mainFrame.setIconImage(Utils.getLogo().getImage());
-        //ctrlDomain.reconstructFoldersSystem();
+        ctrlDomain.reconstructFoldersSystem();
         ctrlDomain.reconstructAuthorsSystem();
         ctrlDomain.loadHistorial();
         toMain();
