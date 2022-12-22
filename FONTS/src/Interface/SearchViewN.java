@@ -18,11 +18,19 @@ public class SearchViewN extends JPanel {
 
     private JFrame frame = new JFrame ("JFrame");
 
+    private TitlesAuthorSearch titlesAuthorSearch;
+
 
     public SearchViewN() {
         setPreferredSize(new Dimension(500, 350));
         setMaximumSize(new Dimension(500, 350));
         setMinimumSize(new Dimension(500, 350));
+        /*GridBagLayout layout = new GridBagLayout();
+        GridBagConstraints c = new GridBagConstraints();
+        setLayout(layout);
+        c.gridx = 0;
+        c.gridy = 0;
+        layout*/
         setLayout(null);
         b1.setBounds(280, 100, 300, 40);
         add(b1);
@@ -44,6 +52,10 @@ public class SearchViewN extends JPanel {
         ActionListener chooseSearch = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                String s = e.getActionCommand();
+                if (e.getSource() == b1){
+                    new TitlesAuthorSearch();
+                }
 
             }
 

@@ -12,6 +12,8 @@ public class ModifyBoolExpr extends JPanel{
     private JLabel l = new JLabel("Choose the boolean expression to modify");
     private JButton bModify = new JButton("Modify");
 
+    private TitlesAuthorSearch titleAuthorSearch;
+
     private JFrame frame = new JFrame ("JFrame");
 
     private JComboBox cb;

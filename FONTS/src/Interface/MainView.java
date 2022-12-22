@@ -32,6 +32,7 @@ public class MainView extends JFrame implements ActionListener {
     private AddNewDocument addNewDocument;
     private DocumentView documentView;
     private SearchViewN searchViewN;
+    private ExprManager exprManager;
     private FolderView folderView;
 
 
@@ -190,10 +191,12 @@ public class MainView extends JFrame implements ActionListener {
         //searchView = new SearchView();
         folderView = new FolderView(ctrlPres, folderID);
         searchViewN = new SearchViewN();
+        exprManager = new ExprManager();
 
 
         content.add(folderView, "Folder View");
         content.add(searchViewN, "Search");
+        content.add(exprManager, "Boolean Expressions");
         content.add(addNewDocument, "Create Document");
 
         setGo("Folder View");
@@ -261,6 +264,10 @@ public class MainView extends JFrame implements ActionListener {
             }
             case "Search": {
                 new SearchViewN();
+                break;
+            }
+            case "Boolean Expressions": {
+                new ExprManager();
                 break;
             }
         }
