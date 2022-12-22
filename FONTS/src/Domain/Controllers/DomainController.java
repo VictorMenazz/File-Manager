@@ -324,8 +324,11 @@ public class DomainController {
      */
     public Boolean reconstructFoldersSystem(){
         String JSON = data.restoreFolders();
-        folders.recoverFoldersStructure(JSON);
-        return !JSON.equals("");
+        if(!JSON.equals("")){
+            folders.recoverFoldersStructure(JSON);
+            return true;
+        }
+        else return false;
     }
 
     /**
@@ -343,8 +346,11 @@ public class DomainController {
      */
     public Boolean reconstructAuthorsSystem(){
         String JSON = data.restoreAuthors();
-        ctrlAuthors.recoverFoldersStructure(JSON);
-        return !JSON.equals("");
+        if(!JSON.equals("")){
+            ctrlAuthors.recoverFoldersStructure(JSON);
+            return true;
+        }
+        else return false;
     }
 
     /**
