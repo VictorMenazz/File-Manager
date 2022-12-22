@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class CreateBoolExpr extends JPanel{
     private PresentationController CtrlPres = PresentationController.getInstance();
-    private JTextArea TxtExpr = new JTextArea();
+    private JTextArea txtExpr = new JTextArea();
     private JLabel l = new JLabel("Write the new boolean expression");
     private JButton bCreate = new JButton("Create");
 
@@ -20,29 +20,51 @@ public class CreateBoolExpr extends JPanel{
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
         setMinimumSize(new Dimension(500,350));
-        setLayout(null);
-        bCreate.setBounds(280,150,150,40);
+        setLayout(new GridBagLayout());
+
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(5, 0, 5, 0);
+
+        txtExpr.setPreferredSize(new Dimension(400, 40));
+
+
+        c.gridx = 0;
+        c.gridy = 0;
+        add(l, c);
+        c.gridx = 3;
+        c.gridy = 4;
+        add(bCreate, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        c.gridwidth = 4;
+        c.gridheight = 3;
+        add(txtExpr, c);
+
+
+
+
+        /*bCreate.setBounds(280,150,150,40);
         add(bCreate);
-        TxtExpr.setBounds(70,160,150,20);
+        TxtExpr.setBounds(80,80,400,20);
         add(TxtExpr);
-        l.setBounds(115,65,330,30);
-        add(l);
+        l.setBounds(80,65,330,30);
+        add(l);*/
         setVisible(true);
 
 
         ActionListener createExpression = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*if (TxtExpr.getText().length() == 0) {
-                    setError("Error, una expresión vacía es incorrecta","Expresión incorrecta");
+                if (txtExpr.getText().length() == 0) {
+                    setError("Error, empty Boolean Expression","Invalid expression");
                 }
                 else {
-                    if (CtrlPres.existeExpresion(TxtExpr.getText())) {
-                        //si ya existe se avisa
-                        setError("Error, ya existe la expresión","Expresión ya existente");
+                    if (CtrlPres.existsExpression(txtExpr.getText())){
+                        setError("Error, Boolean Expression already exists","Invalid expression");
                     }
-                    else if (!CtrlPres.expresionCorrecta(TxtExpr.getText())) ferror("Error, la sintaxis es incorrecta","Expresión incorrecta");
+                    /*else if (!CtrlPres.expresionCorrecta(TxtExpr.getText())) ferror("Error, Boolean Expression syntax is not correct","Invalid expression");
                     else {
+
                         CtrlPres.crearExpresion(TxtExpr.getText());
                         JDialog Creado =  new JDialog(frame, "La expresión se ha creado");
                         Creado.setBounds(800, 300, 400, 200);
@@ -66,8 +88,8 @@ public class CreateBoolExpr extends JPanel{
                             }
                         };
                         BOkay.addActionListener(Salir);
-                    }
-                }*/
+                    }*/
+                }
             }
         };
         bCreate.addActionListener(createExpression);
@@ -99,7 +121,7 @@ public class CreateBoolExpr extends JPanel{
     }
 
     public void reset() {
-        TxtExpr.setText("");
+        txtExpr.setText("");
     }
 
     /*public static void main(String args[]) {

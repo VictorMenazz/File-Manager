@@ -60,9 +60,12 @@ public class SearchViewN extends JPanel {
                 } else if (e.getSource() == b3){
                     mv.setGo("Document Search");
                 } else if (e.getSource() == b4){
-
+                    mv.setGo("Similar Documents Search");
+                } else if (e.getSource() == b5){
+                    mv.setGo("Relevant Documents Search");
+                } else if (e.getSource() == b6){
+                    mv.setGo("Boolean Expression Search");
                 }
-
             }
 
         };

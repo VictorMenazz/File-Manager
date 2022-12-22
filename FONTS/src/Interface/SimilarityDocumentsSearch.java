@@ -58,12 +58,12 @@ public class SimilarityDocumentsSearch extends JPanel {
         add(l);
         l2.setBounds(100, 150, 200, 20);
         add(l2);
-        search.setBounds(200,200,100,20);
+        search.setBounds(200,300,100,20);
         add(search);
         l3.setBounds(100, 200, 200, 20);
         add(l3);
-        k.setBounds(100, 200, 200, 20);
-        add(l3);
+        k.setBounds(240, 200, 50, 20);
+        add(k);
 
         setVisible(true);
 
@@ -116,7 +116,7 @@ public class SimilarityDocumentsSearch extends JPanel {
     public static void main(String args[]) {
         JFrame f = new JFrame();
         f.setLayout(new BorderLayout());
-        f.add(new DocumentSearch(), BorderLayout.CENTER);
+        f.add(new SimilarityDocumentsSearch(), BorderLayout.CENTER);
         f.setSize(1000, 750);
         f.setLocation(100, 100);
         f.setVisible(true);

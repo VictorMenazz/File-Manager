@@ -85,6 +85,10 @@ public class PresentationController {
         main = new MainView();
     }
 
+    public Boolean existsExpression(String boolExpr){
+        return ctrlPresent.existsExpression(boolExpr);
+    }
+
     public ArrayList<String> getDocumentAuthors(int id) {
         return ctrlDomain.getDocumentAuthors(id);
     }

@@ -82,6 +82,10 @@ public class DomainController {
         ctrlAuthors = new AuthorsController();
     }
 
+    public Boolean existsExpression(String boolExpr){
+        return ctrlSearch.existsExpression(boolExpr);
+    }
+
     public ArrayList<String> getAuthorsName() {
         return ctrlAuthors.getAuthorsName();
     }

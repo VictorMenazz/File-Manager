@@ -50,6 +50,10 @@ public class SearchController {
         listBoolExps.add(bExpr.getExpression());
     }
 
+    public Boolean existsExpression(String boolExp) {
+        return listBoolExps.contains(boolExp);
+    }
+
     /**
      * @brief Modifies an existing boolean expression
      * @param oldExpr, old boolean expression
