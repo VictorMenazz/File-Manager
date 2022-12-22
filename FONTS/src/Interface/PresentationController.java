@@ -72,9 +72,9 @@ public class PresentationController {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(1200,800);
         //mainFrame.setIconImage(Utils.getLogo().getImage());
-        ctrlDomain.reconstructFoldersSystem();
-        ctrlDomain.reconstructAuthorsSystem();
-        ctrlDomain.loadHistorial();
+        //ctrlDomain.reconstructFoldersSystem();
+        //ctrlDomain.reconstructAuthorsSystem();
+        //ctrlDomain.loadHistorial();
         toMain();
     }
 
