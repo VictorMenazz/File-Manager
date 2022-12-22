@@ -41,7 +41,7 @@ public class Menu extends JPanel{
             public void mousePressed(MouseEvent e) {
                 for(String key : items.keySet()) {
                     if (e.getSource() == items.get(key)) {
-                        //principalFrame.setGo(key);
+                        principalFrame.setGo(key);
                     }
                 }
             }

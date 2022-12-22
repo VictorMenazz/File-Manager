@@ -54,13 +54,14 @@ public class MainView extends JFrame implements ActionListener {
     private CardLayout card;
 
     private String author;
-
+    private int folderID;
 
     /**
      * Constructor of MainView
      */
     public MainView() {
-        setSize(700, 400);
+        folderID = 0;
+        setSize(800, 500);
         setMinimumSize(new Dimension(700,400));
         setLocationRelativeTo(null);//centre window
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -185,25 +186,76 @@ public class MainView extends JFrame implements ActionListener {
         card = new CardLayout();
         content.setLayout(card);
 
-        addNewDocument = new AddNewDocument();
-        searchView = new SearchView();
-        //folderView = new FolderView();
+        //addNewDocument = new AddNewDocument();
+        //searchView = new SearchView();
+        folderView = new FolderView(ctrlPres, folderID);
+
+        content.add(folderView, "Folder View");
+
+        setGo("Folder View");
     }
 
+    public void setGo(String state) {
+        card.show(content, state);
+        panelTitle.setText(state);
+        menu.setSelected(state);
+
+        switch(state) {
+            case "Folder View":{
+                break;
+            }
+            case "Import Document":{
+                //Create an object of JFileChooser class
+                JFileChooser fc = new JFileChooser("File:");
+
+                // Invoke the showsOpenDialog function to show the save dialog
+                int r = fc.showOpenDialog(null);
+
+                // If the user selects a file
+                if (r == JFileChooser.APPROVE_OPTION) {
+                    // Set the label to the path of the selected directory
+                    File fi = new File(fc.getSelectedFile().getAbsolutePath());
+                    String name =  fi.getName();
+                    int dotIndex = name.lastIndexOf('.');
+                    if(dotIndex != -1) {
+                        String ext = name.substring(dotIndex + 1);
+                        if((ext.equals("txt")) | ext.equals("xml") | ext.equals("json")) {
+                            ctrlPres.importDocument(fc.getSelectedFile().getAbsolutePath(), folderID, "ENG", ext);
+                        }
+                        else {
+                            JOptionPane.showMessageDialog(this, "Incorrect type of document. It must be .txt, .xml or .json");
+                        }
+                    }
+                    else{
+                        JOptionPane.showMessageDialog(this, "File doesn't have extension");
+                    }
+                }
+                // If the user cancelled the operation
+                else
+                    JOptionPane.showMessageDialog(this, "Import operation cancelled");
+                break;
+            }
+            case "Export Document":{
+                // Create an object of JFileChooser class
+                JFileChooser j = new JFileChooser("f:");
+
+                // Invoke the showsSaveDialog function to show the save dialog
+                int r = j.showSaveDialog(null);
+
+                if (r == JFileChooser.APPROVE_OPTION) {
+                    //j.getSelectedFile().getAbsolutePath();
+
+                }
+                // If the user cancelled the operation
+                else
+                    JOptionPane.showMessageDialog(this, "Export operation canceled");
+                break;
+            }
+        }
+    }
 
     //PROVISIONAL MAIN
     public static void main(String args[]) {
-        ArrayList<String> authors = new ArrayList<>();
-        authors.add("Victor");
-        authors.add("Jesus Andujar");
-
-        ArrayList<String> documents = new ArrayList<>();
-        documents.add("Marc burro");
-        documents.add("Julia la mas lista");
-
-        HashMap<Integer, String> subfolders = new HashMap<>();
-        subfolders.put(1, "AUX");
-
         MainView mv = new MainView();
     }
 }

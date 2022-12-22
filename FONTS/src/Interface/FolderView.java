@@ -16,7 +16,7 @@ public class FolderView extends JPanel implements ActionListener {
     /**
      * Instance of the Presentation Controller
      */
-    private PresentationController ctrlPres = PresentationController.getInstance();
+    private PresentationController ctrlPres;
 
     /**
      * Provides nice icons and names for files
@@ -56,13 +56,24 @@ public class FolderView extends JPanel implements ActionListener {
      */
     private JLabel author;
 
+    private int folderID;
 
     /**
      * List of subfolders
      */
     private HashMap<Integer, String> subF;
 
-    public FolderView(ArrayList<String> authors, ArrayList<String> documents, HashMap<Integer, String> subfolders) {
+    public FolderView(PresentationController pc, int id) {
+        ctrlPres = pc;
+        folderID = id;
+        ArrayList<String> authors = ctrlPres.getDocumentAuthors(id);
+        authors.add("Victor");
+        authors.add("Jesus Andujar");
+        ArrayList<String> documents = ctrlPres.getDocumentTitles(id);
+        documents.add("Marc burro");
+        documents.add("Julia la mas lista");
+        HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(id);
+        subfolders.put(1, "AUX");
         fileSystemView = FileSystemView.getFileSystemView();
 
         JPanel detailView = new JPanel(new BorderLayout(3, 3));
@@ -103,7 +114,6 @@ public class FolderView extends JPanel implements ActionListener {
 
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setPreferredScrollableViewportSize(table.getPreferredSize());
-        //table.set;
         table.setAutoCreateRowSorter(true);
         table.setShowVerticalLines(false);
         table.setRowHeight(30);
@@ -116,29 +126,6 @@ public class FolderView extends JPanel implements ActionListener {
         Dimension d = tableScroll.getPreferredSize();
         tableScroll.setPreferredSize(new Dimension((int) d.getWidth(), (int) d.getHeight() / 2));
         detailView.add(tableScroll, BorderLayout.CENTER);
-
-        // details for a File
-        JPanel fileMainDetails = new JPanel(new BorderLayout(4, 2));
-        fileMainDetails.setBorder(new EmptyBorder(0, 6, 0, 6));
-
-        JPanel fileDetailsLabels = new JPanel(new GridLayout(0, 1, 2, 2));
-        fileMainDetails.add(fileDetailsLabels, BorderLayout.WEST);
-
-        JPanel fileDetailsValues = new JPanel(new GridLayout(0, 1, 2, 2));
-        fileMainDetails.add(fileDetailsValues, BorderLayout.CENTER);
-
-        fileDetailsLabels.add(new JLabel("File", JLabel.TRAILING));
-        fileName = new JLabel();
-        fileDetailsValues.add(fileName);
-        fileDetailsLabels.add(new JLabel("Author", JLabel.TRAILING));
-        author = new JLabel();
-        fileDetailsValues.add(author);
-
-        fileDetailsLabels.add(new JLabel("Type", JLabel.TRAILING));
-
-        JPanel fileView = new JPanel(new BorderLayout(3, 3));
-        fileView.add(fileMainDetails, BorderLayout.CENTER);
-        detailView.add(fileView, BorderLayout.SOUTH);
 
         //Create menuBar
         JMenuBar menuBar = new JMenuBar();
@@ -169,73 +156,26 @@ public class FolderView extends JPanel implements ActionListener {
 
         JMenu file = new JMenu("File");
         //Create items for menu
-        JMenuItem newDoc = new JMenuItem("New file");
         JMenuItem openDoc = new JMenuItem("Open file");
-        JMenuItem importDoc = new JMenuItem("Import file");
-        JMenuItem exportDoc = new JMenuItem("Export file");
-        JMenuItem editDoc = new JMenuItem("Edit file");
         JMenuItem deleteDoc = new JMenuItem("Delete file");
 
         //Adding action listener
-        newDoc.addActionListener(this);
         openDoc.addActionListener(this);
-        importDoc.addActionListener(this);
-        exportDoc.addActionListener(this);
-        editDoc.addActionListener(this);
         deleteDoc.addActionListener(this);
 
-        file.add(newDoc);
-        file.addSeparator();
         file.add(openDoc);
-        file.addSeparator();
-        file.add(importDoc);
-        file.addSeparator();
-        file.add(exportDoc);
-        file.addSeparator();
-        file.add(editDoc);
         file.addSeparator();
         file.add(deleteDoc);
 
-        JMenuItem search = new JMenuItem("Search");
-        search.setMinimumSize(new Dimension(40, search.getPreferredSize().height));
-        search.setMaximumSize(new Dimension(40, search.getPreferredSize().height));
-        search.addActionListener(this);
-
-        JMenuItem boolExpressions = new JMenuItem("Boolean Expressions");
-        boolExpressions.setMinimumSize(new Dimension(40, boolExpressions.getPreferredSize().height));
-        boolExpressions.setMaximumSize(new Dimension(40, boolExpressions.getPreferredSize().height));
-        boolExpressions.addActionListener(this);
-
-        JMenuItem help = new JMenuItem("Help");
-        help.setMinimumSize(new Dimension(30, help.getPreferredSize().height));
-        help.setMaximumSize(new Dimension(30, help.getPreferredSize().height));
-        help.addActionListener(this);
-
-        JMenuItem close = new JMenuItem("Close");
-        close.setMinimumSize(new Dimension(35, close.getPreferredSize().height));
-        close.setMaximumSize(new Dimension(35, close.getPreferredSize().height));
-        close.addActionListener(this);
 
         menuBar.add(folder);
         menuBar.add(file);
-        menuBar.add(search);
-        menuBar.add(help);
-        menuBar.add(Box.createGlue());
-        menuBar.add(Box.createGlue());
-        menuBar.add(close);
 
         JSplitPane splitPane = new JSplitPane(
                 JSplitPane.VERTICAL_SPLIT,
                 menuBar,
                 detailView);
         add(splitPane, BorderLayout.CENTER);
-
-        JPanel simpleOutput = new JPanel(new BorderLayout(3, 3));
-        progressBar = new JProgressBar();
-        simpleOutput.add(progressBar, BorderLayout.EAST);
-        progressBar.setVisible(false);
-
-        add(simpleOutput, BorderLayout.SOUTH);
     }
 
 
@@ -258,9 +198,7 @@ public class FolderView extends JPanel implements ActionListener {
             }
             ctrlPres.toFolderView(folderID);
         }
-        else if(s.equals("Edit folder")) {
 
-        }
         else if(s.equals("Delete folder")) {
             ctrlPres.toDeleteFolder();
         }
@@ -273,113 +211,14 @@ public class FolderView extends JPanel implements ActionListener {
             String title = (String) table.getValueAt(row, 1);
             ctrlPres.toDocument(author, title, false, false);
         }
-        else if(s.equals("Import file")) {
-            //Create an object of JFileChooser class
-            JFileChooser fc = new JFileChooser("File:");
-
-            // Invoke the showsOpenDialog function to show the save dialog
-            int r = fc.showOpenDialog(null);
-
-            // If the user selects a file
-            if (r == JFileChooser.APPROVE_OPTION) {
-                // Set the label to the path of the selected directory
-                File fi = new File(fc.getSelectedFile().getAbsolutePath());
-                String name =  fi.getName();
-                int dotIndex = name.lastIndexOf('.');
-                if(dotIndex != -1) {
-                    String ext = name.substring(dotIndex + 1);
-                    if((ext.equals("txt")) | ext.equals("xml") | ext.equals("json")) {
-                        try {
-                            // String
-                            String s1 = "", sl = "";
-
-                            // File reader
-                            FileReader fr = new FileReader(fi);
-
-                            // Buffered reader
-                            BufferedReader br = new BufferedReader(fr);
-
-                            // Initialize sl
-                            sl = br.readLine();
-
-                            // Take the input from the file
-                            while ((s1 = br.readLine()) != null) {
-                                sl = sl + "\n" + s1;
-                            }
-
-                            // Set the text and title
-                            String n = fi.getName();
-                            String author = "IMPORTED";
-                            //HACER LLAMADA PARA SABER AUTOR IDIOMA Y GUARDAR
-                        }
-                        catch (Exception evt) {
-                            JOptionPane.showMessageDialog(this, evt.getMessage());
-                        }
-                    }
-                    else {
-                        JOptionPane.showMessageDialog(this, "Incorrect type of document. It must be .txt, .xml or .json");
-                    }
-                }
-                else{
-                    JOptionPane.showMessageDialog(this, "File doesn't have extension");
-                }
-            }
-            // If the user cancelled the operation
-            else
-                JOptionPane.showMessageDialog(this, "Import operation cancelled");
-        }
         else if(s.equals("Export file")) {
-            // Create an object of JFileChooser class
-            JFileChooser j = new JFileChooser("f:");
 
-            // Invoke the showsSaveDialog function to show the save dialog
-            int r = j.showSaveDialog(null);
-
-            if (r == JFileChooser.APPROVE_OPTION) {
-
-                // Set the label to the path of the selected directory
-                File fi = new File(j.getSelectedFile().getAbsolutePath());
-
-                try {
-                    // Create a file writer
-                    FileWriter wr = new FileWriter(fi, false);
-
-                    // Create buffered writer to write
-                    BufferedWriter w = new BufferedWriter(wr);
-
-                    // Write
-                    //w.write(); OBTENER CONTENIDO DEL DOCUMENTO
-
-                    w.flush();
-                    w.close();
-                }
-                catch (Exception evt) {
-                    JOptionPane.showMessageDialog(this, evt.getMessage());
-                }
-            }
-            // If the user cancelled the operation
-            else
-                JOptionPane.showMessageDialog(this, "Export operation canceled");
         }
         else if(s.equals("Edit file")) {
             ctrlPres.toDeleteDoc();
         }
         else if(s.equals("Delete file")) {
             ctrlPres.toDeleteDoc();
-        }
-        else if(s.equals("Search")) {
-            ctrlPres.toSearch();
-        }
-        else if(s.equals("Help")) {
-
-        }
-        else if(s.equals("Close")) {
-            try {
-                ctrlPres.saveDB();
-            } catch (IOException ex) {
-                throw new RuntimeException(ex);
-            }
-            System.exit(0);
         }
     }
 }

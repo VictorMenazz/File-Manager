@@ -19,8 +19,8 @@ public class MenuItem extends JPanel{
         labelName = new JLabel();
         labelIcon = new JLabel();
 
-        ImageIcon imagen = new ImageIcon(icon);
-        Image scaledImage = imagen.getImage().getScaledInstance(25,25, Image.SCALE_SMOOTH);
+        ImageIcon image = new ImageIcon(icon);
+        Image scaledImage = image.getImage().getScaledInstance(25,25, Image.SCALE_SMOOTH);
         labelIcon.setIcon(new ImageIcon(scaledImage));
         labelName.setText(name);
         labelName.setForeground(Color.white);

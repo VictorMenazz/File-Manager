@@ -82,11 +82,26 @@ public class PresentationController {
      * Function to create the main view
      */
     public void toMain() {
-        ArrayList<String> authors = ctrlDomain.getDocumentAuthors(0);
-        ArrayList<String> documents = ctrlDomain.getDocumentTitles(0);
-        HashMap<Integer, String> subfolders = ctrlDomain.getSubFolders(0);
         main = new MainView();
     }
+
+    public ArrayList<String> getDocumentAuthors(int id) {
+        return ctrlDomain.getDocumentAuthors(id);
+    }
+
+    public ArrayList<String> getDocumentTitles(int id) {
+        return ctrlDomain.getDocumentTitles(id);
+    }
+
+    public HashMap<Integer, String> getSubFolders(int id) {
+        return ctrlDomain.getSubFolders(id);
+    }
+
+    public void importDocument(String path, Integer folderID, String lang, String docType) {
+        ctrlDomain.importDocument(path, folderID, lang, docType);
+    }
+
+
 
     /**
      * Create a document view for a specific document, new or save
