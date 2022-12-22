@@ -9,20 +9,22 @@ import java.util.ArrayList;
 import java.util.NoSuchElementException;
 
 public class DataController {
-    /**
-     * dataController is the instance of DataController
-     */
+
+    /** dataController is the instance of DataController **/
     private static DataController dataController;
 
+    /** ctrlAuthors is the instance of DataAuthorsController **/
     private static DataAuthorsController ctrlAuthors;
 
+    /** ctrlFolder is the instance of DataFoldersController **/
     private static DataFoldersController ctrlFolder;
 
+    /** ctrlBoolean is the instance of DataBooleanExpressionController **/
     private static DataBooleanExpressionController ctrlBoolean;
 
     /**
-     * Get instance of DataController, if doesn't exist create one
-     * @return instance of DataController
+     * Get instance of DataController, if doesn't exist create one.
+     * @return instance of DataController.
      */
     public static DataController getInstance() {
         if(dataController == null) {
@@ -42,6 +44,8 @@ public class DataController {
 
     /**
      * Saves physically the serialized Folder System in JSON format.
+     * @param folders, Representing the JSON containing the Folders System.
+     * @return A Boolean that indicates if the process was correct.
      */
     public Boolean saveFolders(String folders){
         return ctrlFolder.saveFolder(folders);
@@ -57,6 +61,8 @@ public class DataController {
 
     /**
      * Saves physically the serialized Authors System in JSON format.
+     * @param authorsJSON, Indicates the JSON containing Authors System.
+     * @return A Boolean, indicating if the process was correct.
      */
     public Boolean saveAuthors(String authorsJSON) {
         return ctrlAuthors.saveAuthors(authorsJSON);
@@ -64,14 +70,14 @@ public class DataController {
 
     /**
      * Transfers to DomainController the last log about Authors System.
-     * @return A String representing the Authors System in JSON.
+     * @return A String, representing the Authors System in JSON.
      */
     public String restoreAuthors() { return ctrlAuthors.getAuthorsSerialized(); }
 
     /**
      * Saves the Boolean Expression System.
      * @param jsonHistorial identifying the JSON Object.
-     * @return A Boolean indicating if saving is correct.
+     * @return A Boolean, indicating if saving is correct.
      */
     public Boolean saveHistorial(String jsonHistorial){
         return ctrlBoolean.saveHistorial(jsonHistorial);
@@ -79,8 +85,7 @@ public class DataController {
 
     /**
      * Recovers the Boolean Expression System from the System last log.
-     * @return A String containing the JSON that Domain Layer will recover.
-     * @throws FileNotFoundException
+     * @return A String, containing the JSON that Domain Layer will recover.
      */
     public String loadHistorial() throws FileNotFoundException {
         return ctrlBoolean.loadHistorial();
@@ -89,6 +94,8 @@ public class DataController {
     /**
      * Reads a Document physic File and loads it in Domain.
      * @param path, Representing the physic path to read.
+     * @param docT, Representing the kind of Document it is.
+     * @return An ArrayList, containing three camps, author, title and the Content.
      */
     public ArrayList<String> importDocument(String path, String docT) {
         return ctrlFolder.importDocument(path, docT);
@@ -97,7 +104,10 @@ public class DataController {
     /**
      * Writes a Document onto a physic File out of the System.
      * @param path, Representing the physic path to write the Doc.
+     * @param author, Representing the Author of the Document.
+     * @param title, Representing the Title of the Document.
      * @param Content, Representing the Content to write onto the new physic File.
+     * @return A Boolean, indicating if the process was correct.
      */
     public Boolean exportDocument(String path, String author, String title, String Content, String docT){
         return ctrlFolder.exportDocument(path, author, title, Content, docT);

@@ -15,6 +15,7 @@ public class DataBooleanExpressionController {
     /**
      * @brief Operation to save the historial of booleanExpressions
      * @param booleanExpressions, string that includes the JSON of the boolean expression list.
+     * @return A Boolean, that indicates if the process was correct.
      */
     public Boolean saveHistorial(String booleanExpressions) {
         File file = new File("data/BooleanExpression/");
@@ -38,7 +39,7 @@ public class DataBooleanExpressionController {
     }
 
 
-    /***
+    /**
      * @brief Returns the last historial saved, in JSON.
      */
     public String loadHistorial() throws FileNotFoundException{

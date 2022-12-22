@@ -1,6 +1,5 @@
 package FONTS.src.Data;
 
-import com.google.gson.stream.JsonReader;
 import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.w3c.dom.Document;
@@ -28,6 +27,7 @@ public class DataFoldersController {
     /**
      * Saves physically the serialized Folder System in JSON format.
      * @param docs, Representing the Documents Serialized.
+     * @return A Boolean, that indicates if the process was correct.
      */
     public Boolean saveFolder(String docs){
         String basicPath = "data/Folders/rootFolder";
@@ -42,7 +42,7 @@ public class DataFoldersController {
 
     /**
      * Reads the physic the serialized Folder System in JSON format.
-     * @return A String representing the last log saved.
+     * @return A String, representing the last log saved.
      */
     public String getFoldersSerialized() {
         String basicPath = "data/Folders/rootFolder";
@@ -54,6 +54,12 @@ public class DataFoldersController {
         return result;
     }
 
+    /**
+     * [Private] Writes the physic file of the serialized Folder System in JSON format.
+     * @param path, A String identifying the future physic location of the resource.
+     * @param cont, A String identifying the content that must be written.
+     * @return A Boolean, that indicates if the process was correct.
+     */
     private Boolean writeDoc(String path, String cont) {
         FileWriter file = null;
         try {
@@ -67,6 +73,11 @@ public class DataFoldersController {
         return true;
     }
 
+    /**
+     * [Private] Reads the physic file of the serialized Folder System in JSON format.
+     * @param path, A String identifying the physic location of the resource.
+     * @return A Boolean, that indicates if the process was correct.
+     */
     private String readDoc(String path) {
         FileReader reader = null;
         String result = "";
@@ -88,6 +99,7 @@ public class DataFoldersController {
     /**
      * Reads a Document physic File and loads it in Domain.
      * @param path, Representing the physic path to read the Doc.
+     * @param docT, Representing the type of Document it is.
      * @return A Boolean indicating if the process finshed well.
      */
     public ArrayList<String> importDocument(String path, String docT) {
@@ -147,6 +159,12 @@ public class DataFoldersController {
         else return result;
     }
 
+    /**
+     * Gets an Attribute from the xml file
+     * @param tagName, A String identifying the tag.
+     * @param element, An Element identifying the Parent Tag.
+     * @return A String, identifying the content of the tag.
+     */
     private String getAtt(String tagName, Element element) {
         NodeList list = element.getElementsByTagName(tagName);
         if (list != null && list.getLength() > 0) {
@@ -160,7 +178,6 @@ public class DataFoldersController {
 
     /**
      * Writes a Document onto a physic File out of the System.
-     *
      * @param path, Representing the physic path to write the Doc.
      * @param Content, Representing the Content to write onto the new physic File.
      * @return A Boolean indicating if the process finshed well.
