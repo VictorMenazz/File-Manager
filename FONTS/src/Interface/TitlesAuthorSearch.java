@@ -134,6 +134,7 @@ public class TitlesAuthorSearch extends JPanel {
         c.gridy = 1;
         add(table);
 
+        updateUI();
         setVisible(true);
     }
 
