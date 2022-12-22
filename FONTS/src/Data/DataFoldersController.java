@@ -127,7 +127,7 @@ public class DataFoldersController {
                     title = getAtt("Title", root);
                     cont = getAtt("Content", root);
                 } catch (ParserConfigurationException e) {
-                    throw new RuntimeException(e);
+                    return result;
                 }
             } else {
                 FileReader reader = null;
