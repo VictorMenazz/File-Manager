@@ -37,7 +37,7 @@ public class DeleteFolder extends JPanel implements ActionListener {
      * @param folderID, identification of the folder
      */
     public DeleteFolder(int folderID) {
-
+        
     }
 
     /**
