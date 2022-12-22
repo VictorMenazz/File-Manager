@@ -18,15 +18,33 @@ public class ExprManager extends JPanel{
         setPreferredSize(new Dimension(500, 350));
         setMaximumSize(new Dimension(500, 350));
         setMinimumSize(new Dimension(500, 350));
-        setLayout(null);
-        bCreate.setBounds(280, 100, 300, 40);
-        add(bCreate);
-        bModify.setBounds(280, 150, 300, 40);
-        add(bModify);
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
 
+        bCreate.setMinimumSize(new Dimension(300, 40));
+        bCreate.setMaximumSize(new Dimension(300, 40));
+        bCreate.setPreferredSize(new Dimension(300, 40));
+        bModify.setMinimumSize(new Dimension(300, 40));
+        bModify.setMaximumSize(new Dimension(300, 40));
+        bModify.setPreferredSize(new Dimension(300, 40));
+
+        bCreate.setBackground(Color.decode("#8516f5"));
+        bModify.setBackground(Color.decode("#8516f5"));
+
+        bCreate.setForeground(Color.white);
+        bModify.setForeground(Color.white);
+
+        c.gridx = 0;
+        c.gridy = 0;
+        add(bCreate, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        add(new JLabel(" "), c);
+        c.gridx = 0;
+        c.gridy = 2;
+        add(bModify, c);
 
         setVisible(true);
-
 
         ActionListener manageExpr = new ActionListener() {
             @Override
