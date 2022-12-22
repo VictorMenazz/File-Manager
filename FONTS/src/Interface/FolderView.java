@@ -45,6 +45,8 @@ public class FolderView extends JPanel implements ActionListener {
      */
     private HashMap<Integer, String> subF;
 
+    private DefaultTableModel model;
+
     public FolderView(MainView mv, int id) {
         mainView = mv;
         folderID = id;
@@ -80,8 +82,7 @@ public class FolderView extends JPanel implements ActionListener {
         }
 
         String[] columnNames = {"Type", "Name", "Author"};
-
-        DefaultTableModel model = new DefaultTableModel(data, columnNames) {
+        model = new DefaultTableModel(data, columnNames) {
             //  Returning the Class of each column will allow different
             //  renderers to be used based on Class
             public Class getColumnClass(int column) {
@@ -177,6 +178,7 @@ public class FolderView extends JPanel implements ActionListener {
         ArrayList<String> authors = ctrlPres.getDocumentAuthors(folderID);
         ArrayList<String> documents = ctrlPres.getDocumentTitles(folderID);
         HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(folderID);
+        String[] col = {"Type", "Name", "Author"};
         Object[][] data = new Object[(authors.size() + subfolders.size())][3];
         Icon folderIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/folder-icon.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
         Icon documentIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/icone-fichier-document-noir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
@@ -192,6 +194,14 @@ public class FolderView extends JPanel implements ActionListener {
             data[i][1] = documents.get(i - subfolders.size());
             data[i][2] = authors.get(i - subfolders.size());
         }
+        model.setDataVector(data, col);
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setPreferredScrollableViewportSize(table.getPreferredSize());
+        table.setAutoCreateRowSorter(true);
+        table.setShowVerticalLines(false);
+        table.setRowHeight(30);
+        table.getColumnModel().getColumn(0).setMinWidth(50);
+        table.getColumnModel().getColumn(0).setMaxWidth(50);
         table.updateUI();
         updateUI();
         setVisible(true);

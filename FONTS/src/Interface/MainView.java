@@ -226,7 +226,7 @@ public class MainView extends JFrame implements ActionListener {
         content.add(relevantDocumentsSearch, "Relevant Documents Search");
         content.add(boolExprSearch, "Boolean Expression Search");
 
-        setGo("Main");
+        setGo("Init");
     }
 
     public void setGo(String state) {
@@ -235,6 +235,10 @@ public class MainView extends JFrame implements ActionListener {
         menu.setSelected(state);
 
         switch(state) {
+            case "Init":{
+                folderView.setVisible(true);
+                break;
+            }
             case "Main":{
                 folderView.reload();
                 break;
