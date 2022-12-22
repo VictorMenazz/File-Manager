@@ -100,6 +100,8 @@ public class DocumentView implements ActionListener {
         saveDoc.setMinimumSize(new Dimension(35, saveDoc.getPreferredSize().height));
         saveDoc.setMaximumSize(new Dimension(35, saveDoc.getPreferredSize().height));
 
+        saveDoc.addActionListener(this);
+
         //Create another menu for Bar
         JMenu edit = new JMenu("Edit");
         //Create items for menu
@@ -139,6 +141,7 @@ public class DocumentView implements ActionListener {
 
         if(!newDoc) {
             ArrayList<String> aux = ctrlPres.getDocument(title, author);
+            language = aux.get(3);
             textArea.setText(aux.get(2));
             textEditor.setTitle(aux.get(0));
         }
@@ -176,11 +179,17 @@ public class DocumentView implements ActionListener {
             }
             else {
                 try {
-                    ctrlPres.newDocument(author, title, textArea.getText(), language);
+                    if(language.equals("Spanish")) ctrlPres.newDocument(author, title, textArea.getText(), "ESP");
+                    else if (language.equals("Catalan")) ctrlPres.newDocument(author, title, textArea.getText(), "CAT");
+                    else ctrlPres.newDocument(author, title, textArea.getText(), "ENG");
+
                 } catch (IOException ex) {
                     throw new RuntimeException(ex);
                 }
             }
+            JOptionPane.showMessageDialog(new JDialog(), "Document saved");
+            textEditor.setVisible(false);
+            ctrlPres.toMain();
         }
 
         else if(s.equals("Copy")) {

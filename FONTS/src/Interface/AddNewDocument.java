@@ -20,6 +20,11 @@ import java.awt.event.ActionListener;
 
 public class AddNewDocument extends JPanel implements ActionListener {
     /**
+     * Instance of the Presentation Controller
+     */
+    private PresentationController ctrlPres;
+
+    /**
      * Represents OK button.
      */
     private JButton buttonOK;
@@ -47,7 +52,8 @@ public class AddNewDocument extends JPanel implements ActionListener {
     /**
      * Default creator of dialog
      */
-    public AddNewDocument() {
+    public AddNewDocument(PresentationController pc) {
+        ctrlPres = pc;
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
         setMinimumSize(new Dimension(500,350));
@@ -115,7 +121,7 @@ public class AddNewDocument extends JPanel implements ActionListener {
         String s = e.getActionCommand();
 
         if(s.equals("OK")) {
-
+            ctrlPres.toDocument(inputAuthor.getText(), inputInitialTitle.getText(), (String)lang.getSelectedItem(), true, true);
         }
         else if(s.equals("Cancel")) {
             JOptionPane.showMessageDialog(this, "Create document operation canceled");
@@ -123,6 +129,6 @@ public class AddNewDocument extends JPanel implements ActionListener {
     }
 
     public static void main(String args[]) {
-        AddNewDocument ad = new AddNewDocument();
+        AddNewDocument ad = new AddNewDocument(new PresentationController());
     }
 }

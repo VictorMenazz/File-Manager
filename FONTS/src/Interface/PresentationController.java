@@ -118,9 +118,8 @@ public class PresentationController {
      * @param newDoc, if the document is new
      * @param modify, if can modify the content
      */
-    public void toDocument(String author, String title, boolean newDoc, boolean modify) {
-        //if(!newDoc) ctrlDomain.getLanguage(author, title);
-        //DocumentView document =  new DocumentView(author, title, lang, newDoc, modify);
+    public void toDocument(String author, String title, String language, boolean newDoc, boolean modify) {
+        DocumentView document =  new DocumentView(author, title, language, newDoc, modify);
     }
 
     /**

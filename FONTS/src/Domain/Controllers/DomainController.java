@@ -420,6 +420,4 @@ public class DomainController {
             return data.exportDocument(path, title, author, document.get(2), docT);
         }
     }
-
-
 }

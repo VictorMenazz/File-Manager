@@ -193,7 +193,7 @@ public class FolderView extends JPanel implements ActionListener {
             int row = table.getSelectedRow();
             String author = (String) table.getValueAt(row, 2);
             String title = (String) table.getValueAt(row, 1);
-            ctrlPres.toDocument(author, title, false, false);
+            ctrlPres.toDocument(author, title, null, false, false);
         }
         else if(s.equals("Export file")) {
 

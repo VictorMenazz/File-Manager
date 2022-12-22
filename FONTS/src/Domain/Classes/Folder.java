@@ -320,6 +320,7 @@ public class Folder {
             result.add(title);
             result.add(authorName);
             result.add(documents.get(keyDoc).getContent());
+            result.add(documents.get(keyDoc).getLanguage());
             return result;
         }
         else {

@@ -186,7 +186,7 @@ public class MainView extends JFrame implements ActionListener {
         card = new CardLayout();
         content.setLayout(card);
 
-        addNewDocument = new AddNewDocument();
+        addNewDocument = new AddNewDocument(ctrlPres);
         //searchView = new SearchView();
         folderView = new FolderView(ctrlPres, folderID);
         searchViewN = new SearchViewN();
@@ -256,7 +256,7 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Create Document":{
-                new AddNewDocument();
+                new AddNewDocument(ctrlPres);
                 break;
             }
             case "Search": {
