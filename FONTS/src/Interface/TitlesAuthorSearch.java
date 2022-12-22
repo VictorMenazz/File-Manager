@@ -10,35 +10,59 @@ import java.util.ArrayList;
 public class TitlesAuthorSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
     private JLabel titleView = new JLabel("Get documents from an author");
-    private JLabel l = new JLabel("Author's name");
+    private JLabel l = new JLabel("Author's name ");
 
     /*public void setAutor(String txtAutor) {
         this.txtAutor.setText(txtAutor);
         search.doClick();
     }*/
 
-    private JComboBox authors;
+    private JComboBox<String> authors;
+    private DefaultComboBoxModel<String> model;
 
-    private JButton search = new JButton("Search");
-    private JFrame frame = new JFrame ("JFrame");
+    private JButton search;
+
 
     public void load() {
+        removeAll();
+
+        //titleView.setBounds(165,5,200,30);
+        //add(titleView);
+
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(20, 0, 20, 0);
+
+
         ArrayList<String> list = CtrlPres.getAuthorsName();
-        for(String aux : list){
-            System.out.println(aux);
-        }
-        authors = new JComboBox(list.toArray());
-        authors.setBounds(160, 100, 200, 20);
-        add(authors);
+        String[] array = new String[list.size()];
+        for (int i = 0; i < list.size(); ++i) array[i] = list.get(i);
+
+        //String[] l = list.toArray(new String[0]);
+
+        model = new DefaultComboBoxModel<>(array);
+
+        authors = new JComboBox<>(model);
+
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridwidth = 2;
+        add(titleView, c);
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 2;
+        add(l, c);
+        c.gridx = 1;
+        c.gridy = 2;
+        add(authors, c);
+        c.gridx = 0;
+        c.gridy = 3;
+        c.gridwidth = 2;
+        add(search, c);
 
 
-        l.setBounds(25,100,200,20);
-        add(l);
-        search.setBounds(200,200,100,20);
-        add(search);
-
-        authors.updateUI();
-        updateUI();
+        authors.revalidate();
+        authors.repaint();
         setVisible(true);
 
 
@@ -46,52 +70,18 @@ public class TitlesAuthorSearch extends JPanel {
         ActionListener SearchTitles = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String a = (String) authors.getSelectedItem();
-                ArrayList<String> titles = CtrlPres.getAuthorDocuments(a);
-                if (titles.isEmpty()){
-                    JOptionPane.showMessageDialog(new JDialog(), "Error, Author does not have any Document");
-                } else {
-                    showResults(a, titles);
-                }
-
-                /*String titulos = CtrlPres.buscarTitulos(txtAutor.getText());
-                if (titulos == null) {
-                    ferror();
-                }
-                else {
-                    JPanel middlePanel = new JPanel();
-                    JButton BOkay = new JButton("Aceptar");
-                    middlePanel.setBorder(new TitledBorder(new EtchedBorder(), "Titulos del autor " + txtAutor.getText()));
-
-                    JTextArea display = new JTextArea(20, 22);
-                    display.setText(titulos);
-                    display.setEditable(false);
-                    JScrollPane scroll = new JScrollPane(display);
-                    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
-                    middlePanel.add(scroll);
-
-                    JFrame frame = new JFrame();
-                    frame.add(middlePanel);
-                    frame.pack();
-                    frame.setLocationRelativeTo(null);
-                    frame.setVisible(true);
-                    frame.setResizable(false);
-
-
-                }
-                ActionListener Salir = new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        txtAutor.setText("");
+                if (e.getSource() == search) {
+                    String a = (String) authors.getSelectedItem();
+                    ArrayList<String> titles = CtrlPres.getAuthorDocuments(a);
+                    if (titles.isEmpty()){
+                        JOptionPane.showMessageDialog(new JDialog(), "Error, Author does not have any Document");
+                    } else {
+                        showResults(a, titles);
                     }
-                };
-                //BOkay.addActionListener(Salir);
-                */
-
+                }
             }
         };
-        //search.addActionListener(BuscarTitulos);
+        search.addActionListener(SearchTitles);
     }
 
     public TitlesAuthorSearch(){
@@ -99,8 +89,9 @@ public class TitlesAuthorSearch extends JPanel {
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
         setMinimumSize(new Dimension(500,350));
-        titleView.setBounds(165,5,200,30);
-        add(titleView);
+
+        search = new JButton("Search");
+        l.setPreferredSize(new Dimension(100, 20));
 
         load();
 
@@ -135,9 +126,10 @@ public class TitlesAuthorSearch extends JPanel {
 
         c.gridx = 0;
         c.gridy = 0;
-        add(title);
+        add(title, c);
         c.gridy = 1;
-        add(table);
+        //c.gridwidth = 3;
+        add(table, c);
 
         updateUI();
         setVisible(true);

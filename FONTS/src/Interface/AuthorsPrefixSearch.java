@@ -18,7 +18,7 @@ public class AuthorsPrefixSearch extends JPanel {
     private JTextArea prefix = new JTextArea();
 
     private JButton search = new JButton("Search");
-    private JFrame frame = new JFrame ("JFrame");
+
 
     public AuthorsPrefixSearch(){
         setLayout(null);
