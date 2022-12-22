@@ -98,11 +98,11 @@ public class PresentationController {
     }
 
     public ArrayList<String> getAuthorsName(){
-        ctrlDomain.getAuthorsName();
+        return ctrlDomain.getAuthorsName();
     }
 
     public ArrayList<String> getAuthorDocuments(String author){
-        ctrlDomain.authorDocuments(author);
+        return ctrlDomain.authorDocuments(author);
     }
 
     public void importDocument(String path, Integer folderID, String lang, String docType) {

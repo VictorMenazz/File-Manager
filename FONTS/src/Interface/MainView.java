@@ -186,19 +186,21 @@ public class MainView extends JFrame implements ActionListener {
         card = new CardLayout();
         content.setLayout(card);
 
-        //addNewDocument = new AddNewDocument();
+        addNewDocument = new AddNewDocument();
         //searchView = new SearchView();
         folderView = new FolderView(ctrlPres, folderID);
         searchViewN = new SearchViewN();
 
+
         content.add(folderView, "Folder View");
         content.add(searchViewN, "Search");
+        content.add(addNewDocument, "Create Document");
 
         setGo("Folder View");
     }
 
     public void setGo(String state) {
-        //card.show(content, state);
+        card.show(content, state);
         panelTitle.setText(state);
         menu.setSelected(state);
 
@@ -257,8 +259,8 @@ public class MainView extends JFrame implements ActionListener {
                 new AddNewDocument();
                 break;
             }
-            case "Search":{
-
+            case "Search": {
+                new SearchViewN();
                 break;
             }
         }

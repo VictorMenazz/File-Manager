@@ -31,7 +31,7 @@ public class TitlesAuthorSearch extends JPanel {
 
 
         ArrayList<String> list = CtrlPres.getAuthorsName();
-        authors = new JComboBox(list);
+        authors = new JComboBox(list.toArray());
         authors.setBounds(160, 100, 200, 20);
         add(authors);
 

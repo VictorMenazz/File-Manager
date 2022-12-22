@@ -57,7 +57,11 @@ public class SearchViewN extends JPanel {
 
     }
 
-    public static void main(String args[]) {
+    public void restart(){
+
+    }
+
+    /*public static void main(String args[]) {
         JFrame f = new JFrame();
         f.setLayout(new BorderLayout());
         f.add(new SearchViewN(), BorderLayout.CENTER);
@@ -65,5 +69,5 @@ public class SearchViewN extends JPanel {
         f.setLocation(100, 100);
         f.setVisible(true);
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
+    }*/
 }
