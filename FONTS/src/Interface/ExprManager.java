@@ -62,6 +62,10 @@ public class ExprManager extends JPanel{
         bCreate.addActionListener(manageExpr);
     }
 
+    public void load() {
+
+    }
+
     public static void main(String args[]) {
         JFrame f = new JFrame();
         f.setLayout(new BorderLayout());

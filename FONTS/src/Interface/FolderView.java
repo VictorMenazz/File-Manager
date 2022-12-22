@@ -181,7 +181,7 @@ public class FolderView extends JPanel implements ActionListener {
         String[] col = {"Type", "Name", "Author"};
         Object[][] data = new Object[(authors.size() + subfolders.size())][3];
         Icon folderIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/folder-icon.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
-        Icon documentIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/icone-fichier-document-noir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+        Icon documentIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/icogit ne-fichier-document-noir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
         int j = 0;
         for (Integer key : subfolders.keySet()) {
             data[j][0] = folderIcon;

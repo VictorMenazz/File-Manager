@@ -48,6 +48,14 @@ public class TitlesAuthorSearch extends JPanel {
         ActionListener SearchTitles = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+
+                ArrayList<String> titles = CtrlPres.getAuthorDocuments((String) authors.getSelectedItem());
+                if (titles.isEmpty()){
+                    JOptionPane.showMessageDialog(new JDialog(), "Error, Author does not have any Document");
+                } else {
+                    //Vista titulos resultado
+                }
+
                 /*String titulos = CtrlPres.buscarTitulos(txtAutor.getText());
                 if (titulos == null) {
                     ferror();

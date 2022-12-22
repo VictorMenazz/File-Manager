@@ -360,7 +360,7 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Boolean Expressions": {
-                new ExprManager(this);
+                exprManager.load();
                 break;
             }
             case "Create Boolean Expression":{
