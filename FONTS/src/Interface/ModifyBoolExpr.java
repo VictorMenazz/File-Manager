@@ -1,6 +1,8 @@
 package FONTS.src.Interface;
 
 import javax.swing.*;
+import javax.swing.event.ListDataListener;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -16,11 +18,24 @@ public class ModifyBoolExpr extends JPanel{
     private JButton bCreate = new JButton("Create");
     private JButton bDelete = new JButton("Delete");
 
-    private JList<String> list;
+    private JTable list;
+    private DefaultTableModel model;
 
     private JFrame frame = new JFrame ("JFrame");
 
 
+    private void reloadTable() {
+        String[] bExpr = CtrlPres.getBoolExpr();
+        String[] col = {"Boolean Expressions"};
+        String[][] data = new String[bExpr.length][1];
+        for (int i = 0; i < bExpr.length; i++) {
+            data[i][1] = bExpr[i];
+        }
+        model.setDataVector(data, col);
+        list.updateUI();
+        updateUI();
+
+    }
     public ModifyBoolExpr() {
         setPreferredSize(new Dimension(500, 350));
         setMaximumSize(new Dimension(500, 350));
@@ -30,9 +45,17 @@ public class ModifyBoolExpr extends JPanel{
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(5, 0, 5, 0);
 
-        //String[] bExpr = CtrlPres.getBoolExpr();
-        String[] bExpr = {"Hola", "Adeu"};
-        list = new JList<>(bExpr);
+        String[] bExpr = CtrlPres.getBoolExpr();
+        String[] col = {"Boolean Expressions"};
+        String[][] data = new String[bExpr.length][1];
+        for (int i = 0; i < bExpr.length; i++) {
+            data[i][1] = bExpr[i];
+        }
+
+        model = new DefaultTableModel(data, col);
+        list = new JTable(model);
+
+
         txtExpr.setPreferredSize(new Dimension(400, 40));
         list.setPreferredSize(new Dimension(400, 200));
 
@@ -61,8 +84,6 @@ public class ModifyBoolExpr extends JPanel{
 
 
 
-
-
         /*setLayout(null);
         bModify.setBounds(280, 150, 150, 40);
         add(bModify);
@@ -82,7 +103,7 @@ public class ModifyBoolExpr extends JPanel{
         setVisible(true);
 
 
-        ActionListener createExpression = new ActionListener() {
+        ActionListener manageExpressions = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == bCreate){
@@ -97,7 +118,7 @@ public class ModifyBoolExpr extends JPanel{
                             String creation = CtrlPres.addExpression(txtExpr.getText());
                             if (creation.equals("OK")) {
                                 JOptionPane.showMessageDialog(new JDialog(), "Boolean Expression has been created");
-                                list.updateUI();
+                                reloadTable();
                             } else JOptionPane.showMessageDialog(new JDialog(), creation);
                         }
                     }
@@ -105,20 +126,25 @@ public class ModifyBoolExpr extends JPanel{
                     String modify = CtrlPres.modifyExpression(txtExpr.getText(), txtExpr.getText());
                     if (modify.equals("OK")){
                         txtExpr.setText("");
-                        list.updateUI();
+                        reloadTable();
                     }
                 } else if (e.getSource() == bDelete) {
-                    String s = list.getSelectedValue();
-                    if (CtrlPres.deleteExpression(s)) {
+                    Integer row = list.getSelectedRow();
+                    Integer column = list.getSelectedColumn();
+                    Object s = list.getValueAt(row, column);
+                    String expr = s.toString();
+                    if (CtrlPres.deleteExpression(expr)) {
                         JOptionPane.showMessageDialog(new JDialog(), s + " has been deleted");
-                        list.updateUI();
+                        reloadTable();
                     }
 
                 }
             }
 
         };
-        bModify.addActionListener(createExpression);
+        bModify.addActionListener(manageExpressions);
+        bCreate.addActionListener(manageExpressions);
+        bDelete.addActionListener(manageExpressions);
     }
 
     private void setError(String error, String message) {
