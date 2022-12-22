@@ -31,7 +31,7 @@ public class MainView extends JFrame implements ActionListener {
     private Menu menu;
     private AddNewDocument addNewDocument;
     private DocumentView documentView;
-    private SearchView searchView;
+    private SearchViewN searchViewN;
     private FolderView folderView;
 
 
@@ -189,8 +189,10 @@ public class MainView extends JFrame implements ActionListener {
         //addNewDocument = new AddNewDocument();
         //searchView = new SearchView();
         folderView = new FolderView(ctrlPres, folderID);
+        searchViewN = new SearchViewN();
 
         content.add(folderView, "Folder View");
+        content.add(searchViewN, "Search");
 
         setGo("Folder View");
     }
@@ -253,6 +255,10 @@ public class MainView extends JFrame implements ActionListener {
             }
             case "Create Document":{
                 new AddNewDocument();
+                break;
+            }
+            case "Search":{
+
                 break;
             }
         }
