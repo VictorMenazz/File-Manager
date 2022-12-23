@@ -160,8 +160,8 @@ public class DocumentSearch extends JPanel {
     }
 
     public void reset() {
-        authors.setSelectedIndex(-1);
-        titles.setSelectedIndex(-1);
+        if(authors != null)authors.setSelectedIndex(-1);
+        if(titles != null) titles.setSelectedIndex(-1);
         load();
         setVisible(true);
     }

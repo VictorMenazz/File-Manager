@@ -299,7 +299,7 @@ public class MainView extends JFrame implements ActionListener {
 
                                 c.gridx = 0;
                                 c.gridy = 0;
-                                chooseLang.add(new JLabel("Choose the language of the imported file:"), c);
+                                chooseLang.add(new JLabel("Choose the language of the imported file:" + fc.getName()), c);
                                 c.gridx = 0;
                                 c.gridy = 1;
                                 chooseLang.add(new JLabel(" "), c);
