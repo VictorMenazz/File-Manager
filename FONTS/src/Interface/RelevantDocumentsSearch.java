@@ -115,13 +115,13 @@ public class RelevantDocumentsSearch extends JPanel {
                     HashMap<String, String> aux = null;
                     try {
                         aux = CtrlPres.toResultDocQuery(p.getText(), language, num);
-                        System.out.println("AAAAAAAAACAAAABEE");
+
                     } catch (IOException ex) {
                         JOptionPane.showMessageDialog(new JDialog(), "FAIL");
                     }
                     if (aux.size() < num) JOptionPane.showMessageDialog(new JDialog(), "Not found the desired number of documents");
                     else {
-                        System.out.println("pongo resultadooos bby");
+
                         showResults(aux);
                     }
                 }
@@ -152,7 +152,6 @@ public class RelevantDocumentsSearch extends JPanel {
                 return getValueAt(0, column).getClass();
             }
         };
-
         table = new JTable(model) {
             private static final long serialVersionUID = 1L;
 
@@ -160,7 +159,6 @@ public class RelevantDocumentsSearch extends JPanel {
                 return false;
             }
         };
-
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setPreferredScrollableViewportSize(table.getPreferredSize());
         table.setAutoCreateRowSorter(true);
@@ -174,6 +172,7 @@ public class RelevantDocumentsSearch extends JPanel {
 
         add(tableScroll);
 
+        updateUI();
         setVisible(true);
     }
 

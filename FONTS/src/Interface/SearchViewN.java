@@ -43,18 +43,23 @@ public class SearchViewN extends JPanel {
         b5.setMinimumSize(new Dimension(300, 40));
         b5.setMaximumSize(new Dimension(300, 40));
         b5.setPreferredSize(new Dimension(300, 40));
+        b6.setMinimumSize(new Dimension(300, 40));
+        b6.setMaximumSize(new Dimension(300, 40));
+        b6.setPreferredSize(new Dimension(300, 40));
 
         /*b1.setBackground(Color.decode("#8516f5"));
         b2.setBackground(Color.decode("#8516f5"));
         b3.setBackground(Color.decode("#8516f5"));
         b4.setBackground(Color.decode("#8516f5"));
         b5.setBackground(Color.decode("#8516f5"));
+        b6.setBackground(Color.decode("#8516f5"));
 
         b1.setForeground(Color.white);
         b2.setForeground(Color.white);
         b3.setForeground(Color.white);
         b4.setForeground(Color.white);
-        b5.setForeground(Color.white);*/
+        b5.setForeground(Color.white);
+        b6.setForeground(Color.white);*/
 
         c.gridx = 0;
         c.gridy = 0;
@@ -83,6 +88,12 @@ public class SearchViewN extends JPanel {
         c.gridx = 0;
         c.gridy = 8;
         add(b5, c);
+        c.gridx = 0;
+        c.gridy = 9;
+        add(new JLabel(" "), c);
+        c.gridx = 0;
+        c.gridy = 10;
+        add(b6, c);
 
         setVisible(true);
 
