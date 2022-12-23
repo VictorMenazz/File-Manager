@@ -43,6 +43,7 @@ public class MainView extends JFrame implements ActionListener {
     private RelevantDocumentsSearch relevantDocumentsSearch;
     private BoolExprSearch boolExprSearch;
     private ExportDocument exportDocument;
+    private DeleteDocument deleteDocument;
 
 
     private int x,y;
@@ -213,6 +214,7 @@ public class MainView extends JFrame implements ActionListener {
         relevantDocumentsSearch = new RelevantDocumentsSearch();
         boolExprSearch = new BoolExprSearch();
         exportDocument = new ExportDocument(this);
+        deleteDocument = new DeleteDocument(this);
 
         content.add(folderView, "Folder View");
         content.add(searchViewN, "Search");
@@ -228,6 +230,7 @@ public class MainView extends JFrame implements ActionListener {
         content.add(relevantDocumentsSearch, "Relevant Documents Search");
         content.add(boolExprSearch, "Boolean Expression Search");
         content.add(exportDocument, "Export Document");
+        content.add(deleteDocument, "Delete Document");
 
         setGo("Main");
     }
@@ -252,6 +255,7 @@ public class MainView extends JFrame implements ActionListener {
         relevantDocumentsSearch.setVisible(false);
         boolExprSearch.setVisible(false);
         exportDocument.setVisible(false);
+        deleteDocument.setVisible(false);
 
         switch(state) {
             case "Main":{
@@ -371,6 +375,10 @@ public class MainView extends JFrame implements ActionListener {
             }
             case "Create Document":{
                 addNewDocument.reset();
+                break;
+            }
+            case "Delete Document": {
+                deleteDocument.reset();
                 break;
             }
             /*case "Create Folder":{

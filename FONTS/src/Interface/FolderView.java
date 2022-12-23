@@ -268,6 +268,7 @@ public class FolderView extends JPanel implements ActionListener {
                 if (!author.equals("-")){
                     String title = (String) table.getValueAt(row, 1);
                     ctrlPres.deleteDocument(author, title);
+                    JOptionPane.showMessageDialog(new JOptionPane(), "Deleted document");
                     reload();
                 } else JOptionPane.showMessageDialog(new JOptionPane(), "Selection is not a document");
             }
