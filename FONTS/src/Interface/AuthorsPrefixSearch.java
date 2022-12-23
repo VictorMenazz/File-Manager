@@ -59,7 +59,7 @@ public class AuthorsPrefixSearch extends JPanel {
                     ArrayList<String> result = CtrlPres.toResultSearchAuthors(prefix.getText());
                     if (result.size() == 0) JOptionPane.showMessageDialog(new JDialog(), "No authors starting with " + prefix.getText() + " found.");
                     else {
-                        showResults();
+                        //showResults();
                     }
 
                 }
