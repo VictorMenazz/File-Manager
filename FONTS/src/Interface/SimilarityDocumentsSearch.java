@@ -10,11 +10,14 @@ import java.util.ArrayList;
 
 public class SimilarityDocumentsSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
-    private JLabel titleView = new JLabel("Get similar documents");
+    private JLabel titleView = new JLabel("Search similar documents");
     private JLabel l = new JLabel("Author: ");
     private JLabel l2 = new JLabel("Title: ");
 
     private JLabel l3 = new JLabel("Desired documents: ");
+
+    private DefaultComboBoxModel<String> modelA;
+    private DefaultComboBoxModel<String> modelT;
 
     private JComboBox authors;
     private JComboBox titles;
@@ -25,9 +28,41 @@ public class SimilarityDocumentsSearch extends JPanel {
     private JFrame frame = new JFrame ("JFrame");
 
     public void load() {
+        removeAll();
+
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(20, 0, 20, 0);
+
+        ArrayList<String> list = CtrlPres.getAuthorsName();
+        String[] array = new String[list.size()];
+        for (int i = 0; i < list.size(); ++i) array[i] = list.get(i);
+
+        modelA = new DefaultComboBoxModel<>(array);
+        authors = new JComboBox<>(modelA);
+        authors.updateUI();
+
+        modelT = new DefaultComboBoxModel<>();
+        titles = new JComboBox<>(modelT);
+
+        authors.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String author = (String) authors.getSelectedItem();
+                if(author != null) {
+                    ArrayList<String> list2 = CtrlPres.toResultAutDocs(author);
+                    String[] array2 = new String[list2.size()];
+                    for (int i = 0; i < list2.size(); ++i) array2[i] = list2.get(i);
+
+                    modelT = new DefaultComboBoxModel<>(array2);
+                    titles.setModel(modelT);
+                }
+
+            }
+        });
+
+        revalidate();
+        repaint();
 
     }
 
@@ -38,8 +73,6 @@ public class SimilarityDocumentsSearch extends JPanel {
 
         setLayout(new GridBagLayout());
 
-        titleView.setBounds(175,5,200,30);
-        add(titleView);
 
         //Obtener lista dsd controlador;
         ArrayList<String> list = CtrlPres.getAuthorsName();
@@ -63,16 +96,7 @@ public class SimilarityDocumentsSearch extends JPanel {
         k = new JFormattedTextField(formatter);
 
 
-        l.setBounds(100,100,200,20);
-        add(l);
-        l2.setBounds(100, 150, 200, 20);
-        add(l2);
-        search.setBounds(200,300,100,20);
-        add(search);
-        l3.setBounds(100, 200, 200, 20);
-        add(l3);
-        k.setBounds(240, 200, 50, 20);
-        add(k);
+        load();
 
         setVisible(true);
 

@@ -61,8 +61,6 @@ public class DocumentSearch extends JPanel {
             }
         });
 
-        revalidate();
-        repaint();
 
         c.gridx = 0;
         c.gridy = 0;
@@ -88,9 +86,8 @@ public class DocumentSearch extends JPanel {
         c.gridwidth = 2;
         add(search, c);
 
-        authors.updateUI();
-        if(titles != null) titles.updateUI();
-
+        revalidate();
+        repaint();
         updateUI();
 
         setVisible(true);
