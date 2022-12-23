@@ -6,6 +6,8 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -33,6 +35,8 @@ public class DocumentSearch extends JPanel {
 
         modelT = new DefaultComboBoxModel<>(arrayTitles);
         titles = new JComboBox<>(modelT);
+        titles.revalidate();
+        titles.repaint();
     }
 
     public void load(){
@@ -50,8 +54,18 @@ public class DocumentSearch extends JPanel {
         modelA = new DefaultComboBoxModel<>(array);
         authors = new JComboBox<>(modelA);
 
-        String a = (String) authors.getSelectedItem();
-        loadTitles(a);
+        authors.revalidate();
+        authors.repaint();
+
+        authors.addItemListener(new ItemListener() {
+            @Override
+            public void itemStateChanged(ItemEvent e) {
+                if (e.getStateChange() == ItemEvent.SELECTED) {
+                    String item = (String) e.getItem();
+                    loadTitles(item);
+                }
+            }
+        });
 
 
         c.gridx = 0;
@@ -68,9 +82,11 @@ public class DocumentSearch extends JPanel {
         c.gridx = 0;
         c.gridy = 2;
         add(l2, c);
-        c.gridx = 1;
-        c.gridy = 2;
-        add(titles, c);
+        if (titles != null) {
+            c.gridx = 1;
+            c.gridy = 2;
+            add(titles, c);
+        }
         c.gridx = 0;
         c.gridy = 3;
         c.gridwidth = 2;
@@ -97,7 +113,7 @@ public class DocumentSearch extends JPanel {
         ActionListener SearchDocument = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == search){
+                if (e.getSource() == search && authors != null && titles != null){
                     String a = (String) authors.getSelectedItem();
                     String t = (String) titles.getSelectedItem();
                     CtrlPres.toDocument(a, t, "null", false, true);
