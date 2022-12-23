@@ -219,26 +219,49 @@ public class FolderView extends JPanel implements ActionListener {
         }
 
         else if(s.equals("Delete folder")) {
-
+            int row = table.getSelectedRow();
+            if (row != -1){
+                String author = (String) table.getValueAt(row, 2);
+                if (author.equals("-")){
+                    //?????????????
+                } else JOptionPane.showMessageDialog(new JOptionPane(), "Selection is not a folder");
+            }
         }
         else if(s.equals("Open file")) {
             int row = table.getSelectedRow();
-            String author = (String) table.getValueAt(row, 2);
-            String title = (String) table.getValueAt(row, 1);
-            System.out.println(author);
-            System.out.println(title);
-            ctrlPres.toDocument(author, title, "null", false, false);
+            if (row != -1) {
+                String author = (String) table.getValueAt(row, 2);
+                if (!author.equals("-")) {
+                    String title = (String) table.getValueAt(row, 1);
+                    System.out.println(author);
+                    System.out.println(title);
+                    ctrlPres.toDocument(author, title, "null", false, false);
+                } else JOptionPane.showMessageDialog(new JOptionPane(), "Selection is not a document");
+            }
         }
         else if(s.equals("Edit file")) {
             int row = table.getSelectedRow();
-            String author = (String) table.getValueAt(row, 2);
-            String title = (String) table.getValueAt(row, 1);
-            System.out.println(author);
-            System.out.println(title);
-            ctrlPres.toDocument(author, title, "null", false, true);
+            if (row != -1){
+                String author = (String) table.getValueAt(row, 2);
+                if (!author.equals("-")) {
+                    String title = (String) table.getValueAt(row, 1);
+                    System.out.println(author);
+                    System.out.println(title);
+                    ctrlPres.toDocument(author, title, "null", false, true);
+                } else JOptionPane.showMessageDialog(new JOptionPane(), "Selection is not a document");
+            }
+
         }
         else if(s.equals("Delete file")) {
-
+            int row = table.getSelectedRow();
+            if (row != -1){
+                String author = (String) table.getValueAt(row, 2);
+                if (!author.equals("-")){
+                    String title = (String) table.getValueAt(row, 1);
+                    ctrlPres.deleteDocument(author, title);
+                    reload();
+                } else JOptionPane.showMessageDialog(new JOptionPane(), "Selection is not a document");
+            }
         }
     }
 }
