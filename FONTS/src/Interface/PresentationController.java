@@ -201,14 +201,8 @@ public class PresentationController {
      * Create view for the result of the documents given one author
      * @param authorName, references to the name of the Author
      */
-    public void toResultAutDocs(String authorName) {
-        ArrayList<String> titles = ctrlDomain.authorDocuments(authorName);
-        ArrayList<String> authors = new ArrayList<>();
-        for(int i = 0; i < titles.size(); ++i) authors.add(authorName);
-        JFrame resWindow = new JFrame();
-        resWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        resWindow.setTitle("Result for boolean expression search");
-        resWindow.setVisible(true);
+    public ArrayList<String> toResultAutDocs(String authorName) {
+        return ctrlDomain.authorDocuments(authorName);
     }
 
 

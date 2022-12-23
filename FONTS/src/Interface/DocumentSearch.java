@@ -6,6 +6,7 @@ import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DocumentSearch extends JPanel {
@@ -14,16 +15,74 @@ public class DocumentSearch extends JPanel {
     private JLabel l = new JLabel("Author");
     private JLabel l2 = new JLabel("Title");
 
-    /*public void setAutor(String txtAutor) {
-        this.txtAutor.setText(txtAutor);
-        search.doClick();
-    }*/
 
-    private JComboBox authors;
-    private JComboBox titles;
+    private DefaultComboBoxModel<String> modelA;
+    private DefaultComboBoxModel<String> modelT;
+
+    private JComboBox<String> authors;
+    private JComboBox<String> titles;
 
     private JButton search = new JButton("Search");
     private JFrame frame = new JFrame ("JFrame");
+
+    private void loadTitles(String author) {
+
+        ArrayList<String> listTitles = CtrlPres.toResultAutDocs(author);
+        String[] arrayTitles = new String[listTitles.size()];
+        for (int i = 0; i < listTitles.size(); ++i) arrayTitles[i] = listTitles.get(i);
+
+        modelT = new DefaultComboBoxModel<>(arrayTitles);
+        titles = new JComboBox<>(modelT);
+    }
+
+    public void load(){
+        removeAll();
+
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(20, 0, 20, 0);
+
+
+        ArrayList<String> list = CtrlPres.getAuthorsName();
+        String[] array = new String[list.size()];
+        for (int i = 0; i < list.size(); ++i) array[i] = list.get(i);
+
+        modelA = new DefaultComboBoxModel<>(array);
+        authors = new JComboBox<>(modelA);
+
+        if (authors.getSelectedIndex() >= 0) {
+            String a = (String) authors.getSelectedItem();
+            loadTitles(a);
+        }
+
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridwidth = 2;
+        add(titleView, c);
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 2;
+        add(l, c);
+        c.gridx = 1;
+        c.gridy = 2;
+        add(authors, c);
+        c.gridx = 0;
+        c.gridy = 3;
+        add(l2);
+        if (authors.getSelectedIndex() >= 0) {
+            c.gridx = 1;
+            c.gridy = 3;
+            add(titles);
+        }
+        c.gridwidth = 2;
+        add(search, c);
+
+        authors.revalidate();
+        authors.repaint();
+        setVisible(true);
+
+    }
+
 
     public DocumentSearch(){
         setLayout(null);
@@ -58,10 +117,10 @@ public class DocumentSearch extends JPanel {
 
 
 
-        ActionListener SearchTitles = new ActionListener() {
+        /*ActionListener SearchTitles = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                String titulos = CtrlPres.buscarTitulos(txtAutor.getText());
+                String titulos = CtrlPres.SearchTitles(txtAutor.getText());
                 if (titulos == null) {
                     ferror();
                 }
@@ -96,13 +155,14 @@ public class DocumentSearch extends JPanel {
                 //BOkay.addActionListener(Salir);
 
             }
-        };
+        };*/
         //search.addActionListener(BuscarTitulos);
     }
 
     public void reset() {
         authors.setSelectedIndex(-1);
         titles.setSelectedIndex(-1);
+        load();
         setVisible(true);
     }
 

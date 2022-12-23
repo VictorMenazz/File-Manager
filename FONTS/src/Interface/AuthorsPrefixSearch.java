@@ -19,6 +19,8 @@ public class AuthorsPrefixSearch extends JPanel {
     private JButton search = new JButton("Search");
 
     public void load() {
+        removeAll();
+
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(20, 0, 20, 0);
@@ -116,6 +118,7 @@ public class AuthorsPrefixSearch extends JPanel {
 
     public void reset() {
         prefix.setText("");
+        load();
         setVisible(true);
     }
 
