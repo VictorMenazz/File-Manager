@@ -165,25 +165,18 @@ public class BooleanExpression {
             if (n.data.charAt(0) == '!') {
                 //int idx = n.data.indexOf(n.data.substring(1));
                 String s = n.data.substring(1);
-                //String regex = ".*\\b" + Pattern.quote(s) + "\\b.*"; // \b is a word boundary
+                //String regex = ".*\\b" + Pattern.quote(s) + "\\b.*";
                 //Pattern p = Pattern.compile("\b" + s + "\b");
                 //String pattern = "\\b(?<!" + s + ")\\b" + s + "\\b";
                 //Matcher m = p.matcher(sentence);
                 //return !sentence.matches(pattern);
                 return !sentence.contains(s);
             }
-            //String regex = ".*\\b" + Pattern.quote(n.data) + "\\b.*"; // \b is a word boundary
+            //String regex = ".*\\b" + Pattern.quote(n.data) + "\\b.*";
             //return sentence.matches("")
 
-            /*String pattern = "\\b" + n.data + "\\b";
-            System.out.println(sentence.match(pattern));
-            System.out.println(sentence);
-            System.out.println(n.data);
-            return sentence.matches(pattern);*/
+            
 
-            /*String pattern = "\\b" + "casa" + "\\b";
-            System.out.println(pattern);
-            return sentence.matches(pattern);*/
             return sentence.contains(n.data);
 
             //return sentence.contains(n.data);

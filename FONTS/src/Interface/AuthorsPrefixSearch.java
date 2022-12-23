@@ -13,7 +13,7 @@ public class AuthorsPrefixSearch extends JPanel {
     private JLabel l = new JLabel("Author's prefix: ");
 
 
-    private JTextArea prefix = new JTextArea();
+    private JTextField prefix = new JTextField();
 
     private JButton search = new JButton("Search");
 
@@ -59,7 +59,7 @@ public class AuthorsPrefixSearch extends JPanel {
                     ArrayList<String> result = CtrlPres.toResultSearchAuthors(prefix.getText());
                     if (result.size() == 0) JOptionPane.showMessageDialog(new JDialog(), "No authors starting with " + prefix.getText() + " found.");
                     else {
-                        //showResults();
+                        showResults(prefix.getText(), result);
                     }
 
                 }
