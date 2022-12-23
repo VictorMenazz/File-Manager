@@ -134,7 +134,7 @@ public class SimilarityDocumentsSearch extends JPanel {
                 if (e.getSource() == search){
                     String author = (String) authors.getSelectedItem();
                     String title = (String) titles.getSelectedItem();
-                    Integer num = Integer.parseInt(k.getText())
+                    Integer num = Integer.parseInt(k.getText());
                     HashMap<String, String> results = CtrlPres.toResultAppSearch(author, title, num);
                     showResults(results);
 
