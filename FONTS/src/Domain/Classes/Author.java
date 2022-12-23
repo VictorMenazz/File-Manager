@@ -63,10 +63,12 @@ public class Author {
      * @return true author's name starts with prefix, otherwise false
      */
     public boolean matchesPrefix(String prefix) {
+        prefix = prefix.toLowerCase();
         int size = prefix.length();
         if (size > name.length()) return false;
+        String s = name.toLowerCase();
         for (int i = 0; i < size; ++i) {
-            if (prefix.charAt(i) != name.charAt(i)) return false;
+            if (prefix.charAt(i) != s.charAt(i)) return false;
         }
         return true;
     }
