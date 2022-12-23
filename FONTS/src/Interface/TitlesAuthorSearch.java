@@ -163,14 +163,4 @@ public class TitlesAuthorSearch extends JPanel {
         setVisible(true);
     }
 
-    /** Main function of the View */
-    public static void main(String args[]) {
-        JFrame f = new JFrame();
-        f.setLayout(new BorderLayout());
-        f.add(new TitlesAuthorSearch(), BorderLayout.CENTER);
-        f.setSize(1000, 750);
-        f.setLocation(100, 100);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 }
