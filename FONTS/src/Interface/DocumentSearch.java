@@ -12,21 +12,49 @@ import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class DocumentSearch extends JPanel {
+    /**
+     * Instance of the presentation controller
+     */
     private PresentationController CtrlPres = PresentationController.getInstance();
+    /**
+     * Label for the title of the view
+     */
     private JLabel titleView = new JLabel("Get document");
+    /**
+     * Author label
+     */
     private JLabel l = new JLabel("Author  ");
+    /**
+     * Title label
+     */
     private JLabel l2 = new JLabel("Title  ");
 
-
+    /**
+     * Model for the authors combo box
+     */
     private DefaultComboBoxModel<String> modelA;
+    /**
+     * Model for the titles combo box
+     */
     private DefaultComboBoxModel<String> modelT;
 
+    /**
+     * Combobox with all authors
+     */
     private JComboBox<String> authors;
+    /**
+     * Combobox with the titles from an author
+     */
     private JComboBox<String> titles;
 
+    /**
+     * Button to make query
+     */
     private JButton search = new JButton("Search");
-    private JFrame frame = new JFrame ("JFrame");
 
+    /**
+     * Loads and shows the view
+     */
     public void load(){
         removeAll();
 
@@ -96,7 +124,9 @@ public class DocumentSearch extends JPanel {
         setVisible(true);
     }
 
-
+    /**
+     * Creator of the DocumentSearch
+     */
     public DocumentSearch(){
         setLayout(null);
         setPreferredSize(new Dimension(500,350));
@@ -119,6 +149,9 @@ public class DocumentSearch extends JPanel {
         search.addActionListener(SearchDocument);
     }
 
+    /**
+     * Resets the view
+     */
     public void reset() {
         if (authors != null) authors.setSelectedIndex(-1);
         if (titles != null) titles.setSelectedIndex(-1);
@@ -126,13 +159,4 @@ public class DocumentSearch extends JPanel {
         setVisible(true);
     }
 
-    public static void main(String args[]) {
-        JFrame f = new JFrame();
-        f.setLayout(new BorderLayout());
-        f.add(new DocumentSearch(), BorderLayout.CENTER);
-        f.setSize(1000, 750);
-        f.setLocation(100, 100);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 }

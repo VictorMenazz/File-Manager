@@ -9,15 +9,31 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class AuthorsPrefixSearch extends JPanel {
+    /**
+     * Instance of the presentation controller
+     */
     private PresentationController CtrlPres = PresentationController.getInstance();
+    /**
+     * Title label of the view
+     */
     private JLabel titleView = new JLabel("Get authors list from a prefix");
+    /**
+     * Authors prefix label
+     */
     private JLabel l = new JLabel("Author's prefix: ");
 
-
+    /**
+     * TextField for the prefix
+     */
     private JTextField prefix = new JTextField();
-
+    /**
+     * Button to make the query
+     */
     private JButton search = new JButton("Search");
 
+    /**
+     * Loads and shows the view
+     */
     public void load() {
         removeAll();
 
@@ -41,7 +57,9 @@ public class AuthorsPrefixSearch extends JPanel {
 
     }
 
-
+    /**
+     * Constructor of the AuthorsPrefixSearch
+     */
     public AuthorsPrefixSearch(){
         setLayout(null);
         setPreferredSize(new Dimension(500,350));
@@ -71,6 +89,11 @@ public class AuthorsPrefixSearch extends JPanel {
         search.addActionListener(SearchAuthors);
     }
 
+    /**
+     * Shows the results of the query
+     * @param a Prefix searched
+     * @param titles Titles from the author
+     */
     public void showResults(String a, ArrayList<String> titles) {
         removeAll();
 
@@ -102,7 +125,7 @@ public class AuthorsPrefixSearch extends JPanel {
         JScrollPane tableScroll = new JScrollPane(table);
         tableScroll.setPreferredSize(new Dimension(400, 200));
 
-        JLabel title = new JLabel("Titles from " + a);
+        JLabel title = new JLabel("Authors with prefix " + a);
 
         c.gridx = 0;
         c.gridy = 0;
@@ -115,20 +138,12 @@ public class AuthorsPrefixSearch extends JPanel {
         setVisible(true);
     }
 
-
+    /**
+     * Resets the view
+     */
     public void reset() {
         prefix.setText("");
         load();
         setVisible(true);
-    }
-
-    public static void main(String args[]) {
-        JFrame f = new JFrame();
-        f.setLayout(new BorderLayout());
-        f.add(new AuthorsPrefixSearch(), BorderLayout.CENTER);
-        f.setSize(1000, 750);
-        f.setLocation(100, 100);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
