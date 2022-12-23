@@ -16,10 +16,12 @@ endif
 
 default: all
 
-#COMPILING JUnits
+CopyStopWords:
+	mkdir -p $(BUILDDIR)/FONTS/src/Domain/Classes/StopWords
+	cp -r ./FONTS/src/Domain/Classes/StopWords  $(BUILDDIR)/FONTS/src/Domain/Classes/
 
 all: CopyStopWords
-	@javac -cp $(CLASSPATH) -sourcepath . $(DRIVERS)/DomainControllerDriver.java -d $(BUILDDIR)
+	@javac -cp $(CLASSPATH) -sourcepath . $(MAIN)/Main.java -d $(BUILDDIR)
     cd $(BUILDDIR) && find . -type f -name "*.class" | xargs $(OPTIONS_xargs) jar -cef FONTS.src.Main ./Main.jar
 	@java -jar $(BUILDDIR)/Main.jar
 
