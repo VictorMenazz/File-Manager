@@ -42,6 +42,7 @@ public class MainView extends JFrame implements ActionListener {
     private SimilarityDocumentsSearch similarityDocumentsSearch;
     private RelevantDocumentsSearch relevantDocumentsSearch;
     private BoolExprSearch boolExprSearch;
+    private ExportDocument exportDocument;
 
 
     private int x,y;
@@ -211,7 +212,7 @@ public class MainView extends JFrame implements ActionListener {
         similarityDocumentsSearch = new SimilarityDocumentsSearch();
         relevantDocumentsSearch = new RelevantDocumentsSearch();
         boolExprSearch = new BoolExprSearch();
-
+        exportDocument = new ExportDocument(this);
 
         content.add(folderView, "Folder View");
         content.add(searchViewN, "Search");
@@ -367,10 +368,9 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Export Document":{
+                exportDocument.reset();
 
-
-
-                String path;
+                /*String path;
                 // Create an object of JFileChooser class
                 JFileChooser j = new JFileChooser("f:");
                 j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
@@ -436,7 +436,7 @@ public class MainView extends JFrame implements ActionListener {
 
                 buttonOK.addActionListener(chooseL);
 
-                setGo("Main");
+                setGo("Main");*/
                 break;
             }
             case "Create Document":{
