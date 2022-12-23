@@ -284,9 +284,9 @@ public class MainView extends JFrame implements ActionListener {
                             String ext = name.substring(dotIndex + 1);
                             if ((ext.equals("txt")) | ext.equals("xml") | ext.equals("json")) {
                                 JDialog chooseLang = new JDialog();
-                                chooseLang.setPreferredSize(new Dimension(300, 200));
-                                chooseLang.setMaximumSize(new Dimension(300, 200));
-                                chooseLang.setMinimumSize(new Dimension(300, 200));
+                                chooseLang.setPreferredSize(new Dimension(400, 250));
+                                chooseLang.setMaximumSize(new Dimension(400, 250));
+                                chooseLang.setMinimumSize(new Dimension(400, 250));
                                 chooseLang.setLocationRelativeTo(null);
 
                                 chooseLang.setLayout(new GridBagLayout());
@@ -297,20 +297,37 @@ public class MainView extends JFrame implements ActionListener {
                                 chooser.addItem("Catalan");
                                 JButton buttonOK = new JButton("OK");
 
+                                FileReader reader = null;
+                                try {
+                                    reader = new FileReader(fi.getAbsolutePath());
+                                } catch (FileNotFoundException e) {
+                                    throw new RuntimeException(e);
+                                }
+                                BufferedReader br = new BufferedReader(reader);
+                                String title;
+                                try {
+                                    br.readLine(); //author
+                                    title = br.readLine();
+                                } catch (IOException e) {
+                                    throw new RuntimeException(e);
+                                }
                                 c.gridx = 0;
                                 c.gridy = 0;
-                                chooseLang.add(new JLabel("Choose the language of the imported file:" + fc.getName()), c);
+                                chooseLang.add(new JLabel("Choose the language of the imported file:"), c);
                                 c.gridx = 0;
                                 c.gridy = 1;
-                                chooseLang.add(new JLabel(" "), c);
+                                chooseLang.add(new JLabel(title), c);
                                 c.gridx = 0;
                                 c.gridy = 2;
-                                chooseLang.add(chooser, c);
-                                c.gridx = 0;
-                                c.gridy = 3;
                                 chooseLang.add(new JLabel(" "), c);
                                 c.gridx = 0;
+                                c.gridy = 3;
+                                chooseLang.add(chooser, c);
+                                c.gridx = 0;
                                 c.gridy = 4;
+                                chooseLang.add(new JLabel(" "), c);
+                                c.gridx = 0;
+                                c.gridy = 5;
                                 chooseLang.add(buttonOK, c);
 
                                 chooseLang.setVisible(true);
@@ -326,8 +343,7 @@ public class MainView extends JFrame implements ActionListener {
                                             else if (language.equals("Catalan")) language = "CAT";
                                             else language = "ENG";
 
-                                            ctrlPres.importDocument(fc.getSelectedFile().getAbsolutePath(), actFolderID, language, ext);
-                                            JOptionPane.showMessageDialog(new JOptionPane(), "File imported");
+                                            ctrlPres.importDocument(fi.getAbsolutePath(), actFolderID, language, ext);
 
                                             setGo("Main");
                                         }
@@ -343,6 +359,7 @@ public class MainView extends JFrame implements ActionListener {
                             JOptionPane.showMessageDialog(this, "File doesn't have extension");
                         }
                     }
+                    JOptionPane.showMessageDialog(new JOptionPane(), "File/s imported");
                 }
                 // If the user cancelled the operation
                 else JOptionPane.showMessageDialog(this, "Import operation cancelled");
@@ -350,18 +367,75 @@ public class MainView extends JFrame implements ActionListener {
                 break;
             }
             case "Export Document":{
+
+
+
+                String path;
                 // Create an object of JFileChooser class
                 JFileChooser j = new JFileChooser("f:");
+                j.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
 
                 // Invoke the showsSaveDialog function to show the save dialog
                 int r = j.showSaveDialog(null);
 
                 if (r == JFileChooser.APPROVE_OPTION) {
-                    //j.getSelectedFile().getAbsolutePath();
-
+                    path = j.getSelectedFile().getAbsolutePath();
                 }
                 // If the user cancelled the operation
-                else JOptionPane.showMessageDialog(this, "Export operation canceled");
+                else  {
+                    JOptionPane.showMessageDialog(this, "Export operation canceled");
+                    break;
+                }
+                JDialog chooseType = new JDialog();
+                chooseType.setPreferredSize(new Dimension(300, 200));
+                chooseType.setMaximumSize(new Dimension(300, 200));
+                chooseType.setMinimumSize(new Dimension(300, 200));
+                chooseType.setLocationRelativeTo(null);
+
+                chooseType.setLayout(new GridBagLayout());
+                GridBagConstraints c = new GridBagConstraints();
+                JComboBox chooser = new JComboBox<>();
+                chooser.addItem("txt");
+                chooser.addItem("xml");
+                chooser.addItem("json");
+                chooser.setPreferredSize(new Dimension(70, 27));
+                chooser.setMaximumSize(new Dimension(70, 27));
+                chooser.setMinimumSize(new Dimension(70, 27));
+                JButton buttonOK = new JButton("OK");
+
+                c.gridx = 0;
+                c.gridy = 0;
+                chooseType.add(new JLabel("Choose file type:"), c);
+                c.gridx = 0;
+                c.gridy = 2;
+                chooseType.add(new JLabel(" "), c);
+                c.gridx = 0;
+                c.gridy = 3;
+                chooseType.add(chooser, c);
+                c.gridx = 0;
+                c.gridy = 4;
+                chooseType.add(new JLabel(" "), c);
+                c.gridx = 0;
+                c.gridy = 5;
+                chooseType.add(buttonOK, c);
+
+                chooseType.setVisible(true);
+
+                ActionListener chooseL = new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        if (e.getSource() == buttonOK) {
+                            chooseType.setVisible(false);
+
+                            //EXPORT
+
+                            setGo("Main");
+                        }
+                    }
+                };
+
+                buttonOK.addActionListener(chooseL);
+
                 setGo("Main");
                 break;
             }
@@ -395,6 +469,10 @@ public class MainView extends JFrame implements ActionListener {
             }
             case "Authors Prefix Search":{
                 authorsPrefixSearch.reset();
+                break;
+            }
+            case "Open Document": {
+                documentSearch.reset();
                 break;
             }
             case "Document Search": {

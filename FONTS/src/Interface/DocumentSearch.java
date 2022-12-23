@@ -27,18 +27,6 @@ public class DocumentSearch extends JPanel {
     private JButton search = new JButton("Search");
     private JFrame frame = new JFrame ("JFrame");
 
-    private void loadTitles(String author) {
-
-        ArrayList<String> listTitles = CtrlPres.toResultAutDocs(author);
-        String[] arrayTitles = new String[listTitles.size()];
-        for (int i = 0; i < listTitles.size(); ++i) arrayTitles[i] = listTitles.get(i);
-
-        modelT = new DefaultComboBoxModel<>(arrayTitles);
-        titles = new JComboBox<>(modelT);
-        titles.revalidate();
-        titles.repaint();
-    }
-
     public void load(){
         removeAll();
 
@@ -46,27 +34,26 @@ public class DocumentSearch extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(20, 0, 20, 0);
 
-
         ArrayList<String> list = CtrlPres.getAuthorsName();
         String[] array = new String[list.size()];
         for (int i = 0; i < list.size(); ++i) array[i] = list.get(i);
 
         modelA = new DefaultComboBoxModel<>(array);
         authors = new JComboBox<>(modelA);
+        authors.updateUI();
 
-        authors.revalidate();
-        authors.repaint();
-
-        authors.addItemListener(new ItemListener() {
+        authors.addActionListener(new ActionListener() {
             @Override
-            public void itemStateChanged(ItemEvent e) {
-                if (e.getStateChange() == ItemEvent.SELECTED) {
-                    String item = (String) e.getItem();
-                    loadTitles(item);
+            public void actionPerformed(ActionEvent e) {
+                String author = (String) authors.getSelectedItem();
+                if(author != null) {
+                    ArrayList<String> listTitles = CtrlPres.toResultAutDocs(author);
+                    if (modelT != null) modelT.removeAllElements();
+                    for (int i = 0; i < listTitles.size(); ++i) modelT.addElement(listTitles.get(i));
+                    titles.updateUI();
                 }
             }
         });
-
 
         c.gridx = 0;
         c.gridy = 0;
@@ -92,10 +79,12 @@ public class DocumentSearch extends JPanel {
         c.gridwidth = 2;
         add(search, c);
 
-        authors.revalidate();
-        authors.repaint();
-        setVisible(true);
+        authors.updateUI();
+        if(titles != null) titles.updateUI();
 
+        updateUI();
+
+        setVisible(true);
     }
 
 
@@ -107,8 +96,6 @@ public class DocumentSearch extends JPanel {
 
         load();
         setVisible(true);
-
-
 
         ActionListener SearchDocument = new ActionListener() {
             @Override

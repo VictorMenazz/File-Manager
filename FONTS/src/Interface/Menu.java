@@ -60,10 +60,10 @@ public class Menu extends JPanel{
         mItem.addMouseListener(mouseListener);
         items.put("Create Document", mItem);
         add(mItem);
-        /*mItem = new MenuItem("FONTS/src/Interface/Utils/editDocument.png", "Open Document");
+        mItem = new MenuItem("FONTS/src/Interface/Utils/editDocument.png", "Open Document");
         mItem.addMouseListener(mouseListener);
         items.put("Open Document", mItem);
-        add(mItem);*/
+        add(mItem);
         mItem = new MenuItem("FONTS/src/Interface/Utils/importDocument.png", "Import Document");
         mItem.addMouseListener(mouseListener);
         items.put("Import Document", mItem);
