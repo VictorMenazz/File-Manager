@@ -61,6 +61,10 @@ public class FolderView extends JPanel implements ActionListener {
 
         ArrayList<String> authors = ctrlPres.getDocumentAuthors(id);
         ArrayList<String> documents = ctrlPres.getDocumentTitles(id);
+        System.out.println(documents.size());
+        for(String aux : documents) {
+            System.out.println(aux);
+        }
         HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(id);
         subF = subfolders;
         fileSystemView = FileSystemView.getFileSystemView();

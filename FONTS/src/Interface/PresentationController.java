@@ -72,9 +72,9 @@ public class PresentationController {
     public void run() throws FileNotFoundException {
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setSize(1200,800);
-        //ctrlDomain.reconstructFoldersSystem();
-        //ctrlDomain.reconstructAuthorsSystem();
-        //ctrlDomain.loadHistorial();
+        ctrlDomain.reconstructFoldersSystem();
+        ctrlDomain.reconstructAuthorsSystem();
+        ctrlDomain.loadHistorial();
         toMain();
     }
 
@@ -262,9 +262,9 @@ public class PresentationController {
      * @throws IOException
      */
     public void saveDB() throws IOException {
-        //ctrlDomain.saveFoldersSystem();
-        //ctrlDomain.saveAuthorsSystem();
-        //ctrlDomain.saveHistorial();
+        ctrlDomain.saveFoldersSystem();
+        ctrlDomain.saveAuthorsSystem();
+        ctrlDomain.saveHistorial();
     }
 
 }
