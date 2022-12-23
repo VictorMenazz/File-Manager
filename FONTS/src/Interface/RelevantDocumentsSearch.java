@@ -15,25 +15,56 @@ import java.util.HashMap;
 import java.util.Set;
 
 public class RelevantDocumentsSearch extends JPanel {
+
+    /**
+     * Instance of the presentation controller
+     */
     private PresentationController CtrlPres = PresentationController.getInstance();
+    /**
+     * Label for the title of the view
+     */
     private JLabel titleView = new JLabel("Get relevant documents");
+    /**
+     * Label for the word to search
+     */
     private JLabel l = new JLabel("Words to search: ");
+    /**
+     * Label for the number of documents to search
+     */
     private JLabel l2 = new JLabel("Number of documents to search: ");
-
+    /**
+     * Label for the language of the documents searched
+     */
     private JLabel l3 = new JLabel("Language: ");
-
+    /**
+     * TextField for the words searched
+     */
     private JTextField p;
+    /**
+     * TextField for the number of documents to search
+     */
     private JFormattedTextField k;
+    /**
+     * ComboBox for the language choosen
+     */
     private JComboBox<String> lang;
 
     /**
-     * Directory listing
+     * Table for the results
      */
     private JTable table;
+    /**
+     * Model for the table
+     */
     private DefaultTableModel model;
-
+    /**
+     * Button for the search
+     */
     private JButton search = new JButton("Search");
 
+    /**
+     * Loads the query view
+     */
     public void load() {
         removeAll();
         setLayout(new GridBagLayout());
@@ -76,6 +107,9 @@ public class RelevantDocumentsSearch extends JPanel {
 
     }
 
+    /**
+     * Constructor for the RelevantDocumentsSearch
+     */
     public RelevantDocumentsSearch(){
         setLayout(null);
 
@@ -136,6 +170,10 @@ public class RelevantDocumentsSearch extends JPanel {
         search.addActionListener(SearchResult);
     }
 
+    /**
+     * Shows the results obtained from the query
+     * @param result results of the documents obtained
+     */
     public void showResults(HashMap<String, String> result) {
         removeAll();
 
@@ -197,6 +235,9 @@ public class RelevantDocumentsSearch extends JPanel {
         setVisible(true);
     }
 
+    /**
+     * Restarts the view
+     */
     public void reset(){
         load();
         setVisible(true);

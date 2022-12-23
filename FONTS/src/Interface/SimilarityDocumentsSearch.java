@@ -12,27 +12,63 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SimilarityDocumentsSearch extends JPanel {
+
+    /**
+     * Instance of the Presentation Controller
+     */
     private PresentationController CtrlPres = PresentationController.getInstance();
+    /**
+     * Title of the view
+     */
     private JLabel titleView = new JLabel("Search similar documents");
+    /**
+     * Author label
+     */
     private JLabel l = new JLabel("Author: ");
+    /**
+     * Title label
+     */
     private JLabel l2 = new JLabel("Title: ");
-
+    /**
+     * Label of number of documents to match
+     */
     private JLabel l3 = new JLabel("Desired documents: ");
-
+    /**
+     * Model for the authors combo box
+     */
     private DefaultComboBoxModel<String> modelA;
+    /**
+     * Model for the titles combo box
+     */
     private DefaultComboBoxModel<String> modelT;
-
+    /**
+     * Authors combo box
+     */
     private JComboBox<String> authors;
+    /**
+     * Titles combo box
+     */
     private JComboBox<String> titles;
-
+    /**
+     * TextField for the number of documents to search
+     */
     private JFormattedTextField k;
-
+    /**
+     * Model for the results table
+     */
     private DefaultTableModel model;
-
+    /**
+     * Table for the query results
+     */
     private JTable table;
-
+    /**
+     * Button to make query
+     */
     private JButton search = new JButton("Search");
 
+    /**
+     * Creates the view
+     */
     public void load() {
         removeAll();
 
@@ -111,6 +147,9 @@ public class SimilarityDocumentsSearch extends JPanel {
 
     }
 
+    /**
+     * Creator of the SimilarityDocumentsSearch
+     */
     public SimilarityDocumentsSearch(){
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
@@ -148,6 +187,12 @@ public class SimilarityDocumentsSearch extends JPanel {
         search.addActionListener(SearchDocuments);
     }
 
+    /**
+     * Shows the results obtained from the query
+     * @param title Title of the selected document
+     * @param author Author of the selected document
+     * @param result Results from the query
+     */
     public void showResults(String title, String author, HashMap<String, String> result){
         removeAll();
         setLayout(new GridBagLayout());
@@ -209,6 +254,9 @@ public class SimilarityDocumentsSearch extends JPanel {
         setVisible(true);
     }
 
+    /**
+     * Restarts the view
+     */
     public void reset(){
         authors.setSelectedIndex(-1);
         titles.setSelectedIndex(-1);
@@ -216,14 +264,4 @@ public class SimilarityDocumentsSearch extends JPanel {
         setVisible(true);
     }
 
-
-    public static void main(String args[]) {
-        JFrame f = new JFrame();
-        f.setLayout(new BorderLayout());
-        f.add(new SimilarityDocumentsSearch(), BorderLayout.CENTER);
-        f.setSize(1000, 750);
-        f.setLocation(100, 100);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 }
