@@ -151,12 +151,15 @@ public class FolderView extends JPanel implements ActionListener {
         menuBar.add(folder);
         menuBar.add(file);
 
+        tableScroll.updateUI();
+
         JSplitPane splitPane = new JSplitPane(
                 JSplitPane.VERTICAL_SPLIT,
                 menuBar,
                 tableScroll);
         add(splitPane, BorderLayout.CENTER);
 
+        updateUI();
         setVisible(true);
     }
 

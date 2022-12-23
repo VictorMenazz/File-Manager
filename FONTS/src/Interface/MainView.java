@@ -229,7 +229,7 @@ public class MainView extends JFrame implements ActionListener {
         content.add(boolExprSearch, "Boolean Expression Search");
         content.add(exportDocument, "Export Document");
 
-        setGo("Init");
+        setGo("Main");
     }
 
 
@@ -254,10 +254,6 @@ public class MainView extends JFrame implements ActionListener {
         exportDocument.setVisible(false);
 
         switch(state) {
-            case "Init":{
-                folderView.setVisible(true);
-                break;
-            }
             case "Main":{
                 folderView.reload();
                 break;
