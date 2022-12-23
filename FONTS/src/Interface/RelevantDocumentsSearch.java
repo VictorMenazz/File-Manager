@@ -1,13 +1,17 @@
 package FONTS.src.Interface;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Set;
 
 public class RelevantDocumentsSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
@@ -20,6 +24,12 @@ public class RelevantDocumentsSearch extends JPanel {
     private JTextField p;
     private JFormattedTextField k;
     private JComboBox<String> lang;
+
+    /**
+     * Directory listing
+     */
+    private JTable table;
+    private DefaultTableModel model;
 
     private JButton search = new JButton("Search");
 
@@ -102,18 +112,18 @@ public class RelevantDocumentsSearch extends JPanel {
 
                     int num = Integer.parseInt(k.getText());
 
+                    HashMap<String, String> aux = null;
                     try {
-                        HashMap<String, String> aux = CtrlPres.toResultDocQuery(p.getText(), language, num);
-                        if (aux.size() == 0) JOptionPane.showMessageDialog(new JDialog(), "Not found the desired number of documents");
-                        else {
-                            ArrayList<String> resultT = (ArrayList<String>) aux.keySet();
-                            ArrayList<String> resultA = (ArrayList<String>) aux.values();
-                            showResults(resultT, resultA);
-                        }
-                    } catch(Exception exc) {
-                        JOptionPane.showMessageDialog(new JDialog(), exc.getMessage());
+                        aux = CtrlPres.toResultDocQuery(p.getText(), language, num);
+                        System.out.println("AAAAAAAAACAAAABEE");
+                    } catch (IOException ex) {
+                        JOptionPane.showMessageDialog(new JDialog(), "FAIL");
                     }
-
+                    if (aux.size() < num) JOptionPane.showMessageDialog(new JDialog(), "Not found the desired number of documents");
+                    else {
+                        System.out.println("pongo resultadooos bby");
+                        showResults(aux);
+                    }
                 }
 
             }
@@ -121,10 +131,49 @@ public class RelevantDocumentsSearch extends JPanel {
         search.addActionListener(SearchResult);
     }
 
-    public void showResults(ArrayList<String> resultT, ArrayList<String> resultA) {
+    public void showResults(HashMap<String, String> result) {
         removeAll();
-        //taula
 
+        Object[][] data = new Object[result.size()][3];
+        Icon documentIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/icone-fichier-document-noir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+        int j = 0;
+        for (String key : result.keySet()) {
+            data[j][0] = documentIcon;
+            data[j][1] = result.get(key);
+            data[j][2] = key;
+            ++j;
+        }
+        String[] columnNames = {"Type", "Name", "Author"};
+        model = new DefaultTableModel(data, columnNames) {
+            //  Returning the Class of each column will allow different
+            //  renderers to be used based on Class
+            public Class getColumnClass(int column) {
+                return getValueAt(0, column).getClass();
+            }
+        };
+
+        table = new JTable(model) {
+            private static final long serialVersionUID = 1L;
+
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setPreferredScrollableViewportSize(table.getPreferredSize());
+        table.setAutoCreateRowSorter(true);
+        table.setShowVerticalLines(false);
+        table.setRowHeight(30);
+        table.getColumnModel().getColumn(0).setMinWidth(50);
+        table.getColumnModel().getColumn(0).setMaxWidth(50);
+
+        JScrollPane tableScroll = new JScrollPane(table);
+        tableScroll.setPreferredSize(new Dimension(500, 350));
+
+        add(tableScroll);
+
+        setVisible(true);
     }
 
     public void reset(){
@@ -133,6 +182,4 @@ public class RelevantDocumentsSearch extends JPanel {
         load();
         setVisible(true);
     }
-
-
 }
