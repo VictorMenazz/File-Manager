@@ -62,24 +62,24 @@ public class FolderView extends JPanel implements ActionListener {
 
         ArrayList<String> authors = ctrlPres.getDocumentAuthors(id);
         ArrayList<String> documents = ctrlPres.getDocumentTitles(id);
-        HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(id);
-        subF = subfolders;
+        //HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(id);
+        //subF = subfolders;
         fileSystemView = FileSystemView.getFileSystemView();
 
-        Object[][] data = new Object[(authors.size() + subfolders.size())][3];
-        Icon folderIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/folder-icon.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+        Object[][] data = new Object[(authors.size())][3];
+        //Icon folderIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/folder-icon.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
         Icon documentIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/icone-fichier-document-noir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
         int j = 0;
-        for (Integer key : subfolders.keySet()) {
+        /*for (Integer key : subfolders.keySet()) {
             data[j][0] = folderIcon;
             data[j][1] = subfolders.get(key);
             data[j][2] = "-";
             ++j;
-        }
-        for (int i = subfolders.size(); i < (authors.size() + subfolders.size()); ++i) {
+        }*/
+        for (int i = 0; i < (authors.size()); ++i) {
             data[i][0] = documentIcon;
-            data[i][1] = documents.get(i - subfolders.size());
-            data[i][2] = authors.get(i - subfolders.size());
+            data[i][1] = documents.get(i);
+            data[i][2] = authors.get(i);
         }
 
         String[] columnNames = {"Type", "Name", "Author"};
@@ -117,42 +117,49 @@ public class FolderView extends JPanel implements ActionListener {
         JMenuBar menuBar = new JMenuBar();
 
         //Create menu for Bar
-        JMenu folder = new JMenu("Folder");
+        /*JMenu folder = new JMenu("Folder");
 
         //Create items for menu
         JMenuItem openFolder = new JMenuItem("Open folder");
-        JMenuItem deleteFolder = new JMenuItem("Delete folder");
+        JMenuItem deleteFolder = new JMenuItem("Delete folder");*/
 
 
         //Adding action listener
-        openFolder.addActionListener(this);
+        /*openFolder.addActionListener(this);
         deleteFolder.addActionListener(this);
 
         folder.add(openFolder);
         folder.addSeparator();
-        folder.add(deleteFolder);
+        folder.add(deleteFolder);*/
 
 
-        JMenu file = new JMenu("File");
+        //JMenu file = new JMenu("File");
         //Create items for menu
-        JMenuItem openDoc = new JMenuItem("Open file");
-        JMenuItem editDoc = new JMenuItem("Edit file");
-        JMenuItem deleteDoc = new JMenuItem("Delete file");
+        JMenuItem openDoc = new JMenuItem("Open");
+        JMenuItem editDoc = new JMenuItem("Edit");
+        JMenuItem deleteDoc = new JMenuItem("Delete");
+
+        openDoc.setPreferredSize(new Dimension(40, openDoc.getPreferredSize().height));
+        editDoc.setPreferredSize(new Dimension(40, editDoc.getPreferredSize().height));
+        deleteDoc.setPreferredSize(new Dimension(40, deleteDoc.getPreferredSize().height));
 
         //Adding action listener
         openDoc.addActionListener(this);
         editDoc.addActionListener(this);
         deleteDoc.addActionListener(this);
 
-        file.add(openDoc);
+        /*file.add(openDoc);
         file.addSeparator();
         file.add(editDoc);
         file.addSeparator();
-        file.add(deleteDoc);
+        file.add(deleteDoc);*/
 
 
-        menuBar.add(folder);
-        menuBar.add(file);
+        //menuBar.add(folder);
+        //menuBar.add(file);
+        menuBar.add(openDoc);
+        menuBar.add(editDoc);
+        menuBar.add(deleteDoc);
 
         JSplitPane splitPane = new JSplitPane(
                 JSplitPane.VERTICAL_SPLIT,
@@ -175,30 +182,26 @@ public class FolderView extends JPanel implements ActionListener {
         return folderID;
     }
 
-    public int getFather(){
-        return fatherID;
-    }
-
     public void reload(){
         ArrayList<String> authors = ctrlPres.getDocumentAuthors(folderID);
         ArrayList<String> documents = ctrlPres.getDocumentTitles(folderID);
-        HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(folderID);
-        subF = subfolders;
+        //HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(folderID);
+        //subF = subfolders;
         String[] col = {"Type", "Name", "Author"};
-        Object[][] data = new Object[(authors.size() + subfolders.size())][3];
-        Icon folderIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/folder-icon.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+        Object[][] data = new Object[(authors.size())][3];
+        //Icon folderIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/folder-icon.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
         Icon documentIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/icone-fichier-document-noir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
         int j = 0;
-        for (Integer key : subfolders.keySet()) {
+        /*for (Integer key : subfolders.keySet()) {
             data[j][0] = folderIcon;
             data[j][1] = subfolders.get(key);
             data[j][2] = "-";
             ++j;
-        }
-        for (int i = subfolders.size(); i < (authors.size() + subfolders.size()); ++i) {
+        }*/
+        for (int i = 0; i < (authors.size()); ++i) {
             data[i][0] = documentIcon;
-            data[i][1] = documents.get(i - subfolders.size());
-            data[i][2] = authors.get(i - subfolders.size());
+            data[i][1] = documents.get(i);
+            data[i][2] = authors.get(i);
         }
         if(data.length == 0) {
             model.setRowCount(0);
@@ -220,7 +223,7 @@ public class FolderView extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();
 
-        if(s.equals("Open folder")) {
+        /*if(s.equals("Open folder")) {
             mainView.setGo("Folder View");
         }
 
@@ -232,8 +235,8 @@ public class FolderView extends JPanel implements ActionListener {
                     //?????????????
                 } else JOptionPane.showMessageDialog(new JOptionPane(), "Selection is not a folder");
             }
-        }
-        else if(s.equals("Open file")) {
+        }*/
+        if(s.equals("Open")) {
             int row = table.getSelectedRow();
             if (row != -1) {
                 String author = (String) table.getValueAt(row, 2);
@@ -245,7 +248,7 @@ public class FolderView extends JPanel implements ActionListener {
                 } else JOptionPane.showMessageDialog(new JOptionPane(), "Selection is not a document");
             }
         }
-        else if(s.equals("Edit file")) {
+        else if(s.equals("Edit")) {
             int row = table.getSelectedRow();
             if (row != -1){
                 String author = (String) table.getValueAt(row, 2);
@@ -258,7 +261,7 @@ public class FolderView extends JPanel implements ActionListener {
             }
 
         }
-        else if(s.equals("Delete file")) {
+        else if(s.equals("Delete")) {
             int row = table.getSelectedRow();
             if (row != -1){
                 String author = (String) table.getValueAt(row, 2);
