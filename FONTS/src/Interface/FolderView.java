@@ -62,10 +62,6 @@ public class FolderView extends JPanel implements ActionListener {
 
         ArrayList<String> authors = ctrlPres.getDocumentAuthors(id);
         ArrayList<String> documents = ctrlPres.getDocumentTitles(id);
-        System.out.println(documents.size());
-        for(String aux : documents) {
-            System.out.println(aux);
-        }
         HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(id);
         subF = subfolders;
         fileSystemView = FileSystemView.getFileSystemView();
@@ -87,6 +83,7 @@ public class FolderView extends JPanel implements ActionListener {
         }
 
         String[] columnNames = {"Type", "Name", "Author"};
+
         model = new DefaultTableModel(data, columnNames) {
             //  Returning the Class of each column will allow different
             //  renderers to be used based on Class
@@ -157,15 +154,12 @@ public class FolderView extends JPanel implements ActionListener {
         menuBar.add(folder);
         menuBar.add(file);
 
-        tableScroll.updateUI();
-
         JSplitPane splitPane = new JSplitPane(
                 JSplitPane.VERTICAL_SPLIT,
                 menuBar,
                 tableScroll);
         add(splitPane, BorderLayout.CENTER);
 
-        updateUI();
         setVisible(true);
     }
 
@@ -207,7 +201,7 @@ public class FolderView extends JPanel implements ActionListener {
             data[i][2] = authors.get(i - subfolders.size());
         }
         if(data.length == 0) {
-            //table.setModel(null, col);
+            model.setRowCount(0);
         }
         else model.setDataVector(data, col);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
