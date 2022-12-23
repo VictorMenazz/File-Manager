@@ -1,23 +1,42 @@
 package FONTS.src.Interface;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 public class AuthorsPrefixSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
     private JLabel titleView = new JLabel("Get authors list from a prefix");
-    private JLabel l = new JLabel("Author's prefix:");
+    private JLabel l = new JLabel("Author's prefix: ");
 
-    /*public void setAuthor(String s) {
-        this.prefix.setText(s);
-        search.doClick();
-    }*/
 
     private JTextArea prefix = new JTextArea();
 
     private JButton search = new JButton("Search");
+
+    public void load() {
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(20, 0, 20, 0);
+
+        c.gridx = 0;
+        c.gridy = 1;
+        add(l, c);
+        c.gridx = 1;
+        c.gridy = 1;
+        add(prefix, c);
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridwidth = 2;
+        add(titleView, c);
+        c.gridx = 0;
+        c.gridy = 2;
+        add(search, c);
+
+    }
 
 
     public AuthorsPrefixSearch(){
@@ -25,62 +44,66 @@ public class AuthorsPrefixSearch extends JPanel {
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
         setMinimumSize(new Dimension(500,350));
-        titleView.setBounds(165,5,200,30);
-        add(titleView);
+        prefix.setPreferredSize(new Dimension(250, 20));
 
-
-        l.setBounds(25,100,200,20);
-        add(l);
-        prefix.setBounds(160, 100, 200, 20);
-        add(prefix);
-        search.setBounds(200,200,100,20);
-        add(search);
+        load();
 
         setVisible(true);
 
 
 
-        ActionListener SearchTitles = new ActionListener() {
+        ActionListener SearchAuthors = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*String titulos = CtrlPres.buscarTitulos(txtAutor.getText());
-                if (titulos == null) {
-                    ferror();
-                }
-                else {
-                    JPanel middlePanel = new JPanel();
-                    JButton BOkay = new JButton("Aceptar");
-                    middlePanel.setBorder(new TitledBorder(new EtchedBorder(), "Titulos del autor " + txtAutor.getText()));
-
-                    JTextArea display = new JTextArea(20, 22);
-                    display.setText(titulos);
-                    display.setEditable(false);
-                    JScrollPane scroll = new JScrollPane(display);
-                    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
-                    middlePanel.add(scroll);
-
-                    JFrame frame = new JFrame();
-                    frame.add(middlePanel);
-                    frame.pack();
-                    frame.setLocationRelativeTo(null);
-                    frame.setVisible(true);
-                    frame.setResizable(false);
-
-
-                }
-                ActionListener Salir = new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        txtAutor.setText("");
+                if (e.getSource() == search) {
+                    ArrayList<String> result = CtrlPres.toResultSearchAuthors(prefix.getText());
+                    if (result.size() == 0) JOptionPane.showMessageDialog(new JDialog(), "No authors starting with " + prefix.getText() + " found.");
+                    else {
+                        showResults();
                     }
-                };
-                //BOkay.addActionListener(Salir);
-                */
 
+                }
             }
         };
-        //search.addActionListener(BuscarTitulos);
+        search.addActionListener(SearchAuthors);
+    }
+
+    public void showResults(String a, ArrayList<String> titles) {
+        removeAll();
+
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(5, 0, 5, 0);
+
+        String[] col = {"Titles"};
+        String[][] data = new String[titles.size()][1];
+        for (int i = 0; i < titles.size(); i++) {
+            data[i][0] = titles.get(i);
+        }
+
+        DefaultTableModel model = new DefaultTableModel(data, col);
+        JTable table = new JTable(model) {
+            private static final long serialVersionUID = 1L;
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        table.setAutoCreateRowSorter(true);
+        JScrollPane tableScroll = new JScrollPane(table);
+        tableScroll.setPreferredSize(new Dimension(400, 200));
+
+        JLabel title = new JLabel("Titles from " + a);
+
+        c.gridx = 0;
+        c.gridy = 0;
+        add(title, c);
+        c.gridy = 1;
+        //c.gridwidth = 3;
+        add(table, c);
+
+        updateUI();
+        setVisible(true);
     }
 
 

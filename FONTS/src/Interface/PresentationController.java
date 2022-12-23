@@ -145,9 +145,8 @@ public class PresentationController {
      * Create view for the result of the list of authors given a prefix
      * @param prefix, string contained in authors' names
      */
-    public void toResultSearchAuthors(String prefix) {
-        ArrayList<String> authors = ctrlDomain.searchAuthors(prefix);
-        //INACABADA
+    public ArrayList<String> toResultSearchAuthors(String prefix) {
+        return ctrlDomain.searchAuthors(prefix);
     }
 
     /**

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class TitlesAuthorSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
     private JLabel titleView = new JLabel("Get documents from an author");
-    private JLabel l = new JLabel("Author's name ");
+    private JLabel l = new JLabel("Author's name: ");
 
     /*public void setAutor(String txtAutor) {
         this.txtAutor.setText(txtAutor);
@@ -41,7 +41,6 @@ public class TitlesAuthorSearch extends JPanel {
         //String[] l = list.toArray(new String[0]);
 
         model = new DefaultComboBoxModel<>(array);
-
         authors = new JComboBox<>(model);
 
         c.gridx = 0;
@@ -60,7 +59,6 @@ public class TitlesAuthorSearch extends JPanel {
         c.gridwidth = 2;
         add(search, c);
 
-
         authors.revalidate();
         authors.repaint();
         setVisible(true);
@@ -70,7 +68,7 @@ public class TitlesAuthorSearch extends JPanel {
         ActionListener SearchTitles = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == search) {
+                if (e.getSource() == search && authors.getItemCount() != 0) {
                     String a = (String) authors.getSelectedItem();
                     ArrayList<String> titles = CtrlPres.getAuthorDocuments(a);
                     if (titles.isEmpty()){
