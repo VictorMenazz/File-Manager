@@ -195,7 +195,16 @@ public class FoldersControllerDriver {
         FC.recoverFoldersStructure(data);
     }
 
+    public static void getSubFolders() throws IOException {
+        FoldersController FC = new FoldersController();
+        //FC.newFolder("Rec1", 0);
+        for(String n : FC.getSubFolders(0).values()){
+            System.out.println(n);
+        }
+    }
+
     public static void main(String[] args) throws IOException, DocumentsException {
+        getSubFolders();
         String functions = "0. All\n" +
                 "1. testFoldersController\n" +
                 "2. testGetRoot\n" +

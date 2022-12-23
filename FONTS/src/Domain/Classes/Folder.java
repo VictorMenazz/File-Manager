@@ -570,16 +570,24 @@ public class Folder {
      * @return A HashMap<Integer, String> with all identifier and Folder Name the subFolders.
      */
     public HashMap<Integer, String> getSubFolders(int folderIdentifier) {
-        if (folderIdentifier == this.folderId){
+        if (folderIdentifier == this.folderId || folderContained(folderIdentifier)){
             HashMap<Integer, String> result = new HashMap<Integer, String>();
-            for (Folder f : subFolders.values()) {
-                result.put(f.folderId, f.folderName);
+            if(folderContained(folderIdentifier)){
+                Folder sF = getFolder(folderIdentifier);
+                for (Folder f : sF.subFolders.values()){
+                    result.put(sF.folderId, sF.folderName);
+                }
+            }
+            else{
+                for (Folder f : subFolders.values()) {
+                    result.put(f.folderId, f.folderName);
+                }
             }
             return result;
         }
         else{
             int nextId = getNextFolderParent(folderIdentifier);
-            Folder f = subFolders.get(nextId);
+            Folder f = getFolder(nextId);
             return f.getSubFolders(nextId);
         }
     }
