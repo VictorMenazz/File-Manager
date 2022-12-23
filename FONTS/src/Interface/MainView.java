@@ -258,12 +258,12 @@ public class MainView extends JFrame implements ActionListener {
                 folderView.reload();
                 break;
             }
-            case "Folder View":{
+            /*case "Folder View":{
                 int aux = folderView.getSelectedFolder();
                 new FolderView(this, aux, actFolderID);
                 actFolderID = aux;
                 break;
-            }
+            }*/
             case "Import Document":{
                 //Create an object of JFileChooser class
                 JFileChooser fc = new JFileChooser("File:");
@@ -373,10 +373,10 @@ public class MainView extends JFrame implements ActionListener {
                 addNewDocument.reset();
                 break;
             }
-            case "Create Folder":{
+            /*case "Create Folder":{
                 addNewFolder.reset();
                 break;
-            }
+            }*/
             case "Search": {
                 searchViewN.restart();
                 break;

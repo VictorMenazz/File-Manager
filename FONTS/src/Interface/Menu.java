@@ -52,10 +52,10 @@ public class Menu extends JPanel{
         mItem.addMouseListener(mouseListener);
         items.put("Main", mItem);
         add(mItem);
-        mItem = new MenuItem("FONTS/src/Interface/Utils/createFolder.png", "Create Folder");
+        /*mItem = new MenuItem("FONTS/src/Interface/Utils/createFolder.png", "Create Folder");
         mItem.addMouseListener(mouseListener);
         items.put("Create Folder", mItem);
-        add(mItem);
+        add(mItem);*/
         mItem = new MenuItem("FONTS/src/Interface/Utils/addDocument.png", "Create Document");
         mItem.addMouseListener(mouseListener);
         items.put("Create Document", mItem);
