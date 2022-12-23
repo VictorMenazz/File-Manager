@@ -1,12 +1,13 @@
 @echo off
 
 SET MAIN=FONTS\src
-SET DOMAIN=FONTS\src\Domain
+SET CONTROLLERS=FONTS\src\Domain\Controllers
+SET CLASSES=FONTS\src\Domain\Classes
 SET INTERFACE=FONTS\src\Interface
 SET DATA=FONTS\src\Data
 SET LIBS=FONTS\lib
 SET BUILDDIR=EXE
-SET CLASSPATH="bin;lib\gson-2.10.jar"
+SET CLASSPATH="EXE;lib\gson-2.10.jar;lib\hamcrest-core-1.3.jar;lib\junit-4.13.1.jar;com\google\gson\Gson"
 
 IF /I "%1"=="all" GOTO all
 IF /I "%1"=="clean" GOTO clean
@@ -15,8 +16,14 @@ GOTO error
 
 :all
     MKDIR %BUILDDIR%\FONTS\src\Domain\Classes\StopWords
-    XCOPY /y /s FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\
-    javac -cp %CLASSPATH% -sourcepath . %MAIN%\Main.java -d %BUILDDIR%
+    XCOPY /y /s FONTS\src\Domain\Classes\StopWords  %BUILDDIR%\FONTS\src\Domain\Classes\StopWords
+    MKDIR %BUILDDIR%\FONTS\src\Interface\Utils
+    XCOPY /y /s FONTS\src\Interface\Utils  %BUILDDIR%\FONTS\src\Interface\Utils
+
+    javac -d %BUILDDIR% -encoding UTF-8 -cp %CLASSPATH% -sourcepath . %MAIN%\Main.java  %CLASSES%\*.java %CONTROLLERS%\*.java %DATA%\*.java %INTERFACE%\*.java
+
+    jar xf lib/gson-2.10.jar
+
     PUSHD %BUILDDIR%
     forfiles /s /m *.class /c "cmd /c echo @relpath" > aux.txt
 
@@ -35,10 +42,10 @@ GOTO error
     FOR /f "delims=" %%x IN (aux.txt) DO (
         CALL SET file-list=%%file-list%% %%x
     )
-    jar -cef FONTS.src.Main .\Main.jar %file-list%
+    jar -cef FONTS.src.Main .\Main.jar %file-list% ..\com\google\gson\*.class ..\com\google\gson\annotations\*.class ..\com\google\gson\internal\*.class ..\com\google\gson\internal\bind\*.class ..\com\google\gson\internal\reflect\*.class ..\com\google\gson\internal\sql\*.class ..\com\google\gson\reflect\*.class ..\com\google\gson\stream\*.class
     POPD
 
-    java -jar %BUILDDIR%\Main.jar
+    java -classpath %CLASSPATH%  -jar %BUILDDIR%\Main.jar
     GOTO :EOF
 
 :clean
