@@ -599,7 +599,8 @@ public class Folder {
         }
         else{
             int nextId = getNextFolderParent(folderIdentifier);
-            return getDocumentTitles(nextId);
+            Folder f = getFolder(nextId);
+            return getDocumentTitles(folderIdentifier);
         }
     }
 
@@ -618,7 +619,8 @@ public class Folder {
         }
         else{
             int nextId = getNextFolderParent(folderIdentifier);
-            return getDocumentTitles(nextId);
+            Folder f = getFolder(nextId);
+            return getDocumentTitles(folderIdentifier);
         }
     }
 

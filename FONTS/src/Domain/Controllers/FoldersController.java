@@ -180,7 +180,8 @@ public class FoldersController {
         JsonParser parser = new JsonParser();
         JsonElement root = parser.parse(data);
         JsonObject detail = root.getAsJsonObject();
-        rootFolder.restoreDocs(detail);
+        JsonElement rootF = detail.get("rootFolder");
+        rootFolder.restoreDocs(rootF.getAsJsonObject());
     }
 
     /**

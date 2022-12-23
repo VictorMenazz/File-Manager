@@ -325,11 +325,13 @@ public class DomainController {
     public Boolean reconstructFoldersSystem(){
         String JSON = data.restoreFolders();
         if(!JSON.equals("")){
-            System.out.println(JSON);
             folders.recoverFoldersStructure(JSON);
             return true;
         }
-        else return false;
+        else{
+            System.out.println("Entering here");
+            return false;
+        }
     }
 
     /**

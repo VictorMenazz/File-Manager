@@ -10,8 +10,13 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 public class TitlesAuthorSearch extends JPanel {
+    /** Have an Instance of Presentation Layer  */
     private PresentationController CtrlPres = PresentationController.getInstance();
+
+    /** JLabel que indica el text mostrat */
     private JLabel titleView = new JLabel("Get documents from an author");
+
+    /** JLabel que indica el text mostrat */
     private JLabel l = new JLabel("Author's name: ");
 
     /*public void setAutor(String txtAutor) {
@@ -19,12 +24,17 @@ public class TitlesAuthorSearch extends JPanel {
         search.doClick();
     }*/
 
+    /** JCombo que indica els noms dels Autors */
     private JComboBox<String> authors;
+
+    /** DefaultComboBoxModel especified the model of the ComboBoc */
     private DefaultComboBoxModel<String> model;
 
+    /** JButton that indicates the action of Search */
     private JButton search;
 
 
+    /** Restarts the View */
     public void load() {
         removeAll();
 
@@ -84,6 +94,7 @@ public class TitlesAuthorSearch extends JPanel {
         search.addActionListener(SearchTitles);
     }
 
+    /** Initializer of the View */
     public TitlesAuthorSearch(){
         setLayout(null);
         setPreferredSize(new Dimension(500,350));
@@ -97,6 +108,7 @@ public class TitlesAuthorSearch extends JPanel {
 
     }
 
+    /** Show the results of the Search */
     public void showResults(String a, ArrayList<String> titles) {
         removeAll();
 
@@ -140,8 +152,7 @@ public class TitlesAuthorSearch extends JPanel {
         setVisible(true);
     }
 
-
-
+    /** Main function of the View */
     public static void main(String args[]) {
         JFrame f = new JFrame();
         f.setLayout(new BorderLayout());
