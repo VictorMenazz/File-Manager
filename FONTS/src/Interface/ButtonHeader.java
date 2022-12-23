@@ -4,8 +4,22 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-public class ButtonHeader extends JButton {
+/**
+ * @file ButtonHeader.java
+ * Class <em>ButtonHeader</em>
+ */
 
+/**
+ * Button Header View
+ *
+ * @author Júlia Alice Amenós Dien
+ * @author Víctor Mena Doz
+ */
+
+public class ButtonHeader extends JButton {
+    /**
+     *
+     */
     public ButtonHeader(){
         setContentAreaFilled(false);
         setBorder(new EmptyBorder(6,6,6,6));

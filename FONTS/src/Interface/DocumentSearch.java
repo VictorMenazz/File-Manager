@@ -10,6 +10,17 @@ import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+/**
+ * @file DocumentSearch.java
+ * Class <em>DocumentSearch</em>
+ */
+
+/**
+ * View to make a query of a specific document
+ *
+ * @author Júlia Alice Amenós Dien
+ * @author Víctor Mena Doz
+ */
 
 public class DocumentSearch extends JPanel {
     /**

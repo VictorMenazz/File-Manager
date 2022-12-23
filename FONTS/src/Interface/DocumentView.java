@@ -217,11 +217,11 @@ public class DocumentView implements ActionListener {
     }
 
     //Provisional Main
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         String title = "Julia la crack";
         String author = "Victor Mena";
         String lang = "Spanish";
 
         DocumentView te = new DocumentView(author, title, lang,true, true);
-    }
+    }*/
 }

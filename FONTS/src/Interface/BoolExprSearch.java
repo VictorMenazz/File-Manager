@@ -12,6 +12,19 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @file BoolExprSearch.java
+ * Class <em>BoolExprSearch</em>
+ */
+
+/**
+ * Boolean Expression Search
+ *
+ * @author Júlia Alice Amenós Dien
+ * @author Víctor Mena Doz
+ */
+
+
 public class BoolExprSearch extends JPanel {
     /**
      * Instance of the Presentation Controller
@@ -122,7 +135,7 @@ public class BoolExprSearch extends JPanel {
         c.gridwidth = 1;
         add(searchNew, c);
         c.gridx = 3;
-        c.gridy = 1;
+        c.gridy = 2;
         add(searchList, c);
 
 

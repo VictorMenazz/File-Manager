@@ -8,6 +8,19 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * @file AuthorsPrefixSearch.java
+ * Class <em>AuthorsPrefixSearch</em>
+ */
+
+/**
+ * Add New Document View
+ *
+ * @author Júlia Alice Amenós Dien
+ * @author Víctor Mena Doz
+ */
+
+
 public class AuthorsPrefixSearch extends JPanel {
     /**
      * Instance of the presentation controller

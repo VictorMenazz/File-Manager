@@ -13,8 +13,9 @@ import java.awt.event.ActionListener;
  */
 
 /**
- * Dialog to add new document
+ * Add New Document View
  *
+ * @author Júlia Alice Amenós Dien
  * @author Víctor Mena Doz
  */
 
@@ -135,7 +136,7 @@ public class AddNewDocument extends JPanel implements ActionListener {
         }
     }
 
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         AddNewDocument ad = new AddNewDocument(new MainView());
-    }
+    }*/
 }

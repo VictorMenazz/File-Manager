@@ -15,8 +15,9 @@ import java.util.Set;
  */
 
 /**
- * Dialog to add new Folder
+ * Add New Folder View
  *
+ * @author Júlia Alice Amenós Dien
  * @author Víctor Mena Doz
  */
 
@@ -97,6 +98,9 @@ public class AddNewFolder extends JPanel implements ActionListener {
         setVisible(true);
     }
 
+    /**
+     * Resets the view
+     */
     public void reset() {
         inputInitialName.setText("");
 
@@ -123,7 +127,7 @@ public class AddNewFolder extends JPanel implements ActionListener {
         }
     }
 
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         AddNewFolder ad = new AddNewFolder(new MainView(), 0);
-    }
+    }*/
 }

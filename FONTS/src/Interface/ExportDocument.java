@@ -7,26 +7,66 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+/**
+ * @file ExportDocument.java
+ * Class <em>ExportDocument</em>
+ */
+
+/**
+ * View to export a document
+ *
+ * @author Víctor Mena Doz
+ */
 
 public class ExportDocument extends JPanel{
-
+    /**
+     * Instance of presentation controller
+     */
     private PresentationController CtrlPres = PresentationController.getInstance();
-
+    /**
+     * Main View instance
+     */
     private MainView mainView;
-
+    /**
+     * Author label
+     */
     private JLabel l = new JLabel("Author");
+    /**
+     * Title label
+     */
     private JLabel l2 = new JLabel("Title");
-
+    /**
+     * Title view label
+     */
     private JLabel titleView = new JLabel("Select document to export:");
+    /**
+     * ComboBox to choose the document to export
+     */
     private JComboBox chooser;
+    /**
+     * Model for the authors combo box
+     */
     private DefaultComboBoxModel<String> modelA;
+    /**
+     * Model for the titles combo box
+     */
     private DefaultComboBoxModel<String> modelT;
-
+    /**
+     * Authors combo box
+     */
     private JComboBox<String> authors;
+    /**
+     * Titles combo box
+     */
     private JComboBox<String> titles;
-
+    /**
+     * Button to export
+     */
     private JButton export = new JButton("Export");
 
+    /**
+     * Loads and shows the view
+     */
     public void load(){
         removeAll();
 
@@ -111,6 +151,10 @@ public class ExportDocument extends JPanel{
         setVisible(true);
     }
 
+    /**
+     * Constructor of the ExportDocument class
+     * @param mv
+     */
     public ExportDocument(MainView mv){
         mainView = mv;
 
@@ -152,6 +196,9 @@ public class ExportDocument extends JPanel{
         export.addActionListener(SearchDocument);
     }
 
+    /**
+     * Resets the view
+     */
     public void reset() {
         if (authors != null) authors.setSelectedIndex(-1);
         if (titles != null) titles.setSelectedIndex(-1);

@@ -6,15 +6,39 @@ import javax.swing.*;
         import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashMap;
+/**
+ * @file CreateBoolExpr.java
+ * Class <em>CreateBoolExpr</em>
+ */
+
+/**
+ * Creation of a new boolean expression view
+ *
+ * @author Júlia Alice Amenós Dien
+ * @author Víctor Mena Doz
+ */
 
 public class CreateBoolExpr extends JPanel{
+    /**
+     * Instance of the presentation controller
+     */
     private PresentationController CtrlPres = PresentationController.getInstance();
+    /**
+     * Text Area for the boolean expression
+     */
     private JTextArea txtExpr = new JTextArea();
+    /**
+     * Write boolean expression label
+     */
     private JLabel l = new JLabel("Write the new boolean expression");
+    /**
+     * Button to create new boolean expression
+     */
     private JButton bCreate = new JButton("Create");
 
-    private JFrame frame = new JFrame ("JFrame");
-
+    /**
+     * Constructor of CreateBoolExpr
+     */
     public CreateBoolExpr() {
 
         setPreferredSize(new Dimension(500,350));
@@ -74,20 +98,13 @@ public class CreateBoolExpr extends JPanel{
         bCreate.addActionListener(createExpression);
     }
 
-
+    /**
+     * Resets the view
+     */
     public void reset() {
         txtExpr.setText("");
         setVisible(true);
     }
 
-    /*public static void main(String args[]) {
-        JFrame f = new JFrame();
-        f.setLayout(new BorderLayout());
-        f.add(new CreateBoolExpr(), BorderLayout.CENTER);
-        f.setSize(1000, 750);
-        f.setLocation(100, 100);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }*/
 }
 
