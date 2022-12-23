@@ -50,6 +50,7 @@ public class FolderView extends JPanel implements ActionListener {
 
     private DefaultTableModel model;
 
+
     public FolderView(MainView mv, int id, int fatherId) {
         mainView = mv;
         folderID = id;
@@ -206,7 +207,7 @@ public class FolderView extends JPanel implements ActionListener {
             data[i][2] = authors.get(i - subfolders.size());
         }
         if(data.length == 0) {
-
+            //table.setModel(null, col);
         }
         else model.setDataVector(data, col);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);

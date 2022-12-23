@@ -382,13 +382,16 @@ public class DomainController {
         Gson gson = new Gson();
         String list = null;
         Boolean res = true;
+
         try {
             list = data.loadHistorial();
+            if (!list.equals("")) {
+                LinkedHashSet<String> result = gson.fromJson(list, LinkedHashSet.class);
+                ctrlSearch.setListBoolExps(result);
+            }
         } catch (FileNotFoundException e) {
             res = false;
         }
-        LinkedHashSet<String> result = gson.fromJson(list, LinkedHashSet.class);
-        ctrlSearch.setListBoolExps(result);
         return res;
     }
 
