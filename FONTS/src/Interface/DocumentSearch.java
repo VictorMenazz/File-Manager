@@ -14,8 +14,8 @@ import java.util.ArrayList;
 public class DocumentSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
     private JLabel titleView = new JLabel("Get document");
-    private JLabel l = new JLabel("Author");
-    private JLabel l2 = new JLabel("Title");
+    private JLabel l = new JLabel("Author  ");
+    private JLabel l2 = new JLabel("Title  ");
 
 
     private DefaultComboBoxModel<String> modelA;
@@ -60,6 +60,9 @@ public class DocumentSearch extends JPanel {
 
             }
         });
+
+        authors.setPreferredSize(new Dimension(250, 20));
+        titles.setPreferredSize(new Dimension(250, 20));
 
 
         c.gridx = 0;

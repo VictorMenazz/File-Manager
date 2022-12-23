@@ -164,14 +164,8 @@ public class PresentationController {
      * @param title, title of the document
      * @param k, integer of how many appearance documents to return
      */
-    public void toResultAppSearch(String authorName, String title, int k) {
-        HashMap<String, String> aux = ctrlDomain.appearanceSearch(authorName, title, k);
-        ArrayList<String> titles = (ArrayList<String>) aux.keySet();
-        ArrayList<String> authors = (ArrayList<String>) aux.values();
-        JFrame resWindow = new JFrame();
-        resWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        resWindow.setTitle("Result for boolean expression search");
-        resWindow.setVisible(true);
+    public HashMap<String, String> toResultAppSearch(String authorName, String title, int k) {
+        return ctrlDomain.appearanceSearch(authorName, title, k);
     }
 
     /**

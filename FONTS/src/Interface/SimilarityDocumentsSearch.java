@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class SimilarityDocumentsSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
@@ -19,8 +20,8 @@ public class SimilarityDocumentsSearch extends JPanel {
     private DefaultComboBoxModel<String> modelA;
     private DefaultComboBoxModel<String> modelT;
 
-    private JComboBox authors;
-    private JComboBox titles;
+    private JComboBox<String> authors;
+    private JComboBox<String> titles;
 
     private JFormattedTextField k;
 
@@ -61,8 +62,45 @@ public class SimilarityDocumentsSearch extends JPanel {
             }
         });
 
+        authors.setPreferredSize(new Dimension(250, 20));
+        titles.setPreferredSize(new Dimension(250, 20));
+        k.setText("");
+
+
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridwidth = 2;
+        add(titleView, c);
+        c.gridwidth = 1;
+        c.gridx = 0;
+        c.gridy = 1;
+        add(l, c);
+        c.gridx = 1;
+        c.gridy = 1;
+        add(authors, c);
+        c.gridx = 0;
+        c.gridy = 2;
+        add(l2, c);
+        if (authors.getSelectedIndex() != -1) {
+            c.gridx = 1;
+            c.gridy = 2;
+            add(titles, c);
+        }
+        c.gridx = 0;
+        c.gridy = 3;
+        add(l3, c);
+        c.gridx = 1;
+        c.gridy = 3;
+        add(k, c);
+        c.gridx = 0;
+        c.gridy = 4;
+        c.gridwidth = 2;
+        add(search, c);
+
         revalidate();
         repaint();
+        updateUI();
+        setVisible(true);
 
     }
 
@@ -74,19 +112,6 @@ public class SimilarityDocumentsSearch extends JPanel {
         setLayout(new GridBagLayout());
 
 
-        //Obtener lista dsd controlador;
-        ArrayList<String> list = CtrlPres.getAuthorsName();
-        authors = new JComboBox(list.toArray());
-        authors.setBounds(160, 100, 200, 20);
-        add(authors);
-
-        if (!list.isEmpty()){
-            ArrayList<String> t = CtrlPres.getAuthorDocuments(list.get(authors.getSelectedIndex()));
-            titles = new JComboBox(t.toArray());
-            titles.setBounds(160, 150, 200, 20);
-            add(titles);
-        }
-
         NumberFormat format = NumberFormat.getNumberInstance();
         NumberFormatter formatter = new NumberFormatter(format);
         formatter.setValueClass(Integer.class);  // only allow integers
@@ -94,61 +119,40 @@ public class SimilarityDocumentsSearch extends JPanel {
         formatter.setMaximum(100);  // set the maximum value
         formatter.setAllowsInvalid(false);  // don't allow invalid input
         k = new JFormattedTextField(formatter);
-
+        k.setPreferredSize(new Dimension(50, 20));
 
         load();
+
 
         setVisible(true);
 
 
 
-        ActionListener SearchTitles = new ActionListener() {
+        ActionListener SearchDocuments = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*String titulos = CtrlPres.buscarTitulos(txtAutor.getText());
-                if (titulos == null) {
-                    ferror();
-                }
-                else {
-                    JPanel middlePanel = new JPanel();
-                    JButton BOkay = new JButton("Aceptar");
-                    middlePanel.setBorder(new TitledBorder(new EtchedBorder(), "Titulos del autor " + txtAutor.getText()));
-
-                    JTextArea display = new JTextArea(20, 22);
-                    display.setText(titulos);
-                    display.setEditable(false);
-                    JScrollPane scroll = new JScrollPane(display);
-                    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-
-                    middlePanel.add(scroll);
-
-                    JFrame frame = new JFrame();
-                    frame.add(middlePanel);
-                    frame.pack();
-                    frame.setLocationRelativeTo(null);
-                    frame.setVisible(true);
-                    frame.setResizable(false);
-
+                if (e.getSource() == search){
+                    String author = (String) authors.getSelectedItem();
+                    String title = (String) titles.getSelectedItem();
+                    Integer num = Integer.parseInt(k.getText())
+                    HashMap<String, String> results = CtrlPres.toResultAppSearch(author, title, num);
+                    showResults(results);
 
                 }
-                ActionListener Salir = new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        txtAutor.setText("");
-                    }
-                };
-                //BOkay.addActionListener(Salir);
-                */
-
             }
         };
-        //search.addActionListener(BuscarTitulos);
+        search.addActionListener(SearchDocuments);
+    }
+
+    public void showResults(HashMap<String, String> results){
+
+        //Tabla
     }
 
     public void reset(){
         authors.setSelectedIndex(-1);
         titles.setSelectedIndex(-1);
-        k.setText("");
+        load();
         setVisible(true);
     }
 
