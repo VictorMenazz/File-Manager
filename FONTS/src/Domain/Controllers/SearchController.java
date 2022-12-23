@@ -108,8 +108,10 @@ public class SearchController {
 
 
     public String[] getBoolExps() {
+        String[] aux = new String[1];
+        aux[0] = "";
         if(!listBoolExps.isEmpty()) return listBoolExps.toArray(new String[listBoolExps.size()]);
-        return null;
+        else return aux;
     }
 
     public LinkedHashSet<String> getList() {
