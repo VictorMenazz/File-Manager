@@ -227,6 +227,7 @@ public class MainView extends JFrame implements ActionListener {
         content.add(similarityDocumentsSearch, "Similar Documents Search");
         content.add(relevantDocumentsSearch, "Relevant Documents Search");
         content.add(boolExprSearch, "Boolean Expression Search");
+        content.add(exportDocument, "Export Document");
 
         setGo("Init");
     }
@@ -250,6 +251,7 @@ public class MainView extends JFrame implements ActionListener {
         similarityDocumentsSearch.setVisible(false);
         relevantDocumentsSearch.setVisible(false);
         boolExprSearch.setVisible(false);
+        exportDocument.setVisible(false);
 
         switch(state) {
             case "Init":{

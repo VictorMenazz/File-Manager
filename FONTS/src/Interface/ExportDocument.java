@@ -25,14 +25,14 @@ public class ExportDocument extends JPanel{
     private JComboBox<String> authors;
     private JComboBox<String> titles;
 
-    private JButton search = new JButton("Search");
+    private JButton export = new JButton("Export");
 
     public void load(){
         removeAll();
 
         setLayout(new GridBagLayout());
         GridBagConstraints c = new GridBagConstraints();
-        c.insets = new Insets(20, 0, 20, 0);
+        c.insets = new Insets(10, 0, 10, 0);
 
         ArrayList<String> list = CtrlPres.getAuthorsName();
         String[] array = new String[list.size()];
@@ -97,8 +97,10 @@ public class ExportDocument extends JPanel{
         c.gridx = 1;
         c.gridy = 3;
         add(chooser, c);
+        c.gridx = 0;
+        c.gridy = 4;
         c.gridwidth = 2;
-        add(search, c);
+        add(export, c);
 
         authors.updateUI();
         if(titles != null) titles.updateUI();
@@ -123,7 +125,7 @@ public class ExportDocument extends JPanel{
         ActionListener SearchDocument = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == search && authors != null && titles != null && chooser != null){
+                if (e.getSource() == export && authors.getSelectedIndex() != -1 && titles.getSelectedIndex() != -1 && chooser.getSelectedIndex() != -1){
                     String a = (String) authors.getSelectedItem();
                     String t = (String) titles.getSelectedItem();
                     String type = (String) chooser.getSelectedItem();
@@ -147,7 +149,7 @@ public class ExportDocument extends JPanel{
                 }
             }
         };
-        search.addActionListener(SearchDocument);
+        export.addActionListener(SearchDocument);
     }
 
     public void reset() {
