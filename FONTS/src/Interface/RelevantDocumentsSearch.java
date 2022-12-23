@@ -143,6 +143,7 @@ public class RelevantDocumentsSearch extends JPanel {
             data[j][2] = key;
             ++j;
         }
+
         String[] columnNames = {"Type", "Name", "Author"};
         model = new DefaultTableModel(data, columnNames) {
             //  Returning the Class of each column will allow different

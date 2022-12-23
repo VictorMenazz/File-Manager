@@ -1,6 +1,8 @@
 package FONTS.src.Interface;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -10,62 +12,98 @@ import java.util.ArrayList;
 
 public class BoolExprSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
-    private JLabel titleView = new JLabel("Get similar documents");
-    private JLabel l = new JLabel("Author");
+
+    private ListSelectionListener listSelectionListener;
+    private JLabel titleView = new JLabel("Write a new Boolean Expression or choose an existing one");
+    private JLabel l = new JLabel("");
     private JLabel l2 = new JLabel("Title");
 
-    private JLabel l3 = new JLabel("Desired documents");
 
-    private JTextField p;
+    private JTextField boolExpr;
 
-    private JFormattedTextField k;
+    private DefaultTableModel model;
+    private JTable list;
 
     private JButton search = new JButton("Search");
-    private JFrame frame = new JFrame ("JFrame");
+    private JButton searchList = new JButton("SearchList");
+
+    private void reloadTable() {
+        String[] bExpr = CtrlPres.getBoolExpr();
+        String[] col = {"Boolean Expression"};
+        String[][] data = new String[bExpr.length][1];
+        for (int i = 0; i < bExpr.length; i++) {
+            data[i][0] = bExpr[i];
+        }
+        model.setDataVector(data, col);
+        list.updateUI();
+        updateUI();
+        setVisible(true);
+    }
+
+    public void load(){
+        removeAll();
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(10, 0, 10, 0);
+
+        c.anchor = GridBagConstraints.WEST;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridwidth = 2;
+        add(titleView, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        add(boolExpr, c);
+        c.gridx = 0;
+        c.gridy = 2;
+        add(list, c);
+        c.gridx = 3;
+        c.gridy = 1;
+        c.gridwidth = 1;
+        add(search, c);
+        c.gridx = 3;
+        c.gridy = 2;
+        add(searchList, c);
+
+
+    }
 
     public BoolExprSearch(){
         setLayout(null);
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
         setMinimumSize(new Dimension(500,350));
-        titleView.setBounds(175,5,200,30);
-        add(titleView);
 
-        //Obtener lista dsd controlador;
-        /*ArrayList<String> list = CtrlPres.getAuthorsName();
-        authors = new JComboBox(list.toArray());
-        authors.setBounds(160, 100, 200, 20);
-        add(authors);
+        boolExpr = new JTextField();
+        boolExpr.setPreferredSize(new Dimension(200, 20));
 
-        if (!list.isEmpty()){
-            ArrayList<String> t = CtrlPres.getAuthorDocuments(list.get(authors.getSelectedIndex()));
-            titles = new JComboBox(t.toArray());
-            titles.setBounds(160, 150, 200, 20);
-            add(titles);
+        String[] bExpr = CtrlPres.getBoolExpr();
+        String[] col = {"Boolean Expressions"};
+        String[][] data = new String[bExpr.length][1];
+        for (int i = 0; i < bExpr.length; i++) {
+            data[i][0] = bExpr[i];
         }
 
-        NumberFormat format = NumberFormat.getNumberInstance();
-        NumberFormatter formatter = new NumberFormatter(format);
-        formatter.setValueClass(Integer.class);  // only allow integers
-        formatter.setMinimum(0);  // set the minimum value
-        formatter.setMaximum(100);  // set the maximum value
-        formatter.setAllowsInvalid(false);  // don't allow invalid input
-        k = new JFormattedTextField(formatter);
+        model = new DefaultTableModel(data, col);
+        list = new JTable(model) {
+            private static final long serialVersionUID = 1L;
+
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+
+        list.setAutoCreateRowSorter(true);
+        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        list.getSelectionModel().addListSelectionListener(listSelectionListener);
+        JScrollPane tableScroll = new JScrollPane(list);
+        tableScroll.setPreferredSize(new Dimension(400, 200));
 
 
-        l.setBounds(100,100,200,20);
-        add(l);
-        l2.setBounds(100, 150, 200, 20);
-        add(l2);
-        search.setBounds(200,300,100,20);
-        add(search);
-        l3.setBounds(100, 200, 200, 20);
-        add(l3);
-        k.setBounds(240, 200, 50, 20);
-        add(k);
+
+        load();
 
         setVisible(true);
-*/
 
 
         ActionListener SearchTitles = new ActionListener() {
@@ -112,16 +150,7 @@ public class BoolExprSearch extends JPanel {
     }
 
     public void reset() {
+        load();
         setVisible(true);
-    }
-
-    public static void main(String args[]) {
-        JFrame f = new JFrame();
-        f.setLayout(new BorderLayout());
-        f.add(new SimilarityDocumentsSearch(), BorderLayout.CENTER);
-        f.setSize(1000, 750);
-        f.setLocation(100, 100);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 }
