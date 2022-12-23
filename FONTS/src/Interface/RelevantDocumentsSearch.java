@@ -14,6 +14,17 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.Set;
 
+/**
+ * @file RelevantDocumentsSearch.java
+ * Class <em>RelevantDocumentsSearch</em>
+ */
+
+/**
+ * View to make a query by relevance
+ *
+ * @author Júlia Alice Amenós Dien
+ */
+
 public class RelevantDocumentsSearch extends JPanel {
 
     /**

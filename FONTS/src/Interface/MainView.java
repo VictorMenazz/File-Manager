@@ -28,43 +28,123 @@ public class MainView extends JFrame implements ActionListener {
      */
     private PresentationController ctrlPres = PresentationController.getInstance();
 
+    /**
+     * Menu of items
+     */
     private Menu menu;
+    /**
+     * View AddNewDocument
+     */
     private AddNewDocument addNewDocument;
+    /**
+     * Instance of the view AddNewFolder
+     */
     private AddNewFolder addNewFolder;
+    /**
+     * Instance of the SearchViewN
+     */
     private SearchViewN searchViewN;
+    /**
+     * Instance of ExprManager
+     */
     private ExprManager exprManager;
+    /**
+     * Instance of FolderView
+     */
     private FolderView folderView;
+    /**
+     * Instance of ModifyBoolExpr
+     */
     private ModifyBoolExpr modifyBoolExpr;
+    /**
+     * Instance of CreateBoolExpr
+     */
     private CreateBoolExpr createBoolExpr;
+    /**
+     * Instance of TitlesAuthorSearch
+     */
     private TitlesAuthorSearch titlesAuthorSearch;
+    /**
+     * Instance of AuthorsPrefixSearch
+     */
     private AuthorsPrefixSearch authorsPrefixSearch;
+    /**
+     * Instance of DocumentSearch
+     */
     private DocumentSearch documentSearch;
+    /**
+     * Instance of SimilarityDocumentSearch
+     */
     private SimilarityDocumentsSearch similarityDocumentsSearch;
+    /**
+     * Instance of RelevantDocumentsSearch
+     */
     private RelevantDocumentsSearch relevantDocumentsSearch;
+    /**
+     * Instance of BoolExprSearch
+     */
     private BoolExprSearch boolExprSearch;
+    /**
+     * Instance of ExportDocument
+     */
     private ExportDocument exportDocument;
+    /**
+     * Instance of DeleteDocument
+     */
     private DeleteDocument deleteDocument;
 
-
+    /**
+     * Positions for the window
+     */
     private int x,y;
+    /**
+     * Button to close window
+     */
     private ButtonHeader bClose;
+    /**
+     * Button to resize window
+     */
     private ButtonHeader bResize;
+    /**
+     * Button to minimize window
+     */
     private ButtonHeader bMin;
 
     /**
      * Main GUI container
      */
     private JPanel content;
+    /**
+     * Panel for the header
+     */
     private JPanel header;
+    /**
+     * Panel for the board
+     */
     private JPanel panelBoard;
-
+    /**
+     * Panel for the title
+     */
     private JLabel panelTitle;
+    /**
+     * Label for the logo
+     */
     private JLabel Logo;
+    /**
+     * Label for the application name
+     */
     private JLabel applicationName;
-
+    /**
+     * CardLayout for the view
+     */
     private CardLayout card;
-
+    /**
+     * String for the language
+     */
     private String language;
+    /**
+     * ID of the actual folder
+     */
     private int actFolderID;
 
 
@@ -119,6 +199,9 @@ public class MainView extends JFrame implements ActionListener {
         }
     }
 
+    /**
+     * Initialize view of the header
+     */
     private void initializeHeader(){
         //Buttons to close application, minimize and resize
         bClose = new ButtonHeader();
@@ -194,6 +277,9 @@ public class MainView extends JFrame implements ActionListener {
         header.addMouseMotionListener(mdrag);
     }
 
+    /**
+     * Initialize content of the view
+     */
     private void initializeContent(){
         content = new JPanel();
         card = new CardLayout();
@@ -235,7 +321,10 @@ public class MainView extends JFrame implements ActionListener {
         setGo("Main");
     }
 
-
+    /**
+     * Changes the current visible view
+     * @param state View to change
+     */
     public void setGo(String state) {
         card.show(content, state);
         panelTitle.setText(state);
@@ -433,7 +522,7 @@ public class MainView extends JFrame implements ActionListener {
     }
 
     //PROVISIONAL MAIN
-    public static void main(String args[]) {
+    /*public static void main(String args[]) {
         MainView mv = new MainView();
-    }
+    }*/
 }

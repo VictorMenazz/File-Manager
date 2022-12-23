@@ -13,6 +13,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
 
+/**
+ * @file FolderView.java
+ * Class <em>FolderView</em>
+ */
+
+/**
+ * View to show documents in the app
+ *
+ * @author Víctor Mena Doz
+ */
+
+
 public class FolderView extends JPanel implements ActionListener {
     /**
      * Instance of the Presentation Controller
@@ -48,9 +60,17 @@ public class FolderView extends JPanel implements ActionListener {
      */
     private HashMap<Integer, String> subF;
 
+    /**
+     * Model for the table
+     */
     private DefaultTableModel model;
 
-
+    /**
+     * Constructor of the Folder View
+     * @param mv MainView
+     * @param id folder identification to show
+     * @param fatherId parent folder
+     */
     public FolderView(MainView mv, int id, int fatherId) {
         mainView = mv;
         folderID = id;
@@ -170,6 +190,10 @@ public class FolderView extends JPanel implements ActionListener {
         setVisible(true);
     }
 
+    /**
+     * Returns the selected Folder from the table
+     * @return
+     */
     public int getSelectedFolder(){
         int row = table.getSelectedRow();
         String name = (String) table.getValueAt(row, 1);
@@ -182,6 +206,9 @@ public class FolderView extends JPanel implements ActionListener {
         return folderID;
     }
 
+    /**
+     * Reloads the content of the table
+     */
     public void reload(){
         ArrayList<String> authors = ctrlPres.getDocumentAuthors(folderID);
         ArrayList<String> documents = ctrlPres.getDocumentTitles(folderID);
@@ -219,6 +246,10 @@ public class FolderView extends JPanel implements ActionListener {
         setVisible(true);
     }
 
+    /**
+     * Actions of documents
+     * @param e the event to be processed
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = e.getActionCommand();

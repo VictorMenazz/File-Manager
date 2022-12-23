@@ -5,13 +5,37 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * @file MenuItem.java
+ * Class <em>MenuItem</em>
+ */
+
+/**
+ * View for every item of the menu
+ *
+ * @author Víctor Mena Doz
+ */
+
 public class MenuItem extends JPanel{
 
+    /**
+     * Indicates if the item is selected
+     */
     private boolean selected;
+    /**
+     * Label for the name
+     */
     private JLabel labelName;
+    /**
+     * Label for the icon
+     */
     private JLabel labelIcon;
 
-
+    /**
+     * Constructor for the MenuItem
+     * @param icon
+     * @param name
+     */
     public MenuItem(String icon, String name){
         setLayout(new BorderLayout(5,5));
         setOpaque(false);
@@ -33,6 +57,10 @@ public class MenuItem extends JPanel{
 
     }
 
+    /**
+     * Selects the item
+     * @param selected
+     */
     public void setSelected(boolean selected){
         this.selected = selected;
         repaint();

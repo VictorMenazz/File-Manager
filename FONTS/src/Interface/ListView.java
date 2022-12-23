@@ -5,6 +5,18 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * @file ListView.java
+ * Class <em>ListView</em>
+ */
+
+/**
+ * View to show a list of the
+ *
+ * @author Júlia Alice Amenós Dien
+ * @author Víctor Mena Doz
+ */
+
 public class ListView extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
     private JLabel title;

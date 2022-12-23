@@ -9,6 +9,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+/**
+ * @file TitlesAuthorSearch.java
+ * Class <em>TitlesAuthorSearch</em>
+ */
+
+/**
+ * View to search titles from a given author
+ *
+ * @author Júlia Alice Amenós Dien
+ */
+
 public class TitlesAuthorSearch extends JPanel {
     /** Have an Instance of Presentation Layer  */
     private PresentationController CtrlPres = PresentationController.getInstance();

@@ -4,13 +4,36 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.HashMap;
+/**
+ * @file Menu.java
+ * Class <em>Menu</em>
+ */
+
+/**
+ * Defines the view for the left bar of the app
+ *
+ * @author Víctor Mena Doz
+ */
 
 public class Menu extends JPanel{
 
+    /**
+     * Items to list in the menu
+     */
     private HashMap<String,MenuItem> items;
+    /**
+     * Instance of the MainView
+     */
     private MainView principalFrame;
-
+    /**
+     * MouseListener
+     */
     private MouseListener mouseListener;
+
+    /**
+     * Constructor of the Menu
+     * @param frame
+     */
     public Menu(MainView frame){
         principalFrame = frame;
 
@@ -24,6 +47,10 @@ public class Menu extends JPanel{
 
     }
 
+    /**
+     * Paints the components of the view
+     * @param graphics the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics graphics) {
         Graphics2D g2 = (Graphics2D) graphics;
@@ -34,7 +61,9 @@ public class Menu extends JPanel{
         super.paintComponent(graphics);
     }
 
-
+    /**
+     * Initializes the view
+     */
     private void init(){
         mouseListener = new MouseAdapter() {
             @Override
@@ -86,6 +115,10 @@ public class Menu extends JPanel{
         add(mItem);
     }
 
+    /**
+     * Selects an item from the menu
+     * @param item
+     */
     public void setSelected(String item){
         if(items.containsKey(item)){
             for(String key : items.keySet()){

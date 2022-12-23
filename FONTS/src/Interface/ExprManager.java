@@ -4,16 +4,36 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * @file ExprManager.java
+ * Class <em>ExprManager</em>
+ */
+
+/**
+ * View to manage boolean expressions
+ *
+ * @author Júlia Alice Amenós Dien
+ */
 
 public class ExprManager extends JPanel{
+    /**
+     * Instance of the presentation controller
+     */
     private PresentationController CtrlPres = PresentationController.getInstance();
-
+    /**
+     * Button to create new boolean expression
+     */
     private JButton bCreate = new JButton("Create new Boolean Expression");
+    /**
+     * Button to modify a boolean expression
+     */
     private JButton bModify = new JButton("Modify an existing Boolean Expression");
 
-    private JFrame frame = new JFrame ("JFrame");
 
-
+    /**
+     * Creator of the ExprManager
+     * @param mv
+     */
     public ExprManager(MainView mv) {
         setPreferredSize(new Dimension(500, 350));
         setMaximumSize(new Dimension(500, 350));
@@ -62,18 +82,12 @@ public class ExprManager extends JPanel{
         bCreate.addActionListener(manageExpr);
     }
 
+    /**
+     * Loads and shows the view
+     */
     public void load() {
         setVisible(true);
     }
 
-    public static void main(String args[]) {
-        JFrame f = new JFrame();
-        f.setLayout(new BorderLayout());
-        f.add(new ExprManager(new MainView()), BorderLayout.CENTER);
-        f.setSize(1000, 750);
-        f.setLocation(100, 100);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 
 }

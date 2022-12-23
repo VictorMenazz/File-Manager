@@ -9,26 +9,61 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.LinkedHashSet;
 
-public class ModifyBoolExpr extends JPanel{
+/**
+ * @file ModifyBoolExpr.java
+ * Class <em>ModifyBoolExpr</em>
+ */
 
+/**
+ * View to create, modify or delete boolean expressions
+ *
+ * @author Júlia Alice Amenós Dien
+ */
+
+public class ModifyBoolExpr extends JPanel{
+    /**
+     * Instance of presentation controller
+     */
     private PresentationController CtrlPres = PresentationController.getInstance();
+    /**
+     * TextArea for the boolean Expression
+     */
     private JTextArea txtExpr = new JTextArea();
 
     /**
-     * Table model for File[]
+     * ListSelectionListener for the table
      */
     private ListSelectionListener listSelectionListener;
+    /**
+     * Label of subheader
+     */
     private JLabel l = new JLabel("Write a new boolean expression or choose one to modify");
+    /**
+     * Button to modify the boolean expression
+     */
     private JButton bModify = new JButton("Modify");
+    /**
+     * Button to create the boolean expression
+     */
     private JButton bCreate = new JButton("Create");
+    /**
+     * Button to delete the boolean expression
+     */
     private JButton bDelete = new JButton("Delete");
 
+    /**
+     * List of boolean expressions
+     */
     private JTable list;
+    /**
+     * Model for the table
+     */
     private DefaultTableModel model;
 
-    private JFrame frame = new JFrame ("JFrame");
 
-
+    /**
+     * Updates the content of the table
+     */
     private void reloadTable() {
         String[] bExpr = CtrlPres.getBoolExpr();
         String[] col = {"Boolean Expressions"};
@@ -41,6 +76,10 @@ public class ModifyBoolExpr extends JPanel{
         updateUI();
         setVisible(true);
     }
+
+    /**
+     * Constructor of ModifyBoolExpr
+     */
     public ModifyBoolExpr() {
         setPreferredSize(new Dimension(500, 350));
         setMaximumSize(new Dimension(500, 350));
@@ -147,44 +186,13 @@ public class ModifyBoolExpr extends JPanel{
         bDelete.addActionListener(manageExpressions);
     }
 
-    private void setError(String error, String message) {
-        JDialog invalidExpr = new JDialog(frame, message);
-        invalidExpr.setBounds(800, 300, 400, 200);
-        invalidExpr.setLayout(null);
 
-        JLabel txtErr = new JLabel(error);
-        txtErr.setBounds(80, 20, 400, 40);
-        JButton BOkay = new JButton("OK");
-        BOkay.setVisible(true);
-        BOkay.setBounds(150, 110, 100, 30);
-        invalidExpr.add(txtErr);
-        invalidExpr.add(BOkay);
-        invalidExpr.setVisible(true);
-        frame.setResizable(false);
-
-        ActionListener Close = new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                reset();
-                invalidExpr.dispose();
-                invalidExpr.setVisible(false);
-            }
-        };
-        BOkay.addActionListener(Close);
-    }
-
+    /**
+     * Resets the view
+     */
     public void reset() {
         txtExpr.setText("");
         reloadTable();
     }
 
-    public static void main(String args[]) {
-        JFrame f = new JFrame();
-        f.setLayout(new BorderLayout());
-        f.add(new ModifyBoolExpr(), BorderLayout.CENTER);
-        f.setSize(1000, 750);
-        f.setLocation(100, 100);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
 }

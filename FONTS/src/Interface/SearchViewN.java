@@ -4,6 +4,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+/**
+ * @file SearchViewN.java
+ * Class <em>SearchViewN</em>
+ */
+
+/**
+ * View to list all possible queries
+ *
+ * @author Júlia Alice Amenós Dien
+ */
+
 
 public class SearchViewN extends JPanel {
 

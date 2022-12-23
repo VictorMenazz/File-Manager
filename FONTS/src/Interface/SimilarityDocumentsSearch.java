@@ -11,6 +11,19 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * @file SimilarityDocumentsSearch.java
+ * Class <em>SimilarityDocumentsSearch</em>
+ */
+
+/**
+ * View to make a query by documents similarity
+ *
+ * @author Júlia Alice Amenós Dien
+ * @author Víctor Mena Doz
+ */
+
+
 public class SimilarityDocumentsSearch extends JPanel {
 
     /**
