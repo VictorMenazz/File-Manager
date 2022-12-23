@@ -1,6 +1,7 @@
 package FONTS.src.Interface;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.text.NumberFormatter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,8 +26,11 @@ public class SimilarityDocumentsSearch extends JPanel {
 
     private JFormattedTextField k;
 
+    private DefaultTableModel model;
+
+    private JTable table;
+
     private JButton search = new JButton("Search");
-    private JFrame frame = new JFrame ("JFrame");
 
     public void load() {
         removeAll();
@@ -126,8 +130,6 @@ public class SimilarityDocumentsSearch extends JPanel {
 
         setVisible(true);
 
-
-
         ActionListener SearchDocuments = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -137,16 +139,55 @@ public class SimilarityDocumentsSearch extends JPanel {
                     Integer num = Integer.parseInt(k.getText());
                     HashMap<String, String> results = CtrlPres.toResultAppSearch(author, title, num);
                     showResults(results);
-
                 }
             }
         };
         search.addActionListener(SearchDocuments);
     }
 
-    public void showResults(HashMap<String, String> results){
+    public void showResults(HashMap<String, String> result){
+        removeAll();
 
-        //Tabla
+        Object[][] data = new Object[result.size()][3];
+        Icon documentIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/icone-fichier-document-noir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+        int j = 0;
+        for (String key : result.keySet()) {
+            data[j][0] = documentIcon;
+            data[j][1] = result.get(key);
+            data[j][2] = key;
+            ++j;
+        }
+
+        String[] columnNames = {"Type", "Name", "Author"};
+        model = new DefaultTableModel(data, columnNames) {
+            //  Returning the Class of each column will allow different
+            //  renderers to be used based on Class
+            public Class getColumnClass(int column) {
+                return getValueAt(0, column).getClass();
+            }
+        };
+        table = new JTable(model) {
+            private static final long serialVersionUID = 1L;
+
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setPreferredScrollableViewportSize(table.getPreferredSize());
+        table.setAutoCreateRowSorter(true);
+        table.setShowVerticalLines(false);
+        table.setRowHeight(30);
+        table.getColumnModel().getColumn(0).setMinWidth(50);
+        table.getColumnModel().getColumn(0).setMaxWidth(50);
+
+        JScrollPane tableScroll = new JScrollPane(table);
+        tableScroll.setPreferredSize(new Dimension(500, 350));
+
+        add(tableScroll);
+
+        updateUI();
+        setVisible(true);
     }
 
     public void reset(){

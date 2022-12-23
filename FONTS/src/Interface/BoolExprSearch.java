@@ -24,6 +24,9 @@ public class BoolExprSearch extends JPanel {
     private JTextField boolExpr;
 
     private DefaultTableModel model;
+
+    private JTable table;
+
     private JTable list;
 
     private JButton searchNew = new JButton("Search New");
@@ -90,7 +93,7 @@ public class BoolExprSearch extends JPanel {
         c.gridwidth = 1;
         add(searchNew, c);
         c.gridx = 3;
-        c.gridy = 2;
+        c.gridy = 1;
         add(searchList, c);
 
 
@@ -139,11 +142,59 @@ public class BoolExprSearch extends JPanel {
     }
 
 
-    public void showResults(String expr, HashMap<String, String> results){
+    public void showResults(String expr, HashMap<String, String> result){
+        removeAll();
+
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(10, 0, 10, 0);
+
         JLabel title = new JLabel("Results for  " + expr);
 
-        //tabla
+        Object[][] data = new Object[result.size()][3];
+        Icon documentIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/icone-fichier-document-noir.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
+        int j = 0;
+        for (String key : result.keySet()) {
+            data[j][0] = documentIcon;
+            data[j][1] = result.get(key);
+            data[j][2] = key;
+            ++j;
+        }
 
+        String[] columnNames = {"Type", "Name", "Author"};
+        model = new DefaultTableModel(data, columnNames) {
+            //  Returning the Class of each column will allow different
+            //  renderers to be used based on Class
+            public Class getColumnClass(int column) {
+                return getValueAt(0, column).getClass();
+            }
+        };
+        table = new JTable(model) {
+            private static final long serialVersionUID = 1L;
+
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setPreferredScrollableViewportSize(table.getPreferredSize());
+        table.setAutoCreateRowSorter(true);
+        table.setShowVerticalLines(false);
+        table.setRowHeight(30);
+        table.getColumnModel().getColumn(0).setMinWidth(50);
+        table.getColumnModel().getColumn(0).setMaxWidth(50);
+
+        JScrollPane tableScroll = new JScrollPane(table);
+        tableScroll.setPreferredSize(new Dimension(500, 350));
+
+        c.gridx = 0;
+        c.gridy = 0;
+        add(title, c);
+        c.gridy = 1;
+        add(tableScroll, c);
+
+        updateUI();
+        setVisible(true);
     }
 
     public void reset() {
