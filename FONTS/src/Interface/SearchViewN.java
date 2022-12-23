@@ -7,20 +7,45 @@ import java.awt.event.ActionListener;
 
 public class SearchViewN extends JPanel {
 
+    /**
+     * Instance of the Presentation Controller
+     */
     private PresentationController CtrlPres = PresentationController.getInstance();
 
+    /**
+     * Button to search titles from author
+     */
     private JButton b1 = new JButton("Search titles by author");
+    /**
+     * Button to search authors from prefix
+     */
     private JButton b2 = new JButton("Search authors by prefix");
+    /**
+     * Button to search a concrete document
+     */
     private JButton b3 = new JButton("Search concrete document");
+    /**
+     * Button to search similar documents
+     */
     private JButton b4 = new JButton("Search similar documents");
+    /**
+     * Button to search relevant documents
+     */
     private JButton b5 = new JButton("Search relevant documents");
+    /**
+     * Button to search by boolean expression
+     */
     private JButton b6 = new JButton("Search documents by boolean expression");
 
-    private JFrame frame = new JFrame ("JFrame");
-
+    /**
+     * Panel for the results view
+     */
     private TitlesAuthorSearch titlesAuthorSearch;
 
-
+    /**
+     * Creator of the SearchViewN
+     * @param mv Main View
+     */
     public SearchViewN(MainView mv) {
         setPreferredSize(new Dimension(500, 350));
         setMaximumSize(new Dimension(500, 350));
@@ -97,7 +122,6 @@ public class SearchViewN extends JPanel {
 
         setVisible(true);
 
-
         ActionListener chooseSearch = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -126,6 +150,9 @@ public class SearchViewN extends JPanel {
 
     }
 
+    /**
+     * Restarts the view
+     */
     public void restart(){
         setVisible(true);
     }

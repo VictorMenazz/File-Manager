@@ -13,25 +13,51 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BoolExprSearch extends JPanel {
+    /**
+     * Instance of the Presentation Controller
+     */
     private PresentationController CtrlPres = PresentationController.getInstance();
-
+    /**
+     * ListSelectionListener for the table
+     */
     private ListSelectionListener listSelectionListener;
+    /**
+     * Title of the view
+     */
     private JLabel titleView = new JLabel("Write a new Boolean Expression or choose an existing one");
-    private JLabel l = new JLabel("");
+    /**
+     * Label "Title"
+     */
     private JLabel l2 = new JLabel("Title");
 
-
+    /**
+     * TextField for the boolean expression
+     */
     private JTextField boolExpr;
-
+    /**
+     * Model for the table
+     */
     private DefaultTableModel model;
-
+    /**
+     * Table with results from the query
+     */
     private JTable table;
-
+    /**
+     * Table with the historial of boolean expressions
+     */
     private JTable list;
-
+    /**
+     * Button to search from the writed boolean expression
+     */
     private JButton searchNew = new JButton("Search New");
+    /**
+     * Button to search from the selected boolean expression from the list
+     */
     private JButton searchList = new JButton("Search from List");
 
+    /**
+     * Updates the content of the table
+     */
     private void reloadTable() {
         String[] bExpr = CtrlPres.getBoolExpr();
         String[] col = {"Boolean Expression"};
@@ -45,6 +71,9 @@ public class BoolExprSearch extends JPanel {
         setVisible(true);
     }
 
+    /**
+     * Loads the query view
+     */
     public void load(){
         removeAll();
         setLayout(new GridBagLayout());
@@ -99,6 +128,9 @@ public class BoolExprSearch extends JPanel {
 
     }
 
+    /**
+     * Creator of the BoolExprSearch
+     */
     public BoolExprSearch(){
         setLayout(null);
         setPreferredSize(new Dimension(500,350));
@@ -118,11 +150,14 @@ public class BoolExprSearch extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == searchNew){
                     String expr = boolExpr.getText();
-                    try {
-                        HashMap<String, String> results = CtrlPres.toResultboolExp(expr);
-                        showResults(expr, results);
-                    } catch(Exception e1){
-                        JOptionPane.showMessageDialog(new JDialog(), e1.getMessage());
+                    if (expr.isEmpty()) JOptionPane.showMessageDialog(new JOptionPane(), "Introduce Boolean Expression to match");
+                    else {
+                        try {
+                            HashMap<String, String> results = CtrlPres.toResultboolExp(expr);
+                            showResults(expr, results);
+                        } catch(Exception e1){
+                            JOptionPane.showMessageDialog(new JDialog(), e1.getMessage());
+                        }
                     }
                 } else if (e.getSource() == searchList){
                     Integer row = list.getSelectedRow();
@@ -141,7 +176,11 @@ public class BoolExprSearch extends JPanel {
         searchList.addActionListener(SearchResult);
     }
 
-
+    /**
+     * Show table results from the query
+     * @param expr, Boolean expression to match
+     * @param result, documents from the query
+     */
     public void showResults(String expr, HashMap<String, String> result){
         removeAll();
 
@@ -197,6 +236,9 @@ public class BoolExprSearch extends JPanel {
         setVisible(true);
     }
 
+    /**
+     * Restarts the view
+     */
     public void reset() {
         load();
         setVisible(true);
