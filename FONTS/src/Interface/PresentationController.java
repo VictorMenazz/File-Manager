@@ -136,10 +136,9 @@ public class PresentationController {
      * @param author, author's name of the document
      * @param title, title of the document
      * @param newDoc, if the document is new
-     * @param modify, if can modify the content
      */
-    public void toDocument(String author, String title, String language, boolean newDoc, boolean modify) {
-        DocumentView document =  new DocumentView(author, title, language, newDoc, modify);
+    public void toDocument(String author, String title, String language, boolean newDoc, boolean modi) {
+        DocumentView document =  new DocumentView(author, title, language, newDoc, modi);
     }
 
     /**

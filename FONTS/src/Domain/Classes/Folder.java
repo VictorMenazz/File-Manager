@@ -150,7 +150,7 @@ public class Folder {
         }
         else {
             int nextFolder = getNextFolderParent(foldId);
-            Folder f = getFolder(foldId);
+            Folder f = getFolder(nextFolder);
             f.addNonConstructedDocument(authorName,title,text,lang,foldId);
         }
     }

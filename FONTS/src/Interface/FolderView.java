@@ -40,6 +40,8 @@ public class FolderView extends JPanel implements ActionListener {
 
     private int folderID;
 
+    private int fatherID;
+
     /**
      * List of subfolders
      */
@@ -47,9 +49,10 @@ public class FolderView extends JPanel implements ActionListener {
 
     private DefaultTableModel model;
 
-    public FolderView(MainView mv, int id) {
+    public FolderView(MainView mv, int id, int fatherId) {
         mainView = mv;
         folderID = id;
+        fatherID = fatherId;
 
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
@@ -58,6 +61,7 @@ public class FolderView extends JPanel implements ActionListener {
         ArrayList<String> authors = ctrlPres.getDocumentAuthors(id);
         ArrayList<String> documents = ctrlPres.getDocumentTitles(id);
         HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(id);
+        subF = subfolders;
         fileSystemView = FileSystemView.getFileSystemView();
 
         Object[][] data = new Object[(authors.size() + subfolders.size())][3];
@@ -163,16 +167,20 @@ public class FolderView extends JPanel implements ActionListener {
         for(Integer aux : subF.keySet()) {
             if(subF.get(aux) == name) {
                 return aux;
-
             }
         }
         return folderID;
+    }
+
+    public int getFather(){
+        return fatherID;
     }
 
     public void reload(){
         ArrayList<String> authors = ctrlPres.getDocumentAuthors(folderID);
         ArrayList<String> documents = ctrlPres.getDocumentTitles(folderID);
         HashMap<Integer, String> subfolders = ctrlPres.getSubFolders(folderID);
+        subF = subfolders;
         String[] col = {"Type", "Name", "Author"};
         Object[][] data = new Object[(authors.size() + subfolders.size())][3];
         Icon folderIcon = new ImageIcon(new ImageIcon("FONTS/src/Interface/Utils/folder-icon.png").getImage().getScaledInstance(20, 20, Image.SCALE_DEFAULT));
@@ -207,7 +215,7 @@ public class FolderView extends JPanel implements ActionListener {
         String s = e.getActionCommand();
 
         if(s.equals("Open folder")) {
-            mainView.setGo("Open Folder");
+            mainView.setGo("Folder View");
         }
 
         else if(s.equals("Delete folder")) {
@@ -222,7 +230,12 @@ public class FolderView extends JPanel implements ActionListener {
             ctrlPres.toDocument(author, title, "null", false, false);
         }
         else if(s.equals("Edit file")) {
-
+            int row = table.getSelectedRow();
+            String author = (String) table.getValueAt(row, 2);
+            String title = (String) table.getValueAt(row, 1);
+            System.out.println(author);
+            System.out.println(title);
+            ctrlPres.toDocument(author, title, "null", false, true);
         }
         else if(s.equals("Delete file")) {
 

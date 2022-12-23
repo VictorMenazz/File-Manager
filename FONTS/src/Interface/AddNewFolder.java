@@ -54,7 +54,7 @@ public class AddNewFolder extends JPanel implements ActionListener {
     /**
      * Default creator of dialog
      */
-    public AddNewFolder(MainView mv) {
+    public AddNewFolder(MainView mv, int fatherid) {
         mainView = mv;
         ids = new HashSet<>();
         ids.add(0);
@@ -114,6 +114,7 @@ public class AddNewFolder extends JPanel implements ActionListener {
         if(s.equals("OK")) {
             int aux = ids.size();
             ctrlPres.newFolder(inputInitialName.getText(), 0);
+            JOptionPane.showMessageDialog(this, "Folder created");
             ids.add(aux);
             reset();
         }
@@ -123,6 +124,6 @@ public class AddNewFolder extends JPanel implements ActionListener {
     }
 
     public static void main(String args[]) {
-        AddNewFolder ad = new AddNewFolder(new MainView());
+        AddNewFolder ad = new AddNewFolder(new MainView(), 0);
     }
 }

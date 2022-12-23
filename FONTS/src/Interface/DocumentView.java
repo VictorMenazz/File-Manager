@@ -7,6 +7,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.*;
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 
 /**
@@ -62,9 +63,8 @@ public class DocumentView implements ActionListener {
      * @param tit, title of the document
      * @param lang, language of the document
      * @param newD, boolean that if true: it's a new document
-     * @param mod, if can modify document
      */
-    public DocumentView(String aut, String tit, String lang, boolean newD, boolean mod) {
+    public DocumentView(String aut, String tit, String lang, boolean newD, boolean modi) {
         author = aut;
         title = tit;
         if(!lang.equals("null")) language = lang;
@@ -80,13 +80,8 @@ public class DocumentView implements ActionListener {
 
             // Set theme to ocean
             MetalLookAndFeel.setCurrentTheme(new OceanTheme());
-        } catch (UnsupportedLookAndFeelException e) {
-            throw new RuntimeException(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (InstantiationException e) {
-            throw new RuntimeException(e);
-        } catch (IllegalAccessException e) {
+        } catch (UnsupportedLookAndFeelException | ClassNotFoundException | InstantiationException |
+                 IllegalAccessException e) {
             throw new RuntimeException(e);
         }
 
@@ -140,16 +135,16 @@ public class DocumentView implements ActionListener {
         textEditor.setSize(750, 500);
 
         if(!newDoc) {
-            ArrayList<String> aux = ctrlPres.getDocument(title, author);
+            ArrayList<String> aux = ctrlPres.getDocument(author, title);
             language = aux.get(3);
             textArea.setText(aux.get(2));
             textEditor.setTitle(aux.get(0));
         }
-        if(!mod) {
-            textArea.setEditable(false);
-        }
         else {
             textEditor.setTitle(title);
+        }
+        if(!modi) {
+            textArea.setEditable(false);
         }
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -171,22 +166,36 @@ public class DocumentView implements ActionListener {
         if(s.equals("Save")) {
             if(!newDoc) {
                 try {
+                    /*if(textArea.getText().length() == 0) JOptionPane.showMessageDialog(new JDialog(), "Document cannot be empty");
+                    else {
+
+                    }*/
                     ctrlPres.modifyContent(author, title, textArea.getText());
+                    JOptionPane.showMessageDialog(new JDialog(), "Document saved");
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(new JDialog(), "Can't modify the content");
                 }
             }
             else {
                 try {
-                    if(language.equals("Spanish")) ctrlPres.newDocument(author, title, textArea.getText(), "ESP");
-                    else if (language.equals("Catalan")) ctrlPres.newDocument(author, title, textArea.getText(), "CAT");
-                    else ctrlPres.newDocument(author, title, textArea.getText(), "ENG");
+                    /*if(textArea.getText().length() == 0) JOptionPane.showMessageDialog(new JDialog(), "Document cannot be empty");*/
+                    if(language.equals("Spanish")) {
+                        ctrlPres.newDocument(author, title, textArea.getText(), "ESP");
+                        JOptionPane.showMessageDialog(new JDialog(), "Document saved");
+                    }
+                    else if (language.equals("Catalan")) {
+                        ctrlPres.newDocument(author, title, textArea.getText(), "CAT");
+                        JOptionPane.showMessageDialog(new JDialog(), "Document saved");
+                    }
+                    else {
+                        ctrlPres.newDocument(author, title, textArea.getText(), "ENG");
+                        JOptionPane.showMessageDialog(new JDialog(), "Document saved");
+                    }
 
                 } catch (IOException ex) {
                     JOptionPane.showMessageDialog(new JDialog(), "Can't save the document");
                 }
             }
-            JOptionPane.showMessageDialog(new JDialog(), "Document saved");
             textEditor.setVisible(false);
         }
 

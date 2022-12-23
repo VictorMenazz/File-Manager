@@ -31,7 +31,6 @@ public class MainView extends JFrame implements ActionListener {
     private Menu menu;
     private AddNewDocument addNewDocument;
     private AddNewFolder addNewFolder;
-    private DocumentView documentView;
     private SearchViewN searchViewN;
     private ExprManager exprManager;
     private FolderView folderView;
@@ -64,7 +63,7 @@ public class MainView extends JFrame implements ActionListener {
     private CardLayout card;
 
     private String language;
-    private int folderID;
+    private int actFolderID;
 
 
 
@@ -72,7 +71,7 @@ public class MainView extends JFrame implements ActionListener {
      * Constructor of MainView
      */
     public MainView() {
-        folderID = 0;
+        actFolderID = 0;
         setSize(800, 500);
         setMinimumSize(new Dimension(700,400));
         setLocationRelativeTo(null);//centre window
@@ -199,9 +198,9 @@ public class MainView extends JFrame implements ActionListener {
         content.setLayout(card);
 
         addNewDocument = new AddNewDocument(this);
-        addNewFolder = new AddNewFolder(this);
+        addNewFolder = new AddNewFolder(this, actFolderID);
         //searchView = new SearchView();
-        folderView = new FolderView(this, folderID);
+        folderView = new FolderView(this, actFolderID, -1);
         searchViewN = new SearchViewN(this);
         exprManager = new ExprManager(this);
         modifyBoolExpr = new ModifyBoolExpr();
@@ -230,7 +229,6 @@ public class MainView extends JFrame implements ActionListener {
 
         setGo("Init");
     }
-
 
 
     public void setGo(String state) {
@@ -263,7 +261,8 @@ public class MainView extends JFrame implements ActionListener {
             }
             case "Folder View":{
                 int aux = folderView.getSelectedFolder();
-                new FolderView(this, aux);
+                new FolderView(this, aux, actFolderID);
+                actFolderID = aux;
                 break;
             }
             case "Import Document":{
@@ -325,7 +324,7 @@ public class MainView extends JFrame implements ActionListener {
                                         else if (language.equals("Catalan")) language = "CAT";
                                         else language = "ENG";
 
-                                        ctrlPres.importDocument(fc.getSelectedFile().getAbsolutePath(), folderID, language, ext);
+                                        ctrlPres.importDocument(fc.getSelectedFile().getAbsolutePath(), actFolderID, language, ext);
                                         JOptionPane.showMessageDialog(new JOptionPane(), "File imported");
 
                                         setGo("Main");
