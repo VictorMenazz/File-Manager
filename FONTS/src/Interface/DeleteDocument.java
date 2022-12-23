@@ -11,12 +11,12 @@ import java.util.ArrayList;
 
 
 /**
- * @file DeleteDocDialog.java
- * Class <em>DeleteDocDialog</em>
+ * @file DeleteDocument.java
+ * Class <em>DeleteDocument</em>
  */
 
 /**
- * Dialog to delete document
+ * View to delete a document
  *
  * @author Júlia Alice Amenós Dien
  * @author Víctor Mena Doz
@@ -28,28 +28,51 @@ public class DeleteDocument extends JPanel implements ActionListener {
      */
     private PresentationController ctrlPres = PresentationController.getInstance();
 
+    /**
+     * Instance of Main View
+     */
     private MainView mainView;
 
+    /**
+     * Author label
+     */
     private JLabel l = new JLabel("Author");
+    /**
+     * Title label
+     */
     private JLabel l2 = new JLabel("Title");
-
+    /**
+     * Title View label
+     */
     private JLabel titleView = new JLabel("Select document to delete:");
-
+    /**
+     * Model for authors comboBox
+     */
     private DefaultComboBoxModel<String> modelA;
+    /**
+     * Model for titles comboBox
+     */
     private DefaultComboBoxModel<String> modelT;
-
+    /**
+     * Authors comboBox
+     */
     private JComboBox<String> authors;
+    /**
+     * Titles comboBox
+     */
     private JComboBox<String> titles;
-
+    /**
+     * Button to delete document
+     */
     private JButton delete = new JButton("Delete");
 
     /**
-     * Represents Cancel button.
+     * Button to cancel
      */
     private JButton buttonCancel = new JButton("Cancel");
 
     /**
-     * Constructor of DeleteDocDialog
+     * Constructor of DeleteDocument
      */
     public DeleteDocument(MainView mv) {
         mainView = mv;
@@ -77,6 +100,9 @@ public class DeleteDocument extends JPanel implements ActionListener {
         delete.addActionListener(SearchDocument);
     }
 
+    /**
+     * Resets the view
+     */
     public void reset() {
         if (authors != null) authors.setSelectedIndex(-1);
         if (titles != null) titles.setSelectedIndex(-1);
@@ -84,6 +110,9 @@ public class DeleteDocument extends JPanel implements ActionListener {
         setVisible(true);
     }
 
+    /**
+     * Updates and loads the view
+     */
     public void load(){
         removeAll();
 
