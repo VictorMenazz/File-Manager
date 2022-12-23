@@ -175,16 +175,16 @@ public class BooleanExpression {
             //String regex = ".*\\b" + Pattern.quote(n.data) + "\\b.*";
             //return sentence.matches("")
 
-            
+            Pattern pattern = Pattern.compile("\\b" + n.data + "\\b");
 
-            return sentence.contains(n.data);
+            // Create a matcher for the pattern
+            Matcher matcher = pattern.matcher(sentence);
+            return matcher.find();
 
             //return sentence.contains(n.data);
 
-            //System.out.println(sentence);
-            //System.out.println(m.matches());
+            //return sentence.contains(n.data);
 
-            //return m.matches();
         }
         //node is an operand
         if (n.data.equals("&")) return recursiveFind(sentence, n.right) && recursiveFind(sentence, n.left);

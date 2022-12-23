@@ -3,6 +3,7 @@ package FONTS.src.Domain.Controllers.Drivers;
 import FONTS.src.Domain.Classes.BooleanExpression;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -52,7 +53,14 @@ public class BooleanExpressionDriver {
                 "2. testGetExpression\n" +
                 "3. testIsDocumentValid\n" +
                 "4. Exit\n";
+
+        testBooleanExpression();
+        testIsDocumentValid();
+
+
+
         System.out.println(functions);
+
 
         int op = 1;
 
