@@ -42,18 +42,27 @@ public class DocumentSearch extends JPanel {
         authors = new JComboBox<>(modelA);
         authors.updateUI();
 
+        modelT = new DefaultComboBoxModel<>();
+        titles = new JComboBox<>(modelT);
+
         authors.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String author = (String) authors.getSelectedItem();
                 if(author != null) {
-                    ArrayList<String> listTitles = CtrlPres.toResultAutDocs(author);
-                    if (modelT != null) modelT.removeAllElements();
-                    for (int i = 0; i < listTitles.size(); ++i) modelT.addElement(listTitles.get(i));
-                    titles.updateUI();
+                    ArrayList<String> list2 = CtrlPres.toResultAutDocs(author);
+                    String[] array2 = new String[list2.size()];
+                    for (int i = 0; i < list2.size(); ++i) array2[i] = list2.get(i);
+
+                    modelT = new DefaultComboBoxModel<>(array2);
+                    titles.setModel(modelT);
                 }
+
             }
         });
+
+        revalidate();
+        repaint();
 
         c.gridx = 0;
         c.gridy = 0;
@@ -69,7 +78,7 @@ public class DocumentSearch extends JPanel {
         c.gridx = 0;
         c.gridy = 2;
         add(l2, c);
-        if (titles != null) {
+        if (authors.getSelectedIndex() != -1) {
             c.gridx = 1;
             c.gridy = 2;
             add(titles, c);

@@ -24,8 +24,8 @@ public class BoolExprSearch extends JPanel {
     private DefaultTableModel model;
     private JTable list;
 
-    private JButton search = new JButton("Search");
-    private JButton searchList = new JButton("SearchList");
+    private JButton searchNew = new JButton("Search New");
+    private JButton searchList = new JButton("Search from List");
 
     private void reloadTable() {
         String[] bExpr = CtrlPres.getBoolExpr();
@@ -53,6 +53,7 @@ public class BoolExprSearch extends JPanel {
         add(titleView, c);
         c.gridx = 0;
         c.gridy = 1;
+        c.gridwidth = 1;
         add(boolExpr, c);
         c.gridx = 0;
         c.gridy = 2;
@@ -60,7 +61,7 @@ public class BoolExprSearch extends JPanel {
         c.gridx = 3;
         c.gridy = 1;
         c.gridwidth = 1;
-        add(search, c);
+        add(searchNew, c);
         c.gridx = 3;
         c.gridy = 2;
         add(searchList, c);
@@ -96,6 +97,7 @@ public class BoolExprSearch extends JPanel {
         list.setAutoCreateRowSorter(true);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.getSelectionModel().addListSelectionListener(listSelectionListener);
+        list.setPreferredSize(new Dimension (200, 200));
         JScrollPane tableScroll = new JScrollPane(list);
         tableScroll.setPreferredSize(new Dimension(400, 200));
 
@@ -109,44 +111,22 @@ public class BoolExprSearch extends JPanel {
         ActionListener SearchTitles = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*String titulos = CtrlPres.buscarTitulos(txtAutor.getText());
-                if (titulos == null) {
-                    ferror();
-                }
-                else {
-                    JPanel middlePanel = new JPanel();
-                    JButton BOkay = new JButton("Aceptar");
-                    middlePanel.setBorder(new TitledBorder(new EtchedBorder(), "Titulos del autor " + txtAutor.getText()));
+                if (e.getSource() == searchNew){
 
-                    JTextArea display = new JTextArea(20, 22);
-                    display.setText(titulos);
-                    display.setEditable(false);
-                    JScrollPane scroll = new JScrollPane(display);
-                    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
-                    middlePanel.add(scroll);
 
-                    JFrame frame = new JFrame();
-                    frame.add(middlePanel);
-                    frame.pack();
-                    frame.setLocationRelativeTo(null);
-                    frame.setVisible(true);
-                    frame.setResizable(false);
-
+                } else if (e.getSource() == searchList){
 
                 }
-                ActionListener Salir = new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        txtAutor.setText("");
-                    }
-                };
-                //BOkay.addActionListener(Salir);
-                */
-
             }
         };
         //search.addActionListener(BuscarTitulos);
+    }
+
+
+    public void showResults(){
+
+
     }
 
     public void reset() {
