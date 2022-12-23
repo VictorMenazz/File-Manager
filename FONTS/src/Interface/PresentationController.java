@@ -154,14 +154,8 @@ public class PresentationController {
      * @param boolExp, string with the boolean expression
      * @throws Exception
      */
-    public void toResultboolExp(String boolExp) throws Exception {
-        HashMap<String, String> aux = ctrlDomain.booleanExpressionSearch(boolExp);
-        ArrayList<String> titles = (ArrayList<String>) aux.keySet();
-        ArrayList<String> authors = (ArrayList<String>) aux.values();
-        JFrame resWindow = new JFrame();
-        resWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        resWindow.setTitle("Result for boolean expression search");
-        resWindow.setVisible(true);
+    public HashMap<String, String> toResultboolExp(String boolExp) throws Exception {
+        return ctrlDomain.booleanExpressionSearch(boolExp);
     }
 
     /**

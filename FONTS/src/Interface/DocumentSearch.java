@@ -109,7 +109,7 @@ public class DocumentSearch extends JPanel {
         ActionListener SearchDocument = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (e.getSource() == search && authors != null && titles != null){
+                if (e.getSource() == search && authors.getSelectedIndex() != -1 && titles.getSelectedIndex() != -1){
                     String a = (String) authors.getSelectedItem();
                     String t = (String) titles.getSelectedItem();
                     CtrlPres.toDocument(a, t, "null", false, true);

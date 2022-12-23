@@ -1,5 +1,6 @@
 package FONTS.src.Interface;
 
+import javax.naming.directory.SearchResult;
 import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
@@ -9,6 +10,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class BoolExprSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
@@ -46,37 +48,7 @@ public class BoolExprSearch extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(10, 0, 10, 0);
 
-        c.anchor = GridBagConstraints.WEST;
-        c.gridx = 0;
-        c.gridy = 0;
-        c.gridwidth = 2;
-        add(titleView, c);
-        c.gridx = 0;
-        c.gridy = 1;
-        c.gridwidth = 1;
-        add(boolExpr, c);
-        c.gridx = 0;
-        c.gridy = 2;
-        add(list, c);
-        c.gridx = 3;
-        c.gridy = 1;
-        c.gridwidth = 1;
-        add(searchNew, c);
-        c.gridx = 3;
-        c.gridy = 2;
-        add(searchList, c);
-
-
-    }
-
-    public BoolExprSearch(){
-        setLayout(null);
-        setPreferredSize(new Dimension(500,350));
-        setMaximumSize(new Dimension(500,350));
-        setMinimumSize(new Dimension(500,350));
-
-        boolExpr = new JTextField();
-        boolExpr.setPreferredSize(new Dimension(200, 20));
+        boolExpr.setText("");
 
         String[] bExpr = CtrlPres.getBoolExpr();
         String[] col = {"Boolean Expressions"};
@@ -101,31 +73,76 @@ public class BoolExprSearch extends JPanel {
         JScrollPane tableScroll = new JScrollPane(list);
         tableScroll.setPreferredSize(new Dimension(400, 200));
 
+        c.anchor = GridBagConstraints.WEST;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridwidth = 2;
+        add(titleView, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        c.gridwidth = 1;
+        add(boolExpr, c);
+        c.gridx = 0;
+        c.gridy = 2;
+        add(tableScroll, c);
+        c.gridx = 3;
+        c.gridy = 1;
+        c.gridwidth = 1;
+        add(searchNew, c);
+        c.gridx = 3;
+        c.gridy = 2;
+        add(searchList, c);
 
+
+    }
+
+    public BoolExprSearch(){
+        setLayout(null);
+        setPreferredSize(new Dimension(500,350));
+        setMaximumSize(new Dimension(500,350));
+        setMinimumSize(new Dimension(500,350));
+
+        boolExpr = new JTextField();
+        boolExpr.setPreferredSize(new Dimension(400, 20));
 
         load();
 
         setVisible(true);
 
 
-        ActionListener SearchTitles = new ActionListener() {
+        ActionListener SearchResult = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == searchNew){
-
-
-
+                    String expr = boolExpr.getText();
+                    try {
+                        HashMap<String, String> results = CtrlPres.toResultboolExp(expr);
+                        showResults(expr, results);
+                    } catch(Exception e1){
+                        JOptionPane.showMessageDialog(new JDialog(), e1.getMessage());
+                    }
                 } else if (e.getSource() == searchList){
-
+                    Integer row = list.getSelectedRow();
+                    Integer column = list.getSelectedColumn();
+                    String expr = (String) list.getValueAt(row, column);
+                    try {
+                        HashMap<String, String> results = CtrlPres.toResultboolExp(expr);
+                        showResults(expr, results);
+                    } catch(Exception e2){
+                        JOptionPane.showMessageDialog(new JDialog(), e2.getMessage());
+                    }
                 }
             }
         };
-        //search.addActionListener(BuscarTitulos);
+        searchNew.addActionListener(SearchResult);
+        searchList.addActionListener(SearchResult);
     }
 
 
-    public void showResults(){
+    public void showResults(String expr, HashMap<String, String> results){
+        JLabel title = new JLabel("Results for  " + expr);
 
+        //tabla
 
     }
 
