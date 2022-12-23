@@ -112,8 +112,8 @@ public class AddNewDocument extends JPanel implements ActionListener {
     }
 
     public void reset() {
-        inputAuthor.setText(" ");
-        inputInitialTitle.setText(" ");
+        inputAuthor.setText("");
+        inputInitialTitle.setText("");
 
         setVisible(true);
     }

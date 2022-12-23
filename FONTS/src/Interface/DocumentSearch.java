@@ -1,6 +1,8 @@
 package FONTS.src.Interface;
 
 import javax.swing.*;
+import javax.swing.border.EtchedBorder;
+import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -59,7 +61,7 @@ public class DocumentSearch extends JPanel {
         ActionListener SearchTitles = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*String titulos = CtrlPres.buscarTitulos(txtAutor.getText());
+                String titulos = CtrlPres.buscarTitulos(txtAutor.getText());
                 if (titulos == null) {
                     ferror();
                 }
@@ -92,7 +94,6 @@ public class DocumentSearch extends JPanel {
                     }
                 };
                 //BOkay.addActionListener(Salir);
-                */
 
             }
         };

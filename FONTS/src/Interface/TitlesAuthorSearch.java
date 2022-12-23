@@ -2,6 +2,7 @@ package FONTS.src.Interface;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionListener;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -17,11 +18,6 @@ public class TitlesAuthorSearch extends JPanel {
         this.txtAutor.setText(txtAutor);
         search.doClick();
     }*/
-
-    /**
-     * Table model for File[]
-     */
-    private ListSelectionListener listSelectionListener;
 
     private JComboBox<String> authors;
     private DefaultComboBoxModel<String> model;
@@ -128,7 +124,6 @@ public class TitlesAuthorSearch extends JPanel {
         table.setShowVerticalLines(false);
         table.setRowHeight(30);
 
-        table.getSelectionModel().addListSelectionListener(listSelectionListener);
         JScrollPane tableScroll = new JScrollPane(table);
         tableScroll.setPreferredSize(new Dimension(400, 200));
 

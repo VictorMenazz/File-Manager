@@ -98,7 +98,7 @@ public class AddNewFolder extends JPanel implements ActionListener {
     }
 
     public void reset() {
-        inputInitialName.setText(" ");
+        inputInitialName.setText("");
 
         setVisible(true);
     }

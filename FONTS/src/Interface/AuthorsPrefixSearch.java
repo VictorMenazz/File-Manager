@@ -1,6 +1,7 @@
 package FONTS.src.Interface;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -89,6 +90,12 @@ public class AuthorsPrefixSearch extends JPanel {
             }
         };
 
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setPreferredScrollableViewportSize(table.getPreferredSize());
+        table.setAutoCreateRowSorter(true);
+        table.setShowVerticalLines(false);
+        table.setRowHeight(30);
+
         table.setAutoCreateRowSorter(true);
         JScrollPane tableScroll = new JScrollPane(table);
         tableScroll.setPreferredSize(new Dimension(400, 200));
@@ -100,7 +107,7 @@ public class AuthorsPrefixSearch extends JPanel {
         add(title, c);
         c.gridy = 1;
         //c.gridwidth = 3;
-        add(table, c);
+        add(tableScroll, c);
 
         updateUI();
         setVisible(true);
