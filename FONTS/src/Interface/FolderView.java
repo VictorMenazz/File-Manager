@@ -273,8 +273,6 @@ public class FolderView extends JPanel implements ActionListener {
                 String author = (String) table.getValueAt(row, 2);
                 if (!author.equals("-")) {
                     String title = (String) table.getValueAt(row, 1);
-                    System.out.println(author);
-                    System.out.println(title);
                     ctrlPres.toDocument(author, title, "null", false, false);
                 } else JOptionPane.showMessageDialog(new JOptionPane(), "Selection is not a document");
             }
