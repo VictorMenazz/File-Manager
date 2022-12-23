@@ -55,14 +55,19 @@ public class SearchController {
         }
     }
 
+    /**
+     * Check if a Boolean Expression exist in System.
+     * @param boolExp, indicating the Boolean Expression.
+     * @return A Boolean, indicating if the Boolean Expression exists.
+     */
     public Boolean existsExpression(String boolExp) {
         return listBoolExps.contains(boolExp);
     }
 
     /**
-     * @brief Modifies an existing boolean expression
-     * @param oldExpr, old boolean expression
-     * @param newExpr, new boolean expression
+     * Modifies an existing boolean expression.
+     * @param oldExpr, old boolean expression.
+     * @param newExpr, new boolean expression.
      * @throws Exception
      */
     public String modifyExpression(String oldExpr, String newExpr) {
@@ -80,7 +85,7 @@ public class SearchController {
 
 
     /**
-     * @brief Deletes a boolean expression of the history(list)
+     * Deletes a boolean expression of the history(list)
      * @param boolExp, string with the boolean expression.
      * @throws Exception
      */
@@ -95,7 +100,7 @@ public class SearchController {
     }
 
     /**
-     * @brief gets a string with all the boolean expressions saved.
+     * gets a string with all the boolean expressions saved.
      * @return String with all the saved boolean expressions
      */
     public String getListExp(){
@@ -116,7 +121,7 @@ public class SearchController {
     }
 
     /**
-     * @brief Search of a list of Documents who satisfy the boolean expression
+     * Search of a list of Documents who satisfy the boolean expression
      * @param rootFolder, instance of the root folder
      * @param expression, instance of the boolean expression to use
      * @return list of documents that satisfy boolean expression
@@ -144,7 +149,7 @@ public class SearchController {
 
 
     /**
-     * @brief Search of k documents that appears to specific document
+     * Search of k documents that appears to specific document
      * @param rootFolder, instance of the root folder
      * @param authorName, name of the author of the specific document
      * @param title, title of the specific document
@@ -193,7 +198,7 @@ public class SearchController {
     }
 
     /**
-     * @brief Search of k documents more relevant for a list of specific words
+     * Search of k documents more relevant for a list of specific words
      * @param rootFolder, instance of the root folder
      * @param pWords, list of specific words
      * @param language, language of the search
@@ -266,7 +271,7 @@ public class SearchController {
     }
 
     /**
-     * @brief Function to calculate Cosine similarity between maps
+     * Function to calculate Cosine similarity between maps
      * @param first, first map
      * @param second, second map
      * @return value of cosine similarity between first and second maps
@@ -283,7 +288,7 @@ public class SearchController {
     }
 
     /**
-     * @brief Function to calculate normalize of a map
+     * Function to calculate normalize of a map
      * @param map, frequency's vector of a document
      * @return Normalize value of the map
      */

@@ -219,10 +219,22 @@ public class FoldersController {
         rootFolder.deleteFolder(foldId);
     }
 
+
+    /**
+     * Gets the JSON to export a Document.
+     * @param title, Represents the title of the Document.
+     * @param author, Represents the author of the Document.
+     * @return A String, containing the JSON.
+     */
     public String getJSON(String title, String author) {
         return rootFolder.getJSON(title, author);
     }
 
+    /**
+     * Recovers the JSON and imports the JSON.
+     * @param JSON, containing all the information.
+     * @param folderId, containing the folder in which it will be saved.
+     */
     public void restoreJSON(String JSON, Integer folderId) {
         rootFolder.restoreJSON(JSON, folderId);
     }

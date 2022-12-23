@@ -637,6 +637,12 @@ public class Folder {
         }
     }
 
+    /**
+     * Gets the JSON to export a Document.
+     * @param title, Represents the title of the Document.
+     * @param author, Represents the author of the Document.
+     * @return A String, containing the JSON.
+     */
     public String getJSON(String title, String author) {
         Pair<String, String> keyDoc = new Pair(title, author);
         if(documents.containsKey(keyDoc)) {
@@ -651,6 +657,11 @@ public class Folder {
         }
     }
 
+    /**
+     * Recovers a Document from a JSON archive.
+     * @param json, Representing the JSON archive.
+     * @param foldId, Representing the identifier of the destination folder.
+     */
     public void restoreJSON(String json, Integer foldId) {
         if(foldId.equals(this.folderId)){
             Gson gson = new Gson();

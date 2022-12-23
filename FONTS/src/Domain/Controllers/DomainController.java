@@ -82,27 +82,55 @@ public class DomainController {
         ctrlAuthors = new AuthorsController();
     }
 
+    /**
+     * Check if the Boolean Expression exist.
+     * @param boolExpr, indicating the Boolean Expression.
+     */
     public Boolean existsExpression(String boolExpr){
         return ctrlSearch.existsExpression(boolExpr);
     }
 
+    /**
+     * Adds a Boolean Expression to the System.
+     * @param boolExpr, indicating the Boolean Expression added.
+     * @return A String returning an OK or the error.
+     */
     public String addExpression(String boolExpr) {
         return ctrlSearch.addExpression(boolExpr);
 
     }
 
+    /**
+     * Gets the Boolean Expressions of the System.
+     * @return A String[], containing all the Expressions.
+     */
     public String[] getBoolExpr() {
         return ctrlSearch.getBoolExps();
     }
 
+    /**
+     * Modifies an existent Boolean Expression.
+     * @param newExpr, Refering the New Boolean Expression.
+     * @param oldExpr, Refering the Old Boolean Expression.
+     */
     public String modifyExpression(String oldExpr, String newExpr) {
         return ctrlSearch.modifyExpression(oldExpr, newExpr);
     }
 
+
+    /**
+     * Deletes an Expression from the System.
+     * @param boolExpr, Refering Boolean Expression that will be deleted.
+     */
     public Boolean deleteExpression(String boolExpr){
         return ctrlSearch.deleteExpression(boolExpr);
     }
 
+
+    /**
+     * Gets a List of all Authors' names.
+     * @return An ArrayList, with all names.
+     */
     public ArrayList<String> getAuthorsName() {
         return ctrlAuthors.getAuthorsName();
     }
@@ -194,18 +222,6 @@ public class DomainController {
     public ArrayList<String> getDocument(String authorName, String title) {
         return folders.getDocument(authorName, title);
     }
-    /*
-        We don't have to return Domain objects to the upper layers, so
-        maybe implementation would be better if:
-
-        public ArrayList<String> getDocument(String authorName, String title){
-            folders.getContent(authorName, Title);
-        }
-    */
-
-
-    //public ArrayList<Document> o Path inicial? INITIALQUERY()
-    //My recommendation  is:
 
     /**
      * Gives all the authors of the Document Folder.
@@ -233,10 +249,6 @@ public class DomainController {
     public HashMap<Integer, String> getSubFolders(int folderIdentifier){
         return folders.getSubFolders(folderIdentifier);
     }
-
-    //It would return an ArrayList of n elements with the i elements of the first vector related with the i
-    //element of the other vector.
-
 
     /**
      * Search of k documents that appears to specific document
@@ -279,7 +291,6 @@ public class DomainController {
      * @param authorName, Represents the Author of the Document.
      * @param title, Represents the Title of the Document.
      */
-    //crear excepcion
     public void deleteDocument(String authorName, String title) {
         try {
             folders.deleteDocument(authorName, title);
@@ -293,6 +304,10 @@ public class DomainController {
 
     }
 
+    /**
+     * Deletes the indicated Folder.
+     * @param foldId, The identifier of the folder.
+     */
     public void deleteFolder(Integer foldId){
         folders.deleteFolder(foldId);
     }
