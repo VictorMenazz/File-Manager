@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Vector;
 
 public class FolderView extends JPanel implements ActionListener {
     /**
@@ -200,7 +201,10 @@ public class FolderView extends JPanel implements ActionListener {
             data[i][1] = documents.get(i - subfolders.size());
             data[i][2] = authors.get(i - subfolders.size());
         }
-        if(data.length != 0)model.setDataVector(data, col);
+        if(data.length == 0) {
+
+        }
+        else model.setDataVector(data, col);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setPreferredScrollableViewportSize(table.getPreferredSize());
         table.setAutoCreateRowSorter(true);
