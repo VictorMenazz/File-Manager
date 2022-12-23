@@ -72,7 +72,7 @@ public class DocumentView implements ActionListener {
 
         //create frame
         textEditor = new JFrame("Document Title");
-        textEditor.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        textEditor.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 
         try { //CHANGE VIEW
             // Set metal look and feel

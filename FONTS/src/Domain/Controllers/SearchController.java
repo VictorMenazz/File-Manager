@@ -185,7 +185,7 @@ public class SearchController {
         Set<Pair<String, String>> dkeys = listSimilarityOrdered.keySet();
         Iterator<Pair<String, String>> it = dkeys.iterator();
         for(int i = 0; i < k; ++i) {
-            //if(!it.hasNext()) throw IOException; FOR THE FUTURE
+            if(!it.hasNext()) return null;
             Pair<String, String> pair = it.next();
             result.put(pair.first, pair.second);
         }
