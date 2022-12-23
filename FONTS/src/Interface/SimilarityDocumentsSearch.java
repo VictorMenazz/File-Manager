@@ -39,6 +39,8 @@ public class SimilarityDocumentsSearch extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(20, 0, 20, 0);
 
+        k.setValue(null);
+
         ArrayList<String> list = CtrlPres.getAuthorsName();
         String[] array = new String[list.size()];
         for (int i = 0; i < list.size(); ++i) array[i] = list.get(i);

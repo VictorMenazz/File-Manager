@@ -39,6 +39,9 @@ public class RelevantDocumentsSearch extends JPanel {
         GridBagConstraints c = new GridBagConstraints();
         c.insets = new Insets(10, 0, 10, 0);
 
+        p.setText("");
+        k.setValue(null);
+
         c.anchor = GridBagConstraints.WEST;
         c.gridx = 0;
         c.gridy = 0;
@@ -105,25 +108,26 @@ public class RelevantDocumentsSearch extends JPanel {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (e.getSource() == search){
-                    String language;
-                    if (lang.equals("Spanish")) language = "ESP";
-                    else if (lang.equals("Catalan")) language = "CAT";
-                    else language = "ENG";
+                    if (p.getText().length() != 0 && k.getText().length() != 0){
+                        String language;
+                        if (lang.equals("Spanish")) language = "ESP";
+                        else if (lang.equals("Catalan")) language = "CAT";
+                        else language = "ENG";
 
-                    int num = Integer.parseInt(k.getText());
+                        int num = Integer.parseInt(k.getText());
 
-                    HashMap<String, String> aux = null;
-                    try {
-                        aux = CtrlPres.toResultDocQuery(p.getText(), language, num);
+                        HashMap<String, String> aux = null;
+                        try {
+                            aux = CtrlPres.toResultDocQuery(p.getText(), language, num);
 
-                    } catch (IOException ex) {
-                        JOptionPane.showMessageDialog(new JDialog(), "FAIL");
-                    }
-                    if (aux.size() < num) JOptionPane.showMessageDialog(new JDialog(), "Not found the desired number of documents");
-                    else {
-
-                        showResults(aux);
-                    }
+                        } catch (IOException ex) {
+                            JOptionPane.showMessageDialog(new JOptionPane(), "FAIL");
+                        }
+                        if (aux.size() < num) JOptionPane.showMessageDialog(new JOptionPane(), "Not found the desired number of documents");
+                        else {
+                            showResults(aux);
+                        }
+                    } else JOptionPane.showMessageDialog(new JOptionPane(), "Fields cannot be empty");
                 }
 
             }
@@ -177,8 +181,6 @@ public class RelevantDocumentsSearch extends JPanel {
     }
 
     public void reset(){
-        k.setText("");
-        p.setText("");
         load();
         setVisible(true);
     }
