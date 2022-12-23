@@ -7,19 +7,60 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class RelevantDocumentsSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
     private JLabel titleView = new JLabel("Get relevant documents");
-    private JLabel l = new JLabel("Words to search");
-    private JLabel l2 = new JLabel("Number of documents to search");
+    private JLabel l = new JLabel("Words to search: ");
+    private JLabel l2 = new JLabel("Number of documents to search: ");
 
-    private JTextArea p;
+    private JLabel l3 = new JLabel("Language: ");
 
+    private JTextField p;
     private JFormattedTextField k;
+    private JComboBox<String> lang;
 
     private JButton search = new JButton("Search");
-    private JFrame frame = new JFrame ("JFrame");
+
+    public void load() {
+        removeAll();
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(10, 0, 10, 0);
+
+        c.anchor = GridBagConstraints.WEST;
+        c.gridx = 0;
+        c.gridy = 0;
+        c.gridwidth = 1;
+        add(l, c);
+        c.gridx = 0;
+        c.gridy = 1;
+        c.gridwidth = 2;
+        add(p, c);
+        c.gridx = 0;
+        c.gridy = 2;
+        c.gridwidth = 1;
+        add(l2, c);
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 1;
+        c.gridy = 2;
+        add(k, c);
+        c.anchor = GridBagConstraints.WEST;
+        c.gridx = 0;
+        c.gridy = 3;
+        add(l3, c);
+        c.anchor = GridBagConstraints.CENTER;
+        c.gridx = 1;
+        c.gridy = 3;
+        add(lang, c);
+        c.gridx = 0;
+        c.gridy = 4;
+        c.gridwidth = 2;
+        c.anchor = GridBagConstraints.CENTER;
+        add(search, c);
+
+    }
 
     public RelevantDocumentsSearch(){
         setLayout(null);
@@ -27,11 +68,11 @@ public class RelevantDocumentsSearch extends JPanel {
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
         setMinimumSize(new Dimension(500,350));
-        titleView.setBounds(175,5,200,30);
-        add(titleView);
+        //titleView.setBounds(175,5,200,30);
+        //add(titleView);
 
-        p = new JTextArea();
-
+        p = new JTextField();
+        p.setPreferredSize(new Dimension(400, 20));
 
         NumberFormat format = NumberFormat.getNumberInstance();
         NumberFormatter formatter = new NumberFormatter(format);
@@ -40,95 +81,57 @@ public class RelevantDocumentsSearch extends JPanel {
         formatter.setMaximum(100);  // set the maximum value
         formatter.setAllowsInvalid(false);  // don't allow invalid input
         k = new JFormattedTextField(formatter);
+        k.setPreferredSize(new Dimension(50, 20));
 
-        /*c.gridx = 0;
-        c.gridy = 0;
-        c.gridwidth = 1;
-        add(l, c);
-        c.gridx = 1;
-        c.gridy = 0;
-        add(p, c);
-        c.gridx = 0;
-        c.gridy = 1;
-        add(l2, c);
-        c.gridx = 1;
-        c.gridy = 1;
-        add(k, c);*/
+        lang = new JComboBox<>(new String[]{"Spanish", "Catalan", "English"});
 
-
-        l.setBounds(100,100,200,20);
-        add(l);
-        l2.setBounds(100, 200, 250, 20);
-        add(l2);
-        search.setBounds(200,300,100,20);
-        add(search);
-        p.setBounds(100, 130, 290, 60);
-        add(p);
-        k.setBounds(340, 200, 50, 20);
-        add(k);
+        load();
 
         setVisible(true);
 
 
 
-        ActionListener SearchTitles = new ActionListener() {
+        ActionListener SearchResult = new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                /*String titulos = CtrlPres.buscarTitulos(txtAutor.getText());
-                if (titulos == null) {
-                    ferror();
-                }
-                else {
-                    JPanel middlePanel = new JPanel();
-                    JButton BOkay = new JButton("Aceptar");
-                    middlePanel.setBorder(new TitledBorder(new EtchedBorder(), "Titulos del autor " + txtAutor.getText()));
+                if (e.getSource() == search){
+                    String language;
+                    if (lang.equals("Spanish")) language = "ESP";
+                    else if (lang.equals("Catalan")) language = "CAT";
+                    else language = "ENG";
 
-                    JTextArea display = new JTextArea(20, 22);
-                    display.setText(titulos);
-                    display.setEditable(false);
-                    JScrollPane scroll = new JScrollPane(display);
-                    scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+                    int num = Integer.parseInt(k.getText());
 
-                    middlePanel.add(scroll);
-
-                    JFrame frame = new JFrame();
-                    frame.add(middlePanel);
-                    frame.pack();
-                    frame.setLocationRelativeTo(null);
-                    frame.setVisible(true);
-                    frame.setResizable(false);
-
-
-                }
-                ActionListener Salir = new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        txtAutor.setText("");
+                    try {
+                        HashMap<String, String> aux = CtrlPres.toResultDocQuery(p.getText(), language, num);
+                        if (aux.size() == 0) JOptionPane.showMessageDialog(new JDialog(), "Not found the desired number of documents");
+                        else {
+                            ArrayList<String> resultT = (ArrayList<String>) aux.keySet();
+                            ArrayList<String> resultA = (ArrayList<String>) aux.values();
+                            showResults(resultT, resultA);
+                        }
+                    } catch(Exception exc) {
+                        JOptionPane.showMessageDialog(new JDialog(), exc.getMessage());
                     }
-                };
-                //BOkay.addActionListener(Salir);
-                */
+
+                }
 
             }
         };
-        //search.addActionListener(BuscarTitulos);
+        search.addActionListener(SearchResult);
+    }
+
+    public void showResults(ArrayList<String> resultT, ArrayList<String> resultA) {
+        removeAll();
+        //taula
+
     }
 
     public void reset(){
         k.setText("");
         p.setText("");
+        load();
         setVisible(true);
-    }
-
-
-    public static void main(String args[]) {
-        JFrame f = new JFrame();
-        f.setLayout(new BorderLayout());
-        f.add(new RelevantDocumentsSearch(), BorderLayout.CENTER);
-        f.setSize(1000, 750);
-        f.setLocation(100, 100);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
 

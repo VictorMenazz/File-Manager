@@ -187,14 +187,8 @@ public class PresentationController {
      * @param k, integer of how many relevant documents to return
      * @throws IOException
      */
-    public void toResultDocQuery(String pWords, String language, int k) throws IOException {
-        HashMap<String, String> aux = ctrlDomain.documentsQuery(pWords, language, k);
-        ArrayList<String> titles = (ArrayList<String>) aux.keySet();
-        ArrayList<String> authors = (ArrayList<String>) aux.values();
-        JFrame resWindow = new JFrame();
-        resWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        resWindow.setTitle("Result for boolean expression search");
-        resWindow.setVisible(true);
+    public HashMap<String, String> toResultDocQuery(String pWords, String language, int k) throws IOException {
+        return ctrlDomain.documentsQuery(pWords, language, k);
     }
 
     /**

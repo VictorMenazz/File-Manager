@@ -11,10 +11,10 @@ import java.util.ArrayList;
 public class SimilarityDocumentsSearch extends JPanel {
     private PresentationController CtrlPres = PresentationController.getInstance();
     private JLabel titleView = new JLabel("Get similar documents");
-    private JLabel l = new JLabel("Author");
-    private JLabel l2 = new JLabel("Title");
+    private JLabel l = new JLabel("Author: ");
+    private JLabel l2 = new JLabel("Title: ");
 
-    private JLabel l3 = new JLabel("Desired documents");
+    private JLabel l3 = new JLabel("Desired documents: ");
 
     private JComboBox authors;
     private JComboBox titles;
@@ -24,11 +24,20 @@ public class SimilarityDocumentsSearch extends JPanel {
     private JButton search = new JButton("Search");
     private JFrame frame = new JFrame ("JFrame");
 
+    public void load() {
+        setLayout(new GridBagLayout());
+        GridBagConstraints c = new GridBagConstraints();
+        c.insets = new Insets(20, 0, 20, 0);
+
+    }
+
     public SimilarityDocumentsSearch(){
-        setLayout(null);
         setPreferredSize(new Dimension(500,350));
         setMaximumSize(new Dimension(500,350));
         setMinimumSize(new Dimension(500,350));
+
+        setLayout(new GridBagLayout());
+
         titleView.setBounds(175,5,200,30);
         add(titleView);
 
