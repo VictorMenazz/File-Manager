@@ -129,7 +129,9 @@ public class PresentationController {
         ctrlDomain.importDocument(path, folderID, lang, docType);
     }
 
-
+    public void exportDocument(String title, String author, String path, String docType) {
+        ctrlDomain.exportDocument(title, author, path, docType);
+    }
 
     /**
      * Create a document view for a specific document, new or save
